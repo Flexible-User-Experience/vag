@@ -1,5 +1,13 @@
-// customize some Bootstrap variables
-$primary: darken(#428bca, 20%);
+@import '~bootstrap-sass/assets/stylesheets/bootstrap';
 
-// the ~ allows you to reference things in node_modules
-@import "~bootstrap/scss/bootstrap";
+$primary: darken(#428bca, 20%);
+$acceVerde: #84a640;
+$acceAzul: #396696;
+
+h1 {
+  color: $acceVerde;
+
+  s {
+    color: $acceAzul;
+  }
+}

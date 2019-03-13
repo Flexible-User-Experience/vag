@@ -7,12 +7,12 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 /**
- * Class FrontendController
+ * @Route("/")
  */
 class FrontendController extends AbstractController
 {
     /**
-     * @Route("/")
+     * @Route("/", name="front_homepage")
      *
      * @return Response
      */

@@ -11,9 +11,10 @@ require('../css/global.scss');
 // Need jQuery? Install it with "yarn add jquery", then uncomment to require it.
 const $ = require('jquery');
 
-require('bootstrap');
+require('bootstrap-sass');
 
 $(document).ready(function() {
     console.log('Hello Webpack Encore! Edit me in assets/js/app.js');
     $('[data-toggle="popover"]').popover();
+    $('h1').tooltip();
 });
