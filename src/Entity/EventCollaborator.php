@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -37,8 +39,21 @@ class EventCollaborator
     private $phone;
 
     /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\EventActivity", mappedBy="collaborators")
+     */
+    private $eventActivities;
+
+    /**
      * Methods.
      */
+
+    /**
+     * EventCollaborator constructor.
+     */
+    public function __construct()
+    {
+        $this->eventActivities = new ArrayCollection();
+    }
 
     /**
      * @return int|null
@@ -124,6 +139,44 @@ class EventCollaborator
     public function setPhone(?string $phone): self
     {
         $this->phone = $phone;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|EventActivity[]
+     */
+    public function getEventActivities(): Collection
+    {
+        return $this->eventActivities;
+    }
+
+    /**
+     * @param EventActivity $eventActivity
+     *
+     * @return EventCollaborator
+     */
+    public function addEventActivity(EventActivity $eventActivity): self
+    {
+        if (!$this->eventActivities->contains($eventActivity)) {
+            $this->eventActivities[] = $eventActivity;
+            $eventActivity->addCollaborator($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @param EventActivity $eventActivity
+     *
+     * @return EventCollaborator
+     */
+    public function removeEventActivity(EventActivity $eventActivity): self
+    {
+        if ($this->eventActivities->contains($eventActivity)) {
+            $this->eventActivities->removeElement($eventActivity);
+            $eventActivity->removeCollaborator($this);
+        }
 
         return $this;
     }
