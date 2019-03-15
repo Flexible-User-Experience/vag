@@ -1,0 +1,6 @@
+services:
+    admin.event_category:
+        class: App\Admin\EventCategoryAdmin
+        arguments: [~, App\Entity\EventCategory, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: 'Categoria', group: 'Events' }
