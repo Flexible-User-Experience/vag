@@ -1,6 +1,9 @@
 admin:
     label:
         name: 'Nom'
+        surname: 'Cognoms'
+        email: 'Email'
+        phone: 'Telèfon'
         place: 'Lloc'
         priority: 'Prioritat'
         is_available: 'Actiu'
