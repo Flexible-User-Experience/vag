@@ -4,3 +4,8 @@ services:
         arguments: [~, App\Entity\EventCategory, ~]
         tags:
             - { name: sonata.admin, manager_type: orm, label: 'Categoria', group: 'Events' }
+    admin.event_location:
+        class: App\Admin\EventLocationAdmin
+        arguments: [~, App\Entity\EventLocation, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: 'Ubicacions', group: 'Events' }
