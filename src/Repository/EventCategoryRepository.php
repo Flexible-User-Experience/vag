@@ -14,27 +14,29 @@ use Symfony\Bridge\Doctrine\RegistryInterface;
  */
 class EventCategoryRepository extends ServiceEntityRepository
 {
+    /**
+     * EventCategoryRepository constructor.
+     *
+     * @param RegistryInterface $registry
+     */
     public function __construct(RegistryInterface $registry)
     {
         parent::__construct($registry, EventCategory::class);
     }
 
-    // /**
-    //  * @return EventCategory[] Returns an array of EventCategory objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    /**
+     * @return mixed
+     */
+    public function findEnabledSortedByName()
     {
         return $this->createQueryBuilder('e')
-            ->andWhere('e.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('e.id', 'ASC')
-            ->setMaxResults(10)
+            ->andWhere('e.isAvailable = :val')
+            ->setParameter('val', true)
+            ->orderBy('e.priority', 'ASC')
             ->getQuery()
             ->getResult()
         ;
     }
-    */
 
     /*
     public function findOneBySomeField($value): ?EventCategory

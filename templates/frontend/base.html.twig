@@ -18,20 +18,21 @@
                 </div>
             </div>
             <div class="collapse navbar-collapse flex-grow-1 text-right" id="top-navbar">
-                <ul class="navbar-nav ml-auto flex-nowrap">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">arts</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">conferences</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">workshops</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">challenge</a>
-                    </li>
-                </ul>
+                {{ knp_menu_render('main') }}
+                {#<ul class="navbar-nav ml-auto flex-nowrap">#}
+                    {#<li class="nav-item">#}
+                        {#<a class="nav-link" href="#">arts</a>#}
+                    {#</li>#}
+                    {#<li class="nav-item">#}
+                        {#<a class="nav-link" href="#">conferences</a>#}
+                    {#</li>#}
+                    {#<li class="nav-item">#}
+                        {#<a class="nav-link" href="#">workshops</a>#}
+                    {#</li>#}
+                    {#<li class="nav-item">#}
+                        {#<a class="nav-link" href="#">challenge</a>#}
+                    {#</li>#}
+                {#</ul>#}
             </div>
         </nav>
         {% block body %}{% endblock %}
