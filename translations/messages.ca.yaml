@@ -12,6 +12,9 @@ admin:
         end: 'Acaba'
         short_description: 'Descripció breu'
         description: 'Descripció'
+        category: 'Categoria'
+        location: 'Ubicació'
+        collaborators: 'Col·laboradors'
         actions: 'Accions'
     with:
         event: 'Esdeveniment'
@@ -19,6 +22,7 @@ admin:
         category: 'Categoria'
         location: 'Ubicació'
         activity: 'Activitat'
+        relations: 'Relacions'
         controls: 'Controls'
 
 'Admin Class Event Activity List': 'Activitats'

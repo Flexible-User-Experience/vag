@@ -2,10 +2,15 @@
 
 namespace App\Admin;
 
+use App\Entity\EventCategory;
+use App\Entity\EventCollaborator;
+use App\Entity\EventLocation;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Sonata\Form\Type\BooleanType;
 use Sonata\Form\Type\DatePickerType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 
@@ -68,6 +73,33 @@ final class EventActivityAdmin extends AbstractAdmin
                 ]
             )
             ->end()
+            ->with('admin.with.relations', ['class' => 'col-md-4'])
+            ->add(
+                'category',
+                EntityType::class,
+                [
+                    'label' => 'admin.label.category',
+                    'class' => EventCategory::class,
+                ]
+            )
+            ->add(
+                'location',
+                EntityType::class,
+                [
+                    'label' => 'admin.label.location',
+                    'class' => EventLocation::class,
+                ]
+            )
+            ->add(
+                'collaborators',
+                EntityType::class,
+                [
+                    'label' => 'admin.label.collaborators',
+                    'class' => EventCollaborator::class,
+                    'multiple' => true,
+                ]
+            )
+            ->end()
             ->with('admin.with.controls', ['class' => 'col-md-3'])
             ->add(
                 'begin',
@@ -85,6 +117,13 @@ final class EventActivityAdmin extends AbstractAdmin
                     'label' => 'admin.label.end',
                     'format' => 'd/M/y',
                     'required' => true,
+                ]
+            )
+            ->add(
+                'isAvailable',
+                BooleanType::class,
+                [
+                    'label' => 'admin.label.is_available',
                 ]
             )
             ->end()
@@ -117,6 +156,23 @@ final class EventActivityAdmin extends AbstractAdmin
                 null,
                 [
                     'label' => 'admin.label.name',
+                    'editable' => true,
+                ]
+            )
+            ->add(
+                'slug',
+                null,
+                [
+                    'label' => 'admin.label.slug',
+                    'editable' => false,
+                ]
+            )
+            ->add(
+                'isAvailable',
+                null,
+                [
+                    'label' => 'admin.label.is_available',
+                    'editable' => true,
                 ]
             )
             ->add(
