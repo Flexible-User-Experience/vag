@@ -1,5 +1,6 @@
 admin:
     label:
+        slug: 'Slug'
         name: 'Nom'
         surname: 'Cognoms'
         email: 'Email'

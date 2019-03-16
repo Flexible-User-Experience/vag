@@ -56,6 +56,14 @@ final class EventLocationAdmin extends AbstractAdmin
                     'editable' => true,
                 ]
             )
+            ->add(
+                'slug',
+                null,
+                [
+                    'label' => 'admin.label.slug',
+                    'editable' => false,
+                ]
+            )
         ;
     }
 }

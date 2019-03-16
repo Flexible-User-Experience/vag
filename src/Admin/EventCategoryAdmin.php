@@ -87,6 +87,14 @@ final class EventCategoryAdmin extends AbstractAdmin
                 ]
             )
             ->add(
+                'slug',
+                null,
+                [
+                    'label' => 'admin.label.slug',
+                    'editable' => false,
+                ]
+            )
+            ->add(
                 'priority',
                 null,
                 [

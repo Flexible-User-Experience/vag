@@ -10,7 +10,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\EventLocationRepository")
- * @UniqueEntity("email")
+ * @UniqueEntity("place")
  */
 class EventLocation extends AbstractEntity
 {
@@ -134,6 +134,6 @@ class EventLocation extends AbstractEntity
      */
     public function __toString()
     {
-        return $this->id ? $this->place : '---';
+        return $this->id ? $this->getPlace() : '---';
     }
 }

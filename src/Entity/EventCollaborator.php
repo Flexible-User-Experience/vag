@@ -113,6 +113,14 @@ class EventCollaborator extends AbstractEntity
     /**
      * @return string|null
      */
+    public function getFullname(): ?string
+    {
+        return $this->name.' '.$this->surname;
+    }
+
+    /**
+     * @return string|null
+     */
     public function getSlug(): ?string
     {
         return $this->slug;
@@ -206,5 +214,13 @@ class EventCollaborator extends AbstractEntity
         }
 
         return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->id ? $this->getFullname() : '---';
     }
 }

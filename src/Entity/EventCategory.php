@@ -196,6 +196,6 @@ class EventCategory extends AbstractEntity
      */
     public function __toString()
     {
-        return $this->id ? $this->name : '---';
+        return $this->id ? $this->getName() : '---';
     }
 }

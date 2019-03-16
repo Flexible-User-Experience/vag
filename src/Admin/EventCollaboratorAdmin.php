@@ -106,6 +106,14 @@ final class EventCollaboratorAdmin extends AbstractAdmin
                 ]
             )
             ->add(
+                'slug',
+                null,
+                [
+                    'label' => 'admin.label.slug',
+                    'editable' => false,
+                ]
+            )
+            ->add(
                 'email',
                 null,
                 [
