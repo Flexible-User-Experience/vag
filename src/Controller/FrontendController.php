@@ -2,6 +2,9 @@
 
 namespace App\Controller;
 
+use App\Entity\EventCategory;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -22,14 +25,25 @@ class FrontendController extends AbstractController
     }
 
     /**
-     * @Route("/{category}", name="front_event_category")
+     * @Route("/{slug}", name="front_event_category")
+     * @ParamConverter("category", class="App:EventCategory")
      *
-     * @param string $category
+     * @param EventCategory $category
      *
      * @return Response
+     * @throws NotFoundHttpException
      */
-    public function category($category)
+    public function category(EventCategory $category)
     {
-        return $this->render('frontend/homepage.html.twig', []);
+        if (!$category->isAvailable()) { // TODO disable for admin logged users
+            throw $this->createNotFoundException();
+        }
+
+        return $this->render(
+            'frontend/homepage.html.twig',
+            [
+                'category' => $category,
+            ]
+        );
     }
 }

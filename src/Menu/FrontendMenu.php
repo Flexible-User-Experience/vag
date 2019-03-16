@@ -53,7 +53,7 @@ class FrontendMenu
                     'label' => $category->getName(),
                     'route' => 'front_event_category',
                     'routeParameters' => [
-                        'category' => $category->getSlug(),
+                        'slug' => $category->getSlug(),
                     ],
                 ]
             );
