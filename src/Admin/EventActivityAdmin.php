@@ -8,6 +8,7 @@ use App\Entity\EventLocation;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Sonata\DoctrineORMAdminBundle\Filter\DateFilter;
 use Sonata\Form\Type\BooleanType;
 use Sonata\Form\Type\DateTimePickerType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -136,10 +137,80 @@ final class EventActivityAdmin extends AbstractAdmin
     protected function configureDatagridFilters(DatagridMapper  $datagridMapper)  {
         $datagridMapper
             ->add(
+                'begin',
+                DateFilter::class,
+                array(
+                    'label' => 'admin.label.begin',
+                    'field_type' => DateTimePickerType::class,
+                    'format' => 'd/m/Y H:i',
+                ),
+                null,
+                array(
+                    'widget' => 'single_text',
+                    'format' => 'dd/MM/yyyy HH:mm',
+                )
+            )
+            ->add(
+                'end',
+                DateFilter::class,
+                array(
+                    'label' => 'admin.label.end',
+                    'field_type' => DateTimePickerType::class,
+                    'format' => 'd/m/Y H:i',
+                ),
+                null,
+                array(
+                    'widget' => 'single_text',
+                    'format' => 'dd/MM/yyyy HH:mm',
+                )
+            )
+            ->add(
                 'name',
                 null,
                 [
                     'label' => 'admin.label.name',
+                ]
+            )
+            ->add(
+                'shortDescription',
+                null,
+                [
+                    'label' => 'admin.label.short_description',
+                ]
+            )
+            ->add(
+                'description',
+                null,
+                [
+                    'label' => 'admin.label.description',
+                ]
+            )
+            ->add(
+                'category',
+                null,
+                [
+                    'label' => 'admin.label.category',
+                ]
+            )
+            ->add(
+                'location',
+                null,
+                [
+                    'label' => 'admin.label.location',
+                ]
+            )
+            ->add(
+                'collaborators',
+                null,
+                [
+                    'label' => 'admin.label.collaborators',
+                ]
+            )
+            ->add(
+                'isAvailable',
+                null,
+                [
+                    'label' => 'admin.label.is_available',
                 ]
             )
         ;
