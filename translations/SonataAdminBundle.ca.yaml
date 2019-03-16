@@ -1,0 +1,4 @@
+admin:
+    with:
+        event: 'Esdeveniments'
+toggle_navigation: 'Canviar navegació'

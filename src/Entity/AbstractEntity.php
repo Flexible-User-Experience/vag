@@ -6,7 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
- * Class AbstractEntity
+ * Abstract class AbstractEntity
  */
 abstract class AbstractEntity
 {
