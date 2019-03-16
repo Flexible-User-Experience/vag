@@ -25,6 +25,26 @@ class FrontendController extends AbstractController
     }
 
     /**
+     * @Route("/blog", name="front_blog")
+     *
+     * @return Response
+     */
+    public function blog()
+    {
+        return $this->render('frontend/blog.html.twig', []);
+    }
+
+    /**
+     * @Route("/tickets", name="front_tickets")
+     *
+     * @return Response
+     */
+    public function tickets()
+    {
+        return $this->render('frontend/tickets.html.twig', []);
+    }
+
+    /**
      * @Route("/{slug}", name="front_event_category")
      * @ParamConverter("category", class="App:EventCategory")
      *
@@ -40,7 +60,7 @@ class FrontendController extends AbstractController
         }
 
         return $this->render(
-            'frontend/homepage.html.twig',
+            'frontend/category.html.twig',
             [
                 'category' => $category,
             ]

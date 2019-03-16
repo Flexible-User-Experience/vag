@@ -1,3 +1,9 @@
+front:
+    menu:
+        category: 'categories'
+        blog: 'blog'
+        tickets: 'tickets'
+
 admin:
     label:
         slug: 'Slug'
