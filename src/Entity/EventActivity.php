@@ -13,48 +13,66 @@ class EventActivity extends AbstractEntity
 {
     /**
      * @ORM\Column(type="string", length=255)
+     *
+     * @var string
      */
     private $name;
 
     /**
      * @ORM\Column(type="date")
+     *
+     * @var \DateTime
      */
     private $begin;
 
     /**
      * @ORM\Column(type="date")
+     *
+     * @var \DateTime
      */
     private $end;
 
     /**
      * @ORM\Column(type="string", length=255)
+     *
+     * @var string
      */
     private $shortDescription;
 
     /**
      * @ORM\Column(type="text")
+     *
+     * @var string
      */
     private $description;
 
     /**
      * @ORM\Column(type="boolean")
+     *
+     * @var bool
      */
     private $isAvailable;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\EventCategory", inversedBy="eventActivities")
      * @ORM\JoinColumn(nullable=false)
+     *
+     * @var EventCategory
      */
     private $category;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\EventLocation", inversedBy="eventActivities")
      * @ORM\JoinColumn(nullable=false)
+     *
+     * @var EventLocation
      */
     private $location;
 
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\EventCollaborator", inversedBy="eventActivities")
+     *
+     * @var ArrayCollection
      */
     private $collaborators;
 

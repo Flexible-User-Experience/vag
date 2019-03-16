@@ -5,6 +5,7 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\EventLocationRepository")
@@ -12,12 +13,24 @@ use Doctrine\ORM\Mapping as ORM;
 class EventLocation extends AbstractEntity
 {
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, unique=true)
+     *
+     * @var string
      */
     private $place;
 
     /**
+     * @ORM\Column(type="string", length=255)
+     * @Gedmo\Slug(fields={"place"})
+     *
+     * @var string
+     */
+    private $slug;
+
+    /**
      * @ORM\OneToMany(targetEntity="App\Entity\EventActivity", mappedBy="location")
+     *
+     * @var ArrayCollection
      */
     private $eventActivities;
 
@@ -49,6 +62,26 @@ class EventLocation extends AbstractEntity
     public function setPlace(string $place): self
     {
         $this->place = $place;
+
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
+
+    /**
+     * @param string $slug
+     *
+     * @return EventLocation
+     */
+    public function setSlug(string $slug): self
+    {
+        $this->slug = $slug;
 
         return $this;
     }

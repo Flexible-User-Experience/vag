@@ -16,7 +16,19 @@ class FrontendController extends AbstractController
      *
      * @return Response
      */
-    public function number()
+    public function homepage()
+    {
+        return $this->render('frontend/homepage.html.twig', []);
+    }
+
+    /**
+     * @Route("/{category}", name="front_event_category")
+     *
+     * @param string $category
+     *
+     * @return Response
+     */
+    public function category($category)
     {
         return $this->render('frontend/homepage.html.twig', []);
     }
