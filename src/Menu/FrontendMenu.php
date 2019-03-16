@@ -47,7 +47,16 @@ class FrontendMenu
         $eventCategories = $this->ecr->findEnabledSortedByName();
         /** @var EventCategory $category */
         foreach ($eventCategories as $category) {
-            $item = $menu->addChild($category->getName(), ['label' => $category->getName(), 'uri' => '#']);
+            $item = $menu->addChild(
+                $category->getName(),
+                [
+                    'label' => $category->getName(),
+                    'route' => 'front_event_category',
+                    'routeParameters' => [
+                        'category' => $category->getSlug(),
+                    ],
+                ]
+            );
             $item->setAttribute('class', 'nav-item');
             $item->setLinkAttribute('class', 'nav-link');
         }

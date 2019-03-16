@@ -119,6 +119,16 @@ final class EventActivityAdmin extends AbstractAdmin
                     'label' => 'admin.label.phone',
                 ]
             )
+            ->add(
+                '_action',
+                null,
+                [
+                    'label' => 'admin.label.actions',
+                    'actions' => [
+                        'edit' => [],
+                    ],
+                ]
+            )
         ;
     }
 }

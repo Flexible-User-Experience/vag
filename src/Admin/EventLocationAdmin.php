@@ -64,6 +64,16 @@ final class EventLocationAdmin extends AbstractAdmin
                     'editable' => false,
                 ]
             )
+            ->add(
+                '_action',
+                null,
+                [
+                    'label' => 'admin.label.actions',
+                    'actions' => [
+                        'edit' => [],
+                    ],
+                ]
+            )
         ;
     }
 }

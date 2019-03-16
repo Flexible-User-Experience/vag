@@ -96,6 +96,7 @@ final class EventCollaboratorAdmin extends AbstractAdmin
                 null,
                 [
                     'label' => 'admin.label.name',
+                    'editable' => true,
                 ]
             )
             ->add(
@@ -103,6 +104,7 @@ final class EventCollaboratorAdmin extends AbstractAdmin
                 null,
                 [
                     'label' => 'admin.label.surname',
+                    'editable' => true,
                 ]
             )
             ->add(
@@ -118,6 +120,7 @@ final class EventCollaboratorAdmin extends AbstractAdmin
                 null,
                 [
                     'label' => 'admin.label.email',
+                    'editable' => true,
                 ]
             )
             ->add(
@@ -125,6 +128,17 @@ final class EventCollaboratorAdmin extends AbstractAdmin
                 null,
                 [
                     'label' => 'admin.label.phone',
+                    'editable' => true,
+                ]
+            )
+            ->add(
+                '_action',
+                null,
+                [
+                    'label' => 'admin.label.actions',
+                    'actions' => [
+                        'edit' => [],
+                    ],
                 ]
             )
         ;

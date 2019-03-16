@@ -110,6 +110,16 @@ final class EventCategoryAdmin extends AbstractAdmin
                     'editable' => true,
                 ]
             )
+            ->add(
+                '_action',
+                null,
+                [
+                    'label' => 'admin.label.actions',
+                    'actions' => [
+                        'edit' => [],
+                    ],
+                ]
+            )
         ;
     }
 }
