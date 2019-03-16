@@ -9,7 +9,7 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\Form\Type\BooleanType;
-use Sonata\Form\Type\DatePickerType;
+use Sonata\Form\Type\DateTimePickerType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -33,8 +33,8 @@ final class EventActivityAdmin extends AbstractAdmin
      * @var array
      */
     protected $datagridValues = array(
-        '_sort_by' => 'name',
-        '_sort_order' => 'ASC',
+        '_sort_by' => 'begin',
+        '_sort_order' => 'DESC',
     );
 
     /**
@@ -103,19 +103,19 @@ final class EventActivityAdmin extends AbstractAdmin
             ->with('admin.with.controls', ['class' => 'col-md-3'])
             ->add(
                 'begin',
-                DatePickerType::class,
+                DateTimePickerType::class,
                 [
                     'label' => 'admin.label.begin',
-                    'format' => 'd/M/y',
+                    'format' => 'd/M/y HH:mm',
                     'required' => true,
                 ]
             )
             ->add(
                 'end',
-                DatePickerType::class,
+                DateTimePickerType::class,
                 [
                     'label' => 'admin.label.end',
-                    'format' => 'd/M/y',
+                    'format' => 'd/M/y HH:mm',
                     'required' => true,
                 ]
             )
@@ -152,6 +152,15 @@ final class EventActivityAdmin extends AbstractAdmin
         unset($this->listModes['mosaic']);
         $listMapper
             ->add(
+                'begin',
+                'date',
+                [
+                    'label' => 'admin.label.begin',
+                    'format' => 'd/m/Y H:i',
+                    'editable' => false,
+                ]
+            )
+            ->add(
                 'name',
                 null,
                 [
@@ -160,11 +169,27 @@ final class EventActivityAdmin extends AbstractAdmin
                 ]
             )
             ->add(
-                'slug',
+                'category',
                 null,
                 [
-                    'label' => 'admin.label.slug',
+                    'label' => 'admin.label.category',
                     'editable' => false,
+                    'associated_property' => 'name',
+                    'sortable' => true,
+                    'sort_field_mapping' => array('fieldName' => 'name'),
+                    'sort_parent_association_mappings' => array(array('fieldName' => 'category')),
+                ]
+            )
+            ->add(
+                'location',
+                null,
+                [
+                    'label' => 'admin.label.location',
+                    'editable' => false,
+                    'associated_property' => 'place',
+                    'sortable' => true,
+                    'sort_field_mapping' => array('fieldName' => 'place'),
+                    'sort_parent_association_mappings' => array(array('fieldName' => 'location')),
                 ]
             )
             ->add(
