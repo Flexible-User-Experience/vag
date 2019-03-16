@@ -18,6 +18,7 @@ final class EventLocationAdmin extends AbstractAdmin
      */
     protected function configureFormFields(FormMapper $formMapper) {
         $formMapper
+            ->with('admin.with.location', ['class' => 'col-md-4'])
             ->add(
                 'place',
                 TextType::class,
@@ -25,6 +26,7 @@ final class EventLocationAdmin extends AbstractAdmin
                     'label' => 'admin.label.place',
                 ]
             )
+            ->end()
         ;
     }
 
@@ -47,6 +49,7 @@ final class EventLocationAdmin extends AbstractAdmin
      * @param ListMapper $listMapper
      */
     protected function configureListFields(ListMapper $listMapper) {
+        unset($this->listModes['mosaic']);
         $listMapper
             ->add(
                 'place',

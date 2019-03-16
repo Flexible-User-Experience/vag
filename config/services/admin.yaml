@@ -3,14 +3,14 @@ services:
         class: App\Admin\EventCategoryAdmin
         arguments: [~, App\Entity\EventCategory, ~]
         tags:
-            - { name: sonata.admin, manager_type: orm, label: 'Categories', group: 'Events' }
+            - { name: sonata.admin, manager_type: orm, label: 'Categories', group: 'Esdeveniments' }
     admin.event_location:
         class: App\Admin\EventLocationAdmin
         arguments: [~, App\Entity\EventLocation, ~]
         tags:
-            - { name: sonata.admin, manager_type: orm, label: 'Ubicacions', group: 'Events' }
+            - { name: sonata.admin, manager_type: orm, label: 'Ubicacions', group: 'Esdeveniments' }
     admin.event_collaborator:
         class: App\Admin\EventCollaboratorAdmin
         arguments: [~, App\Entity\EventCollaborator, ~]
         tags:
-            - { name: sonata.admin, manager_type: orm, label: 'Col·laboradors', group: 'Events' }
+            - { name: sonata.admin, manager_type: orm, label: 'Col·laboradors', group: 'Esdeveniments' }

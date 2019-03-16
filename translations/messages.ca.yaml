@@ -9,3 +9,14 @@ admin:
         priority: 'Prioritat'
         is_available: 'Actiu'
         actions: 'Accions'
+    with:
+        category: 'Categoria'
+        location: 'Ubicació'
+        controls: 'Controls'
+
+'Event Category List': 'Esdeveniments'
+'Event Category Create': 'Nou'
+'Event Location List': 'Ubicacions'
+'Event Location Create': 'Nou'
+'Event Collaborator List': 'Col·laboradors'
+'Event Collaborator Create': 'Nou'

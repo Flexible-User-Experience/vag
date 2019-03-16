@@ -20,6 +20,7 @@ final class EventCategoryAdmin extends AbstractAdmin
      */
     protected function configureFormFields(FormMapper $formMapper) {
         $formMapper
+            ->with('admin.with.category', ['class' => 'col-md-4'])
             ->add(
                 'name',
                 TextType::class,
@@ -27,6 +28,8 @@ final class EventCategoryAdmin extends AbstractAdmin
                     'label' => 'admin.label.name',
                 ]
             )
+            ->end()
+            ->with('admin.with.controls', ['class' => 'col-md-3'])
             ->add(
                 'priority',
                 NumberType::class,
@@ -41,6 +44,7 @@ final class EventCategoryAdmin extends AbstractAdmin
                     'label' => 'admin.label.is_available',
                 ]
             )
+            ->end()
         ;
     }
 
@@ -77,6 +81,7 @@ final class EventCategoryAdmin extends AbstractAdmin
      * @param ListMapper $listMapper
      */
     protected function configureListFields(ListMapper $listMapper) {
+        unset($this->listModes['mosaic']);
         $listMapper
             ->add(
                 'name',
