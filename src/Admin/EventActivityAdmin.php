@@ -5,6 +5,8 @@ namespace App\Admin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Sonata\Form\Type\DatePickerType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 /**
@@ -39,6 +41,7 @@ final class EventActivityAdmin extends AbstractAdmin
      */
     protected function configureFormFields(FormMapper $formMapper) {
         $formMapper
+            ->with('admin.with.activity', ['class' => 'col-md-5'])
             ->add(
                 'name',
                 TextType::class,
@@ -46,6 +49,45 @@ final class EventActivityAdmin extends AbstractAdmin
                     'label' => 'admin.label.name',
                 ]
             )
+            ->add(
+                'shortDescription',
+                TextType::class,
+                [
+                    'label' => 'admin.label.short_description',
+                ]
+            )
+            ->add(
+                'description',
+                TextareaType::class,
+                [
+                    'label' => 'admin.label.description',
+                    'attr' => [
+                        'rows' => '5',
+                        'style' => 'resize:vertical',
+                    ],
+                ]
+            )
+            ->end()
+            ->with('admin.with.controls', ['class' => 'col-md-3'])
+            ->add(
+                'begin',
+                DatePickerType::class,
+                [
+                    'label' => 'admin.label.begin',
+                    'format' => 'd/M/y',
+                    'required' => true,
+                ]
+            )
+            ->add(
+                'end',
+                DatePickerType::class,
+                [
+                    'label' => 'admin.label.end',
+                    'format' => 'd/M/y',
+                    'required' => true,
+                ]
+            )
+            ->end()
         ;
     }
 

@@ -8,6 +8,10 @@ admin:
         place: 'Lloc'
         priority: 'Prioritat'
         is_available: 'Actiu'
+        begin: 'Comença'
+        end: 'Acaba'
+        short_description: 'Descripció breu'
+        description: 'Descripció'
         actions: 'Accions'
     with:
         event: 'Esdeveniment'
