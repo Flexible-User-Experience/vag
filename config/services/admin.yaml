@@ -14,3 +14,8 @@ services:
         arguments: [~, App\Entity\EventCollaborator, ~]
         tags:
             - { name: sonata.admin, manager_type: orm, label: 'admin.with.collaborator', group: 'admin.with.event' }
+    admin.event_activity:
+        class: App\Admin\EventActivityAdmin
+        arguments: [~, App\Entity\EventActivity, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: 'admin.with.activity', group: 'admin.with.event' }
