@@ -27,7 +27,7 @@ final class EventCollaboratorAdmin extends AbstractAdmin
      * @var array
      */
     protected $datagridValues = array(
-        '_sort_by' => 'name',
+        '_sort_by' => 'surname',
         '_sort_order' => 'ASC',
     );
 

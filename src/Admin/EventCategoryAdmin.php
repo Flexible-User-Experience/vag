@@ -28,7 +28,7 @@ final class EventCategoryAdmin extends AbstractAdmin
      * @var array
      */
     protected $datagridValues = array(
-        '_sort_by' => 'name',
+        '_sort_by' => 'priority',
         '_sort_order' => 'ASC',
     );
 
