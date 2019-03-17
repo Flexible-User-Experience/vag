@@ -58,11 +58,18 @@ class EventActivity extends AbstractEntity
     private $description;
 
     /**
-     * @ORM\Column(type="boolean")
+     * @ORM\Column(type="boolean", nullable=true, options={"default"=1})
      *
      * @var bool
      */
     private $isAvailable;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true, options={"default"=1})
+     *
+     * @var bool
+     */
+    private $showInHomepage;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\EventCategory", inversedBy="eventActivities")
@@ -243,6 +250,34 @@ class EventActivity extends AbstractEntity
     public function setIsAvailable(bool $isAvailable): self
     {
         $this->isAvailable = $isAvailable;
+
+        return $this;
+    }
+
+    /**
+     * @return bool|null
+     */
+    public function getShowInHomepage(): ?bool
+    {
+        return $this->showInHomepage;
+    }
+
+    /**
+     * @return bool|null
+     */
+    public function isShowInHomepage(): ?bool
+    {
+        return $this->getShowInHomepage();
+    }
+
+    /**
+     * @param bool $showInHomepage
+     *
+     * @return EventActivity
+     */
+    public function setShowInHomepage(bool $showInHomepage): self
+    {
+        $this->showInHomepage = $showInHomepage;
 
         return $this;
     }

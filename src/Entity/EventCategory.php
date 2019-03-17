@@ -37,7 +37,7 @@ class EventCategory extends AbstractEntity
     private $priority;
 
     /**
-     * @ORM\Column(type="boolean")
+     * @ORM\Column(type="boolean", nullable=true, options={"default"=1})
      *
      * @var bool
      */

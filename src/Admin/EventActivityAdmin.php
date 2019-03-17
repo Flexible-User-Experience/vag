@@ -9,9 +9,9 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\DoctrineORMAdminBundle\Filter\DateFilter;
-use Sonata\Form\Type\BooleanType;
 use Sonata\Form\Type\DateTimePickerType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 
@@ -124,10 +124,19 @@ final class EventActivityAdmin extends AbstractAdmin
                 ]
             )
             ->add(
+                'showInHomepage',
+                CheckboxType::class,
+                [
+                    'label' => 'admin.label.show_in_homepage',
+                    'required' => false,
+                ]
+            )
+            ->add(
                 'isAvailable',
-                BooleanType::class,
+                CheckboxType::class,
                 [
                     'label' => 'admin.label.is_available',
+                    'required' => false,
                 ]
             )
             ->end()
@@ -225,6 +234,13 @@ final class EventActivityAdmin extends AbstractAdmin
                 ]
             )
             ->add(
+                'showInHomepage',
+                null,
+                [
+                    'label' => 'admin.label.show_in_homepage_short',
+                ]
+            )
+            ->add(
                 'isAvailable',
                 null,
                 [
@@ -279,6 +295,14 @@ final class EventActivityAdmin extends AbstractAdmin
                     'sortable' => true,
                     'sort_field_mapping' => array('fieldName' => 'place'),
                     'sort_parent_association_mappings' => array(array('fieldName' => 'location')),
+                ]
+            )
+            ->add(
+                'showInHomepage',
+                null,
+                [
+                    'label' => 'admin.label.show_in_homepage_short',
+                    'editable' => true,
                 ]
             )
             ->add(

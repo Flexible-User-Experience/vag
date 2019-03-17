@@ -5,7 +5,7 @@ namespace App\Admin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
-use Sonata\Form\Type\BooleanType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 
@@ -60,9 +60,10 @@ final class EventCategoryAdmin extends AbstractAdmin
             )
             ->add(
                 'isAvailable',
-                BooleanType::class,
+                CheckboxType::class,
                 [
                     'label' => 'admin.label.is_available',
+                    'required' => false,
                 ]
             )
             ->end()

@@ -2,3 +2,4 @@ admin:
     with:
         event: 'Esdeveniments'
 toggle_navigation: 'Canviar navegació'
+message_close: 'Tancar missatge'
