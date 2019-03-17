@@ -32,9 +32,20 @@ class EventActivityRepository extends ServiceEntityRepository
     public function findAvailableSortedByName()
     {
         return $this->createQueryBuilder('ea')
-            ->andWhere('ea.isAvailable = :val')
-            ->setParameter('val', true)
+            ->andWhere('ea.isAvailable = :available')
+            ->setParameter('available', true)
             ->orderBy('ea.name', 'ASC')
+        ;
+    }
+
+    /**
+     * @return QueryBuilder
+     */
+    public function findAvailableForHomepageSortedByName()
+    {
+        return $this->findAvailableSortedByName()
+            ->andWhere('ea.showInHomepage = :homepage')
+            ->setParameter('homepage', true)
         ;
     }
 

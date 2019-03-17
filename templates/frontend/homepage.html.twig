@@ -11,4 +11,5 @@
             <a class="btn btn-warning" href="{{ path('front_tickets') }}" role="button">Buy tickets</a>
         </div>
     </div>
+    {% include 'frontend/includes/event_activity_card.html.twig' with {activities: activities} %}
 {% endblock %}

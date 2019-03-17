@@ -31,8 +31,8 @@ class EventCategoryRepository extends ServiceEntityRepository
     public function findAvailableSortedByPriorityAndName()
     {
         return $this->createQueryBuilder('ec')
-            ->andWhere('ec.isAvailable = :val')
-            ->setParameter('val', true)
+            ->andWhere('ec.isAvailable = :available')
+            ->setParameter('available', true)
             ->orderBy('ec.priority', 'ASC')
             ->addOrderBy('ec.name', 'ASC')
         ;

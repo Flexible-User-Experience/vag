@@ -22,7 +22,12 @@ class FrontendController extends AbstractController
      */
     public function homepage()
     {
-        return $this->render('frontend/homepage.html.twig', []);
+        return $this->render(
+            'frontend/homepage.html.twig',
+            [
+                'activities' => $this->getDoctrine()->getRepository(EventActivity::class)->findAvailableForHomepageSortedByName()->getQuery()->getResult(),
+            ]
+        );
     }
 
     /**
