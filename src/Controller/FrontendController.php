@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\EventActivity;
 use App\Entity\EventCategory;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -63,6 +64,7 @@ class FrontendController extends AbstractController
             'frontend/category.html.twig',
             [
                 'category' => $category,
+                'activities' => $this->getDoctrine()->getRepository(EventActivity::class)->findAvailableByCategorySortedByName($category)->getQuery()->getResult(),
             ]
         );
     }

@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\EventActivity;
+use App\Entity\EventCategory;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\QueryBuilder;
 use Symfony\Bridge\Doctrine\RegistryInterface;
@@ -33,6 +34,22 @@ class EventActivityRepository extends ServiceEntityRepository
         return $this->createQueryBuilder('ea')
             ->andWhere('ea.isAvailable = :val')
             ->setParameter('val', true)
+            ->orderBy('ea.name', 'ASC')
+        ;
+    }
+
+    /**
+     * @param EventCategory $category
+     *
+     * @return QueryBuilder
+     */
+    public function findAvailableByCategorySortedByName(EventCategory $category)
+    {
+        return $this->createQueryBuilder('ea')
+            ->andWhere('ea.isAvailable = :available')
+            ->andWhere('ea.category = :category')
+            ->setParameter('available', true)
+            ->setParameter('category', $category)
             ->orderBy('ea.name', 'ASC')
         ;
     }
