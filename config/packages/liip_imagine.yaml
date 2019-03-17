@@ -2,6 +2,10 @@ liip_imagine:
     # "gd", "gmagick" or "imagick"
     driver: 'gd'
     filter_sets:
+        70xY:
+            quality: 100
+            filters:
+                thumbnail: {size : [70, null], mode: outbound}
         squared_thumbnail:
             # set your image quality defaults
             jpeg_quality:          98
