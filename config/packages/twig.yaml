@@ -2,6 +2,9 @@ twig:
     default_path: '%kernel.project_dir%/templates'
     debug: '%kernel.debug%'
     strict_variables: '%kernel.debug%'
+    globals:
+        main_brand_title: 'VAG'
+        admin_tag_version: 'v1.0.01'
     form_themes:
         - 'bootstrap_4_layout.html.twig'
         - '@SonataCore/Form/datepicker.html.twig'
