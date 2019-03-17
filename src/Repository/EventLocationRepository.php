@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\EventLocation;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\QueryBuilder;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**
@@ -14,37 +15,23 @@ use Symfony\Bridge\Doctrine\RegistryInterface;
  */
 class EventLocationRepository extends ServiceEntityRepository
 {
+    /**
+     * EventLocationRepository constructor.
+     *
+     * @param RegistryInterface $registry
+     */
     public function __construct(RegistryInterface $registry)
     {
         parent::__construct($registry, EventLocation::class);
     }
 
-    // /**
-    //  * @return EventLocation[] Returns an array of EventLocation objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    /**
+     * @return QueryBuilder
+     */
+    public function findAllSortedByPlace()
     {
-        return $this->createQueryBuilder('e')
-            ->andWhere('e.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('e.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
+        return $this->createQueryBuilder('el')
+            ->orderBy('el.place', 'ASC')
         ;
     }
-    */
-
-    /*
-    public function findOneBySomeField($value): ?EventLocation
-    {
-        return $this->createQueryBuilder('e')
-            ->andWhere('e.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
 }

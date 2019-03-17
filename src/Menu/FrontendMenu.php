@@ -52,7 +52,7 @@ class FrontendMenu
         $menu = $this->factory->createItem('root');
         $menu->setChildrenAttribute('class', 'navbar-nav ml-auto flex-nowrap');
         // events
-        $eventCategories = $this->ecr->findEnabledSortedByName();
+        $eventCategories = $this->ecr->findAvailableSortedByPriorityAndName()->getQuery()->getResult();
         /** @var EventCategory $category */
         foreach ($eventCategories as $category) {
             $item = $menu->addChild(

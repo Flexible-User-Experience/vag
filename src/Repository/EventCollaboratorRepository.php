@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\EventCollaborator;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\QueryBuilder;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**
@@ -14,37 +15,24 @@ use Symfony\Bridge\Doctrine\RegistryInterface;
  */
 class EventCollaboratorRepository extends ServiceEntityRepository
 {
+    /**
+     * EventCollaboratorRepository constructor.
+     *
+     * @param RegistryInterface $registry
+     */
     public function __construct(RegistryInterface $registry)
     {
         parent::__construct($registry, EventCollaborator::class);
     }
 
-    // /**
-    //  * @return EventCollaborator[] Returns an array of EventCollaborator objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    /**
+     * @return QueryBuilder
+     */
+    public function findAllSortedBySurnameAndName()
     {
-        return $this->createQueryBuilder('e')
-            ->andWhere('e.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('e.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
+        return $this->createQueryBuilder('ec')
+            ->orderBy('ec.surname', 'ASC')
+            ->addOrderBy('ec.name', 'ASC')
         ;
     }
-    */
-
-    /*
-    public function findOneBySomeField($value): ?EventCollaborator
-    {
-        return $this->createQueryBuilder('e')
-            ->andWhere('e.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
 }

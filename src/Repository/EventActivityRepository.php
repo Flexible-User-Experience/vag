@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\EventActivity;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\QueryBuilder;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**
@@ -14,37 +15,25 @@ use Symfony\Bridge\Doctrine\RegistryInterface;
  */
 class EventActivityRepository extends ServiceEntityRepository
 {
+    /**
+     * EventActivityRepository constructor.
+     *
+     * @param RegistryInterface $registry
+     */
     public function __construct(RegistryInterface $registry)
     {
         parent::__construct($registry, EventActivity::class);
     }
 
-    // /**
-    //  * @return EventActivity[] Returns an array of EventActivity objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    /**
+     * @return QueryBuilder
+     */
+    public function findAvailableSortedByName()
     {
-        return $this->createQueryBuilder('e')
-            ->andWhere('e.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('e.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
+        return $this->createQueryBuilder('ea')
+            ->andWhere('ea.isAvailable = :val')
+            ->setParameter('val', true)
+            ->orderBy('ea.name', 'ASC')
         ;
     }
-    */
-
-    /*
-    public function findOneBySomeField($value): ?EventActivity
-    {
-        return $this->createQueryBuilder('e')
-            ->andWhere('e.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
 }

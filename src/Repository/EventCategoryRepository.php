@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\EventCategory;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\QueryBuilder;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**
@@ -25,16 +26,15 @@ class EventCategoryRepository extends ServiceEntityRepository
     }
 
     /**
-     * @return mixed
+     * @return QueryBuilder
      */
-    public function findEnabledSortedByName()
+    public function findAvailableSortedByPriorityAndName()
     {
-        return $this->createQueryBuilder('e')
-            ->andWhere('e.isAvailable = :val')
+        return $this->createQueryBuilder('ec')
+            ->andWhere('ec.isAvailable = :val')
             ->setParameter('val', true)
-            ->orderBy('e.priority', 'ASC')
-            ->getQuery()
-            ->getResult()
+            ->orderBy('ec.priority', 'ASC')
+            ->addOrderBy('ec.name', 'ASC')
         ;
     }
 }
