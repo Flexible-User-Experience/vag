@@ -23,6 +23,7 @@ admin:
         category: 'Categoria'
         location: 'Ubicació'
         collaborators: 'Col·laboradors'
+        image: 'Arxiu'
         actions: 'Accions'
     with:
         event: 'Esdeveniment'
@@ -31,6 +32,7 @@ admin:
         location: 'Ubicació'
         activity: 'Activitat'
         relations: 'Relacions'
+        images: 'Imatges'
         controls: 'Controls'
 
 'Admin Class Event Activity List': 'Activitats'

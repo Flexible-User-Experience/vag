@@ -6,6 +6,7 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Vich\UploaderBundle\Form\Type\VichImageType;
 
 /**
  * Class EventLocationAdmin
@@ -45,6 +46,15 @@ final class EventLocationAdmin extends AbstractAdmin
                 TextType::class,
                 [
                     'label' => 'admin.label.place',
+                ]
+            )
+            ->end()
+            ->with('admin.with.images', ['class' => 'col-md-4'])
+            ->add(
+                'imageFile',
+                VichImageType::class,
+                [
+                    'label' => 'admin.label.image',
                 ]
             )
             ->end()
