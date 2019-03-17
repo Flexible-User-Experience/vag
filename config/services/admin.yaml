@@ -1,21 +1,21 @@
 services:
     admin.event_category:
         class: App\Admin\EventCategoryAdmin
-        arguments: [~, App\Entity\EventCategory, ~]
+        arguments: [~, App\Entity\EventCategory, ~, "@sonata.admin.entity_manager"]
         tags:
             - { name: sonata.admin, manager_type: orm, label: 'admin.with.category', group: 'admin.with.event' }
     admin.event_location:
         class: App\Admin\EventLocationAdmin
-        arguments: [~, App\Entity\EventLocation, ~]
+        arguments: [~, App\Entity\EventLocation, ~, "@sonata.admin.entity_manager"]
         tags:
             - { name: sonata.admin, manager_type: orm, label: 'admin.with.location', group: 'admin.with.event' }
     admin.event_collaborator:
         class: App\Admin\EventCollaboratorAdmin
-        arguments: [~, App\Entity\EventCollaborator, ~]
+        arguments: [~, App\Entity\EventCollaborator, ~, "@sonata.admin.entity_manager"]
         tags:
             - { name: sonata.admin, manager_type: orm, label: 'admin.with.collaborator', group: 'admin.with.event' }
     admin.event_activity:
         class: App\Admin\EventActivityAdmin
-        arguments: [~, App\Entity\EventActivity, ~]
+        arguments: [~, App\Entity\EventActivity, ~, "@sonata.admin.entity_manager"]
         tags:
             - { name: sonata.admin, manager_type: orm, label: 'admin.with.activity', group: 'admin.with.event' }

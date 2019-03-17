@@ -2,6 +2,7 @@
 
 namespace App\Admin;
 
+use Doctrine\ORM\EntityManager;
 use Sonata\AdminBundle\Admin\AbstractAdmin as BaseAdmin;
 use Sonata\AdminBundle\Route\RouteCollection;
 
@@ -10,6 +11,11 @@ use Sonata\AdminBundle\Route\RouteCollection;
  */
 abstract class AbstractAdmin extends BaseAdmin
 {
+    /**
+     * @var EntityManager
+     */
+    protected $em;
+
     /**
      * @var array
      */
@@ -28,6 +34,20 @@ abstract class AbstractAdmin extends BaseAdmin
     /**
      * Methods.
      */
+
+    /**
+     * AbstractAdmin constructor.
+     *
+     * @param string $code
+     * @param string $class
+     * @param string $baseControllerName
+     * @param EntityManager $em
+     */
+    public function __construct($code, $class, $baseControllerName, EntityManager $em)
+    {
+        parent::__construct($code, $class, $baseControllerName);
+        $this->em = $em;
+    }
 
     /**
      * @param RouteCollection $collection

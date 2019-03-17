@@ -81,6 +81,7 @@ final class EventActivityAdmin extends AbstractAdmin
                 [
                     'label' => 'admin.label.category',
                     'class' => EventCategory::class,
+                    'query_builder' => $this->em->getRepository(EventCategory::class)->findAvailableSortedByPriorityAndName(),
                 ]
             )
             ->add(
@@ -89,6 +90,7 @@ final class EventActivityAdmin extends AbstractAdmin
                 [
                     'label' => 'admin.label.location',
                     'class' => EventLocation::class,
+                    'query_builder' => $this->em->getRepository(EventLocation::class)->findAllSortedByPlace(),
                 ]
             )
             ->add(
@@ -97,6 +99,7 @@ final class EventActivityAdmin extends AbstractAdmin
                 [
                     'label' => 'admin.label.collaborators',
                     'class' => EventCollaborator::class,
+                    'query_builder' => $this->em->getRepository(EventCollaborator::class)->findAllSortedBySurnameAndName(),
                     'multiple' => true,
                 ]
             )
