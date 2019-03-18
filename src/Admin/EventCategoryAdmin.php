@@ -62,7 +62,7 @@ final class EventCategoryAdmin extends AbstractAdmin
                 'isAvailable',
                 CheckboxType::class,
                 [
-                    'label' => 'admin.label.is_available',
+                    'label' => 'admin.label.is_available_female',
                     'required' => false,
                 ]
             )
@@ -93,7 +93,7 @@ final class EventCategoryAdmin extends AbstractAdmin
                 'isAvailable',
                 null,
                 [
-                    'label' => 'admin.label.is_available',
+                    'label' => 'admin.label.is_available_female',
                 ]
             )
         ;
@@ -133,7 +133,7 @@ final class EventCategoryAdmin extends AbstractAdmin
                 'isAvailable',
                 null,
                 [
-                    'label' => 'admin.label.is_available',
+                    'label' => 'admin.label.is_available_female',
                     'editable' => true,
                 ]
             )

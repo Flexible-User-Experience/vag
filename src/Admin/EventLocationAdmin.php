@@ -55,6 +55,7 @@ final class EventLocationAdmin extends AbstractAdmin
                 VichImageType::class,
                 [
                     'label' => 'admin.label.image',
+                    'required' => false,
                 ]
             )
             ->end()
