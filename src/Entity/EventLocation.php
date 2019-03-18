@@ -124,6 +124,7 @@ class EventLocation extends AbstractEntity
      * @param File $imageFile
      *
      * @return EventLocation
+     * @throws \Exception
      */
     public function setImageFile(?File $imageFile): self
     {
