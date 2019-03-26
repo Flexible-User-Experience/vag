@@ -5,10 +5,10 @@
         <div class="container">
             {#<img class="mb-2" src="{{ asset('build/vag_experience.png') }}" alt="VAGexperience">#}
             <h1 class="display-4"><strong>VAG</strong>experience</h1>
-            <p class="lead">a true digital arts & videogames cultural event</p>
+            <p class="lead">{{ 'front.homepage.jumbotron_1' | trans }}</p>
             <hr class="my-4">
-            <p>Don't miss this great opportunity to discover more about the digital entertainment industry!</p>
-            <a class="btn btn-warning" href="{{ path('front_tickets') }}" role="button">Buy tickets</a>
+            <p>{{ 'front.homepage.jumbotron_2' | trans }}</p>
+            <a class="btn btn-warning" href="{{ path('front_tickets') }}" role="button">{{ 'front.homepage.buy_tickets' | trans }}</a>
         </div>
     </div>
     {% include "frontend/includes/event_activity_card.html.twig" with {activities: activities} %}

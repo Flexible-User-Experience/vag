@@ -3,6 +3,10 @@ front:
         category: 'categories'
         blog: 'blog'
         tickets: 'tickets'
+    homepage:
+        jumbotron_1: 'a true cultural event about digital arts & videogames'
+        jumbotron_2: 'Don''t miss this great opportunity to discover a new face of the digital entertainment industry!'
+        buy_tickets: 'Buy tickets'
 
 admin:
     label:
