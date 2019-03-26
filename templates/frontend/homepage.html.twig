@@ -5,7 +5,7 @@
         <div class="container">
             {#<img class="mb-2" src="{{ asset('build/vag_experience.png') }}" alt="VAGexperience">#}
             <h1 class="display-4"><strong>VAG</strong>experience</h1>
-            <p class="lead">{{ 'front.homepage.jumbotron_1' | trans }}</p>
+            <p class="lead">{{ 'front.homepage.jumbotron_1' | trans | raw }}</p>
             <hr class="my-4">
             <p>{{ 'front.homepage.jumbotron_2' | trans }}</p>
             <a class="btn btn-warning" href="{{ path('front_tickets') }}" role="button">{{ 'front.homepage.buy_tickets' | trans }}</a>
