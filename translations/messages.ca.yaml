@@ -4,7 +4,7 @@ front:
         blog: 'blog'
         tickets: 'tickets'
     homepage:
-        jumbotron_1: 'a true <u>cultural event</u> about digital arts & videogames'
+        jumbotron_1: 'a true <u>cultural event</u> about videogames & digital arts'
         jumbotron_2: 'Don''t miss this great opportunity to discover a new face of the digital entertainment industry!'
         buy_tickets: 'Buy tickets'
     events:
