@@ -1417,16 +1417,16 @@
         },
         {
             "name": "gedmo/doctrine-extensions",
-            "version": "v2.4.36",
+            "version": "v2.4.37",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Atlantic18/DoctrineExtensions.git",
-                "reference": "87c78ff9fd4b90460386f753d95622f6fbbfcb27"
+                "reference": "5dd471f656e46d815f063bf3f12c667649ec7ffb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Atlantic18/DoctrineExtensions/zipball/87c78ff9fd4b90460386f753d95622f6fbbfcb27",
-                "reference": "87c78ff9fd4b90460386f753d95622f6fbbfcb27",
+                "url": "https://api.github.com/repos/Atlantic18/DoctrineExtensions/zipball/5dd471f656e46d815f063bf3f12c667649ec7ffb",
+                "reference": "5dd471f656e46d815f063bf3f12c667649ec7ffb",
                 "shasum": ""
             },
             "require": {
@@ -1494,7 +1494,7 @@
                 "tree",
                 "uploadable"
             ],
-            "time": "2018-07-26T12:16:35+00:00"
+            "time": "2019-03-17T18:16:12+00:00"
         },
         {
             "name": "imagine/imagine",
@@ -6496,16 +6496,16 @@
         },
         {
             "name": "symfony/webpack-encore-bundle",
-            "version": "v1.3.0",
+            "version": "v1.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/webpack-encore-bundle.git",
-                "reference": "cabb53f92162ca383c6ad78b89605ea021645039"
+                "reference": "fc18456ed44737995f912c2084505fb67d040e11"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/webpack-encore-bundle/zipball/cabb53f92162ca383c6ad78b89605ea021645039",
-                "reference": "cabb53f92162ca383c6ad78b89605ea021645039",
+                "url": "https://api.github.com/repos/symfony/webpack-encore-bundle/zipball/fc18456ed44737995f912c2084505fb67d040e11",
+                "reference": "fc18456ed44737995f912c2084505fb67d040e11",
                 "shasum": ""
             },
             "require": {
@@ -6546,7 +6546,7 @@
                 }
             ],
             "description": "Integration with your Symfony app & Webpack Encore!",
-            "time": "2019-03-26T00:35:40+00:00"
+            "time": "2019-03-29T14:09:53+00:00"
         },
         {
             "name": "symfony/yaml",
@@ -6731,16 +6731,16 @@
         },
         {
             "name": "vich/uploader-bundle",
-            "version": "1.8.6",
+            "version": "1.8.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/dustin10/VichUploaderBundle.git",
-                "reference": "5cd1b931a3acc2fcb5cf51e4a2ff4559b19ab0c6"
+                "reference": "a8fcee81a1903ccb0135c68b80cac4bc0fbd249c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dustin10/VichUploaderBundle/zipball/5cd1b931a3acc2fcb5cf51e4a2ff4559b19ab0c6",
-                "reference": "5cd1b931a3acc2fcb5cf51e4a2ff4559b19ab0c6",
+                "url": "https://api.github.com/repos/dustin10/VichUploaderBundle/zipball/a8fcee81a1903ccb0135c68b80cac4bc0fbd249c",
+                "reference": "a8fcee81a1903ccb0135c68b80cac4bc0fbd249c",
                 "shasum": ""
             },
             "require": {
@@ -6820,7 +6820,7 @@
                 "file uploads",
                 "upload"
             ],
-            "time": "2018-12-21T17:27:08+00:00"
+            "time": "2019-03-29T10:15:19+00:00"
         },
         {
             "name": "webmozart/assert",
@@ -7204,16 +7204,16 @@
         },
         {
             "name": "hautelook/alice-bundle",
-            "version": "v2.3.0",
+            "version": "v2.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/hautelook/AliceBundle.git",
-                "reference": "1cbbbf65f19d07497174be1b263468bacaba9422"
+                "reference": "77dadb7b64dbae5c1d79673d5df74e50096c6128"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/hautelook/AliceBundle/zipball/1cbbbf65f19d07497174be1b263468bacaba9422",
-                "reference": "1cbbbf65f19d07497174be1b263468bacaba9422",
+                "url": "https://api.github.com/repos/hautelook/AliceBundle/zipball/77dadb7b64dbae5c1d79673d5df74e50096c6128",
+                "reference": "77dadb7b64dbae5c1d79673d5df74e50096c6128",
                 "shasum": ""
             },
             "require": {
@@ -7231,9 +7231,6 @@
                 "phpspec/prophecy": "^1.7",
                 "phpunit/phpunit": "^7.0",
                 "symfony/phpunit-bridge": "^3.4 || ^4.0"
-            },
-            "suggest": {
-                "theofidry/alice-bundle-extension": "Behat extension for HautelookAliceBundle"
             },
             "type": "symfony-bundle",
             "extra": {
@@ -7271,7 +7268,7 @@
                 "orm",
                 "symfony"
             ],
-            "time": "2018-09-24T18:43:04+00:00"
+            "time": "2019-02-05T08:52:13+00:00"
         },
         {
             "name": "myclabs/deep-copy",
