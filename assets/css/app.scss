@@ -1,9 +1,26 @@
 @import '~bootstrap/scss/bootstrap';
 
-body {
-  margin-top: 56px;
+$app-radius: 15px;
+$app-vertical-gap: 15px;
+$app-alpha: 0.6;
+
+.bg-dark-transparent{
+  background-color: rgba(0, 0, 0, $app-alpha + 0.2);
+}
+
+.navbar-logo {
+  width: 60%;
 }
 
 .jumbotron-homepage {
-  background-size: 100% 100%;
+  padding: 8rem 2rem !important;
+  background-size: cover;
+  .container {
+    margin-top: 56px;
+    background-color: rgba(0, 0, 0, $app-alpha);
+    border-radius: $app-radius;
+    .btn {
+      margin-bottom: $app-vertical-gap;
+    }
+  }
 }

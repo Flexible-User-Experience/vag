@@ -3,10 +3,8 @@
 {% block body %}
     <div class="jumbotron jumbotron-fluid jumbotron-homepage" style="background-image:url('{{ asset('build/number-pattern-line-color.png') }}');">
         <div class="container">
-            <h1 class="display-4 text-white"><strong>VAG</strong>experience</h1>
-            <p class="lead text-white">{{ 'front.homepage.jumbotron_1' | trans | raw }}</p>
-            <hr class="my-4">
-            <p class="text-white">{{ 'front.homepage.jumbotron_2' | trans }}</p>
+            <h1 class="display-6 text-white">{{ 'front.homepage.jumbotron_1' | trans | raw }}</h1>
+            <p class="lead text-white">{{ 'front.homepage.jumbotron_2' | trans }}</p>
             <a class="btn btn-warning" href="{{ path('front_tickets') }}" role="button">{{ 'front.homepage.buy_tickets' | trans }}</a>
         </div>
     </div>
