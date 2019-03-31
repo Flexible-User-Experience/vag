@@ -1,0 +1,30 @@
+App\Entity\EventCategory:
+    category{1..8}:
+        name: '<word()>'
+        priority: '<current()>'
+        isAvailable: '<boolean(90)>'
+
+App\Entity\EventLocation:
+    location{1..8}:
+        place: '<colorName()>'
+
+App\Entity\EventCollaborator:
+    collaborator{1..16}:
+        name: '<firstName()>'
+        surname: '<lastName()>'
+        email: '<safeEmail()>'
+        phone: '<e164PhoneNumber()>'
+
+App\Entity\EventActivity:
+    activity{1..32}:
+        name: '<sentence(3,false)>'
+        begin: '<dateTimeBetween("+1 month","+2 month")>'
+        end: '<dateTimeBetween("+3 month","+4 month")>'
+        shortDescription: '<sentence()>'
+        description: '<text(500)>'
+        isAvailable: '<boolean(75)>'
+        showInHomepage: '<boolean(25)>'
+        category: '@category<numberBetween(1,8>'
+        location: '@location<numberBetween(1,8)>'
+        collaborators:
+            - '@collaborator*'
