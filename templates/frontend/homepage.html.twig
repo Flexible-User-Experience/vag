@@ -9,5 +9,35 @@
             <a class="btn btn-warning" href="{{ path('front_tickets') }}" role="button">{{ 'front.homepage.buy_tickets' | trans }}</a>
         </div>
     </div>
+    <div class="jumbotron jumbotron-fluid jumbotron-dark">
+        <div class="container">
+            <div class="card-deck">
+                <div class="card text-white bg-danger">
+                    <div class="card-body">
+                        <h2 class="card-title text-center"><i class="fa fa-calendar-alt"></i></h2>
+                        <p class="card-text text-center">{{ 'front.homepage.card_deck_1' | trans }}</p>
+                    </div>
+                </div>
+                <div class="card text-white bg-success">
+                    <div class="card-body">
+                        <h2 class="card-title text-center"><i class="fa fa-archway"></i></h2>
+                        <p class="card-text text-center">{{ 'front.homepage.card_deck_2' | trans }}</p>
+                    </div>
+                </div>
+                <div class="card text-white bg-primary">
+                    <div class="card-body">
+                        <h2 class="card-title text-center"><i class="fa fa-wrench"></i></h2>
+                        <p class="card-text text-center">{{ 'front.homepage.card_deck_3' | trans }}</p>
+                    </div>
+                </div>
+                <div class="card text-white bg-warning">
+                    <div class="card-body">
+                        <h2 class="card-title text-center"><i class="fa fa-mask"></i></h2>
+                        <p class="card-text text-center">{{ 'front.homepage.card_deck_4' | trans }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     {% include "frontend/includes/event_activity_card.html.twig" with {activities: activities} %}
 {% endblock %}

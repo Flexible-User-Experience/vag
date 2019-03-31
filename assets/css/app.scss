@@ -3,6 +3,7 @@
 $app-radius: 15px;
 $app-vertical-gap: 15px;
 $app-alpha: 0.6;
+$app-color-black: #1A1A1A;
 
 .bg-dark-transparent{
   background-color: rgba(0, 0, 0, $app-alpha + 0.2);
@@ -14,6 +15,7 @@ $app-alpha: 0.6;
 
 .jumbotron-homepage {
   background-size: cover;
+  margin-bottom: 0;
   .container {
     margin-top: 68px;
     background-color: rgba(0, 0, 0, $app-alpha);
@@ -22,4 +24,8 @@ $app-alpha: 0.6;
       margin-bottom: $app-vertical-gap;
     }
   }
+}
+
+.jumbotron-dark {
+  background-color: $app-color-black;
 }
