@@ -1,0 +1,5 @@
+App\Entity\EventCategory:
+    category{1..4}:
+        name: <word()>
+        priority: <current()>
+        isAvailable: <boolean(90)>
