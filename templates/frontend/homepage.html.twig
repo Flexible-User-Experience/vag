@@ -1,13 +1,12 @@
 {% extends "frontend/base.html.twig" %}
 
 {% block body %}
-    <div class="jumbotron jumbotron-fluid">
+    <div class="jumbotron jumbotron-fluid jumbotron-homepage" style="background-image:url('{{ asset('build/number-pattern-line-color.png') }}');">
         <div class="container">
-            {#<img class="mb-2" src="{{ asset('build/vag_experience.png') }}" alt="VAGexperience">#}
-            <h1 class="display-4"><strong>VAG</strong>experience</h1>
-            <p class="lead">{{ 'front.homepage.jumbotron_1' | trans | raw }}</p>
+            <h1 class="display-4 text-white"><strong>VAG</strong>experience</h1>
+            <p class="lead text-white">{{ 'front.homepage.jumbotron_1' | trans | raw }}</p>
             <hr class="my-4">
-            <p>{{ 'front.homepage.jumbotron_2' | trans }}</p>
+            <p class="text-white">{{ 'front.homepage.jumbotron_2' | trans }}</p>
             <a class="btn btn-warning" href="{{ path('front_tickets') }}" role="button">{{ 'front.homepage.buy_tickets' | trans }}</a>
         </div>
     </div>
