@@ -1,0 +1,5 @@
+cypress_git_elephant:
+    enable_profiler: false
+    profiler_repository_path: '%kernel.project_dir%'
+    repositories:
+        main: '%kernel.project_dir%'
