@@ -4,6 +4,7 @@ $app-radius: 15px;
 $app-vertical-gap: 15px;
 $app-alpha: 0.6;
 $app-color-black: #1A1A1A;
+$app-color-black-light: #2F2F2F;
 
 .bg-dark-transparent{
   background-color: rgba(0, 0, 0, $app-alpha + 0.2);
@@ -18,7 +19,7 @@ $app-color-black: #1A1A1A;
   margin-bottom: 0;
   .container {
     margin-top: 68px;
-    background-color: rgba(0, 0, 0, $app-alpha);
+    //background-color: rgba(0, 0, 0, $app-alpha);
     border-radius: $app-radius;
     .btn {
       margin-bottom: $app-vertical-gap;
@@ -27,5 +28,6 @@ $app-color-black: #1A1A1A;
 }
 
 .jumbotron-dark {
-  background-color: $app-color-black;
+  background-color: $app-color-black-light;
+  margin-bottom: 0;
 }
