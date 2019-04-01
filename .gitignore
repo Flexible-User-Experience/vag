@@ -6,6 +6,7 @@
 /public/bundles/
 /var/
 /vendor/
+/scripts/ansible/vars
 ###< symfony/framework-bundle ###
 
 ###> symfony/phpunit-bridge ###
