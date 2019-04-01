@@ -1,6 +1,6 @@
 @import '~bootstrap/scss/bootstrap';
 
-$app-radius: 15px;
+$app-radius: 10px;
 $app-vertical-gap: 15px;
 $app-alpha: 0.6;
 $app-color-black: #1A1A1A;
@@ -19,7 +19,7 @@ $app-color-black-light: #2F2F2F;
   margin-bottom: 0;
   .container {
     margin-top: 68px;
-    //background-color: rgba(0, 0, 0, $app-alpha);
+    background-color: rgba(0, 0, 0, $app-alpha);
     border-radius: $app-radius;
     .btn {
       margin-bottom: $app-vertical-gap;

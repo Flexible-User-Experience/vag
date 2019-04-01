@@ -26,6 +26,16 @@ class FrontendController extends AbstractController
     }
 
     /**
+     * @Route("/test", name="front_homepage")
+     *
+     * @return Response
+     */
+    public function homepageTest()
+    {
+        return $this->render('frontend/homepage_test.html.twig', []);
+    }
+
+    /**
      * @Route("/blog", name="front_blog")
      *
      * @return Response
