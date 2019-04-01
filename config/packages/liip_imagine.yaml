@@ -2,17 +2,27 @@ liip_imagine:
     # "gd", "gmagick" or "imagick"
     driver: 'gd'
     filter_sets:
+        2000xY:
+            quality: 90
+            filters:
+                thumbnail:
+                    size:          [2000, null]
+                    mode:          outbound
+                    allow_upscale: false
         70xY:
             quality: 100
             filters:
-                thumbnail: {size : [70, null], mode: outbound}
+                thumbnail:
+                    size:          [70, null]
+                    mode:          outbound
+                    allow_upscale: false
         flip_x:
             jpeg_quality:          98
             png_compression_level: 8
             filters:
+                strip: ~
                 flip:
                     axis: x
-                strip: ~
         squared_thumbnail:
             jpeg_quality:          98
             png_compression_level: 8
