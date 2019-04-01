@@ -6,22 +6,23 @@ liip_imagine:
             quality: 100
             filters:
                 thumbnail: {size : [70, null], mode: outbound}
-        squared_thumbnail:
-            # set your image quality defaults
+        flip_x:
             jpeg_quality:          98
             png_compression_level: 8
-            # setup the filter steps to apply for this transformation
             filters:
-                # auto rotate the image using EXIF metadata
-                auto_rotate: ~
-                # strip the image of all metadata
+                flip:
+                    axis: x
                 strip: ~
-                # scale and square the image to the given dimensions
+        squared_thumbnail:
+            jpeg_quality:          98
+            png_compression_level: 8
+            filters:
+                auto_rotate: ~
+                strip: ~
                 thumbnail:
                     size:          [253, 253]
                     mode:          outbound
                     allow_upscale: true
-                # create border by placing image on larger black background
                 background:
                     size:     [256, 256]
                     position: center

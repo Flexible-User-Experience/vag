@@ -1,8 +1,10 @@
 {% extends "frontend/base.html.twig" %}
 
 {% block body %}
+    {#<div class="jumbotron jumbotron-fluid jumbotron-homepage" style="background-image:url('{{ asset('build/abstract-abstraction-artistic.png') | imagine_filter('flip_x') }}');">#}
     {#<div class="jumbotron jumbotron-fluid jumbotron-homepage" style="background-image:url('{{ asset('build/abstract-abstraction.png') }}');">#}
-    <div class="jumbotron jumbotron-fluid jumbotron-homepage" style="background-image:url('{{ asset('build/number-pattern-line-color.png') }}');">
+    <div class="jumbotron jumbotron-fluid jumbotron-homepage" style="background-image:url('{{ asset('build/nightlife-neon-techno.png') }}');">
+    {#<div class="jumbotron jumbotron-fluid jumbotron-homepage" style="background-image:url('{{ asset('build/number-pattern-line-color.png') }}');">#}
         <div class="container">
             <h1 class="display-6 text-white">{{ 'front.homepage.jumbotron_1' | trans | raw }}</h1>
             <p class="lead text-white">{{ 'front.homepage.jumbotron_2' | trans }}</p>
@@ -14,7 +16,7 @@
             <div class="card-deck">
                 <div class="card text-white bg-danger">
                     <div class="card-body">
-                        <h2 class="card-title text-center"><i class="fa fa-calendar-alt"></i></h2>
+                        <h2 class="card-title text-center"><i class="fa fa-book-open"></i></h2>
                         <p class="card-text text-center">{{ 'front.homepage.card_deck_1' | trans }}</p>
                     </div>
                 </div>
@@ -39,5 +41,4 @@
             </div>
         </div>
     </div>
-    {% include "frontend/includes/event_activity_card.html.twig" with {activities: activities} %}
 {% endblock %}
