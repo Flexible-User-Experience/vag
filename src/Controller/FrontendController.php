@@ -26,7 +26,7 @@ class FrontendController extends AbstractController
     }
 
     /**
-     * @Route("/test", name="front_homepage")
+     * @Route("/test", name="front_test")
      *
      * @return Response
      */
