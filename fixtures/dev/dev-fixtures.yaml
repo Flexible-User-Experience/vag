@@ -3,6 +3,8 @@ App\Entity\EventCategory:
         name: '<word()>'
         priority: '<current()>'
         isAvailable: '<boolean(90)>'
+        icon: '<randomElement(["fa fa-chalkboard-teacher", "fa fa-cube", "fa fa-fill-drip", "fa fa-ghost"])>'
+        color: '<randomElement(["#D83948", "#38A54A", "#0B80FB", "#FDBF2F"])>'
 
 App\Entity\EventLocation:
     location{1..4}:
