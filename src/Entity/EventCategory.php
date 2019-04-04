@@ -14,6 +14,9 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  */
 class EventCategory extends AbstractEntity
 {
+    const DEFAULT_COLOR = '#2F2F2F';
+    const DEFAULT_ICON = 'fa fa-question';
+
     /**
      * @ORM\Column(type="string", length=255, unique=true)
      *
@@ -167,9 +170,9 @@ class EventCategory extends AbstractEntity
     /**
      * @return string|null
      */
-    public function getColor(): ?string
+    public function getColor(): string
     {
-        return $this->color;
+        return $this->color ? $this->color : self::DEFAULT_COLOR;
     }
 
     /**
@@ -187,9 +190,9 @@ class EventCategory extends AbstractEntity
     /**
      * @return string|null
      */
-    public function getIcon(): ?string
+    public function getIcon(): string
     {
-        return $this->icon;
+        return $this->icon ? $this->icon : self::DEFAULT_ICON;
     }
 
     /**

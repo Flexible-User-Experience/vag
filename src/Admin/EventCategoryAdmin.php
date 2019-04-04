@@ -43,6 +43,20 @@ final class EventCategoryAdmin extends AbstractAdmin
         $formMapper
             ->with('admin.with.category', ['class' => 'col-md-4'])
             ->add(
+                'color',
+                TextType::class,
+                [
+                    'label' => 'admin.label.color',
+                ]
+            )
+            ->add(
+                'icon',
+                TextType::class,
+                [
+                    'label' => 'admin.label.icon',
+                ]
+            )
+            ->add(
                 'name',
                 TextType::class,
                 [
@@ -105,6 +119,14 @@ final class EventCategoryAdmin extends AbstractAdmin
     protected function configureListFields(ListMapper $listMapper) {
         unset($this->listModes['mosaic']);
         $listMapper
+            ->add(
+                'icon',
+                null,
+                [
+                    'label' => 'admin.label.icon',
+                    'editable' => false,
+                ]
+            )
             ->add(
                 'name',
                 null,

@@ -23,6 +23,8 @@ front:
 
 admin:
     label:
+        color: 'Color'
+        icon: 'Icona'
         slug: 'Slug'
         name: 'Nom'
         surname: 'Cognoms'
