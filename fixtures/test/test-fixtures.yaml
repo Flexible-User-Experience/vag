@@ -16,6 +16,9 @@ App\Entity\EventCollaborator:
         surname: '<lastName()>'
         email: '<safeEmail()>'
         phone: '<e164PhoneNumber()>'
+        shortDescription: '<sentence()>'
+        description: '<text(500)>'
+        showInHomepage: '<boolean(50)>'
 
 App\Entity\EventActivity:
     activity{1..32}:

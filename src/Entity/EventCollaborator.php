@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Exception;
+use DateTimeImmutable;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -74,6 +76,27 @@ class EventCollaborator extends AbstractEntity
      * @var string
      */
     private $phone;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     *
+     * @var string
+     */
+    private $shortDescription;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     *
+     * @var string
+     */
+    private $description;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true, options={"default"=1})
+     *
+     * @var bool
+     */
+    private $showInHomepage;
 
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\EventActivity", mappedBy="collaborators")
@@ -174,7 +197,7 @@ class EventCollaborator extends AbstractEntity
      * @param File $imageFile
      *
      * @return EventCollaborator
-     * @throws \Exception
+     * @throws Exception
      */
     public function setImageFile(?File $imageFile): self
     {
@@ -182,7 +205,7 @@ class EventCollaborator extends AbstractEntity
         if (null !== $imageFile) {
             // It is required that at least one field changes if you are using doctrine
             // otherwise the event listeners won't be called and the file is lost
-            $this->updated = new \DateTimeImmutable();
+            $this->updated = new DateTimeImmutable();
         }
 
         return $this;
@@ -264,6 +287,74 @@ class EventCollaborator extends AbstractEntity
     public function setPhone(?string $phone): self
     {
         $this->phone = $phone;
+
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getShortDescription(): ?string
+    {
+        return $this->shortDescription;
+    }
+
+    /**
+     * @param string $shortDescription
+     *
+     * @return EventCollaborator
+     */
+    public function setShortDescription(string $shortDescription): self
+    {
+        $this->shortDescription = $shortDescription;
+
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    /**
+     * @param string $description
+     *
+     * @return EventCollaborator
+     */
+    public function setDescription(string $description): self
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * @return bool|null
+     */
+    public function getShowInHomepage(): ?bool
+    {
+        return $this->showInHomepage;
+    }
+
+    /**
+     * @return bool|null
+     */
+    public function isShowInHomepage(): ?bool
+    {
+        return $this->getShowInHomepage();
+    }
+
+    /**
+     * @param bool $showInHomepage
+     *
+     * @return EventCollaborator
+     */
+    public function setShowInHomepage(bool $showInHomepage): self
+    {
+        $this->showInHomepage = $showInHomepage;
 
         return $this;
     }

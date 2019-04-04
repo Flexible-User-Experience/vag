@@ -2,9 +2,11 @@
 
 namespace App\Entity;
 
+use DateTimeImmutable;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Exception;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\HttpFoundation\File\File;
@@ -124,7 +126,7 @@ class EventLocation extends AbstractEntity
      * @param File $imageFile
      *
      * @return EventLocation
-     * @throws \Exception
+     * @throws Exception
      */
     public function setImageFile(?File $imageFile): self
     {
@@ -132,7 +134,7 @@ class EventLocation extends AbstractEntity
         if (null !== $imageFile) {
             // It is required that at least one field changes if you are using doctrine
             // otherwise the event listeners won't be called and the file is lost
-            $this->updated = new \DateTimeImmutable();
+            $this->updated = new DateTimeImmutable();
         }
 
         return $this;

@@ -2,9 +2,13 @@
 
 namespace App\Entity;
 
+use DateTime;
+use DateTimeImmutable;
+use DateTimeInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Exception;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\HttpFoundation\File\File;
@@ -56,14 +60,14 @@ class EventActivity extends AbstractEntity
     /**
      * @ORM\Column(type="datetime")
      *
-     * @var \DateTime
+     * @var DateTime
      */
     private $begin;
 
     /**
      * @ORM\Column(type="datetime")
      *
-     * @var \DateTime
+     * @var DateTime
      */
     private $end;
 
@@ -182,7 +186,7 @@ class EventActivity extends AbstractEntity
      * @param File $imageFile
      *
      * @return EventActivity
-     * @throws \Exception
+     * @throws Exception
      */
     public function setImageFile(?File $imageFile): self
     {
@@ -190,7 +194,7 @@ class EventActivity extends AbstractEntity
         if (null !== $imageFile) {
             // It is required that at least one field changes if you are using doctrine
             // otherwise the event listeners won't be called and the file is lost
-            $this->updated = new \DateTimeImmutable();
+            $this->updated = new DateTimeImmutable();
         }
 
         return $this;
@@ -237,19 +241,19 @@ class EventActivity extends AbstractEntity
     }
 
     /**
-     * @return \DateTimeInterface|null
+     * @return DateTimeInterface|null
      */
-    public function getBegin(): ?\DateTimeInterface
+    public function getBegin(): ?DateTimeInterface
     {
         return $this->begin;
     }
 
     /**
-     * @param \DateTimeInterface $begin
+     * @param DateTimeInterface $begin
      *
      * @return EventActivity
      */
-    public function setBegin(\DateTimeInterface $begin): self
+    public function setBegin(DateTimeInterface $begin): self
     {
         $this->begin = $begin;
 
@@ -257,19 +261,19 @@ class EventActivity extends AbstractEntity
     }
 
     /**
-     * @return \DateTimeInterface|null
+     * @return DateTimeInterface|null
      */
-    public function getEnd(): ?\DateTimeInterface
+    public function getEnd(): ?DateTimeInterface
     {
         return $this->end;
     }
 
     /**
-     * @param \DateTimeInterface $end
+     * @param DateTimeInterface $end
      *
      * @return EventActivity
      */
-    public function setEnd(\DateTimeInterface $end): self
+    public function setEnd(DateTimeInterface $end): self
     {
         $this->end = $end;
 

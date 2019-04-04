@@ -1,10 +1,28 @@
 App\Entity\EventCategory:
-    category{1..4}:
-        name: '<word()>'
-        priority: '<current()>'
-        isAvailable: '<boolean(90)>'
-        icon: '<randomElement(["fa fa-chalkboard-teacher", "fa fa-cube", "fa fa-fill-drip", "fa fa-ghost"])>'
-        color: '<randomElement(["#D83948", "#38A54A", "#0B80FB", "#FDBF2F"])>'
+    category1:
+        name: 'conferences'
+        priority: '1'
+        isAvailable: true
+        icon: 'fa fa-chalkboard-teacher'
+        color: '#D83948'
+    category2:
+        name: 'exhibitions'
+        priority: '2'
+        isAvailable: true
+        icon: 'fa fa-cube'
+        color: '#38A54A'
+    category3:
+        name: 'workshops'
+        priority: '3'
+        isAvailable: true
+        icon: 'fa fa-fill-drip'
+        color: '#0B80FB'
+    category4:
+        name: 'shows'
+        priority: '4'
+        isAvailable: true
+        icon: 'fa fa fa-ghost'
+        color: '#FDBF2F'
 
 App\Entity\EventLocation:
     location{1..4}:
@@ -16,6 +34,9 @@ App\Entity\EventCollaborator:
         surname: '<lastName()>'
         email: '<safeEmail()>'
         phone: '<e164PhoneNumber()>'
+        shortDescription: '<sentence()>'
+        description: '<text(500)>'
+        showInHomepage: '<boolean(50)>'
 
 App\Entity\EventActivity:
     activity{1..16}:

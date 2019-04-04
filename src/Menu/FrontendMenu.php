@@ -87,7 +87,8 @@ class FrontendMenu
             ]
         );
         $item->setAttribute('class', 'nav-item');
-        $item->setLinkAttribute('class', 'nav-link btn btn-outline-secondary');
+        $item->setLinkAttribute('class', 'nav-link btn btn-outline-warning');
+        $item->setLinkAttribute('style', 'margin-left:5px;color:#FDBF2F');
 
         return $menu;
     }

@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use DateTime;
+use DateTimeInterface;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 
@@ -23,7 +25,7 @@ abstract class AbstractEntity
      * @ORM\Column(type="datetime")
      * @Gedmo\Timestampable(on="create")
      *
-     * @var \DateTime
+     * @var DateTime
      */
     protected $created;
 
@@ -31,7 +33,7 @@ abstract class AbstractEntity
      * @ORM\Column(type="datetime")
      * @Gedmo\Timestampable(on="update")
      *
-     * @var \DateTime
+     * @var DateTime
      */
     protected $updated;
 
@@ -48,19 +50,19 @@ abstract class AbstractEntity
     }
 
     /**
-     * @return \DateTimeInterface
+     * @return DateTimeInterface
      */
-    public function getCreated(): ?\DateTimeInterface
+    public function getCreated(): ?DateTimeInterface
     {
         return $this->created;
     }
 
     /**
-     * @param \DateTimeInterface $created
+     * @param DateTimeInterface $created
      *
      * @return $this
      */
-    public function setCreated(\DateTimeInterface $created): self
+    public function setCreated(DateTimeInterface $created): self
     {
         $this->created = $created;
 
@@ -68,19 +70,19 @@ abstract class AbstractEntity
     }
 
     /**
-     * @return \DateTimeInterface
+     * @return DateTimeInterface
      */
-    public function getUpdated(): ?\DateTimeInterface
+    public function getUpdated(): ?DateTimeInterface
     {
         return $this->updated;
     }
 
     /**
-     * @param \DateTimeInterface $updated
+     * @param DateTimeInterface $updated
      *
      * @return $this
      */
-    public function setUpdated(\DateTimeInterface $updated): self
+    public function setUpdated(DateTimeInterface $updated): self
     {
         $this->updated = $updated;
 
