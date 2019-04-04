@@ -106,6 +106,20 @@ final class EventCollaboratorAdmin extends AbstractAdmin
                     'label' => 'admin.label.phone',
                 ]
             )
+            ->add(
+                'shortDescription',
+                null,
+                [
+                    'label' => 'admin.label.short_description',
+                ]
+            )
+            ->add(
+                'description',
+                null,
+                [
+                    'label' => 'admin.label.description',
+                ]
+            )
         ;
     }
 
@@ -147,10 +161,10 @@ final class EventCollaboratorAdmin extends AbstractAdmin
                 ]
             )
             ->add(
-                'phone',
+                'showInHomepage',
                 null,
                 [
-                    'label' => 'admin.label.phone',
+                    'label' => 'admin.label.show_in_homepage_short',
                     'editable' => true,
                 ]
             )
