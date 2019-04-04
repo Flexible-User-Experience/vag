@@ -28,6 +28,6 @@ class AppExtension extends AbstractExtension
      */
     public function drawEventCategoryIcon(EventCategory $category)
     {
-        return '<i class="'.$category->getIcon().'"></i>';
+        return '<i class="'.$category->getIcon().'" style="color:'.$category->getColor().'"></i>';
     }
 }
