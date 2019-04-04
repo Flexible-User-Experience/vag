@@ -254,7 +254,6 @@ final class EventActivityAdmin extends AbstractAdmin
      * @param ListMapper $listMapper
      */
     protected function configureListFields(ListMapper $listMapper) {
-        unset($this->listModes['mosaic']);
         $listMapper
             ->add(
                 'begin',

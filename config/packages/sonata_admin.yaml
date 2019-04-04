@@ -1,5 +1,6 @@
 # Admin
 sonata_admin:
+    show_mosaic_button: false
     title_logo: 'build/vag_logo.png'
     options:
         html5_validate: true
@@ -10,8 +11,8 @@ sonata_admin:
 #    security:
 #        handler: sonata.admin.security.handler.role
     templates:
-        layout:    "backend/base.html.twig"
-        edit:      "backend/edit.html.twig"
+        layout: 'backend/base.html.twig'
+        edit:   'backend/edit.html.twig'
     dashboard:
         groups:
             'admin.with.event':

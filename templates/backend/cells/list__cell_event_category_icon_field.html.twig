@@ -1,0 +1,7 @@
+{% extends "@SonataAdmin/CRUD/base_list_field.html.twig" %}
+
+{% block field %}
+    {% spaceless %}
+        {{ object | category_icon | raw }}
+    {% endspaceless %}
+{% endblock %}

@@ -81,7 +81,6 @@ final class EventLocationAdmin extends AbstractAdmin
      * @param ListMapper $listMapper
      */
     protected function configureListFields(ListMapper $listMapper) {
-        unset($this->listModes['mosaic']);
         $listMapper
             ->add(
                 'place',

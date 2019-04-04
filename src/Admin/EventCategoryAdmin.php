@@ -117,14 +117,13 @@ final class EventCategoryAdmin extends AbstractAdmin
      * @param ListMapper $listMapper
      */
     protected function configureListFields(ListMapper $listMapper) {
-        unset($this->listModes['mosaic']);
         $listMapper
             ->add(
                 'icon',
                 null,
                 [
                     'label' => 'admin.label.icon',
-                    'editable' => false,
+                    'template' => 'backend/cells/list__cell_event_category_icon_field.html.twig',
                 ]
             )
             ->add(
