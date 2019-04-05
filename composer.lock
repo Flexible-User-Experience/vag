@@ -7399,16 +7399,16 @@
         },
         {
             "name": "hautelook/alice-bundle",
-            "version": "v2.4.0",
+            "version": "v2.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/hautelook/AliceBundle.git",
-                "reference": "77dadb7b64dbae5c1d79673d5df74e50096c6128"
+                "reference": "205d10eeb0a5e15e1f5806510e9108d548b6cd59"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/hautelook/AliceBundle/zipball/77dadb7b64dbae5c1d79673d5df74e50096c6128",
-                "reference": "77dadb7b64dbae5c1d79673d5df74e50096c6128",
+                "url": "https://api.github.com/repos/hautelook/AliceBundle/zipball/205d10eeb0a5e15e1f5806510e9108d548b6cd59",
+                "reference": "205d10eeb0a5e15e1f5806510e9108d548b6cd59",
                 "shasum": ""
             },
             "require": {
@@ -7463,7 +7463,7 @@
                 "orm",
                 "symfony"
             ],
-            "time": "2019-02-05T08:52:13+00:00"
+            "time": "2019-04-04T17:11:48+00:00"
         },
         {
             "name": "myclabs/deep-copy",
