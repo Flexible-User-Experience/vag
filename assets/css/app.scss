@@ -31,3 +31,12 @@ $app-color-black-light: #2F2F2F;
   background-color: $app-color-black-light;
   margin-bottom: 0;
 }
+
+// margins
+.no-margin-bottom {
+  margin-bottom: 0;
+}
+
+.add-margin-top {
+  margin-top: $app-vertical-gap;
+}

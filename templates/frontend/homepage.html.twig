@@ -4,7 +4,7 @@
     {# Main heading section #}
     <div class="jumbotron jumbotron-fluid jumbotron-homepage" style="background-image:url('{{ asset('build/abstract-abstraction-artistic.png') | imagine_filter('flip_x') }}');">
         <div class="container">
-            <h1 class="display-6 text-white">{{ 'front.homepage.jumbotron_1' | trans | raw }}</h1>
+            <h1 class="display-6 text-white add-margin-top">{{ 'front.homepage.jumbotron_1' | trans | raw }}</h1>
             <p class="lead text-white">{{ 'front.homepage.jumbotron_2' | trans }}</p>
             <a class="btn btn-warning" href="{{ path('front_tickets') }}" role="button">{{ 'front.homepage.buy_tickets' | trans }}</a>
         </div>
@@ -39,9 +39,12 @@
     <div class="jumbotron jumbotron-fluid">
         <div class="container">
             <div class="row">
-                <div class="col-12">
+                <div class="col-2">
+                    <img src="{{ asset('build/vag_experience.png') }}" class="img-fluid" alt="VAG experience logo">
+                </div>
+                <div class="col-10">
                     <h2 class="display-6">{{ 'front.homepage.jumbotron_4' | trans | raw }}</h2>
-                    <p class="lead">{{ 'front.homepage.jumbotron_5' | trans }}</p>
+                    <p class="lead no-margin-bottom">{{ 'front.homepage.jumbotron_5' | trans }}</p>
                 </div>
             </div>
         </div>
