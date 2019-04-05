@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\EventActivity;
 use App\Entity\EventCategory;
+use App\Entity\EventCollaborator;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\Annotation\Route;
@@ -23,9 +24,11 @@ class FrontendController extends AbstractController
     public function homepage()
     {
         $categories = $this->getDoctrine()->getRepository(EventCategory::class)->findAvailableSortedByPriorityAndName()->getQuery()->getResult();
+        $mainHighlights = $this->getDoctrine()->getRepository(EventCollaborator::class)->findShowInHomepageSortedBySurnameAndName()->getQuery()->getResult();
 
         return $this->render('frontend/homepage.html.twig', [
             'categories' => $categories,
+            'mainHighlights' => $mainHighlights,
         ]);
     }
 

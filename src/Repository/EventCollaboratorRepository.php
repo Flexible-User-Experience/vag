@@ -35,4 +35,15 @@ class EventCollaboratorRepository extends ServiceEntityRepository
             ->addOrderBy('ec.name', 'ASC')
         ;
     }
+
+    /**
+     * @return QueryBuilder
+     */
+    public function findShowInHomepageSortedBySurnameAndName()
+    {
+        return $this->findAllSortedBySurnameAndName()
+            ->andWhere('ec.showInHomepage = :showInHomepage')
+            ->setParameter('showInHomepage', true)
+        ;
+    }
 }

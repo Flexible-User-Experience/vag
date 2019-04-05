@@ -15,6 +15,9 @@ front:
     events:
         read_more: 'Read more'
         empty_warning: 'coming soon, be patient...'
+    carrousel:
+        previous: 'anterior'
+        next: 'següent'
     footer:
         contact: 'contact'
         team: 'team'
