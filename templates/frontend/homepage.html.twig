@@ -34,7 +34,7 @@
         </div>
     </div>
     {# Main hightlights section #}
-    {% include "frontend/includes/homepage_higlights_silder.html.twig" with {main_highlights_carousel_id: 'main-highlights-carousel'} %}
+    {% include "frontend/includes/homepage_higlights_silder.html.twig" with {highlights_carousel_id: 'main-highlights-carousel'} %}
     {# First event section #}
     <div class="jumbotron jumbotron-fluid">
         <div class="container">
@@ -49,4 +49,6 @@
             </div>
         </div>
     </div>
+    {# Secondary hightlights section #}
+    {% include "frontend/includes/homepage_secondary_higlights_silder.html.twig" with {highlights_carousel_id: 'secondary-highlights-carousel'} %}
 {% endblock %}

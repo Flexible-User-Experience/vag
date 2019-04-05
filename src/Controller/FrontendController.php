@@ -25,10 +25,12 @@ class FrontendController extends AbstractController
     {
         $categories = $this->getDoctrine()->getRepository(EventCategory::class)->findAvailableSortedByPriorityAndName()->getQuery()->getResult();
         $mainHighlights = $this->getDoctrine()->getRepository(EventCollaborator::class)->findShowInHomepageSortedBySurnameAndName()->getQuery()->getResult();
+        $secondaryHighlights = $this->getDoctrine()->getRepository(EventActivity::class)->findAvailableForHomepageSortedByBegin()->getQuery()->getResult();
 
         return $this->render('frontend/homepage.html.twig', [
             'categories' => $categories,
             'mainHighlights' => $mainHighlights,
+            'secondaryHighlights' => $secondaryHighlights,
         ]);
     }
 
