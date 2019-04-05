@@ -35,4 +35,15 @@
     </div>
     {# Main hightlights section #}
     {% include "frontend/includes/homepage_higlights_silder.html.twig" with {main_highlights_carousel_id: 'main-highlights-carousel'} %}
+    {# First event section #}
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h2 class="display-6">{{ 'front.homepage.jumbotron_4' | trans | raw }}</h2>
+                    <p class="lead">{{ 'front.homepage.jumbotron_5' | trans }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}
