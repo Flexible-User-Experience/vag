@@ -24,7 +24,7 @@
                             <div class="card text-white" style="background-color:{{ category.color }}">
                                 <div class="card-body">
                                     <h2 class="card-title text-center">{{ category | icon | raw }}</h2>
-                                    <p class="card-text text-center">{{ category.eventActivities | length }} {{ category.name }}</p>
+                                    <p class="card-text text-center">{{ category.eventActivities | length }} {{ category.name | title }}</p>
                                 </div>
                             </div>
                         {% endfor %}
