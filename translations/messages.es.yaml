@@ -3,7 +3,7 @@ front:
         blog: 'blog'
         tickets: 'entradas'
     homepage:
-        jumbotron_1: 'Un <u>verdadero evento cultural</u> sobre videojuegos y artes digitales.'
+        jumbotron_1: 'Un <u>verdadero evento cultural</u> sobre videojuegos y arte digital.'
         jumbotron_2: '¡No se pierda esta gran oportunidad de descubrir una nueva cara de la industria del entretenimiento digital!'
         jumbotron_3: '¿Te gustan los videojuegos? Ven al VAGexperience del 4 al 5 de octubre.'
         jumbotron_4: 'Ha sido diseñado para involucrar a personas de diferentes edades que aman la escena de entretenimiento digital.'

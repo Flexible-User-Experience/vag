@@ -6,6 +6,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
+use Knp\DoctrineBehaviors\Model as ORMBehaviors;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
@@ -14,23 +15,10 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  */
 class EventCategory extends AbstractEntity
 {
+    use ORMBehaviors\Translatable\Translatable;
+
     const DEFAULT_COLOR = '#2F2F2F';
     const DEFAULT_ICON = 'fa fa-question';
-
-    /**
-     * @ORM\Column(type="string", length=255, unique=true)
-     *
-     * @var string
-     */
-    private $name;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     * @Gedmo\Slug(fields={"name"})
-     *
-     * @var string
-     */
-    private $slug;
 
     /**
      * @ORM\Column(type="smallint")
@@ -77,46 +65,6 @@ class EventCategory extends AbstractEntity
     public function __construct()
     {
         $this->eventActivities = new ArrayCollection();
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getName(): ?string
-    {
-        return $this->name;
-    }
-
-    /**
-     * @param string $name
-     *
-     * @return EventCategory
-     */
-    public function setName(string $name): self
-    {
-        $this->name = $name;
-
-        return $this;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getSlug(): ?string
-    {
-        return $this->slug;
-    }
-
-    /**
-     * @param string $slug
-     *
-     * @return EventCategory
-     */
-    public function setSlug(string $slug): self
-    {
-        $this->slug = $slug;
-
-        return $this;
     }
 
     /**
