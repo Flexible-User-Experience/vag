@@ -2,23 +2,39 @@
 
 namespace App\Entity;
 
+use App\Entity\Translation\EventCategoryTranslation;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
-use Knp\DoctrineBehaviors\Model as ORMBehaviors;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\EventCategoryRepository")
  * @UniqueEntity("name")
+ * @Gedmo\TranslationEntity(class="App\Entity\Translation\EventCategoryTranslation")
  */
 class EventCategory extends AbstractEntity
 {
-    use ORMBehaviors\Translatable\Translatable;
-
     const DEFAULT_COLOR = '#2F2F2F';
     const DEFAULT_ICON = 'fa fa-question';
+
+    /**
+     * @ORM\Column(type="string", length=255, unique=true)
+     * @Gedmo\Translatable
+     *
+     * @var string
+     */
+    private $name;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     * @Gedmo\Slug(fields={"name"})
+     * @Gedmo\Translatable
+     *
+     * @var string
+     */
+    private $slug;
 
     /**
      * @ORM\Column(type="smallint")
@@ -56,6 +72,13 @@ class EventCategory extends AbstractEntity
     private $eventActivities;
 
     /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Translation\EventCategoryTranslation", mappedBy="object", cascade={"persist", "remove"})
+     *
+     * @var ArrayCollection
+     */
+    private $translations;
+
+    /**
      * Methods.
      */
 
@@ -65,6 +88,47 @@ class EventCategory extends AbstractEntity
     public function __construct()
     {
         $this->eventActivities = new ArrayCollection();
+        $this->translations = new ArrayCollection();
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getName(): ?string
+    {
+        return $this->name;
+    }
+
+    /**
+     * @param string $name
+     *
+     * @return $this
+     */
+    public function setName(string $name): self
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
+
+    /**
+     * @param string $slug
+     *
+     * @return $this
+     */
+    public function setSlug(string $slug): self
+    {
+        $this->slug = $slug;
+
+        return $this;
     }
 
     /**
@@ -191,6 +255,43 @@ class EventCategory extends AbstractEntity
             if ($eventActivity->getCategory() === $this) {
                 $eventActivity->setCategory(null);
             }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection
+     */
+    public function getTranslations(): Collection
+    {
+        return $this->translations;
+    }
+
+    /**
+     * @param EventCategoryTranslation $translation
+     *
+     * @return EventCategory
+     */
+    public function addTranslation(EventCategoryTranslation $translation)
+    {
+        if (!$this->translations->contains($translation)) {
+            $this->translations[] = $translation;
+            $translation->setObject($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @param EventCategoryTranslation $translation
+     *
+     * @return EventCategory
+     */
+    public function removeTranslation(EventCategoryTranslation $translation)
+    {
+        if ($this->translations->contains($translation)) {
+            $this->translations->removeElement($translation);
         }
 
         return $this;

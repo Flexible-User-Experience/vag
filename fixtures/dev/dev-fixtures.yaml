@@ -1,28 +1,110 @@
 App\Entity\EventCategory:
     category1:
-        name: 'conferences'
+        name: 'conferències'
         priority: '1'
         isAvailable: true
         icon: 'fa fa-chalkboard-teacher'
         color: '#D83948'
     category2:
-        name: 'exhibitions'
+        name: 'exposicions'
         priority: '2'
         isAvailable: true
         icon: 'fa fa-cube'
         color: '#38A54A'
     category3:
-        name: 'workshops'
+        name: 'tallers'
         priority: '3'
         isAvailable: true
         icon: 'fa fa-fill-drip'
         color: '#0B80FB'
     category4:
-        name: 'shows'
+        name: 'espectacles'
         priority: '4'
         isAvailable: true
         icon: 'fa fa fa-ghost'
         color: '#FDBF2F'
+
+App\Entity\Translation\EventCategoryTranslation:
+    category1_translation_name_es:
+        object: '@category1'
+        locale: 'es'
+        field: 'name'
+        content: 'conferencias'
+    category1_translation_slug_es:
+        object: '@category1'
+        locale: 'es'
+        field: 'slug'
+        content: 'conferencias'
+    category1_translation_name_en:
+        object: '@category1'
+        locale: 'en'
+        field: 'name'
+        content: 'conferences'
+    category1_translation_slug_en:
+        object: '@category1'
+        locale: 'en'
+        field: 'slug'
+        content: 'conferences'
+    category2_translation_name_es:
+        object: '@category2'
+        locale: 'es'
+        field: 'name'
+        content: 'exposiciones'
+    category2_translation_slug_es:
+        object: '@category2'
+        locale: 'es'
+        field: 'slug'
+        content: 'exposiciones'
+    category2_translation_name_en:
+        object: '@category2'
+        locale: 'en'
+        field: 'name'
+        content: 'exhibitions'
+    category2_translation_slug_en:
+        object: '@category2'
+        locale: 'en'
+        field: 'slug'
+        content: 'exhibitions'
+    category3_translation_name_es:
+        object: '@category3'
+        locale: 'es'
+        field: 'name'
+        content: 'talleres'
+    category3_translation_slug_es:
+        object: '@category3'
+        locale: 'es'
+        field: 'slug'
+        content: 'talleres'
+    category3_translation_name_en:
+        object: '@category3'
+        locale: 'en'
+        field: 'name'
+        content: 'workshops'
+    category3_translation_slug_en:
+        object: '@category3'
+        locale: 'en'
+        field: 'slug'
+        content: 'workshops'
+    category4_translation_name_es:
+        object: '@category4'
+        locale: 'es'
+        field: 'name'
+        content: 'espectáculos'
+    category4_translation_slug_es:
+        object: '@category4'
+        locale: 'es'
+        field: 'slug'
+        content: 'espectaculos'
+    category4_translation_name_en:
+        object: '@category4'
+        locale: 'en'
+        field: 'name'
+        content: 'shows'
+    category4_translation_slug_en:
+        object: '@category4'
+        locale: 'en'
+        field: 'slug'
+        content: 'shows'
 
 App\Entity\EventLocation:
     location{1..4}:

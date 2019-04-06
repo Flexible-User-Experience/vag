@@ -2,72 +2,21 @@
 
 namespace App\Entity\Translation;
 
+use App\Entity\EventCategory;
 use Doctrine\ORM\Mapping as ORM;
-use Knp\DoctrineBehaviors\Model as ORMBehaviors;
+use Gedmo\Translatable\Entity\MappedSuperclass\AbstractPersonalTranslation;
 
 /**
  * @ORM\Entity()
+ * @ORM\Table(uniqueConstraints={@ORM\UniqueConstraint(name="event_category_lookup_unique_idx", columns={"locale", "object_id", "field"})})
  */
-class EventCategoryTranslation
+class EventCategoryTranslation extends AbstractPersonalTranslation
 {
-    use ORMBehaviors\Translatable\Translation;
-    
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\ManyToOne(targetEntity="App\Entity\EventCategory", inversedBy="translations")
+     * @ORM\JoinColumn(name="object_id", referencedColumnName="id", onDelete="CASCADE")
      *
-     * @var string
+     * @var EventCategory
      */
-    private $name;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     * @Gedmo\Slug(fields={"name"})
-     *
-     * @var string
-     */
-    private $slug;
-
-    /**
-     * Methods.
-     */
-
-    /**
-     * @return string|null
-     */
-    public function getName(): ?string
-    {
-        return $this->name;
-    }
-
-    /**
-     * @param string $name
-     *
-     * @return $this
-     */
-    public function setName(string $name): self
-    {
-        $this->name = $name;
-
-        return $this;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getSlug(): ?string
-    {
-        return $this->slug;
-    }
-
-    /**
-     * @param string $slug
-     *
-     * @return $this
-     */
-    public function setSlug(string $slug): self
-    {
-        $this->slug = $slug;
-
-        return $this;
-    }
+    protected $object;
 }
