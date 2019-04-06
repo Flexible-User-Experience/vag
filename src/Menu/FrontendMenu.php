@@ -58,7 +58,7 @@ class FrontendMenu
             $item = $menu->addChild(
                 $category->getSlug(),
                 [
-                    'label' => $category->getName(),
+                    'label' => mb_strtolower($category->getName()),
                     'route' => 'front_event_category',
                     'routeParameters' => [
                         'slug' => $category->getSlug(),
@@ -72,7 +72,7 @@ class FrontendMenu
         $item = $menu->addChild(
             'front.menu.blog',
             [
-                'label' => $this->translator->trans('front.menu.blog'),
+                'label' => mb_strtolower($this->translator->trans('front.menu.blog')),
                 'route' => 'front_blog',
             ]
         );
@@ -82,7 +82,7 @@ class FrontendMenu
         $item = $menu->addChild(
             'front.menu.tickets',
             [
-                'label' => $this->translator->trans('front.menu.tickets'),
+                'label' => mb_strtolower($this->translator->trans('front.menu.tickets')),
                 'route' => 'front_tickets',
             ]
         );
