@@ -1,8 +1,16 @@
 admin_area:
     resource: '@SonataAdminBundle/Resources/config/routing/sonata_admin.xml'
-    prefix: /admin
+    prefix:   /{_locale}/admin
+    requirements:
+        _locale: '%app_locales%'
+    defaults:
+        _locale: '%locale%'
 
 _sonata_admin:
     resource: .
-    type: sonata_admin
-    prefix: /admin
+    type:     sonata_admin
+    prefix:   /{_locale}/admin
+    requirements:
+        _locale: '%app_locales%'
+    defaults:
+        _locale: '%locale%'
