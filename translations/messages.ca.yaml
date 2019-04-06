@@ -11,7 +11,7 @@ front:
         jumbotron_6: 'Gaudeix de totes les activitats del dia i cada nit hi haurà un espectacle d''art digital especial.'
         buy_tickets: 'comprar entrades'
     events:
-        read_more: 'Llegir més'
+        read_more: 'llegir més'
         empty_warning: 'en breu, sigueu pacients...'
     carrousel:
         previous: 'anterior'

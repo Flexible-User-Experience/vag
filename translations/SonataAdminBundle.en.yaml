@@ -1,0 +1,5 @@
+admin:
+    with:
+        event: 'Events'
+toggle_navigation: 'Toggle navigation'
+message_close: 'Message close'
