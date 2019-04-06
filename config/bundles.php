@@ -28,6 +28,4 @@ return [
     Fidry\AliceDataFixtures\Bridge\Symfony\FidryAliceDataFixturesBundle::class => ['dev' => true, 'test' => true],
     Hautelook\AliceBundle\HautelookAliceBundle::class => ['dev' => true, 'test' => true],
     Cypress\GitElephantBundle\CypressGitElephantBundle::class => ['dev' => true],
-    A2lix\AutoFormBundle\A2lixAutoFormBundle::class => ['all' => true],
-    A2lix\TranslationFormBundle\A2lixTranslationFormBundle::class => ['all' => true],
 ];

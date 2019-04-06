@@ -2,7 +2,8 @@
 
 namespace App\Admin;
 
-use A2lix\TranslationFormBundle\Form\Type\TranslationsType;
+use A2lix\TranslationFormBundle\Form\Type\TranslationsFormsType;
+use App\Entity\EventCategory;
 use App\Entity\Translation\EventCategoryTranslation;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
@@ -63,15 +64,6 @@ final class EventCategoryAdmin extends AbstractAdmin
                 TextType::class,
                 [
                     'label' => 'admin.label.name',
-                ]
-            )
-            ->end()
-            ->with('admin.with.translations', ['class' => 'col-md-4'])
-            ->add(
-                'translations',
-                TranslationsType::class,
-                [
-                    'data_class' => EventCategoryTranslation::class,
                 ]
             )
             ->end()
