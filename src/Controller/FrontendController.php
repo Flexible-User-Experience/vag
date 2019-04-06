@@ -55,7 +55,7 @@ class FrontendController extends AbstractController
     }
 
     /**
-     * @Route("/tickets", name="front_tickets")
+     * @Route({"ca": "/entrades", "es": "/entradas", "en": "/tickets"}, name="front_tickets")
      *
      * @return Response
      */

@@ -1,26 +1,25 @@
 front:
     menu:
         blog: 'blog'
-        tickets: 'entrades'
+        tickets: 'tickets'
     homepage:
-        jumbotron_1: 'Un <u>veritable esdeveniment cultural</u> sobre videojocs i arts digitals.'
-        jumbotron_2: 'No et perdis aquesta gran oportunitat per descobrir una nova cara de la indústria de l’entreteniment digital!'
-        jumbotron_3: 'T''agraden els videojocs? Vine al VAGexperience els dies 4 i 5 d''octubre.'
-        jumbotron_4: 'Ha estat dissenyat per atraure persones de diferents edats que estimin l''escena d''entreteniment digital.'
-        jumbotron_5: 'Hem programat dos temes importants en aquesta edició: l''<em>archaeogaming</em> i l''impacte del sexe femení a la indústria. Gaudeix de totes les activitats del dia i cada nit hi haurà un espectacle d''art digital especial.'
-        jumbotron_6: 'Gaudeix de totes les activitats del dia i cada nit hi haurà un espectacle d''art digital especial.'
-        buy_tickets: 'comprar entrades'
+        jumbotron_1: 'A true <u>cultural event</u> about video games & digital arts.'
+        jumbotron_2: 'Don''t miss this great opportunity to discover a new face of the digital entertainment industry!'
+        jumbotron_3: 'Do you love video games? Join us at VAGexperience in 4th & 5th October.'
+        jumbotron_4: 'It has been designed to engage people from different ages who loves digital entertainment scene.'
+        jumbotron_5: 'We have planned two major subjects in this edition: archaeogaming and female gender impact in the industry. Enjoy all day activities and each night there will be a special digital art show.'
+        buy_tickets: 'buy tickets'
     events:
-        read_more: 'Llegur més'
+        read_more: 'Read more'
         empty_warning: 'coming soon, be patient...'
     carrousel:
-        previous: 'anterior'
-        next: 'següent'
+        previous: 'previous'
+        next: 'next'
     footer:
-        contact: 'contacte'
-        team: 'equip'
-        privacy: 'privacitat'
-        terms: 'legal'
+        contact: 'contact'
+        team: 'team'
+        privacy: 'privacy'
+        terms: 'terms'
 
 admin:
     label:

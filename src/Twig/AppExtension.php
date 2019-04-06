@@ -12,6 +12,32 @@ use Twig\TwigFilter;
 class AppExtension extends AbstractExtension
 {
     /**
+     * @var array
+     */
+    private $locales;
+
+    /**
+     * @var string
+     */
+    private $defaultLocale;
+
+    /**
+     * Methods
+     */
+
+    /**
+     * AppExtension constructor.
+     *
+     * @param array  $locales
+     * @param string $defaultLocale
+     */
+    public function __construct($locales, $defaultLocale)
+    {
+        $this->locales = $locales;
+        $this->defaultLocale = $defaultLocale;
+    }
+
+    /**
      * @return array|TwigFilter[]
      */
     public function getFilters()
