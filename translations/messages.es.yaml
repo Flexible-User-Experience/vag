@@ -7,11 +7,12 @@ front:
         jumbotron_2: '¡No se pierda esta gran oportunidad de descubrir una nueva cara de la industria del entretenimiento digital!'
         jumbotron_3: '¿Te gustan los videojuegos? Ven al VAGexperience del 4 al 5 de octubre.'
         jumbotron_4: 'Ha sido diseñado para involucrar a personas de diferentes edades que aman la escena de entretenimiento digital.'
-        jumbotron_5: 'Hemos planeado dos temas principales en esta edición: <em>archaeogaming</em> y el impacto de género femenino en la industria. Disfruta de las actividades de todo el día y cada noche habrá una exhibición especial de arte digital.'
+        jumbotron_5: 'Hemos planeado dos temas principales en esta edición: <em>archaeogaming</em> y el impacto de género femenino en la industria.'
+        jumbotron_6: 'Disfruta de las actividades de todo el día y cada noche habrá una exhibición especial de arte digital.'
         buy_tickets: 'comprar entradas'
     events:
         read_more: 'Leer más'
-        empty_warning: 'coming soon, be patient...'
+        empty_warning: 'próximamente, se paciente...'
     carrousel:
         previous: 'anterior'
         next: 'siguiente'

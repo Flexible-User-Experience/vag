@@ -7,7 +7,8 @@ front:
         jumbotron_2: 'Don''t miss this great opportunity to discover a new face of the digital entertainment industry!'
         jumbotron_3: 'Do you love video games? Join us at VAGexperience in 4th & 5th October.'
         jumbotron_4: 'It has been designed to engage people from different ages who loves digital entertainment scene.'
-        jumbotron_5: 'We have planned two major subjects in this edition: archaeogaming and female gender impact in the industry. Enjoy all day activities and each night there will be a special digital art show.'
+        jumbotron_5: 'We have planned two major subjects in this edition: archaeogaming and female gender impact in the industry.'
+        jumbotron_6: 'Enjoy all day activities and each night there will be a special digital art show.'
         buy_tickets: 'buy tickets'
     events:
         read_more: 'Read more'
