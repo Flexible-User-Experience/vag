@@ -149,6 +149,9 @@
     "jms/metadata": {
         "version": "1.7.0"
     },
+    "knplabs/doctrine-behaviors": {
+        "version": "1.6.0"
+    },
     "knplabs/knp-menu": {
         "version": "2.3.0"
     },
