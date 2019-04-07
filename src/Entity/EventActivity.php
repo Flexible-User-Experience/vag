@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use App\Entity\Translation\EventActivityTranslation;
 use DateTime;
 use DateTimeImmutable;
 use DateTimeInterface;
@@ -17,12 +18,14 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
 /**
  * @ORM\Entity(repositoryClass="App\Repository\EventActivityRepository")
  * @UniqueEntity("name")
+ * @Gedmo\TranslationEntity(class="App\Entity\Translation\EventActivityTranslation")
  * @Vich\Uploadable
  */
 class EventActivity extends AbstractEntity
 {
     /**
      * @ORM\Column(type="string", length=255, unique=true)
+     * @Gedmo\Translatable
      *
      * @var string
      */
@@ -31,6 +34,7 @@ class EventActivity extends AbstractEntity
     /**
      * @ORM\Column(type="string", length=255)
      * @Gedmo\Slug(fields={"name"})
+     * @Gedmo\Translatable
      *
      * @var string
      */
@@ -73,6 +77,7 @@ class EventActivity extends AbstractEntity
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Gedmo\Translatable
      *
      * @var string
      */
@@ -80,6 +85,7 @@ class EventActivity extends AbstractEntity
 
     /**
      * @ORM\Column(type="text")
+     * @Gedmo\Translatable
      *
      * @var string
      */
@@ -123,6 +129,13 @@ class EventActivity extends AbstractEntity
     private $collaborators;
 
     /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Translation\EventActivityTranslation", mappedBy="object", cascade={"persist", "remove"})
+     *
+     * @var ArrayCollection
+     */
+    private $translations;
+
+    /**
      * Methods.
      */
 
@@ -132,6 +145,7 @@ class EventActivity extends AbstractEntity
     public function __construct()
     {
         $this->collaborators = new ArrayCollection();
+        $this->translations = new ArrayCollection();
     }
 
     /**
@@ -447,6 +461,43 @@ class EventActivity extends AbstractEntity
     {
         if ($this->collaborators->contains($collaborator)) {
             $this->collaborators->removeElement($collaborator);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection
+     */
+    public function getTranslations(): Collection
+    {
+        return $this->translations;
+    }
+
+    /**
+     * @param EventActivityTranslation $translation
+     *
+     * @return EventActivity
+     */
+    public function addTranslation(EventActivityTranslation $translation)
+    {
+        if (!$this->translations->contains($translation)) {
+            $this->translations[] = $translation;
+            $translation->setObject($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @param EventActivityTranslation $translation
+     *
+     * @return EventActivity
+     */
+    public function removeTranslation(EventActivityTranslation $translation)
+    {
+        if ($this->translations->contains($translation)) {
+            $this->translations->removeElement($translation);
         }
 
         return $this;
