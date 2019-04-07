@@ -107,8 +107,96 @@ App\Entity\Translation\EventCategoryTranslation:
         content: 'shows'
 
 App\Entity\EventLocation:
-    location{1..4}:
-        place: '<colorName()>'
+    location1:
+        place: 'Museu'
+    location2:
+        place: 'Auditori'
+    location3:
+        place: 'Plaça del Mercat'
+    location4:
+        place: 'Centre d''Art'
+
+App\Entity\Translation\EventLocationTranslation:
+    location1_translation_place_es:
+        object: '@location1'
+        locale: 'es'
+        field: 'place'
+        content: 'Museo'
+    location1_translation_slug_es:
+        object: '@location1'
+        locale: 'es'
+        field: 'slug'
+        content: 'museo'
+    location1_translation_place_en:
+        object: '@location1'
+        locale: 'en'
+        field: 'place'
+        content: 'Museum'
+    location1_translation_slug_en:
+        object: '@location1'
+        locale: 'en'
+        field: 'slug'
+        content: 'museum'
+    location2_translation_place_es:
+        object: '@location2'
+        locale: 'es'
+        field: 'place'
+        content: 'Auditorio'
+    location2_translation_slug_es:
+        object: '@location2'
+        locale: 'es'
+        field: 'slug'
+        content: 'auditorio'
+    location2_translation_place_en:
+        object: '@location2'
+        locale: 'en'
+        field: 'place'
+        content: 'Auditorium'
+    location2_translation_slug_en:
+        object: '@location2'
+        locale: 'en'
+        field: 'slug'
+        content: 'auditorium'
+    location3_translation_place_es:
+        object: '@location3'
+        locale: 'es'
+        field: 'place'
+        content: 'Plaza del Mercado'
+    location3_translation_slug_es:
+        object: '@location3'
+        locale: 'es'
+        field: 'slug'
+        content: 'plaza-del-mercado'
+    location3_translation_place_en:
+        object: '@location3'
+        locale: 'en'
+        field: 'place'
+        content: 'Square Market'
+    location3_translation_slug_en:
+        object: '@location3'
+        locale: 'en'
+        field: 'slug'
+        content: 'square-market'
+    location4_translation_place_es:
+        object: '@location4'
+        locale: 'es'
+        field: 'place'
+        content: 'Centro de Arte'
+    location4_translation_slug_es:
+        object: '@location4'
+        locale: 'es'
+        field: 'slug'
+        content: 'centro-de-arte'
+    location4_translation_place_en:
+        object: '@location4'
+        locale: 'en'
+        field: 'place'
+        content: 'Art Center'
+    location4_translation_slug_en:
+        object: '@location4'
+        locale: 'en'
+        field: 'slug'
+        content: 'art-center'
 
 App\Entity\EventCollaborator:
     collaborator{1..8}:
