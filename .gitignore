@@ -4,9 +4,10 @@
 /.env.local.php
 /.env.*.local
 /public/bundles/
-/var/
+/var/*
 /vendor/
 /scripts/ansible/vars
+!var/.gitkeep
 !.travis.yml
 ###< symfony/framework-bundle ###
 

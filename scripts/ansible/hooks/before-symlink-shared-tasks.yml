@@ -1,4 +1,4 @@
-- name: copy parameters.yml production file
+- name: copy .env production file
   copy:
-    src: "{{ playbook_dir}}/vars/parameters_prod.yml"
-    dest: "{{ ansistrano_release_path.stdout }}/app/config/parameters.yml"
+    src: "{{ playbook_dir }}/../../.env"
+    dest: "{{ ansistrano_release_path.stdout }}/.env"
