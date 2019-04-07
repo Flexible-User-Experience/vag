@@ -15,7 +15,7 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\TeamMemberRepository")
- * @ORM\Table(uniqueConstraints={@ORM\UniqueConstraint(name="fullname_idx", columns={"name", "surname"})})
+ * @ORM\Table(uniqueConstraints={@ORM\UniqueConstraint(name="team_fullname_idx", columns={"name", "surname"})})
  * @UniqueEntity(fields={"name", "surname"})
  * @Gedmo\TranslationEntity(class="App\Entity\Translation\TeamMemberTranslation")
  * @Vich\Uploadable

@@ -305,3 +305,13 @@ App\Entity\TeamMember:
         job: '<jobTitle()>'
         description: '<text(500)>'
         showInFrontend: '<boolean(99)>'
+
+App\Entity\ContactMessage:
+    contact_message{1..3}:
+        name: '<name()>'
+        subject: '<sentence()>'
+        email: '<safeEmail()>'
+        phone: '<e164PhoneNumber()>'
+        job: '<jobTitle()>'
+        message: '<text(500)>'
+        legalTermsHasBeenAccepted: '<boolean(99)>'
