@@ -312,6 +312,5 @@ App\Entity\ContactMessage:
         subject: '<sentence()>'
         email: '<safeEmail()>'
         phone: '<e164PhoneNumber()>'
-        job: '<jobTitle()>'
         message: '<text(500)>'
         legalTermsHasBeenAccepted: '<boolean(99)>'
