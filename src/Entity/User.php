@@ -7,7 +7,7 @@ use FOS\UserBundle\Model\User as BaseUser;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="fos_user")
+ * @ORM\Table(name="user")
  */
 class User extends BaseUser
 {
@@ -18,9 +18,15 @@ class User extends BaseUser
      */
     protected $id;
 
+    /**
+     * Methods
+     */
+
+    /**
+     * User constructor.
+     */
     public function __construct()
     {
         parent::__construct();
-        // your own logic
     }
 }

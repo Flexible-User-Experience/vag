@@ -88,6 +88,13 @@ class TeamMember extends AbstractEntity
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     *
+     * @var string
+     */
+    private $link;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
      * @Gedmo\Translatable
      *
      * @var string
@@ -318,6 +325,26 @@ class TeamMember extends AbstractEntity
     public function setPhone(?string $phone): self
     {
         $this->phone = $phone;
+
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getLink(): ?string
+    {
+        return $this->link;
+    }
+
+    /**
+     * @param string $link
+     *
+     * @return TeamMember
+     */
+    public function setLink(string $link): self
+    {
+        $this->link = $link;
 
         return $this;
     }

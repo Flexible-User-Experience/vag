@@ -53,6 +53,13 @@ class EventLocation extends AbstractEntity
     private $slug;
 
     /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     *
+     * @var string
+     */
+    private $link;
+
+    /**
      * @Vich\UploadableField(mapping="location", fileNameProperty="imageName", size="imageSize")
      *
      * @var File
@@ -176,6 +183,26 @@ class EventLocation extends AbstractEntity
     public function setSlug(string $slug): self
     {
         $this->slug = $slug;
+
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getLink(): ?string
+    {
+        return $this->link;
+    }
+
+    /**
+     * @param string $link
+     *
+     * @return EventLocation
+     */
+    public function setLink(string $link): self
+    {
+        $this->link = $link;
 
         return $this;
     }
