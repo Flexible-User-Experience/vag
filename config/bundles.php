@@ -28,4 +28,8 @@ return [
     Fidry\AliceDataFixtures\Bridge\Symfony\FidryAliceDataFixturesBundle::class => ['dev' => true, 'test' => true],
     Hautelook\AliceBundle\HautelookAliceBundle::class => ['dev' => true, 'test' => true],
     Cypress\GitElephantBundle\CypressGitElephantBundle::class => ['dev' => true],
+    Sonata\EasyExtendsBundle\SonataEasyExtendsBundle::class => ['all' => true],
+    FOS\UserBundle\FOSUserBundle::class => ['all' => true],
+    Sonata\UserBundle\SonataUserBundle::class => ['all' => true],
+    Symfony\Bundle\AclBundle\AclBundle::class => ['all' => true],
 ];
