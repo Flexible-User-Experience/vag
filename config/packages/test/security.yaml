@@ -1,0 +1,13 @@
+security:
+    firewalls:
+        dev:
+            pattern:  ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+        admin:
+            pattern:   ^/(ca|es|en)/admin(.*)
+            security:  false
+            anonymous: true
+        main:
+            pattern:   ^/(.*)
+            security:  false
+            anonymous: true
