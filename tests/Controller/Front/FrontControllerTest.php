@@ -10,12 +10,58 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 class FrontControllerTest extends WebTestCase
 {
     /**
-     * Test homepage
+     * @param string $url
+     *
+     * @dataProvider provideSuccessfulUrls
      */
-    public function testHomepage()
+    public function testPageIsSuccessful($url)
     {
-        $client = static::createClient();
-        $client->request('GET', '/ca/');
-        $this->assertEquals(200, $client->getResponse()->getStatusCode());
+        $client = self::createClient();
+        $client->request('GET', $url);
+
+        $this->assertTrue($client->getResponse()->isSuccessful());
+    }
+
+    /**
+     * @return array
+     */
+    public function provideSuccessfulUrls()
+    {
+        return [
+            ['/ca/'],
+            ['/es/'],
+            ['/en/'],
+            ['/ca/blog'],
+            ['/es/blog'],
+            ['/en/blog'],
+            ['/ca/entrades'],
+            ['/es/entradas'],
+            ['/en/tickets'],
+        ];
+    }
+
+    /**
+     * @param string $url
+     *
+     * @dataProvider provideNotFoundUrls
+     */
+    public function testPageIsNotFound($url)
+    {
+        $client = self::createClient();
+        $client->request('GET', $url);
+
+        $this->assertTrue($client->getResponse()->isNotFound());
+    }
+
+    /**
+     * @return array
+     */
+    public function provideNotFoundUrls()
+    {
+        return [
+            ['/ac/'],
+            ['/ca/bloc'],
+//            ['/ca/tickets'],
+        ];
     }
 }
