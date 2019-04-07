@@ -109,12 +109,20 @@ App\Entity\Translation\EventCategoryTranslation:
 App\Entity\EventLocation:
     location1:
         place: 'Museu'
+        latitude: '<latitude()>'
+        longitude: '<longitude()>'
     location2:
         place: 'Auditori'
+        latitude: '<latitude()>'
+        longitude: '<longitude()>'
     location3:
         place: 'Plaça del Mercat'
+        latitude: '<latitude()>'
+        longitude: '<longitude()>'
     location4:
         place: 'Centre d''Art'
+        latitude: '<latitude()>'
+        longitude: '<longitude()>'
 
 App\Entity\Translation\EventLocationTranslation:
     location1_translation_place_es:
@@ -200,6 +208,7 @@ App\Entity\Translation\EventLocationTranslation:
 
 App\Entity\EventCollaborator:
     collaborator{1..8}:
+        gender: '<numberBetween(0,1)>'
         name: '<firstName()>'
         surname: '<lastName()>'
         email: '<safeEmail()>'

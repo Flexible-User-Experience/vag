@@ -2,13 +2,11 @@
 
 namespace App\Admin;
 
-use A2lix\TranslationFormBundle\Form\Type\TranslationsFormsType;
-use App\Entity\EventCategory;
-use App\Entity\Translation\EventCategoryTranslation;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\ColorType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 
@@ -47,7 +45,7 @@ final class EventCategoryAdmin extends AbstractAdmin
             ->with('admin.with.category', ['class' => 'col-md-4'])
             ->add(
                 'color',
-                TextType::class,
+                ColorType::class,
                 [
                     'label' => 'admin.label.color',
                 ]

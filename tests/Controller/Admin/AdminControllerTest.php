@@ -82,6 +82,14 @@ class AdminControllerTest extends WebTestCase
             ['/ac/admin/esdeveniment/ubicacio/list'],
             ['/ac/admin/esdeveniment/col-laborador/list'],
             ['/ac/admin/esdeveniment/activitat/list'],
+            ['/ca/admin/esdeveniment/categoria/1/show'],
+            ['/ca/admin/esdeveniment/categoria/1/delete'],
+            ['/ca/admin/esdeveniment/ubicacio/1/show'],
+            ['/ca/admin/esdeveniment/ubicacio/1/delete'],
+            ['/ca/admin/esdeveniment/col-laborador/1/show'],
+            ['/ca/admin/esdeveniment/col-laborador/1/delete'],
+            ['/ca/admin/esdeveniment/activitat/1/show'],
+            ['/ca/admin/esdeveniment/activitat/1/delete'],
         ];
     }
 }

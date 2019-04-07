@@ -22,6 +22,20 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
 class EventLocation extends AbstractEntity
 {
     /**
+     * @ORM\Column(type="float", nullable=true)
+     *
+     * @var float
+     */
+    private $latitude;
+
+    /**
+     * @ORM\Column(type="float", nullable=true)
+     *
+     * @var float
+     */
+    private $longitude;
+
+    /**
      * @ORM\Column(type="string", length=255, unique=true)
      * @Gedmo\Translatable
      *
@@ -84,6 +98,46 @@ class EventLocation extends AbstractEntity
     {
         $this->eventActivities = new ArrayCollection();
         $this->translations = new ArrayCollection();
+    }
+
+    /**
+     * @return float|null
+     */
+    public function getLatitude(): ?float
+    {
+        return $this->latitude;
+    }
+
+    /**
+     * @param float $latitude
+     *
+     * @return EventLocation
+     */
+    public function setLatitude(float $latitude): self
+    {
+        $this->latitude = $latitude;
+
+        return $this;
+    }
+
+    /**
+     * @return float|null
+     */
+    public function getLongitude(): ?float
+    {
+        return $this->longitude;
+    }
+
+    /**
+     * @param float $longitude
+     *
+     * @return EventLocation
+     */
+    public function setLongitude(float $longitude): self
+    {
+        $this->longitude = $longitude;
+
+        return $this;
     }
 
     /**

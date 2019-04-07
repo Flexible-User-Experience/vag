@@ -57,6 +57,7 @@ abstract class AbstractAdmin extends BaseAdmin
         $collection
             ->remove('show')
             ->remove('batch')
+            ->remove('delete')
         ;
     }
 
@@ -81,5 +82,4 @@ abstract class AbstractAdmin extends BaseAdmin
             'xls',
         );
     }
-
 }

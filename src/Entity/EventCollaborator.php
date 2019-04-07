@@ -23,6 +23,13 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
 class EventCollaborator extends AbstractEntity
 {
     /**
+     * @ORM\Column(type="smallint", nullable=true)
+     *
+     * @var int
+     */
+    private $gender;
+
+    /**
      * @ORM\Column(type="string", length=255)
      *
      * @var string
@@ -127,6 +134,26 @@ class EventCollaborator extends AbstractEntity
     {
         $this->eventActivities = new ArrayCollection();
         $this->translations = new ArrayCollection();
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getGender(): ?int
+    {
+        return $this->gender;
+    }
+
+    /**
+     * @param int $gender
+     *
+     * @return EventCollaborator
+     */
+    public function setGender(int $gender): self
+    {
+        $this->gender = $gender;
+
+        return $this;
     }
 
     /**
