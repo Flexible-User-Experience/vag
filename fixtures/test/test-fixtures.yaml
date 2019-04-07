@@ -1,24 +1,24 @@
 App\Entity\EventCategory:
     category1:
-        name: 'conferències'
+        name: 'Conferències'
         priority: '1'
         isAvailable: true
         icon: 'fa fa-chalkboard-teacher'
         color: '#D83948'
     category2:
-        name: 'exposicions'
+        name: 'Exposicions'
         priority: '2'
         isAvailable: true
         icon: 'fa fa-cube'
         color: '#38A54A'
     category3:
-        name: 'tallers'
+        name: 'Tallers'
         priority: '3'
         isAvailable: true
         icon: 'fa fa-fill-drip'
         color: '#0B80FB'
     category4:
-        name: 'espectacles'
+        name: 'Espectacles'
         priority: '4'
         isAvailable: true
         icon: 'fa fa fa-ghost'
@@ -29,7 +29,7 @@ App\Entity\Translation\EventCategoryTranslation:
         object: '@category1'
         locale: 'es'
         field: 'name'
-        content: 'conferencias'
+        content: 'Conferencias'
     category1_translation_slug_es:
         object: '@category1'
         locale: 'es'
@@ -39,7 +39,7 @@ App\Entity\Translation\EventCategoryTranslation:
         object: '@category1'
         locale: 'en'
         field: 'name'
-        content: 'conferences'
+        content: 'Conferences'
     category1_translation_slug_en:
         object: '@category1'
         locale: 'en'
@@ -49,7 +49,7 @@ App\Entity\Translation\EventCategoryTranslation:
         object: '@category2'
         locale: 'es'
         field: 'name'
-        content: 'exposiciones'
+        content: 'Exposiciones'
     category2_translation_slug_es:
         object: '@category2'
         locale: 'es'
@@ -59,7 +59,7 @@ App\Entity\Translation\EventCategoryTranslation:
         object: '@category2'
         locale: 'en'
         field: 'name'
-        content: 'exhibitions'
+        content: 'Exhibitions'
     category2_translation_slug_en:
         object: '@category2'
         locale: 'en'
@@ -69,7 +69,7 @@ App\Entity\Translation\EventCategoryTranslation:
         object: '@category3'
         locale: 'es'
         field: 'name'
-        content: 'talleres'
+        content: 'Talleres'
     category3_translation_slug_es:
         object: '@category3'
         locale: 'es'
@@ -79,7 +79,7 @@ App\Entity\Translation\EventCategoryTranslation:
         object: '@category3'
         locale: 'en'
         field: 'name'
-        content: 'workshops'
+        content: 'Workshops'
     category3_translation_slug_en:
         object: '@category3'
         locale: 'en'
@@ -89,7 +89,7 @@ App\Entity\Translation\EventCategoryTranslation:
         object: '@category4'
         locale: 'es'
         field: 'name'
-        content: 'espectáculos'
+        content: 'Espectáculos'
     category4_translation_slug_es:
         object: '@category4'
         locale: 'es'
@@ -99,7 +99,7 @@ App\Entity\Translation\EventCategoryTranslation:
         object: '@category4'
         locale: 'en'
         field: 'name'
-        content: 'shows'
+        content: 'Shows'
     category4_translation_slug_en:
         object: '@category4'
         locale: 'en'
