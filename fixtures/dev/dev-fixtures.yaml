@@ -231,7 +231,7 @@ App\Entity\Translation\EventCollaboratorTranslation:
         content: '<text(500)>'
 
 App\Entity\EventActivity:
-    activity{1..16}:
+    activity{1..12}:
         name: '<sentence(3,false)>'
         begin: '<dateTimeBetween("+1 month","+2 month")>'
         end: '<dateTimeBetween("+3 month","+4 month")>'
@@ -243,3 +243,45 @@ App\Entity\EventActivity:
         location: '@location<numberBetween(1,4)>'
         collaborators:
             - '@collaborator<numberBetween(1,8)>'
+
+App\Entity\Translation\EventActivityTranslation:
+    activity_translation_name_es_{1..12}:
+        object: '@activity<current()>'
+        locale: 'es'
+        field: 'name'
+        content: '<sentence(3,false)>'
+    activity_translation_slug_es_{1..12}:
+        object: '@activity<current()>'
+        locale: 'es'
+        field: 'slug'
+        content: '<slug()>'
+    activity_translation_short_description_es_{1..12}:
+        object: '@activity<current()>'
+        locale: 'es'
+        field: 'shortDescription'
+        content: '<sentence()>'
+    activity_translation_description_es_{1..12}:
+        object: '@activity<current()>'
+        locale: 'es'
+        field: 'description'
+        content: '<text(500)>'
+    activity_translation_name_en_{1..12}:
+        object: '@activity<current()>'
+        locale: 'en'
+        field: 'name'
+        content: '<sentence(3,false)>'
+    activity_translation_slug_en_{1..12}:
+        object: '@activity<current()>'
+        locale: 'en'
+        field: 'slug'
+        content: '<slug()>'
+    activity_translation_short_description_en_{1..12}:
+        object: '@activity<current()>'
+        locale: 'en'
+        field: 'shortDescription'
+        content: '<sentence()>'
+    activity_translation_description_en_{1..12}:
+        object: '@activity<current()>'
+        locale: 'en'
+        field: 'description'
+        content: '<text(500)>'
