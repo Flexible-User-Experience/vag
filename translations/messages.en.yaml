@@ -46,6 +46,10 @@ admin:
         collaborators: 'Collaborators'
         image: 'File'
         actions: 'Actions'
+        gender:
+            gender: 'Gender'
+            male: 'Man'
+            female: 'Woman'
     with:
         event: 'Esvent'
         collaborator: 'Collaborator'

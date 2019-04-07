@@ -46,6 +46,10 @@ admin:
         collaborators: 'Colaboradores'
         image: 'Archivo'
         actions: 'Acciones'
+        gender:
+            gender: 'Género'
+            male: 'Hombre'
+            female: 'Mujer'
     with:
         event: 'Evento'
         collaborator: 'Colaborador'

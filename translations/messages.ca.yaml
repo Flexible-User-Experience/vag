@@ -46,6 +46,10 @@ admin:
         collaborators: 'Col·laboradors'
         image: 'Arxiu'
         actions: 'Accions'
+        gender:
+            gender: 'Gènere'
+            male: 'Home'
+            female: 'Dona'
     with:
         event: 'Esdeveniment'
         collaborator: 'Col·laborador'
