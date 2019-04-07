@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use App\Entity\Translation\EventLocationTranslation;
 use DateTimeImmutable;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -15,12 +16,14 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
 /**
  * @ORM\Entity(repositoryClass="App\Repository\EventLocationRepository")
  * @UniqueEntity("place")
+ * @Gedmo\TranslationEntity(class="App\Entity\Translation\EventLocationTranslation")
  * @Vich\Uploadable
  */
 class EventLocation extends AbstractEntity
 {
     /**
      * @ORM\Column(type="string", length=255, unique=true)
+     * @Gedmo\Translatable
      *
      * @var string
      */
@@ -29,6 +32,7 @@ class EventLocation extends AbstractEntity
     /**
      * @ORM\Column(type="string", length=255)
      * @Gedmo\Slug(fields={"place"})
+     * @Gedmo\Translatable
      *
      * @var string
      */
@@ -63,6 +67,13 @@ class EventLocation extends AbstractEntity
     private $eventActivities;
 
     /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Translation\EventLocationTranslation", mappedBy="object", cascade={"persist", "remove"})
+     *
+     * @var ArrayCollection
+     */
+    private $translations;
+
+    /**
      * Methods.
      */
 
@@ -72,6 +83,7 @@ class EventLocation extends AbstractEntity
     public function __construct()
     {
         $this->eventActivities = new ArrayCollection();
+        $this->translations = new ArrayCollection();
     }
 
     /**
@@ -216,6 +228,43 @@ class EventLocation extends AbstractEntity
             if ($eventActivity->getLocation() === $this) {
                 $eventActivity->setLocation(null);
             }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection
+     */
+    public function getTranslations(): Collection
+    {
+        return $this->translations;
+    }
+
+    /**
+     * @param EventLocationTranslation $translation
+     *
+     * @return EventLocation
+     */
+    public function addTranslation(EventLocationTranslation $translation)
+    {
+        if (!$this->translations->contains($translation)) {
+            $this->translations[] = $translation;
+            $translation->setObject($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @param EventLocationTranslation $translation
+     *
+     * @return EventLocation
+     */
+    public function removeTranslation(EventLocationTranslation $translation)
+    {
+        if ($this->translations->contains($translation)) {
+            $this->translations->removeElement($translation);
         }
 
         return $this;
