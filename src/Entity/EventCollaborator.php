@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use App\Entity\Translation\EventCollaboratorTranslation;
 use Exception;
 use DateTimeImmutable;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -16,10 +17,18 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
  * @ORM\Entity(repositoryClass="App\Repository\EventCollaboratorRepository")
  * @ORM\Table(uniqueConstraints={@ORM\UniqueConstraint(name="fullname_idx", columns={"name", "surname"})})
  * @UniqueEntity(fields={"name", "surname"})
+ * @Gedmo\TranslationEntity(class="App\Entity\Translation\EventCollaboratorTranslation")
  * @Vich\Uploadable
  */
 class EventCollaborator extends AbstractEntity
 {
+    /**
+     * @ORM\Column(type="smallint", nullable=true)
+     *
+     * @var int
+     */
+    private $gender;
+
     /**
      * @ORM\Column(type="string", length=255)
      *
@@ -82,10 +91,19 @@ class EventCollaborator extends AbstractEntity
      *
      * @var string
      */
+    private $link;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     * @Gedmo\Translatable
+     *
+     * @var string
+     */
     private $shortDescription;
 
     /**
      * @ORM\Column(type="text", nullable=true)
+     * @Gedmo\Translatable
      *
      * @var string
      */
@@ -106,6 +124,13 @@ class EventCollaborator extends AbstractEntity
     private $eventActivities;
 
     /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Translation\EventCollaboratorTranslation", mappedBy="object", cascade={"persist", "remove"})
+     *
+     * @var ArrayCollection
+     */
+    private $translations;
+
+    /**
      * Methods.
      */
 
@@ -115,6 +140,27 @@ class EventCollaborator extends AbstractEntity
     public function __construct()
     {
         $this->eventActivities = new ArrayCollection();
+        $this->translations = new ArrayCollection();
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getGender(): ?int
+    {
+        return $this->gender;
+    }
+
+    /**
+     * @param int $gender
+     *
+     * @return EventCollaborator
+     */
+    public function setGender(int $gender): self
+    {
+        $this->gender = $gender;
+
+        return $this;
     }
 
     /**
@@ -294,6 +340,26 @@ class EventCollaborator extends AbstractEntity
     /**
      * @return string|null
      */
+    public function getLink(): ?string
+    {
+        return $this->link;
+    }
+
+    /**
+     * @param string $link
+     *
+     * @return EventCollaborator
+     */
+    public function setLink(string $link): self
+    {
+        $this->link = $link;
+
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
     public function getShortDescription(): ?string
     {
         return $this->shortDescription;
@@ -392,6 +458,43 @@ class EventCollaborator extends AbstractEntity
         if ($this->eventActivities->contains($eventActivity)) {
             $this->eventActivities->removeElement($eventActivity);
             $eventActivity->removeCollaborator($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection
+     */
+    public function getTranslations(): Collection
+    {
+        return $this->translations;
+    }
+
+    /**
+     * @param EventCollaboratorTranslation $translation
+     *
+     * @return EventCollaborator
+     */
+    public function addTranslation(EventCollaboratorTranslation $translation)
+    {
+        if (!$this->translations->contains($translation)) {
+            $this->translations[] = $translation;
+            $translation->setObject($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @param EventCollaboratorTranslation $translation
+     *
+     * @return EventCollaborator
+     */
+    public function removeTranslation(EventCollaboratorTranslation $translation)
+    {
+        if ($this->translations->contains($translation)) {
+            $this->translations->removeElement($translation);
         }
 
         return $this;

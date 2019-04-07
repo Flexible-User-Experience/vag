@@ -1,35 +1,214 @@
 App\Entity\EventCategory:
     category1:
-        name: 'conferences'
+        name: 'Conferències'
         priority: '1'
         isAvailable: true
         icon: 'fa fa-chalkboard-teacher'
         color: '#D83948'
     category2:
-        name: 'exhibitions'
+        name: 'Exposicions'
         priority: '2'
         isAvailable: true
         icon: 'fa fa-cube'
         color: '#38A54A'
     category3:
-        name: 'workshops'
+        name: 'Tallers'
         priority: '3'
         isAvailable: true
         icon: 'fa fa-fill-drip'
         color: '#0B80FB'
     category4:
-        name: 'shows'
+        name: 'Espectacles'
         priority: '4'
         isAvailable: true
         icon: 'fa fa fa-ghost'
         color: '#FDBF2F'
 
+App\Entity\Translation\EventCategoryTranslation:
+    category1_translation_name_es:
+        object: '@category1'
+        locale: 'es'
+        field: 'name'
+        content: 'Conferencias'
+    category1_translation_slug_es:
+        object: '@category1'
+        locale: 'es'
+        field: 'slug'
+        content: 'conferencias'
+    category1_translation_name_en:
+        object: '@category1'
+        locale: 'en'
+        field: 'name'
+        content: 'Conferences'
+    category1_translation_slug_en:
+        object: '@category1'
+        locale: 'en'
+        field: 'slug'
+        content: 'conferences'
+    category2_translation_name_es:
+        object: '@category2'
+        locale: 'es'
+        field: 'name'
+        content: 'Exposiciones'
+    category2_translation_slug_es:
+        object: '@category2'
+        locale: 'es'
+        field: 'slug'
+        content: 'exposiciones'
+    category2_translation_name_en:
+        object: '@category2'
+        locale: 'en'
+        field: 'name'
+        content: 'Exhibitions'
+    category2_translation_slug_en:
+        object: '@category2'
+        locale: 'en'
+        field: 'slug'
+        content: 'exhibitions'
+    category3_translation_name_es:
+        object: '@category3'
+        locale: 'es'
+        field: 'name'
+        content: 'Talleres'
+    category3_translation_slug_es:
+        object: '@category3'
+        locale: 'es'
+        field: 'slug'
+        content: 'talleres'
+    category3_translation_name_en:
+        object: '@category3'
+        locale: 'en'
+        field: 'name'
+        content: 'Workshops'
+    category3_translation_slug_en:
+        object: '@category3'
+        locale: 'en'
+        field: 'slug'
+        content: 'workshops'
+    category4_translation_name_es:
+        object: '@category4'
+        locale: 'es'
+        field: 'name'
+        content: 'Espectáculos'
+    category4_translation_slug_es:
+        object: '@category4'
+        locale: 'es'
+        field: 'slug'
+        content: 'espectaculos'
+    category4_translation_name_en:
+        object: '@category4'
+        locale: 'en'
+        field: 'name'
+        content: 'Shows'
+    category4_translation_slug_en:
+        object: '@category4'
+        locale: 'en'
+        field: 'slug'
+        content: 'shows'
+
 App\Entity\EventLocation:
-    location{1..4}:
-        place: '<colorName()>'
+    location1:
+        place: 'Museu'
+        latitude: '<latitude()>'
+        longitude: '<longitude()>'
+    location2:
+        place: 'Auditori'
+        latitude: '<latitude()>'
+        longitude: '<longitude()>'
+    location3:
+        place: 'Plaça del Mercat'
+        latitude: '<latitude()>'
+        longitude: '<longitude()>'
+    location4:
+        place: 'Centre d''Art'
+        latitude: '<latitude()>'
+        longitude: '<longitude()>'
+
+App\Entity\Translation\EventLocationTranslation:
+    location1_translation_place_es:
+        object: '@location1'
+        locale: 'es'
+        field: 'place'
+        content: 'Museo'
+    location1_translation_slug_es:
+        object: '@location1'
+        locale: 'es'
+        field: 'slug'
+        content: 'museo'
+    location1_translation_place_en:
+        object: '@location1'
+        locale: 'en'
+        field: 'place'
+        content: 'Museum'
+    location1_translation_slug_en:
+        object: '@location1'
+        locale: 'en'
+        field: 'slug'
+        content: 'museum'
+    location2_translation_place_es:
+        object: '@location2'
+        locale: 'es'
+        field: 'place'
+        content: 'Auditorio'
+    location2_translation_slug_es:
+        object: '@location2'
+        locale: 'es'
+        field: 'slug'
+        content: 'auditorio'
+    location2_translation_place_en:
+        object: '@location2'
+        locale: 'en'
+        field: 'place'
+        content: 'Auditorium'
+    location2_translation_slug_en:
+        object: '@location2'
+        locale: 'en'
+        field: 'slug'
+        content: 'auditorium'
+    location3_translation_place_es:
+        object: '@location3'
+        locale: 'es'
+        field: 'place'
+        content: 'Plaza del Mercado'
+    location3_translation_slug_es:
+        object: '@location3'
+        locale: 'es'
+        field: 'slug'
+        content: 'plaza-del-mercado'
+    location3_translation_place_en:
+        object: '@location3'
+        locale: 'en'
+        field: 'place'
+        content: 'Square Market'
+    location3_translation_slug_en:
+        object: '@location3'
+        locale: 'en'
+        field: 'slug'
+        content: 'square-market'
+    location4_translation_place_es:
+        object: '@location4'
+        locale: 'es'
+        field: 'place'
+        content: 'Centro de Arte'
+    location4_translation_slug_es:
+        object: '@location4'
+        locale: 'es'
+        field: 'slug'
+        content: 'centro-de-arte'
+    location4_translation_place_en:
+        object: '@location4'
+        locale: 'en'
+        field: 'place'
+        content: 'Art Center'
+    location4_translation_slug_en:
+        object: '@location4'
+        locale: 'en'
+        field: 'slug'
+        content: 'art-center'
 
 App\Entity\EventCollaborator:
     collaborator{1..8}:
+        gender: '<numberBetween(0,1)>'
         name: '<firstName()>'
         surname: '<lastName()>'
         email: '<safeEmail()>'
@@ -38,8 +217,30 @@ App\Entity\EventCollaborator:
         description: '<text(500)>'
         showInHomepage: '<boolean(50)>'
 
+App\Entity\Translation\EventCollaboratorTranslation:
+    collaborator_translation_short_description_es_{1..8}:
+        object: '@collaborator<current()>'
+        locale: 'es'
+        field: 'shortDescription'
+        content: '<sentence()>'
+    collaborator_translation_description_es_{1..8}:
+        object: '@collaborator<current()>'
+        locale: 'es'
+        field: 'description'
+        content: '<text(500)>'
+    collaborator_translation_short_description_en_{1..8}:
+        object: '@collaborator<current()>'
+        locale: 'en'
+        field: 'shortDescription'
+        content: '<sentence()>'
+    collaborator_translation_description_en_{1..8}:
+        object: '@collaborator<current()>'
+        locale: 'en'
+        field: 'description'
+        content: '<text(500)>'
+
 App\Entity\EventActivity:
-    activity{1..16}:
+    activity{1..12}:
         name: '<sentence(3,false)>'
         begin: '<dateTimeBetween("+1 month","+2 month")>'
         end: '<dateTimeBetween("+3 month","+4 month")>'
@@ -50,4 +251,66 @@ App\Entity\EventActivity:
         category: '@category<numberBetween(1,4)>'
         location: '@location<numberBetween(1,4)>'
         collaborators:
-            - '@collaborator*'
+            - '@collaborator<numberBetween(1,8)>'
+
+App\Entity\Translation\EventActivityTranslation:
+    activity_translation_name_es_{1..12}:
+        object: '@activity<current()>'
+        locale: 'es'
+        field: 'name'
+        content: '<sentence(3,false)>'
+    activity_translation_slug_es_{1..12}:
+        object: '@activity<current()>'
+        locale: 'es'
+        field: 'slug'
+        content: '<slug()>'
+    activity_translation_short_description_es_{1..12}:
+        object: '@activity<current()>'
+        locale: 'es'
+        field: 'shortDescription'
+        content: '<sentence()>'
+    activity_translation_description_es_{1..12}:
+        object: '@activity<current()>'
+        locale: 'es'
+        field: 'description'
+        content: '<text(500)>'
+    activity_translation_name_en_{1..12}:
+        object: '@activity<current()>'
+        locale: 'en'
+        field: 'name'
+        content: '<sentence(3,false)>'
+    activity_translation_slug_en_{1..12}:
+        object: '@activity<current()>'
+        locale: 'en'
+        field: 'slug'
+        content: '<slug()>'
+    activity_translation_short_description_en_{1..12}:
+        object: '@activity<current()>'
+        locale: 'en'
+        field: 'shortDescription'
+        content: '<sentence()>'
+    activity_translation_description_en_{1..12}:
+        object: '@activity<current()>'
+        locale: 'en'
+        field: 'description'
+        content: '<text(500)>'
+
+App\Entity\TeamMember:
+    team{1..3}:
+        gender: '<numberBetween(0,1)>'
+        name: '<firstName()>'
+        surname: '<lastName()>'
+        email: '<safeEmail()>'
+        phone: '<e164PhoneNumber()>'
+        job: '<jobTitle()>'
+        description: '<text(500)>'
+        showInFrontend: '<boolean(99)>'
+
+App\Entity\ContactMessage:
+    contact_message{1..3}:
+        name: '<name()>'
+        subject: '<sentence()>'
+        email: '<safeEmail()>'
+        phone: '<e164PhoneNumber()>'
+        message: '<text(500)>'
+        legalTermsHasBeenAccepted: '<boolean(99)>'

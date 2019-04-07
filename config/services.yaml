@@ -5,6 +5,7 @@ imports:
 # Parameters
 parameters:
     locale: 'ca'
+    app_array_locales: ['ca', 'es', 'en']
     app_locales: ca|es|en
 
 # Services

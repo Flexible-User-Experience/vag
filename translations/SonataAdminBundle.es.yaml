@@ -1,0 +1,5 @@
+admin:
+    with:
+        event: 'Eventos'
+toggle_navigation: 'Cambiar navegación'
+message_close: 'Cerrar mensaje'

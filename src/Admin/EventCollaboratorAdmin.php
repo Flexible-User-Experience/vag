@@ -2,9 +2,11 @@
 
 namespace App\Admin;
 
+use App\Enum\GenderEnum;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 
@@ -41,6 +43,14 @@ final class EventCollaboratorAdmin extends AbstractAdmin
     protected function configureFormFields(FormMapper $formMapper) {
         $formMapper
             ->with('admin.with.collaborator', ['class' => 'col-md-4'])
+            ->add(
+                'gender',
+                ChoiceType::class,
+                [
+                    'label' => 'admin.label.gender.gender',
+                    'choices' => GenderEnum::getStaticChoices(),
+                ]
+            )
             ->add(
                 'name',
                 TextType::class,

@@ -1,10 +1,4 @@
 {
-    "a2lix/auto-form-bundle": {
-        "version": "0.1"
-    },
-    "a2lix/translation-form-bundle": {
-        "version": "3.0.2"
-    },
     "behat/transliterator": {
         "version": "v1.2.0"
     },
@@ -120,6 +114,20 @@
     "fig/link-util": {
         "version": "1.0.0"
     },
+    "friendsofsymfony/user-bundle": {
+        "version": "2.1",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "master",
+            "version": "2.1",
+            "ref": "55fbe103bb5511f46a3bce047f729a89fc4d5237"
+        },
+        "files": [
+            "config/packages/fos_user.yaml",
+            "config/routes/fos_user.yaml",
+            "src/Entity/User.php"
+        ]
+    },
     "fzaninotto/faker": {
         "version": "v1.8.0"
     },
@@ -148,9 +156,6 @@
     },
     "jms/metadata": {
         "version": "1.7.0"
-    },
-    "knplabs/doctrine-behaviors": {
-        "version": "1.6.0"
     },
     "knplabs/knp-menu": {
         "version": "2.3.0"
@@ -291,8 +296,14 @@
     "sonata-project/doctrine-orm-admin-bundle": {
         "version": "3.8.3"
     },
+    "sonata-project/easy-extends-bundle": {
+        "version": "2.5.0"
+    },
     "sonata-project/exporter": {
         "version": "1.11.0"
+    },
+    "sonata-project/user-bundle": {
+        "version": "4.3.0"
     },
     "stof/doctrine-extensions-bundle": {
         "version": "1.2",
