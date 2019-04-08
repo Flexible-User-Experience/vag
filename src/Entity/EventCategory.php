@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Entity\Traits\NameTrait;
+use App\Entity\Traits\SlugTrait;
 use App\Entity\Translation\EventCategoryTranslation;
 use DateTimeImmutable;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -22,7 +23,7 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
  */
 class EventCategory extends AbstractEntity
 {
-    use NameTrait;
+    use NameTrait, SlugTrait;
 
     const DEFAULT_COLOR = '#2F2F2F';
     const DEFAULT_ICON = 'fa fa-question';
@@ -118,26 +119,6 @@ class EventCategory extends AbstractEntity
     {
         $this->eventActivities = new ArrayCollection();
         $this->translations = new ArrayCollection();
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getSlug(): ?string
-    {
-        return $this->slug;
-    }
-
-    /**
-     * @param string $slug
-     *
-     * @return $this
-     */
-    public function setSlug(string $slug): self
-    {
-        $this->slug = $slug;
-
-        return $this;
     }
 
     /**

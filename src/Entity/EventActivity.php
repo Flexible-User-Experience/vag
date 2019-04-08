@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Entity\Traits\NameTrait;
+use App\Entity\Traits\SlugTrait;
 use App\Entity\Translation\EventActivityTranslation;
 use DateTime;
 use DateTimeImmutable;
@@ -24,7 +25,7 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
  */
 class EventActivity extends AbstractEntity
 {
-    use NameTrait;
+    use NameTrait, SlugTrait;
 
     /**
      * @ORM\Column(type="string", length=255, unique=true)
@@ -149,26 +150,6 @@ class EventActivity extends AbstractEntity
     {
         $this->collaborators = new ArrayCollection();
         $this->translations = new ArrayCollection();
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getSlug(): ?string
-    {
-        return $this->slug;
-    }
-
-    /**
-     * @param string $slug
-     *
-     * @return EventActivity
-     */
-    public function setSlug(string $slug): self
-    {
-        $this->slug = $slug;
-
-        return $this;
     }
 
     /**

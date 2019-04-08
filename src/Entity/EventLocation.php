@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use App\Entity\Traits\SlugTrait;
 use App\Entity\Translation\EventLocationTranslation;
 use DateTimeImmutable;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -21,6 +22,8 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
  */
 class EventLocation extends AbstractEntity
 {
+    use SlugTrait;
+
     /**
      * @ORM\Column(type="float", nullable=true)
      *
@@ -163,26 +166,6 @@ class EventLocation extends AbstractEntity
     public function setPlace(string $place): self
     {
         $this->place = $place;
-
-        return $this;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getSlug(): ?string
-    {
-        return $this->slug;
-    }
-
-    /**
-     * @param string $slug
-     *
-     * @return EventLocation
-     */
-    public function setSlug(string $slug): self
-    {
-        $this->slug = $slug;
 
         return $this;
     }

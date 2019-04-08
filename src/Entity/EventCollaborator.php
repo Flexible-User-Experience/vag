@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Entity\Traits\EmailTrait;
 use App\Entity\Traits\NameTrait;
 use App\Entity\Traits\PhoneTrait;
+use App\Entity\Traits\SlugTrait;
 use App\Entity\Translation\EventCollaboratorTranslation;
 use Exception;
 use DateTimeImmutable;
@@ -25,7 +26,7 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
  */
 class EventCollaborator extends AbstractEntity
 {
-    use NameTrait, EmailTrait, PhoneTrait;
+    use NameTrait, SlugTrait, EmailTrait, PhoneTrait;
 
     /**
      * @ORM\Column(type="smallint", nullable=true)
@@ -194,26 +195,6 @@ class EventCollaborator extends AbstractEntity
     public function getFullname(): ?string
     {
         return $this->name.' '.$this->surname;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getSlug(): ?string
-    {
-        return $this->slug;
-    }
-
-    /**
-     * @param string $slug
-     *
-     * @return EventCollaborator
-     */
-    public function setSlug(string $slug): self
-    {
-        $this->slug = $slug;
-
-        return $this;
     }
 
     /**

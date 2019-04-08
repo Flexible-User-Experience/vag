@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Entity\Traits\NameTrait;
+use App\Entity\Traits\SlugTrait;
 use Exception;
 use DateTimeImmutable;
 use Doctrine\ORM\Mapping as ORM;
@@ -19,7 +20,7 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
  */
 class TeamPartner extends AbstractEntity
 {
-    use NameTrait;
+    use NameTrait, SlugTrait;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -74,26 +75,6 @@ class TeamPartner extends AbstractEntity
     /**
      * Methods.
      */
-
-    /**
-     * @return string|null
-     */
-    public function getSlug(): ?string
-    {
-        return $this->slug;
-    }
-
-    /**
-     * @param string $slug
-     *
-     * @return TeamPartner
-     */
-    public function setSlug(string $slug): self
-    {
-        $this->slug = $slug;
-
-        return $this;
-    }
 
     /**
      * @return File|null
