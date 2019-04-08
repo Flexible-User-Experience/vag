@@ -40,7 +40,8 @@ final class EventCollaboratorAdmin extends AbstractAdmin
     /**
      * @param FormMapper $formMapper
      */
-    protected function configureFormFields(FormMapper $formMapper) {
+    protected function configureFormFields(FormMapper $formMapper)
+    {
         $formMapper
             ->with('admin.with.collaborator', ['class' => 'col-md-4'])
             ->add(
@@ -86,7 +87,8 @@ final class EventCollaboratorAdmin extends AbstractAdmin
     /**
      * @param DatagridMapper $datagridMapper
      */
-    protected function configureDatagridFilters(DatagridMapper  $datagridMapper)  {
+    protected function configureDatagridFilters(DatagridMapper $datagridMapper)
+    {
         $datagridMapper
             ->add(
                 'name',
@@ -136,7 +138,8 @@ final class EventCollaboratorAdmin extends AbstractAdmin
     /**
      * @param ListMapper $listMapper
      */
-    protected function configureListFields(ListMapper $listMapper) {
+    protected function configureListFields(ListMapper $listMapper)
+    {
         $listMapper
             ->add(
                 'name',

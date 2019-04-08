@@ -16,7 +16,10 @@ class AdminControllerTest extends WebTestCase
      */
     public function testPageIsSuccessful($url)
     {
-        $client = self::createClient();
+        $client = static::createClient([], [
+            'PHP_AUTH_USER' => 'test',
+            'PHP_AUTH_PW'   => 'test',
+        ]);
         $client->request('GET', $url);
 
         $this->assertTrue($client->getResponse()->isSuccessful());
@@ -65,7 +68,10 @@ class AdminControllerTest extends WebTestCase
      */
     public function testPageIsNotFound($url)
     {
-        $client = self::createClient();
+        $client = static::createClient([], [
+            'PHP_AUTH_USER' => 'test',
+            'PHP_AUTH_PW'   => 'test',
+        ]);
         $client->request('GET', $url);
 
         $this->assertTrue($client->getResponse()->isNotFound());

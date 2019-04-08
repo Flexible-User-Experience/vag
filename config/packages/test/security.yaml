@@ -1,13 +1,15 @@
 security:
+    providers:
+        in_memory:
+            memory:
+                users:
+                    test: { password: 'test', roles: ['ROLE_ADMIN', 'ROLE_SUPER_ADMIN'] }
+    encoders:
+        Symfony\Component\Security\Core\User\User: plaintext
     firewalls:
-        dev:
-            pattern:  ^/(_(profiler|wdt)|css|images|js)/
-            security: false
         admin:
+            anonymous: true
             pattern:   ^/(ca|es|en)/admin(.*)
-            security:  false
-            anonymous: true
-        main:
-            pattern:   ^/(.*)
-            security:  false
-            anonymous: true
+            context:   user
+            http_basic:
+                provider: in_memory
