@@ -2,14 +2,13 @@
 
 namespace App\Entity;
 
+use App\Entity\Traits\ImageAttributesTrait;
 use App\Entity\Traits\NameTrait;
 use App\Entity\Traits\SlugTrait;
 use App\Entity\Translation\EventCategoryTranslation;
-use DateTimeImmutable;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-use Exception;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\HttpFoundation\File\File;
@@ -23,7 +22,7 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
  */
 class EventCategory extends AbstractEntity
 {
-    use NameTrait, SlugTrait;
+    use NameTrait, SlugTrait, ImageAttributesTrait;
 
     const DEFAULT_COLOR = '#2F2F2F';
     const DEFAULT_ICON = 'fa fa-question';
@@ -205,72 +204,6 @@ class EventCategory extends AbstractEntity
     public function setIcon(string $icon): self
     {
         $this->icon = $icon;
-
-        return $this;
-    }
-
-    /**
-     * @return File|null
-     */
-    public function getImageFile(): ?File
-    {
-        return $this->imageFile;
-    }
-
-    /**
-     * @param File $imageFile
-     *
-     * @return EventCategory
-     * @throws Exception
-     */
-    public function setImageFile(?File $imageFile): self
-    {
-        $this->imageFile = $imageFile;
-        if (null !== $imageFile) {
-            // It is required that at least one field changes if you are using doctrine
-            // otherwise the event listeners won't be called and the file is lost
-            $this->updated = new DateTimeImmutable();
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getImageName(): ?string
-    {
-        return $this->imageName;
-    }
-
-    /**
-     * @param string $imageName
-     *
-     * @return EventCategory
-     */
-    public function setImageName(?string $imageName): self
-    {
-        $this->imageName = $imageName;
-
-        return $this;
-    }
-
-    /**
-     * @return int|null
-     */
-    public function getImageSize(): ?int
-    {
-        return $this->imageSize;
-    }
-
-    /**
-     * @param int $imageSize
-     *
-     * @return EventCategory
-     */
-    public function setImageSize(?int $imageSize): self
-    {
-        $this->imageSize = $imageSize;
 
         return $this;
     }

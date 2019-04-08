@@ -3,12 +3,11 @@
 namespace App\Entity;
 
 use App\Entity\Traits\EmailTrait;
+use App\Entity\Traits\ImageAttributesTrait;
 use App\Entity\Traits\NameTrait;
 use App\Entity\Traits\PhoneTrait;
 use App\Entity\Traits\SlugTrait;
 use App\Entity\Translation\TeamMemberTranslation;
-use Exception;
-use DateTimeImmutable;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -26,7 +25,7 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
  */
 class TeamMember extends AbstractEntity
 {
-    use NameTrait, SlugTrait, EmailTrait, PhoneTrait;
+    use NameTrait, SlugTrait, EmailTrait, PhoneTrait, ImageAttributesTrait;
 
     /**
      * @ORM\Column(type="smallint", nullable=true)
@@ -187,72 +186,6 @@ class TeamMember extends AbstractEntity
     public function getFullname(): ?string
     {
         return $this->name.' '.$this->surname;
-    }
-
-    /**
-     * @return File|null
-     */
-    public function getImageFile(): ?File
-    {
-        return $this->imageFile;
-    }
-
-    /**
-     * @param File $imageFile
-     *
-     * @return TeamMember
-     * @throws Exception
-     */
-    public function setImageFile(?File $imageFile): self
-    {
-        $this->imageFile = $imageFile;
-        if (null !== $imageFile) {
-            // It is required that at least one field changes if you are using doctrine
-            // otherwise the event listeners won't be called and the file is lost
-            $this->updated = new DateTimeImmutable();
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getImageName(): ?string
-    {
-        return $this->imageName;
-    }
-
-    /**
-     * @param string $imageName
-     *
-     * @return TeamMember
-     */
-    public function setImageName(?string $imageName): self
-    {
-        $this->imageName = $imageName;
-
-        return $this;
-    }
-
-    /**
-     * @return int|null
-     */
-    public function getImageSize(): ?int
-    {
-        return $this->imageSize;
-    }
-
-    /**
-     * @param int $imageSize
-     *
-     * @return TeamMember
-     */
-    public function setImageSize(?int $imageSize): self
-    {
-        $this->imageSize = $imageSize;
-
-        return $this;
     }
 
     /**
