@@ -10,6 +10,8 @@ front:
         jumbotron_5: 'In this edition we have chosen the topics: <em>archaeogaming</em> and the impact of the female gender on the industry. Enjoy all daytime activities and digital art night shows.'
         buy_tickets: 'buy tickets'
     events:
+        activities: 'Activities'
+        highlighted_activities: 'Outstanding activities'
         read_more: 'read more'
         empty_warning: 'coming soon, be patient...'
     carrousel:

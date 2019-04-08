@@ -10,6 +10,8 @@ front:
         jumbotron_5: 'En esta edición hemos escogido los temas: <em>archaeogaming</em> y el impacto del género femenino en la industria. Disfruta de todas las actividades diarias y los espectáculos nocturnos de arte digital.'
         buy_tickets: 'comprar entradas'
     events:
+        activities: 'Actividades'
+        highlighted_activities: 'Actividades destacadas'
         read_more: 'leer más'
         empty_warning: 'próximamente, se paciente...'
     carrousel:

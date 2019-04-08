@@ -11,6 +11,8 @@ front:
         jumbotron_6: ''
         buy_tickets: 'comprar entrades'
     events:
+        activities: 'Activitats'
+        highlighted_activities: 'Activitats destacades'
         read_more: 'llegir més'
         empty_warning: 'en breu, sigueu pacients...'
     carrousel:

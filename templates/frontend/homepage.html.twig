@@ -20,11 +20,11 @@
             <div class="row">
                 <div class="col-12">
                     <div class="card-deck">
-                        {% for category in categories if category.eventActivities | length > 0 %}
+                        {% for category in categories %}
                             <div class="card text-white" style="background-color:{{ category.color }}">
                                 <div class="card-body">
                                     <h2 class="card-title text-center">{{ category | icon | raw }}</h2>
-                                    <p class="card-text text-center">{{ category.eventActivities | length }} {{ category.name | title }}</p>
+                                    <p class="card-text text-center">{% if category.eventActivities | length > 0 %}{{ category.eventActivities | length }} {% endif %}{{ category.name | title }}</p>
                                 </div>
                             </div>
                         {% endfor %}
