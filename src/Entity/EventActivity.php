@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use App\Entity\Traits\NameTrait;
 use App\Entity\Translation\EventActivityTranslation;
 use DateTime;
 use DateTimeImmutable;
@@ -23,6 +24,8 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
  */
 class EventActivity extends AbstractEntity
 {
+    use NameTrait;
+
     /**
      * @ORM\Column(type="string", length=255, unique=true)
      * @Gedmo\Translatable
@@ -146,26 +149,6 @@ class EventActivity extends AbstractEntity
     {
         $this->collaborators = new ArrayCollection();
         $this->translations = new ArrayCollection();
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getName(): ?string
-    {
-        return $this->name;
-    }
-
-    /**
-     * @param string $name
-     *
-     * @return EventActivity
-     */
-    public function setName(string $name): self
-    {
-        $this->name = $name;
-
-        return $this;
     }
 
     /**

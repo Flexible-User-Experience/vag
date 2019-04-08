@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use App\Entity\Traits\NameTrait;
 use DateTime;
 use DateTimeInterface;
 use Doctrine\ORM\Mapping as ORM;
@@ -12,6 +13,8 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class ContactMessage extends AbstractEntity
 {
+    use NameTrait;
+
     /**
      * @ORM\Column(type="string", length=255)
      *
@@ -85,26 +88,6 @@ class ContactMessage extends AbstractEntity
     /**
      * Methods.
      */
-
-    /**
-     * @return string|null
-     */
-    public function getName(): ?string
-    {
-        return $this->name;
-    }
-
-    /**
-     * @param string $name
-     *
-     * @return ContactMessage
-     */
-    public function setName(string $name): self
-    {
-        $this->name = $name;
-
-        return $this;
-    }
 
     /**
      * @return string|null

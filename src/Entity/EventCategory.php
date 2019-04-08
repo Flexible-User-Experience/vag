@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use App\Entity\Traits\NameTrait;
 use App\Entity\Translation\EventCategoryTranslation;
 use DateTimeImmutable;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -21,6 +22,8 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
  */
 class EventCategory extends AbstractEntity
 {
+    use NameTrait;
+
     const DEFAULT_COLOR = '#2F2F2F';
     const DEFAULT_ICON = 'fa fa-question';
 
@@ -115,26 +118,6 @@ class EventCategory extends AbstractEntity
     {
         $this->eventActivities = new ArrayCollection();
         $this->translations = new ArrayCollection();
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getName(): ?string
-    {
-        return $this->name;
-    }
-
-    /**
-     * @param string $name
-     *
-     * @return $this
-     */
-    public function setName(string $name): self
-    {
-        $this->name = $name;
-
-        return $this;
     }
 
     /**

@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use App\Entity\Traits\NameTrait;
 use App\Entity\Translation\EventCollaboratorTranslation;
 use Exception;
 use DateTimeImmutable;
@@ -22,6 +23,8 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
  */
 class EventCollaborator extends AbstractEntity
 {
+    use NameTrait;
+
     /**
      * @ORM\Column(type="smallint", nullable=true)
      *
@@ -159,26 +162,6 @@ class EventCollaborator extends AbstractEntity
     public function setGender(int $gender): self
     {
         $this->gender = $gender;
-
-        return $this;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getName(): ?string
-    {
-        return $this->name;
-    }
-
-    /**
-     * @param string $name
-     *
-     * @return EventCollaborator
-     */
-    public function setName(string $name): self
-    {
-        $this->name = $name;
 
         return $this;
     }
