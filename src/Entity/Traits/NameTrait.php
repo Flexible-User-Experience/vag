@@ -18,7 +18,7 @@ trait NameTrait
     /**
      * @param string $name
      *
-     * @return self
+     * @return $this
      */
     public function setName(string $name): self
     {
