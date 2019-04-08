@@ -50,7 +50,5 @@
         </div>
     </div>
     {# Secondary hightlights section #}
-    <div class="jumbotron jumbotron-fluid jumbotron-dark">
-        {% include "frontend/includes/event_activity_card.html.twig" with {activities: secondaryHighlights} %}
-    </div>
+    {% include "frontend/includes/event_activity_card.html.twig" with {activities: secondaryHighlights} %}
 {% endblock %}
