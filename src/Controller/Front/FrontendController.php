@@ -5,7 +5,9 @@ namespace App\Controller\Front;
 use App\Entity\EventActivity;
 use App\Entity\EventCategory;
 use App\Entity\EventCollaborator;
+use App\Enum\UserRoleEnum;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Response;
@@ -37,10 +39,15 @@ class FrontendController extends AbstractController
     /**
      * @Route("/test", name="front_test")
      *
-     * @return Response
+     * @return Response|AccessDeniedException
      */
     public function homepageTest()
     {
+        if (!$this->get('security.authorization_checker')->isGranted(UserRoleEnum::ROLE_CMS)) {
+
+            return $this->createAccessDeniedException();
+        }
+
         return $this->render('frontend/homepage_test.html.twig', []);
     }
 
