@@ -3,12 +3,12 @@ front:
         blog: 'blog'
         tickets: 'entrades'
     homepage:
-        jumbotron_1: 'Un <u>veritable esdeveniment cultural</u> sobre videojocs i art digital.'
-        jumbotron_2: 'No et perdis aquesta gran oportunitat per descobrir una nova cara de la indústria de l''entreteniment digital!'
-        jumbotron_3: 'T''agraden els videojocs? Vine al VAGexperience els dies 4 i 5 d''octubre.'
-        jumbotron_4: 'Ha estat dissenyat per atraure persones de diferents edats que estimin l''escena d''entreteniment digital.'
-        jumbotron_5: 'Hem programat dos temes importants en aquesta edició: l''<em>archaeogaming</em> i l''impacte del sexe femení a la indústria. Gaudeix de totes les activitats del dia i cada nit hi haurà un espectacle d''art digital especial.'
-        jumbotron_6: 'Gaudeix de totes les activitats del dia i cada nit hi haurà un espectacle d''art digital especial.'
+        jumbotron_1: 'Un veritable esdeveniment cultural sobre videojocs i art digital.'
+        jumbotron_2: 'No et perdis aquesta oportunitat de descobrir una nova cara de la indústria de l''entreteniment digital!'
+        jumbotron_3: 'T''agraden els videojocs? Vine al VAG Experience els dies 4 i 5 d''octubre.'
+        jumbotron_4: 'Ha estat dissenyat per a persones de diferents edats que estimen l''escena de l''entreteniment digital.'
+        jumbotron_5: 'En aquesta edició hem escollit els temes: <em>archaeogaming</em> i l''impacte del gènere femení a la indústria. Gaudeix de totes les activitats diàries i els espectacles nocturns d''art digital.'
+        jumbotron_6: ''
         buy_tickets: 'comprar entrades'
     events:
         read_more: 'llegir més'
