@@ -1,9 +1,20 @@
 {% extends "frontend/base.html.twig" %}
 
 {% block body %}
-    <div class="jumbotron jumbotron-fluid">
+    <div class="jumbotron jumbotron-fluid jumbotron-homepage" style="background-image:url('{{ asset('build/background-blur-bokeh-close-up.png') }}');">
         <div class="container">
-            <h1 class="display-4">{{ 'front.menu.tickets' | trans }}</h1>
+            <h1 class="display-6 text-white">{{ 'front.menu.tickets' | trans | title }}</h1>
+        </div>
+    </div>
+    <div class="jumbotron jumbotron-fluid jumbotron-dark">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="alert alert-warning mb-0" role="alert">
+                        <i class="fa exclamation-triangle"></i> {{ 'front.events.empty_warning' | trans }}
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 {% endblock %}

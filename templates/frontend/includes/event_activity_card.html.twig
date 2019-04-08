@@ -1,25 +1,27 @@
-<div class="container">
-    <div class="row">
-        <div class="col-sm-12">
-            <h5 class="mt-0 text-white">{{ 'front.events.highlighted_activities' | trans }}</h5>
-        </div>
-        {% for activity in activities %}
-            <div class="col-sm-4">
-                <div class="card bg-secondary">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ activity.name }}</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">{{ activity.location }}</h6>
-                        <p class="card-text">{{ activity.shortDescription }}</p>
-                        <a href="#" class="btn btn-warning btn-sm">{{ 'front.events.read_more' | trans }}</a>
+<div class="jumbotron jumbotron-fluid jumbotron-dark">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <h5 class="mt-0 text-white">{{ 'front.events.highlighted_activities' | trans }}</h5>
+            </div>
+            {% for activity in activities %}
+                <div class="col-sm-4">
+                    <div class="card bg-secondary">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ activity.name }}</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">{{ activity.location }}</h6>
+                            <p class="card-text">{{ activity.shortDescription }}</p>
+                            <a href="#" class="btn btn-warning btn-sm">{{ 'front.events.read_more' | trans }}</a>
+                        </div>
                     </div>
                 </div>
-            </div>
-        {% else %}
-            <div class="col-sm-12">
-                <div class="alert alert-warning mb-0" role="alert">
-                    <i class="fa exclamation-triangle"></i> {{ 'front.events.empty_warning' | trans }}
+            {% else %}
+                <div class="col-sm-12">
+                    <div class="alert alert-warning mb-0" role="alert">
+                        <i class="fa exclamation-triangle"></i> {{ 'front.events.empty_warning' | trans }}
+                    </div>
                 </div>
-            </div>
-        {% endfor %}
+            {% endfor %}
+        </div>
     </div>
 </div>
