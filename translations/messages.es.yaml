@@ -48,6 +48,8 @@ admin:
         collaborators: 'Colaboradores'
         image: 'Archivo'
         actions: 'Acciones'
+        username: 'Nombre de usuario'
+        user_roles: 'Roles de usuario'
         gender:
             gender: 'Género'
             male: 'Hombre'

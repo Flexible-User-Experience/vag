@@ -49,6 +49,8 @@ admin:
         collaborators: 'Col·laboradors'
         image: 'Arxiu'
         actions: 'Accions'
+        username: 'Nom d''usuari'
+        user_roles: 'Rols d''usuari'
         gender:
             gender: 'Gènere'
             male: 'Home'

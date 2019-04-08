@@ -12,6 +12,7 @@ use Sonata\AdminBundle\Form\FormMapper;
 use FOS\UserBundle\Model\UserManagerInterface;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 
@@ -97,31 +98,15 @@ final class UserAdmin extends ParentUserAdmin
         $formMapper
             ->with('admin.with.user', array('class' => 'col-md-6'))
             ->add(
-                'firstname',
-                null,
-                array(
-                    'label' => 'admin.label.firstname',
-                    'required' => false,
-                )
-            )
-            ->add(
-                'lastname',
-                null,
-                array(
-                    'label' => 'admin.label.lastname',
-                    'required' => false,
-                )
-            )
-            ->add(
                 'username',
-                null,
+                TextType::class,
                 array(
                     'label' => 'admin.label.username',
                 )
             )
             ->add(
                 'email',
-                null,
+                EmailType::class,
                 array(
                     'label' => 'admin.label.email',
                 )
@@ -167,16 +152,16 @@ final class UserAdmin extends ParentUserAdmin
             ->add(
                 'username',
                 null,
-                array(
+                [
                     'label' => 'admin.label.username',
-                )
+                ]
             )
             ->add(
                 'email',
                 null,
-                array(
+                [
                     'label' => 'admin.label.email',
-                )
+                ]
             )
 //            ->add(
 //                'roles',
@@ -192,9 +177,9 @@ final class UserAdmin extends ParentUserAdmin
             ->add(
                 'enabled',
                 null,
-                array(
+                [
                     'label' => 'backend.admin.is_available',
-                )
+                ]
             )
         ;
     }
@@ -225,7 +210,7 @@ final class UserAdmin extends ParentUserAdmin
                 'roles',
                 null,
                 [
-                    'label' => 'admin.label_user_roles',
+                    'label' => 'admin.label.user_roles',
                     'template' => 'backend/cells/list__cell_user_roles.html.twig',
                 ]
             )

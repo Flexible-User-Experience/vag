@@ -48,6 +48,8 @@ admin:
         collaborators: 'Collaborators'
         image: 'File'
         actions: 'Actions'
+        username: 'Username'
+        user_roles: 'Roles'
         gender:
             gender: 'Gender'
             male: 'Man'
