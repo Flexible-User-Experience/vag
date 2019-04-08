@@ -2,7 +2,9 @@
 
 namespace App\Twig;
 
+use App\Entity\User;
 use App\Entity\EventCategory;
+use App\Enum\UserRoleEnum;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFilter;
 
@@ -45,6 +47,7 @@ class AppExtension extends AbstractExtension
         return [
             new TwigFilter('icon', [$this, 'drawEventCategoryIcon']),
             new TwigFilter('icon_colored', [$this, 'drawEventCategoryIconWithColor']),
+            new TwigFilter('draw_role_span', [$this, 'drawRoleSpan']),
         ];
     }
 
@@ -66,5 +69,31 @@ class AppExtension extends AbstractExtension
     public function drawEventCategoryIconWithColor(EventCategory $category)
     {
         return '<i class="'.$category->getIcon().'" style="color:'.$category->getColor().'"></i>';
+    }
+
+    /**
+     * @param User $object
+     *
+     * @return string
+     */
+    public function drawRoleSpan($object)
+    {
+        $span = '';
+        if ($object instanceof User && count($object->getRoles()) > 0) {
+            /** @var string $role */
+            foreach ($object->getRoles() as $role) {
+                if ($role == UserRoleEnum::ROLE_CMS) {
+                    $span .= '<span class="label label-warning" style="margin-right:10px">editor</span>';
+                } elseif ($role == UserRoleEnum::ROLE_USER) {
+                    $span .= '<span class="label label-primary" style="margin-right:10px">administrador</span>';
+                } elseif ($role == UserRoleEnum::ROLE_ADMIN) {
+                    $span .= '<span class="label label-danger" style="margin-right:10px">superadministrador</span>';
+                }
+            }
+        } else {
+            $span = '<span class="label label-success" style="margin-right:10px">---</span>';
+        }
+
+        return $span;
     }
 }

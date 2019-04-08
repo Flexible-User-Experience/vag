@@ -71,9 +71,11 @@ final class UserAdmin extends ParentUserAdmin
      */
     protected function configureRoutes(RouteCollection $collection)
     {
-        $collection->remove('batch');
-        $collection->remove('export');
-        $collection->remove('show');
+        $collection
+            ->remove('batch')
+            ->remove('export')
+            ->remove('show')
+        ;
     }
 
     /**
@@ -176,17 +178,17 @@ final class UserAdmin extends ParentUserAdmin
                     'label' => 'admin.label.email',
                 )
             )
-            ->add(
-                'roles',
-                ChoiceFilter::class,
-                array(
-                    'label' => 'admin.label.user_roles',
-                    'field_type' => 'choice',
-                    'field_options' => array(
-                        'choices' => UserRoleEnum::getStaticChoices(),
-                    ),
-                )
-            )
+//            ->add(
+//                'roles',
+//                ChoiceFilter::class,
+//                array(
+//                    'label' => 'admin.label.user_roles',
+//                    'field_type' => 'choice',
+//                    'field_options' => array(
+//                        'choices' => UserRoleEnum::getStaticChoices(),
+//                    ),
+//                )
+//            )
             ->add(
                 'enabled',
                 null,
@@ -206,45 +208,44 @@ final class UserAdmin extends ParentUserAdmin
             ->add(
                 'username',
                 null,
-                array(
+                [
                     'label' => 'admin.label.username',
                     'editable' => true,
-                )
+                ]
             )
             ->add(
                 'email',
                 null,
-                array(
+                [
                     'label' => 'admin.label.email',
                     'editable' => true,
-                )
+                ]
             )
             ->add(
                 'roles',
                 null,
-                array(
-                    'label' => 'admin.label_ser.roles',
-                    'template' => '::Admin/Cells/list__cell_user_roles.html.twig',
-                )
+                [
+                    'label' => 'admin.label_user_roles',
+                    'template' => 'backend/cells/list__cell_user_roles.html.twig',
+                ]
             )
             ->add(
                 'enabled',
                 null,
-                array(
-                    'label' => 'backend.admin.is_available',
+                [
+                    'label' => 'admin.label.is_available',
                     'editable' => true,
-                )
+                ]
             )
             ->add(
                 '_action',
-                'actions',
-                array(
-                    'label' => 'backend.admin.actions',
-                    'actions' => array(
-                        'edit' => array('template' => '::Admin/Buttons/list__action_edit_button.html.twig'),
-                        'delete' => array('template' => '::Admin/Buttons/list__action_delete_button.html.twig'),
-                    ),
-                )
+                null,
+                [
+                    'label' => 'admin.label.actions',
+                    'actions' => [
+                        'edit' => [],
+                    ],
+                ]
             )
         ;
     }

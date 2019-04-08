@@ -61,6 +61,8 @@ admin:
         relations: 'Relations'
         images: 'Images'
         controls: 'Controls'
+        user: 'Usuer'
+        settings: 'Settings'
 
 'Admin Class Event Activity List': 'Activities'
 'Admin Class Event Activity Create': 'New'

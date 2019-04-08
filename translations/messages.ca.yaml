@@ -62,6 +62,8 @@ admin:
         relations: 'Relacions'
         images: 'Imatges'
         controls: 'Controls'
+        user: 'Usuari'
+        settings: 'Configuració'
 
 'Admin Class Event Activity List': 'Activitats'
 'Admin Class Event Activity Create': 'Nou'
