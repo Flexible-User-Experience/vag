@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Entity\Traits\EmailTrait;
 use App\Entity\Traits\NameTrait;
+use App\Entity\Traits\PhoneTrait;
 use App\Entity\Translation\TeamMemberTranslation;
 use Exception;
 use DateTimeImmutable;
@@ -24,7 +25,7 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
  */
 class TeamMember extends AbstractEntity
 {
-    use NameTrait, EmailTrait;
+    use NameTrait, EmailTrait, PhoneTrait;
 
     /**
      * @ORM\Column(type="smallint", nullable=true)
@@ -269,26 +270,6 @@ class TeamMember extends AbstractEntity
     public function setImageSize(?int $imageSize): self
     {
         $this->imageSize = $imageSize;
-
-        return $this;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getPhone(): ?string
-    {
-        return $this->phone;
-    }
-
-    /**
-     * @param string|null $phone
-     *
-     * @return TeamMember
-     */
-    public function setPhone(?string $phone): self
-    {
-        $this->phone = $phone;
 
         return $this;
     }

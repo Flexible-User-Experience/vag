@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Entity\Traits\EmailTrait;
 use App\Entity\Traits\NameTrait;
+use App\Entity\Traits\PhoneTrait;
 use DateTime;
 use DateTimeInterface;
 use Doctrine\ORM\Mapping as ORM;
@@ -14,7 +15,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class ContactMessage extends AbstractEntity
 {
-    use NameTrait, EmailTrait;
+    use NameTrait, EmailTrait, PhoneTrait;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -106,26 +107,6 @@ class ContactMessage extends AbstractEntity
     public function setSubject(string $subject): self
     {
         $this->subject = $subject;
-
-        return $this;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getPhone(): ?string
-    {
-        return $this->phone;
-    }
-
-    /**
-     * @param string|null $phone
-     *
-     * @return ContactMessage
-     */
-    public function setPhone(?string $phone): self
-    {
-        $this->phone = $phone;
 
         return $this;
     }
