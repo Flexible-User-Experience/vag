@@ -13,6 +13,7 @@ $app-color-blue: #2C6CA4;
 $app-color-ocher: #B58255;
 $app-color-purple: #895E95;
 $app-color-yellow: #E1DF56;
+$app-color-warning-light: #FDBF2F;
 
 .bg-dark-transparent{
   background-color: rgba(0, 0, 0, $app-alpha + 0.2);
@@ -20,6 +21,22 @@ $app-color-yellow: #E1DF56;
 
 .navbar-logo {
   width: 65%;
+}
+
+.nav-link-ticket {
+  margin-left: 5px;
+  color: $app-color-warning-light !important;
+}
+
+.active {
+  .nav-link-ticket {
+    color: $app-color-black-light !important;
+    background-color: $app-color-warning-light !important;
+  }
+}
+
+.btn-outline-warning:hover {
+  color: $app-color-black-light !important;
 }
 
 .jumbotron-homepage {

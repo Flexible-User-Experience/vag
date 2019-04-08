@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="{{ app.request.locale }}">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="author" content="www.flux.cat">
         <title>{% block title %}VAG{% endblock %}</title>
         <link rel="icon" type="image/png" href="{{ asset('favicon.png') }}">
         {% block stylesheets %}{{ encore_entry_link_tags('app') }}{% endblock %}
@@ -29,7 +30,7 @@
             <footer class="pt-4 pb-4">
                 <div class="row">
                     <div class="col-4">
-                        <img class="mb-2" src="{{ asset('build/vag_logo.png') | imagine_filter('70xY') }}" alt="VAG logo">
+                        <img class="mb-2 w-25" src="{{ asset('build/vag_green.svg') }}" alt="VAG logo">
                         <small class="d-block mb-3 text-muted">&copy; {{ 'now'| date('Y') }}</small>
                     </div>
                     <div class="col-4 text-center">
