@@ -2,8 +2,6 @@
 
 namespace App\Entity\Traits;
 
-use App\Entity\EventActivity;
-
 /**
  * Trait DescriptionTrait
  */
@@ -20,7 +18,7 @@ trait DescriptionTrait
     /**
      * @param string $description
      *
-     * @return EventActivity
+     * @return $this
      */
     public function setDescription(string $description): self
     {

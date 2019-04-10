@@ -8,6 +8,7 @@ use App\Entity\Traits\ImageAttributesTrait;
 use App\Entity\Traits\NameTrait;
 use App\Entity\Traits\PhoneTrait;
 use App\Entity\Traits\SlugTrait;
+use App\Entity\Traits\SurnameTrait;
 use App\Entity\Translation\TeamMemberTranslation;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -26,7 +27,7 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
  */
 class TeamMember extends AbstractEntity
 {
-    use NameTrait, SlugTrait, EmailTrait, PhoneTrait, ImageAttributesTrait, DescriptionTrait;
+    use NameTrait, SurnameTrait, SlugTrait, EmailTrait, PhoneTrait, ImageAttributesTrait, DescriptionTrait;
 
     /**
      * @ORM\Column(type="smallint", nullable=true)
@@ -159,34 +160,6 @@ class TeamMember extends AbstractEntity
         $this->gender = $gender;
 
         return $this;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getSurname(): ?string
-    {
-        return $this->surname;
-    }
-
-    /**
-     * @param string $surname
-     *
-     * @return TeamMember
-     */
-    public function setSurname(string $surname): self
-    {
-        $this->surname = $surname;
-
-        return $this;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getFullname(): ?string
-    {
-        return $this->name.' '.$this->surname;
     }
 
     /**

@@ -4,8 +4,10 @@ namespace App\Entity;
 
 use App\Entity\Traits\DescriptionTrait;
 use App\Entity\Traits\ImageAttributesTrait;
+use App\Entity\Traits\IsAvailableTrait;
 use App\Entity\Traits\NameTrait;
 use App\Entity\Traits\ShortDescriptionTrait;
+use App\Entity\Traits\ShowInHomepageTrait;
 use App\Entity\Traits\SlugTrait;
 use App\Entity\Translation\EventActivityTranslation;
 use DateTime;
@@ -26,7 +28,7 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
  */
 class EventActivity extends AbstractEntity
 {
-    use NameTrait, SlugTrait, ImageAttributesTrait, ShortDescriptionTrait, DescriptionTrait;
+    use NameTrait, SlugTrait, ImageAttributesTrait, ShortDescriptionTrait, DescriptionTrait, IsAvailableTrait, ShowInHomepageTrait;
 
     /**
      * @ORM\Column(type="string", length=255, unique=true)
@@ -189,62 +191,6 @@ class EventActivity extends AbstractEntity
     public function setEnd(DateTimeInterface $end): self
     {
         $this->end = $end;
-
-        return $this;
-    }
-
-    /**
-     * @return bool|null
-     */
-    public function getIsAvailable(): ?bool
-    {
-        return $this->isAvailable;
-    }
-
-    /**
-     * @return bool|null
-     */
-    public function isAvailable(): ?bool
-    {
-        return $this->getIsAvailable();
-    }
-
-    /**
-     * @param bool $isAvailable
-     *
-     * @return EventActivity
-     */
-    public function setIsAvailable(bool $isAvailable): self
-    {
-        $this->isAvailable = $isAvailable;
-
-        return $this;
-    }
-
-    /**
-     * @return bool|null
-     */
-    public function getShowInHomepage(): ?bool
-    {
-        return $this->showInHomepage;
-    }
-
-    /**
-     * @return bool|null
-     */
-    public function isShowInHomepage(): ?bool
-    {
-        return $this->getShowInHomepage();
-    }
-
-    /**
-     * @param bool $showInHomepage
-     *
-     * @return EventActivity
-     */
-    public function setShowInHomepage(bool $showInHomepage): self
-    {
-        $this->showInHomepage = $showInHomepage;
 
         return $this;
     }

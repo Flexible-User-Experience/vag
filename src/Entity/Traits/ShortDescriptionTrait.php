@@ -2,8 +2,6 @@
 
 namespace App\Entity\Traits;
 
-use App\Entity\EventActivity;
-
 /**
  * Trait ShortDescriptionTrait
  */
@@ -20,7 +18,7 @@ trait ShortDescriptionTrait
     /**
      * @param string $shortDescription
      *
-     * @return EventActivity
+     * @return $this
      */
     public function setShortDescription(string $shortDescription): self
     {

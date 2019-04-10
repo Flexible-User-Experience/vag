@@ -8,7 +8,9 @@ use App\Entity\Traits\ImageAttributesTrait;
 use App\Entity\Traits\NameTrait;
 use App\Entity\Traits\PhoneTrait;
 use App\Entity\Traits\ShortDescriptionTrait;
+use App\Entity\Traits\ShowInHomepageTrait;
 use App\Entity\Traits\SlugTrait;
+use App\Entity\Traits\SurnameTrait;
 use App\Entity\Translation\EventCollaboratorTranslation;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -27,7 +29,7 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
  */
 class EventCollaborator extends AbstractEntity
 {
-    use NameTrait, SlugTrait, EmailTrait, PhoneTrait, ImageAttributesTrait, ShortDescriptionTrait, DescriptionTrait;
+    use NameTrait, SurnameTrait, SlugTrait, EmailTrait, PhoneTrait, ImageAttributesTrait, ShortDescriptionTrait, DescriptionTrait, ShowInHomepageTrait;
 
     /**
      * @ORM\Column(type="smallint", nullable=true)
@@ -173,34 +175,6 @@ class EventCollaborator extends AbstractEntity
     /**
      * @return string|null
      */
-    public function getSurname(): ?string
-    {
-        return $this->surname;
-    }
-
-    /**
-     * @param string $surname
-     *
-     * @return EventCollaborator
-     */
-    public function setSurname(string $surname): self
-    {
-        $this->surname = $surname;
-
-        return $this;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getFullname(): ?string
-    {
-        return $this->name.' '.$this->surname;
-    }
-
-    /**
-     * @return string|null
-     */
     public function getLink(): ?string
     {
         return $this->link;
@@ -214,34 +188,6 @@ class EventCollaborator extends AbstractEntity
     public function setLink(string $link): self
     {
         $this->link = $link;
-
-        return $this;
-    }
-
-    /**
-     * @return bool|null
-     */
-    public function getShowInHomepage(): ?bool
-    {
-        return $this->showInHomepage;
-    }
-
-    /**
-     * @return bool|null
-     */
-    public function isShowInHomepage(): ?bool
-    {
-        return $this->getShowInHomepage();
-    }
-
-    /**
-     * @param bool $showInHomepage
-     *
-     * @return EventCollaborator
-     */
-    public function setShowInHomepage(bool $showInHomepage): self
-    {
-        $this->showInHomepage = $showInHomepage;
 
         return $this;
     }
