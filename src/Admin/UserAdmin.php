@@ -100,44 +100,44 @@ final class UserAdmin extends ParentUserAdmin
             ->add(
                 'username',
                 TextType::class,
-                array(
+                [
                     'label' => 'admin.label.username',
-                )
+                ]
             )
             ->add(
                 'email',
                 EmailType::class,
-                array(
+                [
                     'label' => 'admin.label.email',
-                )
+                ]
             )
             ->add(
                 'plainPassword',
                 TextType::class,
-                array(
+                [
                     'label' => 'admin.label.plain_password',
                     'required' => (!$this->getSubject() || is_null($this->getSubject()->getId())),
-                )
+                ]
             )
             ->end()
             ->with('admin.with.controls', array('class' => 'col-md-6'))
             ->add(
                 'enabled',
                 CheckboxType::class,
-                array(
+                [
                     'label' => 'admin.label.is_available',
                     'required' => false,
-                )
+                ]
             )
             ->add(
                 'roles',
                 ChoiceType::class,
-                array(
+                [
                     'label' => 'admin.label.user_roles',
                     'choices' => UserRoleEnum::getStaticChoices(),
                     'multiple' => true,
                     'expanded' => true,
-                )
+                ]
             )
             ->end()
         ;
