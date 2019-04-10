@@ -100,6 +100,7 @@ class EventCollaborator extends AbstractEntity
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\Url
      *
      * @var string
      */
