@@ -61,6 +61,16 @@ final class EventLocationAdmin extends AbstractAdmin
                 ]
             )
             ->end()
+            ->with('admin.with.controls', ['class' => 'col-md-3'])
+            ->add(
+                'slug',
+                TextType::class,
+                [
+                    'label' => 'admin.label.slug',
+                    'disabled' => true,
+                ]
+            )
+            ->end()
         ;
     }
 

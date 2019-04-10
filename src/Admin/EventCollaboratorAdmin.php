@@ -8,6 +8,7 @@ use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 /**
@@ -78,6 +79,28 @@ final class EventCollaboratorAdmin extends AbstractAdmin
                 TextType::class,
                 [
                     'label' => 'admin.label.phone',
+                    'required' => false,
+                ]
+            )
+            ->end()
+            ->with('admin.with.images', ['class' => 'col-md-4'])
+            ->add(
+                'imageFile',
+                FileType::class,
+                [
+                    'label' => 'admin.label.image',
+                    'help' => $this->getImageHelperFormMapperWithThumbnail(),
+                    'required' => false,
+                ]
+            )
+            ->end()
+            ->with('admin.with.controls', ['class' => 'col-md-3'])
+            ->add(
+                'slug',
+                TextType::class,
+                [
+                    'label' => 'admin.label.slug',
+                    'disabled' => true,
                 ]
             )
             ->end()
@@ -142,6 +165,14 @@ final class EventCollaboratorAdmin extends AbstractAdmin
     {
         $listMapper
             ->add(
+                'image',
+                null,
+                array(
+                    'label' => 'admin.label.single_image',
+                    'template' => 'backend/cells/list__cell_image_field.html.twig',
+                )
+            )
+            ->add(
                 'name',
                 null,
                 [
@@ -155,14 +186,6 @@ final class EventCollaboratorAdmin extends AbstractAdmin
                 [
                     'label' => 'admin.label.surname',
                     'editable' => true,
-                ]
-            )
-            ->add(
-                'slug',
-                null,
-                [
-                    'label' => 'admin.label.slug',
-                    'editable' => false,
                 ]
             )
             ->add(

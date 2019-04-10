@@ -50,6 +50,7 @@ final class EventCategoryAdmin extends AbstractAdmin
                 ColorType::class,
                 [
                     'label' => 'admin.label.color',
+                    'required' => false,
                 ]
             )
             ->add(
@@ -58,6 +59,7 @@ final class EventCategoryAdmin extends AbstractAdmin
                 [
                     'label' => 'admin.label.icon',
                     'help' => 'admin.help.icon',
+                    'required' => false,
                 ]
             )
             ->add(
@@ -80,6 +82,14 @@ final class EventCategoryAdmin extends AbstractAdmin
             )
             ->end()
             ->with('admin.with.controls', ['class' => 'col-md-3'])
+            ->add(
+                'slug',
+                TextType::class,
+                [
+                    'label' => 'admin.label.slug',
+                    'disabled' => true,
+                ]
+            )
             ->add(
                 'priority',
                 NumberType::class,
