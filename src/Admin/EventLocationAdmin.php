@@ -6,7 +6,7 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Vich\UploaderBundle\Form\Type\VichImageType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 
 /**
  * Class EventLocationAdmin
@@ -53,9 +53,10 @@ final class EventLocationAdmin extends AbstractAdmin
             ->with('admin.with.images', ['class' => 'col-md-4'])
             ->add(
                 'imageFile',
-                VichImageType::class,
+                FileType::class,
                 [
                     'label' => 'admin.label.image',
+                    'help' => $this->getImageHelperFormMapperWithThumbnail(),
                     'required' => false,
                 ]
             )
@@ -85,6 +86,14 @@ final class EventLocationAdmin extends AbstractAdmin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
+            ->add(
+                'image',
+                null,
+                array(
+                    'label' => 'admin.label.single_image',
+                    'template' => 'backend/cells/list__cell_image_field.html.twig',
+                )
+            )
             ->add(
                 'place',
                 null,
