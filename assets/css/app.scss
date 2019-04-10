@@ -23,6 +23,22 @@ $app-color-warning-light: #FDBF2F;
   width: 65%;
 }
 
+.footer-logo {
+  width: 75%;
+}
+
+@include media-breakpoint-up(sm) {
+  .footer-logo {
+    width: 50%;
+  }
+}
+
+@include media-breakpoint-up(md) {
+  .footer-logo {
+    width: 25%;
+  }
+}
+
 .nav-link-ticket {
   margin-left: 5px;
   color: $app-color-warning-light !important;
@@ -45,9 +61,13 @@ $app-color-warning-light: #FDBF2F;
   .container {
     margin-top: 68px;
     background-color: rgba(0, 0, 0, $app-alpha);
-    border-radius: $app-radius;
     .btn {
       margin-bottom: $app-vertical-gap;
+    }
+  }
+  @include media-breakpoint-up(sm) {
+    .container {
+      border-radius: $app-radius;
     }
   }
 }
