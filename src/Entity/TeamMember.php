@@ -8,6 +8,7 @@ use App\Entity\Traits\ImageAttributesTrait;
 use App\Entity\Traits\LinkTrait;
 use App\Entity\Traits\NameTrait;
 use App\Entity\Traits\PhoneTrait;
+use App\Entity\Traits\ShowInFrontendTrait;
 use App\Entity\Traits\SlugTrait;
 use App\Entity\Traits\SurnameTrait;
 use App\Entity\Translation\TeamMemberTranslation;
@@ -28,7 +29,7 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
  */
 class TeamMember extends AbstractEntity
 {
-    use NameTrait, SurnameTrait, SlugTrait, EmailTrait, PhoneTrait, ImageAttributesTrait, DescriptionTrait, LinkTrait;
+    use NameTrait, SurnameTrait, SlugTrait, EmailTrait, PhoneTrait, ImageAttributesTrait, DescriptionTrait, LinkTrait, ShowInFrontendTrait;
 
     /**
      * @ORM\Column(type="smallint", nullable=true)
@@ -179,34 +180,6 @@ class TeamMember extends AbstractEntity
     public function setJob(string $job): self
     {
         $this->job = $job;
-
-        return $this;
-    }
-
-    /**
-     * @return bool|null
-     */
-    public function getShowInFrontend(): ?bool
-    {
-        return $this->showInFrontend;
-    }
-
-    /**
-     * @return bool|null
-     */
-    public function isShowInFrontend(): ?bool
-    {
-        return $this->getShowInFrontend();
-    }
-
-    /**
-     * @param bool $showInFrontend
-     *
-     * @return TeamMember
-     */
-    public function setShowInFrontend(bool $showInFrontend): self
-    {
-        $this->showInFrontend = $showInFrontend;
 
         return $this;
     }

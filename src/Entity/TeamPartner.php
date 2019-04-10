@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Entity\Traits\ImageAttributesTrait;
 use App\Entity\Traits\LinkTrait;
 use App\Entity\Traits\NameTrait;
+use App\Entity\Traits\ShowInFrontendTrait;
 use App\Entity\Traits\SlugTrait;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
@@ -20,7 +21,7 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
  */
 class TeamPartner extends AbstractEntity
 {
-    use NameTrait, SlugTrait, ImageAttributesTrait, LinkTrait;
+    use NameTrait, SlugTrait, ImageAttributesTrait, LinkTrait, ShowInFrontendTrait;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -75,34 +76,6 @@ class TeamPartner extends AbstractEntity
     /**
      * Methods.
      */
-
-    /**
-     * @return bool|null
-     */
-    public function getShowInFrontend(): ?bool
-    {
-        return $this->showInFrontend;
-    }
-
-    /**
-     * @return bool|null
-     */
-    public function isShowInFrontend(): ?bool
-    {
-        return $this->getShowInFrontend();
-    }
-
-    /**
-     * @param bool $showInFrontend
-     *
-     * @return TeamPartner
-     */
-    public function setShowInFrontend(bool $showInFrontend): self
-    {
-        $this->showInFrontend = $showInFrontend;
-
-        return $this;
-    }
 
     /**
      * @return string
