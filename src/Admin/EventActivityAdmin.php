@@ -12,6 +12,7 @@ use Sonata\DoctrineORMAdminBundle\Filter\DateFilter;
 use Sonata\Form\Type\DateTimePickerType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 
@@ -102,6 +103,17 @@ final class EventActivityAdmin extends AbstractAdmin
                     'class' => EventCollaborator::class,
                     'query_builder' => $this->em->getRepository(EventCollaborator::class)->findAllSortedBySurnameAndName(),
                     'multiple' => true,
+                ]
+            )
+            ->end()
+            ->with('admin.with.images', ['class' => 'col-md-4'])
+            ->add(
+                'imageFile',
+                FileType::class,
+                [
+                    'label' => 'admin.label.image',
+                    'help' => $this->getImageHelperFormMapperWithThumbnail(),
+                    'required' => false,
                 ]
             )
             ->end()
@@ -258,6 +270,14 @@ final class EventActivityAdmin extends AbstractAdmin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
+            ->add(
+                'image',
+                null,
+                array(
+                    'label' => 'admin.label.single_image',
+                    'template' => 'backend/cells/list__cell_image_field.html.twig',
+                )
+            )
             ->add(
                 'begin',
                 'date',
