@@ -23,6 +23,13 @@ liip_imagine:
                     size:          [70, null]
                     mode:          outbound
                     allow_upscale: false
+        60x60:
+            quality: 100
+            filters:
+                thumbnail:
+                    size:          [60, 60]
+                    mode:          outbound
+                    allow_upscale: false
         flip_x:
             jpeg_quality:          98
             png_compression_level: 8

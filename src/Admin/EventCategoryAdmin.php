@@ -136,6 +136,14 @@ final class EventCategoryAdmin extends AbstractAdmin
     {
         $listMapper
             ->add(
+                'image',
+                null,
+                array(
+                    'label' => 'admin.label.single_image',
+                    'template' => 'backend/cells/list__cell_image_field.html.twig',
+                )
+            )
+            ->add(
                 'icon',
                 null,
                 [

@@ -8,7 +8,6 @@ front:
         jumbotron_3: 'T''agraden els videojocs? Vine al VAG Experience els dies 4 i 5 d''octubre.'
         jumbotron_4: 'Ha estat dissenyat per a persones de diferents edats que estimen l''escena de l''entreteniment digital.'
         jumbotron_5: 'En aquesta edició hem escollit els temes: <em>archaeogaming</em> i l''impacte del gènere femení a la indústria. Gaudeix de totes les activitats diàries i els espectacles nocturns d''art digital.'
-        jumbotron_6: ''
         buy_tickets: 'comprar entrades'
     events:
         featured_speakers: 'Ponents destacats'
@@ -48,6 +47,7 @@ admin:
         location: 'Ubicació'
         collaborators: 'Col·laboradors'
         image: 'Arxiu'
+        single_image: 'Imatge'
         actions: 'Accions'
         username: 'Nom d''usuari'
         user_roles: 'Rols d''usuari'

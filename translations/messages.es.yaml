@@ -47,6 +47,7 @@ admin:
         location: 'Ubicación'
         collaborators: 'Colaboradores'
         image: 'Archivo'
+        single_image: 'Imagen'
         actions: 'Acciones'
         username: 'Nombre de usuario'
         user_roles: 'Roles de usuario'
