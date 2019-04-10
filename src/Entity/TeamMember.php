@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use App\Entity\Traits\DescriptionTrait;
 use App\Entity\Traits\EmailTrait;
 use App\Entity\Traits\ImageAttributesTrait;
 use App\Entity\Traits\NameTrait;
@@ -25,7 +26,7 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
  */
 class TeamMember extends AbstractEntity
 {
-    use NameTrait, SlugTrait, EmailTrait, PhoneTrait, ImageAttributesTrait;
+    use NameTrait, SlugTrait, EmailTrait, PhoneTrait, ImageAttributesTrait, DescriptionTrait;
 
     /**
      * @ORM\Column(type="smallint", nullable=true)
@@ -224,26 +225,6 @@ class TeamMember extends AbstractEntity
     public function setJob(string $job): self
     {
         $this->job = $job;
-
-        return $this;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getDescription(): ?string
-    {
-        return $this->description;
-    }
-
-    /**
-     * @param string $description
-     *
-     * @return TeamMember
-     */
-    public function setDescription(string $description): self
-    {
-        $this->description = $description;
 
         return $this;
     }

@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use App\Entity\Traits\DescriptionTrait;
 use App\Entity\Traits\ImageAttributesTrait;
 use App\Entity\Traits\NameTrait;
 use App\Entity\Traits\ShortDescriptionTrait;
@@ -25,7 +26,7 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
  */
 class EventActivity extends AbstractEntity
 {
-    use NameTrait, SlugTrait, ImageAttributesTrait, ShortDescriptionTrait;
+    use NameTrait, SlugTrait, ImageAttributesTrait, ShortDescriptionTrait, DescriptionTrait;
 
     /**
      * @ORM\Column(type="string", length=255, unique=true)
@@ -188,26 +189,6 @@ class EventActivity extends AbstractEntity
     public function setEnd(DateTimeInterface $end): self
     {
         $this->end = $end;
-
-        return $this;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getDescription(): ?string
-    {
-        return $this->description;
-    }
-
-    /**
-     * @param string $description
-     *
-     * @return EventActivity
-     */
-    public function setDescription(string $description): self
-    {
-        $this->description = $description;
 
         return $this;
     }
