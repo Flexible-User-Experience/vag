@@ -6,9 +6,11 @@ use App\Enum\GenderEnum;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 /**
@@ -83,6 +85,28 @@ final class EventCollaboratorAdmin extends AbstractAdmin
                 ]
             )
             ->end()
+            ->with('admin.with.text', ['class' => 'col-md-4'])
+            ->add(
+                'shortDescription',
+                TextType::class,
+                [
+                    'label' => 'admin.label.short_description',
+                    'required' => false,
+                ]
+            )
+            ->add(
+                'description',
+                TextareaType::class,
+                [
+                    'label' => 'admin.label.description',
+                    'required' => false,
+                    'attr' => [
+                        'rows' => '5',
+                        'style' => 'resize:vertical',
+                    ],
+                ]
+            )
+            ->end()
             ->with('admin.with.images', ['class' => 'col-md-4'])
             ->add(
                 'imageFile',
@@ -101,6 +125,14 @@ final class EventCollaboratorAdmin extends AbstractAdmin
                 [
                     'label' => 'admin.label.slug',
                     'disabled' => true,
+                ]
+            )
+            ->add(
+                'showInHomepage',
+                CheckboxType::class,
+                [
+                    'label' => 'admin.label.show_in_homepage',
+                    'required' => false,
                 ]
             )
             ->end()
@@ -153,6 +185,13 @@ final class EventCollaboratorAdmin extends AbstractAdmin
                 null,
                 [
                     'label' => 'admin.label.description',
+                ]
+            )
+            ->add(
+                'showInHomepage',
+                null,
+                [
+                    'label' => 'admin.label.show_in_homepage_short',
                 ]
             )
         ;
