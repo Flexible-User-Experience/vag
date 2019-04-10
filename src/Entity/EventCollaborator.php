@@ -6,6 +6,7 @@ use App\Entity\Traits\EmailTrait;
 use App\Entity\Traits\ImageAttributesTrait;
 use App\Entity\Traits\NameTrait;
 use App\Entity\Traits\PhoneTrait;
+use App\Entity\Traits\ShortDescriptionTrait;
 use App\Entity\Traits\SlugTrait;
 use App\Entity\Translation\EventCollaboratorTranslation;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -25,7 +26,7 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
  */
 class EventCollaborator extends AbstractEntity
 {
-    use NameTrait, SlugTrait, EmailTrait, PhoneTrait, ImageAttributesTrait;
+    use NameTrait, SlugTrait, EmailTrait, PhoneTrait, ImageAttributesTrait, ShortDescriptionTrait;
 
     /**
      * @ORM\Column(type="smallint", nullable=true)
@@ -212,26 +213,6 @@ class EventCollaborator extends AbstractEntity
     public function setLink(string $link): self
     {
         $this->link = $link;
-
-        return $this;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getShortDescription(): ?string
-    {
-        return $this->shortDescription;
-    }
-
-    /**
-     * @param string $shortDescription
-     *
-     * @return EventCollaborator
-     */
-    public function setShortDescription(string $shortDescription): self
-    {
-        $this->shortDescription = $shortDescription;
 
         return $this;
     }

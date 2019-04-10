@@ -50,7 +50,7 @@ abstract class AbstractEntity
     }
 
     /**
-     * @return DateTimeInterface
+     * @return DateTimeInterface|null
      */
     public function getCreated(): ?DateTimeInterface
     {
@@ -70,7 +70,7 @@ abstract class AbstractEntity
     }
 
     /**
-     * @return DateTimeInterface
+     * @return DateTimeInterface|null
      */
     public function getUpdated(): ?DateTimeInterface
     {
