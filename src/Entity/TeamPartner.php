@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Entity\Traits\ImageAttributesTrait;
+use App\Entity\Traits\LinkTrait;
 use App\Entity\Traits\NameTrait;
 use App\Entity\Traits\SlugTrait;
 use Doctrine\ORM\Mapping as ORM;
@@ -19,7 +20,7 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
  */
 class TeamPartner extends AbstractEntity
 {
-    use NameTrait, SlugTrait, ImageAttributesTrait;
+    use NameTrait, SlugTrait, ImageAttributesTrait, LinkTrait;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -74,26 +75,6 @@ class TeamPartner extends AbstractEntity
     /**
      * Methods.
      */
-
-    /**
-     * @return string|null
-     */
-    public function getLink(): ?string
-    {
-        return $this->link;
-    }
-
-    /**
-     * @param string $link
-     *
-     * @return TeamPartner
-     */
-    public function setLink(string $link): self
-    {
-        $this->link = $link;
-
-        return $this;
-    }
 
     /**
      * @return bool|null

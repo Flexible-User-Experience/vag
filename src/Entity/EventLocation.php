@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Entity\Traits\ImageAttributesTrait;
+use App\Entity\Traits\LinkTrait;
 use App\Entity\Traits\SlugTrait;
 use App\Entity\Translation\EventLocationTranslation;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -21,7 +22,7 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
  */
 class EventLocation extends AbstractEntity
 {
-    use SlugTrait, ImageAttributesTrait;
+    use SlugTrait, ImageAttributesTrait, LinkTrait;
 
     /**
      * @ORM\Column(type="float", nullable=true)
@@ -165,26 +166,6 @@ class EventLocation extends AbstractEntity
     public function setPlace(string $place): self
     {
         $this->place = $place;
-
-        return $this;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getLink(): ?string
-    {
-        return $this->link;
-    }
-
-    /**
-     * @param string $link
-     *
-     * @return EventLocation
-     */
-    public function setLink(string $link): self
-    {
-        $this->link = $link;
 
         return $this;
     }
