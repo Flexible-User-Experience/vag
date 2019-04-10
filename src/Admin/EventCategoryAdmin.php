@@ -9,6 +9,7 @@ use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ColorType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Vich\UploaderBundle\Form\Type\VichImageType;
 
 /**
  * Class EventCategoryAdmin
@@ -56,6 +57,7 @@ final class EventCategoryAdmin extends AbstractAdmin
                 TextType::class,
                 [
                     'label' => 'admin.label.icon',
+                    'help' => 'admin.help.icon',
                 ]
             )
             ->add(
@@ -63,6 +65,16 @@ final class EventCategoryAdmin extends AbstractAdmin
                 TextType::class,
                 [
                     'label' => 'admin.label.name',
+                ]
+            )
+            ->end()
+            ->with('admin.with.images', ['class' => 'col-md-4'])
+            ->add(
+                'imageFile',
+                VichImageType::class,
+                [
+                    'label' => 'admin.label.image',
+                    'required' => false,
                 ]
             )
             ->end()

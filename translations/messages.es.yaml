@@ -54,6 +54,8 @@ admin:
             gender: 'Género'
             male: 'Hombre'
             female: 'Mujer'
+    help:
+        icon: 'fa fa-[icon_class_name]'
     with:
         event: 'Evento'
         collaborator: 'Colaborador'
