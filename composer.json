@@ -6,6 +6,7 @@
         "ext-ctype": "*",
         "ext-iconv": "*",
         "cypresslab/gitelephant-bundle": "^0.1",
+        "egulias/email-validator": "^2.1",
         "knplabs/knp-menu-bundle": "^2.0",
         "liip/imagine-bundle": "^2.1",
         "sensio/framework-extra-bundle": "^5.2",
