@@ -52,10 +52,15 @@ admin:
         actions: 'Acciones'
         username: 'Nombre de usuario'
         user_roles: 'Roles de usuario'
+        plain_password: 'Contraseña'
         gender:
             gender: 'Género'
             male: 'Hombre'
             female: 'Mujer'
+        role:
+            ROLE_USER: 'usuario'
+            ROLE_CMS: 'editor'
+            ROLE_ADMIN: 'administrador'
     help:
         icon: 'fa fa-[icon_class_name]'
     with:

@@ -52,10 +52,15 @@ admin:
         actions: 'Accions'
         username: 'Nom d''usuari'
         user_roles: 'Rols d''usuari'
+        plain_password: 'Contrasenya'
         gender:
             gender: 'Gènere'
             male: 'Home'
             female: 'Dona'
+        role:
+            ROLE_USER: 'usuari'
+            ROLE_CMS: 'editor'
+            ROLE_ADMIN: 'administrador'
     help:
         icon: 'fa fa-[icon_class_name]'
     with:

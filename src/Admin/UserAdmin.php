@@ -3,7 +3,6 @@
 namespace App\Admin;
 
 use App\Enum\UserRoleEnum;
-use Sonata\DoctrineORMAdminBundle\Filter\ChoiceFilter;
 use Sonata\UserBundle\Admin\Model\UserAdmin as ParentUserAdmin;
 use Sonata\AdminBundle\Route\RouteCollection;
 use Sonata\AdminBundle\Datagrid\ListMapper;
@@ -14,7 +13,6 @@ use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
-
 
 /**
  * Class EventLocationAdmin
