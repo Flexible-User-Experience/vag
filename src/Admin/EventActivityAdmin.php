@@ -49,7 +49,7 @@ final class EventActivityAdmin extends AbstractAdmin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->with('admin.with.activity', ['class' => 'col-md-5'])
+            ->with('admin.with.activity', ['class' => 'col-md-4'])
             ->add(
                 'name',
                 TextType::class,
@@ -117,7 +117,15 @@ final class EventActivityAdmin extends AbstractAdmin
                 ]
             )
             ->end()
-            ->with('admin.with.controls', ['class' => 'col-md-3'])
+            ->with('admin.with.controls', ['class' => 'col-md-4'])
+            ->add(
+                'slug',
+                TextType::class,
+                [
+                    'label' => 'admin.label.slug',
+                    'disabled' => true,
+                ]
+            )
             ->add(
                 'begin',
                 DateTimePickerType::class,
