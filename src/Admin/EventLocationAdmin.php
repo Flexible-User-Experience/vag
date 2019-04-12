@@ -83,6 +83,7 @@ final class EventLocationAdmin extends AbstractAdmin
                 TextType::class,
                 [
                     'label' => 'admin.label.slug',
+                    'required' => false,
                     'disabled' => true,
                 ]
             )
