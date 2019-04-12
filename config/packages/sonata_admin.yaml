@@ -17,6 +17,8 @@ sonata_admin:
         groups:
             'admin.with.event':
                 icon: "<i class='fa fa-calendar'></i>"
+            'admin.with.team':
+                icon: "<i class='fa fa-users'></i>"
             'admin.with.settings':
                 icon: "<i class='fa fa-cogs'></i>"
         blocks:
