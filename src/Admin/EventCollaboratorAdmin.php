@@ -12,6 +12,7 @@ use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\UrlType;
 
 /**
  * Class EventCollaboratorAdmin
@@ -47,14 +48,6 @@ final class EventCollaboratorAdmin extends AbstractAdmin
     {
         $formMapper
             ->with('admin.with.collaborator', ['class' => 'col-md-4'])
-            ->add(
-                'gender',
-                ChoiceType::class,
-                [
-                    'label' => 'admin.label.gender.gender',
-                    'choices' => GenderEnum::getStaticChoices(),
-                ]
-            )
             ->add(
                 'name',
                 TextType::class,
@@ -118,13 +111,29 @@ final class EventCollaboratorAdmin extends AbstractAdmin
                 ]
             )
             ->end()
-            ->with('admin.with.controls', ['class' => 'col-md-3'])
+            ->with('admin.with.controls', ['class' => 'col-md-4'])
             ->add(
                 'slug',
                 TextType::class,
                 [
                     'label' => 'admin.label.slug',
                     'disabled' => true,
+                ]
+            )
+            ->add(
+                'gender',
+                ChoiceType::class,
+                [
+                    'label' => 'admin.label.gender.gender',
+                    'choices' => GenderEnum::getStaticChoices(),
+                ]
+            )
+            ->add(
+                'link',
+                UrlType::class,
+                [
+                    'label' => 'admin.label.link',
+                    'required' => false,
                 ]
             )
             ->add(

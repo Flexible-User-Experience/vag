@@ -29,6 +29,7 @@ admin:
         color: 'Color'
         icon: 'Icon'
         slug: 'Slug'
+        link: 'Web link'
         name: 'Name'
         surname: 'Surname'
         email: 'Email'
@@ -68,6 +69,7 @@ admin:
         controls: 'Controls'
         user: 'Usuer'
         settings: 'Settings'
+        text: 'Texts'
 
 'Admin Class Event Activity List': 'Activities'
 'Admin Class Event Activity Create': 'New'
