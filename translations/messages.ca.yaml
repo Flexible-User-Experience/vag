@@ -42,6 +42,8 @@ admin:
         is_available_female: 'Activa'
         show_in_homepage: 'Mostrar a la pàgina inicial'
         show_in_homepage_short: 'Homepage'
+        show_in_frontend: 'Mostrar a la pàgina web'
+        show_in_frontend_short: 'Pàgina web'
         begin: 'Comença'
         end: 'Acaba'
         short_description: 'Descripció breu'
@@ -77,6 +79,8 @@ admin:
         user: 'Usuari'
         settings: 'Configuració'
         text: 'Textes'
+        team: 'Equips'
+        team_partner: 'Patrocinador'
 
 'Admin Class Event Activity List': 'Activitats'
 'Admin Class Event Activity Create': 'Nou'
@@ -88,3 +92,5 @@ admin:
 'Admin Class Event Locations Create': 'Nou'
 'Admin Class User List': 'Usuaris'
 'Admin Class User Create': 'Nou'
+'Admin Class Team Partner List': 'Patrocinadors'
+'Admin Class Team Partner Create': 'Nou'

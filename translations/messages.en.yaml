@@ -42,6 +42,8 @@ admin:
         is_available_female: 'Available'
         show_in_homepage: 'Show in homepage'
         show_in_homepage_short: 'Homepage'
+        show_in_frontend: 'Show in webpage'
+        show_in_frontend_short: 'Webpage'
         begin: 'Begin'
         end: 'End'
         short_description: 'Short description'
@@ -77,6 +79,8 @@ admin:
         user: 'Usuer'
         settings: 'Settings'
         text: 'Texts'
+        team: 'Teams'
+        team_partner: 'Partners'
 
 'Admin Class Event Activity List': 'Activities'
 'Admin Class Event Activity Create': 'New'
@@ -88,3 +92,5 @@ admin:
 'Admin Class Event Locations Create': 'New'
 'Admin Class User List': 'Users'
 'Admin Class User Create': 'New'
+'Admin Class Team Partner List': 'Partners'
+'Admin Class Team Partner Create': 'New'
