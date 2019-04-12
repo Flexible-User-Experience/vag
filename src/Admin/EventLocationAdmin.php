@@ -5,6 +5,7 @@ namespace App\Admin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\UrlType;
@@ -43,6 +44,20 @@ final class EventLocationAdmin extends AbstractAdmin
     {
         $formMapper
             ->with('admin.with.location', ['class' => 'col-md-4'])
+            ->add(
+                'latitude',
+                NumberType::class,
+                [
+                    'label' => 'admin.label.latitude',
+                ]
+            )
+            ->add(
+                'longitude',
+                NumberType::class,
+                [
+                    'label' => 'admin.label.longitude',
+                ]
+            )
             ->add(
                 'place',
                 TextType::class,
