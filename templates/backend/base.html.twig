@@ -3,6 +3,15 @@
 {# removes top search bar #}
 {% block sonata_sidebar_search %}{% endblock %}
 
+{# custom logo #}
+{% block logo %}
+    {% spaceless %}
+        <a class="logo" href="{{ path('sonata_admin_dashboard') }}" style="background-color:#2c3b41;border-right:none">
+            <img style="padding-bottom:1px;max-width:90px" src="{{ asset('build/vag_green.svg') }}" alt="VAG logo">
+        </a>
+    {% endspaceless %}
+{% endblock %}
+
 {# custom sidebar footer #}
 {% block side_bar_after_nav %}
     <div class="btn-group" role="group" aria-label="languages selector" style="margin:50px 0 10px 20px">
