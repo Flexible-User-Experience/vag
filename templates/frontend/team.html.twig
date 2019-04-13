@@ -9,11 +9,30 @@
     <div class="jumbotron jumbotron-fluid jumbotron-dark">
         <div class="container">
             <div class="row">
-                <div class="col-sm-12">
-                    <div class="alert alert-warning mb-0" role="alert">
-                        <i class="fa exclamation-triangle"></i> {{ 'front.events.empty_warning' | trans }}
+                {% if members | length > 0 %}
+                    {% for member in members %}
+                        <div class="col-6 col-sm-4">
+                            <div class="card">
+                                <img src="{{ vich_uploader_asset(member, 'imageFile') | imagine_filter('480xY') }}" class="card-img-top" alt="{{ member.fullname }}">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ member.fullname }}</h5>
+                                    {% if member.job %}
+                                        <p class="card-text">{{ member.job }}</p>
+                                    {% endif %}
+                                    {% if member.link %}
+                                        <a href="{{ member.link }}">{{ member.link }}</a>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <div class="col-sm-12">
+                        <div class="alert alert-warning mb-0" role="alert">
+                            <i class="fa exclamation-triangle"></i> {{ 'front.events.empty_warning' | trans }}
+                        </div>
                     </div>
-                </div>
+                {% endif %}
             </div>
         </div>
     </div>
