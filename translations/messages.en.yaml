@@ -2,6 +2,8 @@ front:
     menu:
         blog: 'blog'
         tickets: 'tickets'
+        contact: 'contact'
+        team: 'team'
     homepage:
         jumbotron_1: 'The only cultural event about video games and digital art.'
         jumbotron_2: 'Don''t miss this opportunity to discover a new face of the digital entertainment industry!'

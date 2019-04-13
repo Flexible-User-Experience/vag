@@ -47,30 +47,6 @@ class FrontendController extends AbstractController
     }
 
     /**
-     * @Route("/{slug}", name="front_event_category")
-     * @ParamConverter("category", class="App:EventCategory")
-     *
-     * @param EventCategory $category
-     *
-     * @return Response
-     * @throws NotFoundHttpException
-     */
-    public function category(EventCategory $category)
-    {
-        if (!$category->isAvailable()) { // TODO disable for admin logged users
-            throw $this->createNotFoundException();
-        }
-
-        return $this->render(
-            'frontend/category.html.twig',
-            [
-                'category' => $category,
-                'activities' => $this->getDoctrine()->getRepository(EventActivity::class)->findAvailableByCategorySortedByName($category)->getQuery()->getResult(),
-            ]
-        );
-    }
-
-    /**
      * @Route("/blog", name="front_blog")
      *
      * @return Response
@@ -108,5 +84,29 @@ class FrontendController extends AbstractController
     public function team()
     {
         return $this->render('frontend/team.html.twig', []);
+    }
+
+    /**
+     * @Route("/{slug}", name="front_event_category")
+     * @ParamConverter("category", class="App:EventCategory")
+     *
+     * @param EventCategory $category
+     *
+     * @return Response
+     * @throws NotFoundHttpException
+     */
+    public function category(EventCategory $category)
+    {
+        if (!$category->isAvailable()) { // TODO disable for admin logged users
+            throw $this->createNotFoundException();
+        }
+
+        return $this->render(
+            'frontend/category.html.twig',
+            [
+                'category' => $category,
+                'activities' => $this->getDoctrine()->getRepository(EventActivity::class)->findAvailableByCategorySortedByName($category)->getQuery()->getResult(),
+            ]
+        );
     }
 }
