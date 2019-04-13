@@ -1,4 +1,5 @@
 services:
+    # event
     admin.event_category:
         class: App\Admin\EventCategoryAdmin
         arguments: [~, App\Entity\EventCategory, ~, '@sonata.admin.entity_manager', '@vich_uploader.templating.helper.uploader_helper', '@liip_imagine.cache.manager']
@@ -19,11 +20,18 @@ services:
         arguments: [~, App\Entity\EventActivity, ~, '@sonata.admin.entity_manager', '@vich_uploader.templating.helper.uploader_helper', '@liip_imagine.cache.manager']
         tags:
             - { name: sonata.admin, manager_type: orm, label: 'admin.with.activity', group: 'admin.with.event' }
+    # team
     admin.team_partner:
         class: App\Admin\TeamPartnerAdmin
         arguments: [~, App\Entity\TeamPartner, ~, '@sonata.admin.entity_manager', '@vich_uploader.templating.helper.uploader_helper', '@liip_imagine.cache.manager']
         tags:
             - { name: sonata.admin, manager_type: orm, label: 'admin.with.team_partner', group: 'admin.with.team' }
+    admin.team_member:
+        class: App\Admin\TeamMemberAdmin
+        arguments: [~, App\Entity\TeamMember, ~, '@sonata.admin.entity_manager', '@vich_uploader.templating.helper.uploader_helper', '@liip_imagine.cache.manager']
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: 'admin.with.team_member', group: 'admin.with.team' }
+    # settings
     admin.configuration_user:
         class: App\Admin\UserAdmin
         arguments: [~, App\Entity\User, ~, '@fos_user.user_manager.default']

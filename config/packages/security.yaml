@@ -15,6 +15,7 @@ security:
             - ROLE_ADMIN_EVENT_COLLABORATOR_ALL
             - ROLE_ADMIN_EVENT_ACTIVITY_ALL
             - ROLE_ADMIN_TEAM_PARTNER_ALL
+            - ROLE_ADMIN_TEAM_MEMBER_ALL
         ROLE_ADMIN:
             - ROLE_CMS
             - ROLE_ADMIN_CONFIGURATION_USER_ALL
