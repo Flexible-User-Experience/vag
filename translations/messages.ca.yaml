@@ -81,6 +81,7 @@ admin:
         text: 'Textes'
         team: 'Equips'
         team_partner: 'Patrocinador'
+        team_member: 'Membres'
 
 'Admin Class Event Activity List': 'Activitats'
 'Admin Class Event Activity Create': 'Nou'
@@ -94,3 +95,5 @@ admin:
 'Admin Class User Create': 'Nou'
 'Admin Class Team Partner List': 'Patrocinadors'
 'Admin Class Team Partner Create': 'Nou'
+'Admin Class Team Member List': 'Members'
+'Admin Class Team Member Create': 'Nou'
