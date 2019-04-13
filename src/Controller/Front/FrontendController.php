@@ -5,6 +5,7 @@ namespace App\Controller\Front;
 use App\Entity\EventActivity;
 use App\Entity\EventCategory;
 use App\Entity\EventCollaborator;
+use App\Entity\TeamMember;
 use App\Enum\UserRoleEnum;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
@@ -83,7 +84,11 @@ class FrontendController extends AbstractController
      */
     public function team()
     {
-        return $this->render('frontend/team.html.twig', []);
+        $members = $this->getDoctrine()->getRepository(TeamMember::class)->findShowInFrontendSortedBySurnameAndName()->getQuery()->getResult();
+
+        return $this->render('frontend/team.html.twig', [
+            'members' => $members,
+        ]);
     }
 
     /**
