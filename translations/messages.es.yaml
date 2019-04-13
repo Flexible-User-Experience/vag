@@ -34,6 +34,7 @@ admin:
         surname: 'Apellidos'
         email: 'Email'
         phone: 'Teléfono'
+        job: 'Trabajo'
         place: 'Lugar'
         latitude: 'Latitud'
         longitude: 'Longitud'

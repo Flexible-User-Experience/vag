@@ -67,6 +67,7 @@ final class TeamMemberAdmin extends AbstractAdmin
                 EmailType::class,
                 [
                     'label' => 'admin.label.email',
+                    'required' => false,
                 ]
             )
             ->add(
@@ -79,6 +80,14 @@ final class TeamMemberAdmin extends AbstractAdmin
             )
             ->end()
             ->with('admin.with.text', ['class' => 'col-md-4'])
+            ->add(
+                'job',
+                TextType::class,
+                [
+                    'label' => 'admin.label.job',
+                    'required' => false,
+                ]
+            )
             ->add(
                 'description',
                 TextareaType::class,
