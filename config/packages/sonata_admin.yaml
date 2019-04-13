@@ -19,11 +19,14 @@ sonata_admin:
                 icon: "<i class='fa fa-calendar'></i>"
             'admin.with.team':
                 icon: "<i class='fa fa-users'></i>"
+            'admin.with.comunication':
+                icon: "<i class='fa fa-users'></i>"
             'admin.with.settings':
                 icon: "<i class='fa fa-cogs'></i>"
         blocks:
             - { type: sonata.admin.block.admin_list, position: top, class: 'col-lg-4 col-md-6 col-sm-12', settings: {groups: ['admin.with.event']}}
             - { type: sonata.admin.block.admin_list, position: top, class: 'col-lg-4 col-md-6 col-sm-12', settings: {groups: ['admin.with.team']}}
+            - { type: sonata.admin.block.admin_list, position: top, class: 'col-lg-4 col-md-6 col-sm-12', settings: {groups: ['admin.with.comunication']}}
             - { type: sonata.admin.block.admin_list, position: top, class: 'col-lg-4 col-md-6 col-sm-12', settings: {groups: ['admin.with.settings']}}
 
 # Block
