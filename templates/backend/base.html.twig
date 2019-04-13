@@ -21,3 +21,15 @@
     </div>
     <p class="text-left small" style="padding-left:20px;color:#EEE;">{{ admin_tag_version }}<br><i class="fa fa-code"></i> Desenvolupat per <a href="https://www.flux.cat" target="_blank">Flux</a><br><i class="fa fa-copyright"></i> {{ 'now' | date('Y') }} <a href="{{ path('front_homepage') }}" target="_blank">{{ main_brand_title }}</a></p>
 {% endblock %}
+
+{# custom top menu #}
+{% block sonata_top_nav_menu %}
+    <div class="navbar-custom-menu">
+        <ul class="nav navbar-nav navbar-right">
+            {#{{ TODO showUnreadMessages() | raw }}#}
+            <li><a href="{{ path('front_homepage') }}"><i class="fa fa-globe"></i></a></li>
+            <li><a>{{ app.user.username }}</a></li>
+            <li><a href="{{ path('sonata_user_admin_security_logout') }}"><i class="fa fa-power-off text-success"></i></a></li>
+        </ul>
+    </div>
+{% endblock %}
