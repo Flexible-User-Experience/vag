@@ -137,6 +137,9 @@
     "gedmo/doctrine-extensions": {
         "version": "v2.4.36"
     },
+    "gremo/zurb-ink-bundle": {
+        "version": "v4.0.2"
+    },
     "hautelook/alice-bundle": {
         "version": "2.1",
         "recipe": {
@@ -178,6 +181,9 @@
             "config/packages/liip_imagine.yaml",
             "config/routes/liip_imagine.yaml"
         ]
+    },
+    "lorenzo/pinky": {
+        "version": "1.0.3"
     },
     "monolog/monolog": {
         "version": "1.24.0"
@@ -690,6 +696,9 @@
             "version": "1.0",
             "ref": "fe5a50faf580eb58f08ada2abe8afbd2d4941e05"
         }
+    },
+    "tijsverkoyen/css-to-inline-styles": {
+        "version": "2.2.1"
     },
     "twig/extensions": {
         "version": "1.0",
