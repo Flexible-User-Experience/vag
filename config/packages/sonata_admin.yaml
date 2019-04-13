@@ -22,7 +22,9 @@ sonata_admin:
             'admin.with.settings':
                 icon: "<i class='fa fa-cogs'></i>"
         blocks:
-            - { type: sonata.admin.block.admin_list, position: left }
+            - { type: sonata.admin.block.admin_list, position: top, class: 'col-lg-4 col-md-6 col-sm-12', settings: {groups: ['admin.with.event']}}
+            - { type: sonata.admin.block.admin_list, position: top, class: 'col-lg-4 col-md-6 col-sm-12', settings: {groups: ['admin.with.team']}}
+            - { type: sonata.admin.block.admin_list, position: top, class: 'col-lg-4 col-md-6 col-sm-12', settings: {groups: ['admin.with.settings']}}
 
 # Block
 sonata_block:
