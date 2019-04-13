@@ -4,6 +4,7 @@ front:
         tickets: 'entrades'
         contact: 'contacte'
         team: 'equip'
+        partners: 'patrocinadors'
     homepage:
         jumbotron_1: 'L''únic esdeveniment cultural sobre videojocs i art digital.'
         jumbotron_2: 'No et perdis aquesta oportunitat de descobrir una nova cara de la indústria de l''entreteniment digital!'

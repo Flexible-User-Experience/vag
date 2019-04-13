@@ -4,6 +4,7 @@ front:
         tickets: 'tickets'
         contact: 'contact'
         team: 'team'
+        partners: 'partners'
     homepage:
         jumbotron_1: 'The only cultural event about video games and digital art.'
         jumbotron_2: 'Don''t miss this opportunity to discover a new face of the digital entertainment industry!'
