@@ -25,7 +25,8 @@ front:
         team: 'team'
         privacy: 'privacy'
         terms: 'terms'
-
+        company: 'company'
+        social_networks: 'social networks'
 admin:
     label:
         color: 'Color'

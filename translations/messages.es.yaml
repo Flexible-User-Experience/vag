@@ -25,6 +25,8 @@ front:
         team: 'equipo'
         privacy: 'privacidad'
         terms: 'legal'
+        company: 'empresa'
+        social_networks: 'redes sociales'
 
 admin:
     label:
