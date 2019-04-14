@@ -8,7 +8,7 @@
             {% endif %}
             {% for activity in activities %}
                 <div class="col-6 col-md-4">
-                    <div class="card">
+                    <div class="card mt-3">
                         {% if activity.imageName %}
                             <img src="{{ vich_uploader_asset(activity, 'imageFile') | imagine_filter('480xY') }}" class="card-img-top" alt="{{ activity.name }}">
                         {% endif %}

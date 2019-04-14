@@ -8,14 +8,13 @@
             {% endif %}
             {% for speaker in speakers %}
                 <div class="col-6 col-md-4">
-                    <div class="card">
+                    <div class="media mt-3">
                         {% if speaker.imageName %}
-                            <img src="{{ vich_uploader_asset(speaker, 'imageFile') | imagine_filter('480xY') }}" class="card-img-top" alt="{{ activity.name }}">
+                            <img src="{{ vich_uploader_asset(speaker, 'imageFile') | imagine_filter('180x180') }}" alt="{{ speaker.fullname }}" class="mr-3 rounded w-50">
                         {% endif %}
-                        <div class="card-body">
-                            <h5 class="card-title mb-0">{{ speaker.fullname }}</h5>
-                            {#<span class="badge badge-pill badge-dark pull-right mb-2">{{ activity.beginString }}</span>#}
-                            <p class="card-text mb-4">{{ speaker.shortDescription }}</p>
+                        <div class="media-body">
+                            <p class="mt-0 mb-0"><strong>{{ speaker.fullname }}</strong></p>
+                            <p class="text-muted mb-2">{{ speaker.shortDescription }}</p>
                             <a href="#" class="btn btn-warning btn-sm">{{ 'front.events.read_more' | trans }}</a>
                         </div>
                     </div>
