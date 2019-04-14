@@ -95,6 +95,20 @@ class FrontendController extends AbstractController
     }
 
     /**
+     * @Route({"ca": "/participants", "es": "/participantes", "en": "/participants"}, name="front_participants")
+     *
+     * @return Response
+     */
+    public function participants()
+    {
+        $participants = $this->getDoctrine()->getRepository(EventCollaborator::class)->findAllSortedBySurnameAndName()->getQuery()->getResult();
+
+        return $this->render('frontend/participants.html.twig', [
+            'participants' => $participants,
+        ]);
+    }
+
+    /**
      * @Route("/{slug}", name="front_event_category")
      * @ParamConverter("category", class="App:EventCategory")
      *

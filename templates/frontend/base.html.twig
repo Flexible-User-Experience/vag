@@ -40,10 +40,8 @@
                 <div class="row">
                     <div class="col">
                         {#<img class="footer-logo mb-2" src="{{ asset('build/vag_green.svg') }}" alt="VAG logo">#}
-                        <h6 class="text-white">&copy; {{ 'now'| date('Y') }}</h6>
-                    </div>
-                    <div class="col">
-                        <h6 class="text-white">{{ 'front.footer.company' | trans | title }}</h6>
+                        {#<h6 class="text-white">&copy; {{ 'now'| date('Y') }} VAG</h6>#}
+                        <h6 class="text-white">VAG</h6>
                         <ul class="list-unstyled text-small">
                             <li><a class="text-muted" href="{{ path('front_contact') }}">{{ 'front.footer.contact' | trans }}</a></li>
                             <li><a class="text-muted" href="{{ path('front_team') }}">{{ 'front.footer.team' | trans }}</a></li>

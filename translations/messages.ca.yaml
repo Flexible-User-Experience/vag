@@ -13,7 +13,9 @@ front:
         jumbotron_5: 'En aquesta edició hem escollit els temes: <em>archaeogaming</em> i l''impacte del gènere femení a la indústria. Gaudeix de totes les activitats diàries i els espectacles nocturns d''art digital.'
         buy_tickets: 'comprar entrades'
     events:
-        featured_speakers: 'Ponents destacats'
+        speakers: 'Participants'
+        featured_speakers: 'Participants destacats'
+        show_all_speakers: 'Veure tots els participants'
         activities: 'Activitats'
         highlighted_activities: 'Activitats destacades'
         read_more: 'llegir més'
