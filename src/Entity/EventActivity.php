@@ -164,6 +164,14 @@ class EventActivity extends AbstractEntity
     }
 
     /**
+     * @return string
+     */
+    public function getBeginString(): string
+    {
+        return $this->getBegin() ? $this->getBegin()->format('d/m/Y H:i') : '---';
+    }
+
+    /**
      * @param DateTimeInterface $begin
      *
      * @return EventActivity
