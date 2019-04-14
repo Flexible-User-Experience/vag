@@ -1,21 +1,23 @@
 {% if mainHighlights | length > 0 %}
-    <div id="{{ highlights_carousel_id }}" class="carousel slide carousel-fade" data-ride="carousel">
-        <div class="carousel-inner">
-            {% for collaborator in mainHighlights %}
-                <div class="carousel-item{% if loop.first %} active{% endif %}">
-                    <svg class="bd-placeholder-img bd-placeholder-img-lg d-block w-100" width="800" height="400" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Third slide">
-                        <title>{{ collaborator.name }}</title>
-                        <rect width="100%" height="100%" fill="#2F2F2F"></rect>
-                        <text x="35%" y="40%" fill="#FFF" dy=".3em">{{ collaborator.fullname }}</text>
-                        <text x="35%" y="50%" fill="#FFF" dy=".2em">{{ collaborator.shortDescription }}</text>
-                    </svg>
-    {#                <img src="{{ asset('build/abstract-abstraction.png') }}" class="d-block w-100" alt="...">#}
-    {#                <div class="carousel-caption d-none d-md-block">#}
-    {#                    <h5>{{ collaborator.fullname }}</h5>#}
-    {#                    <p>{{ collaborator.shortDescription }}</p>#}
-    {#                </div>#}
-                </div>
-            {% endfor %}
+    <div class="container pt-5 pb-5">
+        <h5 class="mt-0">{{ 'front.events.featured_speakers' | trans }}</h5>
+        <div id="{{ highlights_carousel_id }}" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner row w-100 mx-auto">
+                {% for collaborator in mainHighlights %}
+                    <div class="carousel-item{% if loop.first %} active{% endif %}">
+                        <div class="card">
+                            {% if collaborator.imageName %}
+                                <img class="card-img-top img-fluid" src="{{ vich_uploader_asset(collaborator, 'imageFile') | imagine_filter('480xY') }}" alt="{{ collaborator.fullname }}">
+                            {% endif %}
+                            <div class="card-body">
+                                <h4 class="card-title">{{ collaborator.fullname }}</h4>
+                                <p class="card-text">{{ collaborator.shortDescription }}</p>
+                                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
             <a class="carousel-control-prev" href="#{{ highlights_carousel_id }}" role="button" data-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span class="sr-only">{{ 'front.carrousel.previous' | trans }}</span>
