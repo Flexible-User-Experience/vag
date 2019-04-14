@@ -1,0 +1,10 @@
+{% extends "frontend/base.html.twig" %}
+
+{% block body %}
+    <div class="jumbotron jumbotron-fluid jumbotron-homepage" style="background-image:url('{{ asset('build/creative-light-abstract-glowing.png') }}');">
+        <div class="container">
+            <h1 class="display-6 text-white">{{ participant.fullname }}</h1>
+        </div>
+    </div>
+    {#{% include "frontend/includes/homepage_higlights_silder.html.twig" with {speakers: participants, show_title: false} %}#}
+{% endblock %}

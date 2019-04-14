@@ -15,7 +15,7 @@
                         <div class="media-body">
                             <p class="mt-0 mb-0"><strong>{{ speaker.fullname }}</strong></p>
                             <p class="text-muted mb-2">{{ speaker.shortDescription }}</p>
-                            <a href="#" class="btn btn-warning btn-sm">{{ 'front.events.read_more' | trans }}</a>
+                            <a href="{{ path('front_participant_detail', {slug: speaker.slug}) }}" class="btn btn-warning btn-sm">{{ 'front.events.read_more' | trans }}</a>
                         </div>
                     </div>
                 </div>
