@@ -31,8 +31,22 @@
             </div>
         </div>
     </div>
-    {# Main speakers highlighted section #}
-    {% include "frontend/includes/homepage_higlights_silder.html.twig" with {speakers: featuredSpeakers, show_title: true} %}
+    {# Highlighted collaborators section #}
+    <div class="jumbotron jumbotron-fluid jumbotron-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h5 class="mt-0">{{ 'front.events.featured_speakers' | trans }}</h5>
+                </div>
+                {% include "frontend/includes/event_collaborator_cards.html.twig" with {collaborators: featuredSpeakers} %}
+                {% if featuredSpeakers | length > 0 %}
+                    <div class="col-12 mt-4 text-center">
+                        <a href="{{ path('front_participants') }}" class="btn btn-outline-dark">{{ 'front.events.show_all_speakers' | trans }}</a>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
     {# First event section #}
     <div class="jumbotron jumbotron-fluid jumbotron-homepage-secondary" style="background-image:url('{{ asset('build/background-blur-bokeh-close-up.png') }}');">
         <div class="container">
