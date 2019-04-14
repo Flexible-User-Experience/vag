@@ -1,5 +1,9 @@
 liip_imagine:
     driver: 'gd'
+    loaders:
+       default:
+          filesystem:
+            locator: filesystem_insecure
     filter_sets:
         2000xY:
             quality: 90

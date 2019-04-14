@@ -34,15 +34,15 @@
     {# Main speakers highlighted section #}
     {% include "frontend/includes/homepage_higlights_silder.html.twig" with {speakers: featuredSpeakers, show_title: true} %}
     {# First event section #}
-    <div class="jumbotron jumbotron-fluid mb-0">
+    <div class="jumbotron jumbotron-fluid jumbotron-homepage-secondary" style="background-image:url('{{ asset('build/background-blur-bokeh-close-up.png') }}');">
         <div class="container">
             <div class="row">
                 <div class="col-sm-3 col-md-2">
-                    <img src="{{ asset('build/vag_experience.svg') }}" class="img-fluid mb-3" alt="VAG experience logo">
+                    <img src="{{ asset('build/vag_experience.svg') }}" class="img-fluid mt-3 mb-3" alt="VAG experience logo">
                 </div>
                 <div class="col-sm-9 col-md-10">
-                    <h2 class="display-6">{{ 'front.homepage.jumbotron_4' | trans | raw }}</h2>
-                    <p class="lead mb-0">{{ 'front.homepage.jumbotron_5' | trans | raw }}</p>
+                    <h2 class="display-6 text-white">{{ 'front.homepage.jumbotron_4' | trans | raw }}</h2>
+                    <p class="lead mb-0 text-white">{{ 'front.homepage.jumbotron_5' | trans | raw }}</p>
                 </div>
             </div>
         </div>

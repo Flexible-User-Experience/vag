@@ -73,6 +73,19 @@ $app-color-footer: #363941;
   }
 }
 
+.jumbotron-homepage-secondary {
+  background-size: cover;
+  margin-bottom: 0;
+  .container {
+    background-color: rgba(255, 255, 255, 0.35);
+  }
+  @include media-breakpoint-up(sm) {
+    .container {
+      border-radius: $app-radius;
+    }
+  }
+}
+
 .jumbotron-dark {
   background-color: $app-color-black;
   margin-bottom: 0;
