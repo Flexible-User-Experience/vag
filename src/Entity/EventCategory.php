@@ -129,11 +129,11 @@ class EventCategory extends AbstractEntity
     }
 
     /**
-     * @param int $priority
+     * @param int|null $priority
      *
      * @return EventCategory
      */
-    public function setPriority(int $priority): self
+    public function setPriority(?int $priority): self
     {
         $this->priority = $priority;
 
@@ -157,11 +157,11 @@ class EventCategory extends AbstractEntity
     }
 
     /**
-     * @param bool $isAvailable
+     * @param bool|null $isAvailable
      *
      * @return EventCategory
      */
-    public function setIsAvailable(bool $isAvailable): self
+    public function setIsAvailable(?bool $isAvailable): self
     {
         $this->isAvailable = $isAvailable;
 
@@ -177,11 +177,11 @@ class EventCategory extends AbstractEntity
     }
 
     /**
-     * @param string $color
+     * @param string|null $color
      *
      * @return EventCategory
      */
-    public function setColor(string $color): self
+    public function setColor(?string $color): self
     {
         $this->color = $color;
 
@@ -197,11 +197,11 @@ class EventCategory extends AbstractEntity
     }
 
     /**
-     * @param string $icon
+     * @param string|null $icon
      *
      * @return EventCategory
      */
-    public function setIcon(string $icon): self
+    public function setIcon(?string $icon): self
     {
         $this->icon = $icon;
 

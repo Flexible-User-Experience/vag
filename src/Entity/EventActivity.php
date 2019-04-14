@@ -172,11 +172,11 @@ class EventActivity extends AbstractEntity
     }
 
     /**
-     * @param DateTimeInterface $begin
+     * @param DateTimeInterface|null $begin
      *
      * @return EventActivity
      */
-    public function setBegin(DateTimeInterface $begin): self
+    public function setBegin(?DateTimeInterface $begin): self
     {
         $this->begin = $begin;
 
@@ -192,11 +192,11 @@ class EventActivity extends AbstractEntity
     }
 
     /**
-     * @param DateTimeInterface $end
+     * @param DateTimeInterface|null $end
      *
      * @return EventActivity
      */
-    public function setEnd(DateTimeInterface $end): self
+    public function setEnd(?DateTimeInterface $end): self
     {
         $this->end = $end;
 

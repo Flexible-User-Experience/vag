@@ -121,11 +121,11 @@ class EventLocation extends AbstractEntity
     }
 
     /**
-     * @param float $latitude
+     * @param float|null $latitude
      *
      * @return EventLocation
      */
-    public function setLatitude(float $latitude): self
+    public function setLatitude(?float $latitude): self
     {
         $this->latitude = $latitude;
 
@@ -141,11 +141,11 @@ class EventLocation extends AbstractEntity
     }
 
     /**
-     * @param float $longitude
+     * @param float|null $longitude
      *
      * @return EventLocation
      */
-    public function setLongitude(float $longitude): self
+    public function setLongitude(?float $longitude): self
     {
         $this->longitude = $longitude;
 
@@ -161,11 +161,11 @@ class EventLocation extends AbstractEntity
     }
 
     /**
-     * @param string $place
+     * @param string|null $place
      *
      * @return EventLocation
      */
-    public function setPlace(string $place): self
+    public function setPlace(?string $place): self
     {
         $this->place = $place;
 

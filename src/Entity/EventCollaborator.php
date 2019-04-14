@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Entity\Traits\DescriptionTrait;
 use App\Entity\Traits\EmailTrait;
+use App\Entity\Traits\GenderTrait;
 use App\Entity\Traits\ImageAttributesTrait;
 use App\Entity\Traits\LinkTrait;
 use App\Entity\Traits\NameTrait;
@@ -31,7 +32,7 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
  */
 class EventCollaborator extends AbstractEntity
 {
-    use NameTrait, SurnameTrait, SlugTrait, EmailTrait, PhoneTrait, ImageAttributesTrait, ShortDescriptionTrait, DescriptionTrait, ShowInHomepageTrait, LinkTrait;
+    use GenderTrait, NameTrait, SurnameTrait, SlugTrait, EmailTrait, PhoneTrait, ImageAttributesTrait, ShortDescriptionTrait, DescriptionTrait, ShowInHomepageTrait, LinkTrait;
 
     /**
      * @ORM\Column(type="smallint", nullable=true)
@@ -154,26 +155,6 @@ class EventCollaborator extends AbstractEntity
     {
         $this->eventActivities = new ArrayCollection();
         $this->translations = new ArrayCollection();
-    }
-
-    /**
-     * @return int|null
-     */
-    public function getGender(): ?int
-    {
-        return $this->gender;
-    }
-
-    /**
-     * @param int $gender
-     *
-     * @return EventCollaborator
-     */
-    public function setGender(int $gender): self
-    {
-        $this->gender = $gender;
-
-        return $this;
     }
 
     /**
