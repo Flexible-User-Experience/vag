@@ -69,6 +69,11 @@
                     <h5 class="mt-0">{{ 'front.events.highlighted_activities' | trans }}</h5>
                 </div>
                 {% include "frontend/includes/event_activity_cards.html.twig" with {activities: featuredActivities} %}
+                {% if featuredActivities | length > 0 %}
+                    <div class="col-12 mt-4 text-center">
+                        <a href="{{ path('front_activities') }}" class="btn btn-outline-dark">{{ 'front.events.show_all_activities' | trans }}</a>
+                    </div>
+                {% endif %}
             </div>
         </div>
     </div>

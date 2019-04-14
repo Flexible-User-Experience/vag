@@ -18,6 +18,7 @@ front:
         show_all_speakers: 'Ver todos los participantes'
         activities: 'Actividades'
         highlighted_activities: 'Actividades destacadas'
+        show_all_activities: 'Ver todas las actividades'
         read_more: 'leer más'
         empty_warning: 'próximamente, se paciente...'
     carrousel:

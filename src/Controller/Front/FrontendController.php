@@ -124,6 +124,26 @@ class FrontendController extends AbstractController
     }
 
     /**
+     * @Route({"ca": "/activitats", "es": "/actividades", "en": "/activities"}, name="front_activities")
+     *
+     * @return Response
+     */
+    public function activities()
+    {
+        $activities = [];
+        $categories = $this->getDoctrine()->getRepository(EventCategory::class)->findAvailableSortedByPriorityAndName()->getQuery()->getResult();
+        /** @var EventCategory $category */
+        foreach ($categories as $category) {
+            $activities[$category->getSlug()] = $this->getDoctrine()->getRepository(EventActivity::class)->findAvailableByCategorySortedByName($category)->getQuery()->getResult();
+        }
+
+        return $this->render('frontend/activities.html.twig', [
+            'categories' => $categories,
+            'activities' => $activities,
+        ]);
+    }
+
+    /**
      * @Route("/{slug}", name="front_event_category")
      * @ParamConverter("category", class="App:EventCategory")
      *
