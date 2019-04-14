@@ -6,6 +6,7 @@ use App\Enum\GenderEnum;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Sonata\AdminBundle\Route\RouteCollection;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
@@ -40,6 +41,15 @@ final class ContactMessageAdmin extends AbstractAdmin
     /**
      * Methods.
      */
+
+    /**
+     * @param RouteCollection $collection
+     */
+    protected function configureRoutes(RouteCollection $collection)
+    {
+        parent::configureRoutes($collection);
+        $collection->remove('create');
+    }
 
     /**
      * @param FormMapper $formMapper
@@ -176,6 +186,27 @@ final class ContactMessageAdmin extends AbstractAdmin
                     'label' => 'admin.label.email',
                 ]
             )
+            ->add(
+                'legalTermsHasBeenAccepted',
+                null,
+                [
+                    'label' => 'admin.label.legal_terms_has_been_accepted_short',
+                ]
+            )
+            ->add(
+                'hasBeenReaded',
+                null,
+                [
+                    'label' => 'admin.label.has_been_readed_short',
+                ]
+            )
+            ->add(
+                'hasBeenAnswered',
+                null,
+                [
+                    'label' => 'admin.label.has_been_ansewered_short',
+                ]
+            )
         ;
     }
 
@@ -190,6 +221,7 @@ final class ContactMessageAdmin extends AbstractAdmin
                 null,
                 [
                     'label' => 'admin.label.created',
+                    'format' => 'd/m/Y H:i',
                     'editable' => false,
                 ]
             )
@@ -206,6 +238,30 @@ final class ContactMessageAdmin extends AbstractAdmin
                 null,
                 [
                     'label' => 'admin.label.email',
+                    'editable' => false,
+                ]
+            )
+            ->add(
+                'legalTermsHasBeenAccepted',
+                null,
+                [
+                    'label' => 'admin.label.legal_terms_has_been_accepted_short',
+                    'editable' => false,
+                ]
+            )
+            ->add(
+                'hasBeenReaded',
+                null,
+                [
+                    'label' => 'admin.label.has_been_readed_short',
+                    'editable' => false,
+                ]
+            )
+            ->add(
+                'hasBeenAnswered',
+                null,
+                [
+                    'label' => 'admin.label.has_been_ansewered_short',
                     'editable' => false,
                 ]
             )

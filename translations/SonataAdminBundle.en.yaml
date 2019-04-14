@@ -3,5 +3,6 @@ admin:
         event: 'Events'
         team: 'Collaborators'
         settings: 'Settings'
+        comunication: 'Comunications'
 toggle_navigation: 'Toggle navigation'
 message_close: 'Message close'

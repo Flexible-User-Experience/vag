@@ -3,5 +3,6 @@ admin:
         event: 'Esdeveniments'
         team: 'Col·laboradors'
         settings: 'Configuració'
+        comunication: 'Comunicacions'
 toggle_navigation: 'Canviar navegació'
 message_close: 'Tancar missatge'
