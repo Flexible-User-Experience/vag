@@ -24,11 +24,11 @@ trait ShowInHomepageTrait
     }
 
     /**
-     * @param bool $showInHomepage
+     * @param bool|null $showInHomepage
      *
      * @return $this
      */
-    public function setShowInHomepage(bool $showInHomepage): self
+    public function setShowInHomepage(?bool $showInHomepage): self
     {
         $this->showInHomepage = $showInHomepage;
 

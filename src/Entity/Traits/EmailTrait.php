@@ -16,11 +16,11 @@ trait EmailTrait
     }
 
     /**
-     * @param string $email
+     * @param string|null $email
      *
      * @return $this
      */
-    public function setEmail(string $email): self
+    public function setEmail(?string $email): self
     {
         $this->email = $email;
 

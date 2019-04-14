@@ -20,7 +20,7 @@ trait ImageAttributesTrait
     }
 
     /**
-     * @param File $imageFile
+     * @param File|null $imageFile
      *
      * @return $this
      * @throws Exception
@@ -46,7 +46,7 @@ trait ImageAttributesTrait
     }
 
     /**
-     * @param string $imageName
+     * @param string|null $imageName
      *
      * @return $this
      */
@@ -66,7 +66,7 @@ trait ImageAttributesTrait
     }
 
     /**
-     * @param int $imageSize
+     * @param int|null $imageSize
      *
      * @return $this
      */

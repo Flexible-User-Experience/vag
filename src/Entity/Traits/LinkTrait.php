@@ -16,11 +16,11 @@ trait LinkTrait
     }
 
     /**
-     * @param string $link
+     * @param string|null $link
      *
      * @return $this
      */
-    public function setLink(string $link): self
+    public function setLink(?string $link): self
     {
         $this->link = $link;
 

@@ -24,11 +24,11 @@ trait IsAvailableTrait
     }
 
     /**
-     * @param bool $isAvailable
+     * @param bool|null $isAvailable
      *
      * @return $this
      */
-    public function setIsAvailable(bool $isAvailable): self
+    public function setIsAvailable(?bool $isAvailable): self
     {
         $this->isAvailable = $isAvailable;
 

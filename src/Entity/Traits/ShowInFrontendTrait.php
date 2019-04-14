@@ -24,11 +24,11 @@ trait ShowInFrontendTrait
     }
 
     /**
-     * @param bool $showInFrontend
+     * @param bool|null $showInFrontend
      *
      * @return $this
      */
-    public function setShowInFrontend(bool $showInFrontend): self
+    public function setShowInFrontend(?bool $showInFrontend): self
     {
         $this->showInFrontend = $showInFrontend;
 

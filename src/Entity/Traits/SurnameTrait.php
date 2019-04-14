@@ -16,11 +16,11 @@ trait SurnameTrait
     }
 
     /**
-     * @param string $surname
+     * @param string|null $surname
      *
      * @return $this
      */
-    public function setSurname(string $surname): self
+    public function setSurname(?string $surname): self
     {
         $this->surname = $surname;
 

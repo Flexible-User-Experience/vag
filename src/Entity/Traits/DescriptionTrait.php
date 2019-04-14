@@ -16,11 +16,11 @@ trait DescriptionTrait
     }
 
     /**
-     * @param string $description
+     * @param string|null $description
      *
      * @return $this
      */
-    public function setDescription(string $description): self
+    public function setDescription(?string $description): self
     {
         $this->description = $description;
 

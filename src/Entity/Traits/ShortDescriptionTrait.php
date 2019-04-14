@@ -16,11 +16,11 @@ trait ShortDescriptionTrait
     }
 
     /**
-     * @param string $shortDescription
+     * @param string|null $shortDescription
      *
      * @return $this
      */
-    public function setShortDescription(string $shortDescription): self
+    public function setShortDescription(?string $shortDescription): self
     {
         $this->shortDescription = $shortDescription;
 
