@@ -1,46 +1,32 @@
-{% if mainHighlights | length > 0 %}
-    <div class="container pt-5 pb-5">
-        <h5 class="mt-0">{{ 'front.events.featured_speakers' | trans }}</h5>
-        <div id="{{ highlights_carousel_id }}" class="carousel slide" data-ride="carousel">
-            <div class="carousel-inner row w-100 mx-auto">
-                {% for collaborator in mainHighlights %}
-                    <div class="carousel-item{% if loop.first %} active{% endif %}">
-                        <div class="card">
-                            {% if collaborator.imageName %}
-                                <img class="card-img-top img-fluid" src="{{ vich_uploader_asset(collaborator, 'imageFile') | imagine_filter('480xY') }}" alt="{{ collaborator.fullname }}">
-                            {% endif %}
-                            <div class="card-body">
-                                <h4 class="card-title">{{ collaborator.fullname }}</h4>
-                                <p class="card-text">{{ collaborator.shortDescription }}</p>
-                                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                            </div>
-                        </div>
-                    </div>
-                {% endfor %}
-            </div>
-            <a class="carousel-control-prev" href="#{{ highlights_carousel_id }}" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">{{ 'front.carrousel.previous' | trans }}</span>
-            </a>
-            <a class="carousel-control-next" href="#{{ highlights_carousel_id }}" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">{{ 'front.carrousel.next' | trans }}</span>
-            </a>
-        </div>
-    </div>
-{% else %}
-    <div class="jumbotron jumbotron-fluid jumbotron-dark">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-12">
+<div class="jumbotron jumbotron-fluid jumbotron-light">
+    <div class="container">
+        <div class="row">
+            {% if show_title %}
+                <div class="col-12">
                     <h5 class="mt-0">{{ 'front.events.featured_speakers' | trans }}</h5>
                 </div>
-                <div class="col-sm-12">
+            {% endif %}
+            {% for speaker in speakers %}
+                <div class="col-6 col-md-4">
+                    <div class="card">
+                        {% if speaker.imageName %}
+                            <img src="{{ vich_uploader_asset(speaker, 'imageFile') | imagine_filter('480xY') }}" class="card-img-top" alt="{{ activity.name }}">
+                        {% endif %}
+                        <div class="card-body">
+                            <h5 class="card-title mb-0">{{ speaker.fullname }}</h5>
+                            {#<span class="badge badge-pill badge-dark pull-right mb-2">{{ activity.beginString }}</span>#}
+                            <p class="card-text mb-4">{{ speaker.shortDescription }}</p>
+                            <a href="#" class="btn btn-warning btn-sm">{{ 'front.events.read_more' | trans }}</a>
+                        </div>
+                    </div>
+                </div>
+            {% else %}
+                <div class="col-12">
                     <div class="alert alert-warning mb-0" role="alert">
                         <i class="fa exclamation-triangle"></i> {{ 'front.events.empty_warning' | trans }}
                     </div>
                 </div>
-            </div>
+            {% endfor %}
         </div>
     </div>
-{% endif %}
+</div>

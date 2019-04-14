@@ -4,7 +4,7 @@ $app-radius: 10px;
 $app-vertical-gap: 15px;
 $app-alpha: 0.6;
 $app-color-black: #1A1A1A;
-$app-color-black-light: #F1F3F4;
+$app-color-light: #F1F3F4;
 $app-color-grey: #8D897F;
 $app-color-green: #78B74B;
 $app-color-red: #D74036;
@@ -47,13 +47,13 @@ $app-color-footer: #363941;
 
 .active {
   .nav-link-ticket {
-    color: $app-color-black-light !important;
+    color: $app-color-light !important;
     background-color: $app-color-warning-light !important;
   }
 }
 
 .btn-outline-warning:hover {
-  color: $app-color-black-light !important;
+  color: $app-color-light !important;
 }
 
 .jumbotron-homepage {
@@ -74,7 +74,12 @@ $app-color-footer: #363941;
 }
 
 .jumbotron-dark {
-  background-color: $app-color-black-light;
+  background-color: $app-color-black;
+  margin-bottom: 0;
+}
+
+.jumbotron-light {
+  background-color: $app-color-light;
   margin-bottom: 0;
 }
 

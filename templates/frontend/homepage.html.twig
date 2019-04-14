@@ -32,7 +32,7 @@
         </div>
     </div>
     {# Main speakers highlighted section #}
-    {% include "frontend/includes/homepage_higlights_silder.html.twig" with {highlights_carousel_id: 'main-highlights-carousel'} %}
+    {% include "frontend/includes/homepage_higlights_silder.html.twig" with {highlights_carousel_id: 'main-highlights-carousel', speakers: featuredSpeakers, show_title: true} %}
     {# First event section #}
     <div class="jumbotron jumbotron-fluid mb-0">
         <div class="container">
@@ -48,5 +48,5 @@
         </div>
     </div>
     {# Secondary hightlights section #}
-    {% include "frontend/includes/event_activity_card.html.twig" with {activities: secondaryHighlights, show_title: true} %}
+    {% include "frontend/includes/event_activity_card.html.twig" with {activities: featuredActivities, show_title: true} %}
 {% endblock %}

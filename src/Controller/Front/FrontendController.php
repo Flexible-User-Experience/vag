@@ -28,13 +28,13 @@ class FrontendController extends AbstractController
     public function homepage()
     {
         $categories = $this->getDoctrine()->getRepository(EventCategory::class)->findAvailableSortedByPriorityAndName()->getQuery()->getResult();
-        $mainHighlights = $this->getDoctrine()->getRepository(EventCollaborator::class)->findShowInHomepageSortedBySurnameAndName()->getQuery()->getResult();
-        $secondaryHighlights = $this->getDoctrine()->getRepository(EventActivity::class)->findAvailableForHomepageSortedByBegin()->getQuery()->getResult();
+        $featuredSpeakers = $this->getDoctrine()->getRepository(EventCollaborator::class)->findShowInHomepageSortedBySurnameAndName()->getQuery()->getResult();
+        $featuredActivities = $this->getDoctrine()->getRepository(EventActivity::class)->findAvailableForHomepageSortedByBegin()->getQuery()->getResult();
 
         return $this->render('frontend/homepage.html.twig', [
             'categories' => $categories,
-            'mainHighlights' => $mainHighlights,
-            'secondaryHighlights' => $secondaryHighlights,
+            'featuredSpeakers' => $featuredSpeakers,
+            'featuredActivities' => $featuredActivities,
         ]);
     }
 

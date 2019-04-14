@@ -9,6 +9,13 @@ liip_imagine:
                     size:          [2000, null]
                     mode:          outbound
                     allow_upscale: false
+        800x600:
+            quality: 90
+            filters:
+                thumbnail:
+                    size:          [800, 600]
+                    mode:          outbound
+                    allow_upscale: false
         480xY:
             quality: 90
             filters:
