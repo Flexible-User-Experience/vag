@@ -94,7 +94,7 @@ admin:
         text: 'Textes'
         team: 'Equips'
         team_partner: 'Patrocinador'
-        team_member: 'Membres'
+        team_member: 'Equip'
         contact_message: 'Missatge de contacte'
 
 'Admin Class Event Activity List': 'Activitats'
@@ -109,7 +109,7 @@ admin:
 'Admin Class User Create': 'Nou'
 'Admin Class Team Partner List': 'Patrocinadors'
 'Admin Class Team Partner Create': 'Nou'
-'Admin Class Team Member List': 'Members'
+'Admin Class Team Member List': 'Equip'
 'Admin Class Team Member Create': 'Nou'
 'Admin Class Contact Message List': 'Missatges de contacte'
 'Admin Class Contact Message Create': 'Nou'

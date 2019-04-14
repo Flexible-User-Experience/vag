@@ -93,7 +93,7 @@ admin:
         text: 'Texts'
         team: 'Teams'
         team_partner: 'Partners'
-        team_member: 'Members'
+        team_member: 'Team'
         contact_message: 'Contact message'
 
 'Admin Class Event Activity List': 'Activities'
