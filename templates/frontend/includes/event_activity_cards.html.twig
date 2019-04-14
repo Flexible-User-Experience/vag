@@ -1,4 +1,4 @@
-{% for activity in activities %}
+{% for activity in activities if activity.category.isAvailable %}
     <div class="col-6 col-md-4">
         <div class="card mt-3">
             {% if activity.imageName %}
