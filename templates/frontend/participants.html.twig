@@ -1,10 +1,10 @@
 {% extends "frontend/base.html.twig" %}
 
 {% block body %}
-    <div class="jumbotron jumbotron-fluid jumbotron-homepage" style="background-image:url('{{ asset('build/nightlife-neon-techno.png') }}');">
+    <div class="jumbotron jumbotron-fluid jumbotron-homepage" style="background-image:url('{{ asset('build/creative-light-abstract-glowing.png') }}');">
         <div class="container">
-            <h1 class="display-6 text-white">{{ category.name | title }}</h1>
+            <h1 class="display-6 text-white">{{ 'front.events.speakers' | trans | title }}</h1>
         </div>
     </div>
-    {% include "frontend/includes/event_activity_card.html.twig" with {activities: activities, show_title: false} %}
+    {% include "frontend/includes/homepage_higlights_silder.html.twig" with {speakers: participants, show_title: false} %}
 {% endblock %}

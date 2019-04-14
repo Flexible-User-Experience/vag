@@ -26,7 +26,7 @@
                     </div>
                 </div>
             {% endfor %}
-            {% if speakers | length > 0 %}
+            {% if speakers | length > 0 and show_title %}
                 <div class="col-12 mt-3 text-center">
                     <a href="{{ path('front_participants') }}" class="btn btn-dark">{{ 'front.events.show_all_speakers' | trans }}</a>
                 </div>
