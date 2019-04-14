@@ -49,7 +49,7 @@ class FrontendController extends AbstractController
     }
 
     /**
-     * @Route("/blog", name="front_blog")
+     * @Route({"ca": "/noticies", "es": "/noticias", "en": "/news"}, name="front_blog")
      *
      * @return Response
      */
@@ -109,21 +109,6 @@ class FrontendController extends AbstractController
     }
 
     /**
-     * @Route({"ca": "/participant/{slug}", "es": "/participante/{slug}", "en": "/participant/{slug}"}, name="front_participant_detail")
-     * @ParamConverter("participant", class="App:EventCollaborator")
-     *
-     * @param EventCollaborator $participant
-     *
-     * @return Response
-     */
-    public function participantDetail(EventCollaborator $participant)
-    {
-        return $this->render('frontend/participant.html.twig', [
-            'participant' => $participant,
-        ]);
-    }
-
-    /**
      * @Route({"ca": "/activitats", "es": "/actividades", "en": "/activities"}, name="front_activities")
      *
      * @return Response
@@ -144,6 +129,21 @@ class FrontendController extends AbstractController
     }
 
     /**
+     * @Route({"ca": "/participant/{slug}", "es": "/participante/{slug}", "en": "/participant/{slug}"}, name="front_participant_detail")
+     * @ParamConverter("participant", class="App:EventCollaborator")
+     *
+     * @param EventCollaborator $participant
+     *
+     * @return Response
+     */
+    public function participantDetail(EventCollaborator $participant)
+    {
+        return $this->render('frontend/participant.html.twig', [
+            'participant' => $participant,
+        ]);
+    }
+
+    /**
      * @Route("/{slug}", name="front_event_category")
      * @ParamConverter("category", class="App:EventCategory")
      *
@@ -154,7 +154,7 @@ class FrontendController extends AbstractController
      */
     public function category(EventCategory $category)
     {
-        if (!$category->isAvailable()) { // TODO disable for admin logged users
+        if (!$category->isAvailable() && !$this->get('security.authorization_checker')->isGranted(UserRoleEnum::ROLE_CMS)) {
             throw $this->createNotFoundException();
         }
 
@@ -163,6 +163,38 @@ class FrontendController extends AbstractController
             [
                 'category' => $category,
                 'activities' => $this->getDoctrine()->getRepository(EventActivity::class)->findAvailableByCategorySortedByName($category)->getQuery()->getResult(),
+            ]
+        );
+    }
+
+    /**
+     * @Route({"ca": "/{category}/activitat/{activity}", "es": "/{category}/actividad/{activity}", "en": "/{category}/activity/{activity}"}, name="front_event_activity")
+     * @ParamConverter("category", class="App:EventCategory", options={"mapping": {"category": "slug"}})
+     * @ParamConverter("activity", class="App:EventActivity", options={"mapping": {"activity": "slug"}})
+     *
+     * @param EventCategory $category
+     * @param EventActivity $activity
+     *
+     * @return Response
+     * @throws NotFoundHttpException
+     */
+    public function activity(EventCategory $category, EventActivity $activity)
+    {
+        if (!$category->isAvailable() && !$this->get('security.authorization_checker')->isGranted(UserRoleEnum::ROLE_CMS)) {
+            throw $this->createNotFoundException();
+        }
+        if ($activity->getCategory()->getSlug() !== $category->getSlug()) {
+            throw $this->createNotFoundException();
+        }
+        if (!$activity->isAvailable() && !$this->get('security.authorization_checker')->isGranted(UserRoleEnum::ROLE_CMS)) {
+            throw $this->createNotFoundException();
+        }
+
+        return $this->render(
+            'frontend/activity.html.twig',
+            [
+                'category' => $category,
+                'activity' => $activity,
             ]
         );
     }

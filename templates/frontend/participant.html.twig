@@ -15,8 +15,8 @@
                     </div>
                 {% endif %}
                 <div class="col-9">
-                    <h5 class="mt-0">{{ participant.shortDescription }}</h5>
-                    <p class="text-muted mb-2">{{ participant.description }}</p>
+                    <h5 class="text-muted mt-0">{{ participant.shortDescription }}</h5>
+                    <p class="mb-2">{{ participant.description }}</p>
                     {% if participant.link %}
                         <a href="{{ participant.link }}" target="_blank">{{ participant.link }}</a>
                     {% endif %}

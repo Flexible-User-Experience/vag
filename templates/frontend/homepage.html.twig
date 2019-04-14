@@ -29,6 +29,13 @@
                     </div>
                 {% endfor %}
             </div>
+            {% if categories | length > 0 %}
+                <div class="row">
+                    <div class="col-12 mt-4 text-center">
+                        <a href="{{ path('front_activities') }}" class="btn btn-outline-dark">{{ 'front.events.show_all_activities' | trans }}</a>
+                    </div>
+                </div>
+            {% endif %}
         </div>
     </div>
     {# Highlighted collaborators section #}
