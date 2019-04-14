@@ -24,6 +24,15 @@
             </div>
         </div>
     </div>
-    {# Secondary hightlights section #}
-    {% include "frontend/includes/event_activity_card.html.twig" with {activities: participant.eventActivities, show_title: true} %}
+    {# Activities section #}
+    <div class="jumbotron jumbotron-fluid jumbotron-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h5 class="mt-0">{{ 'front.events.activities' | trans }}</h5>
+                </div>
+                {% include "frontend/includes/event_activity_cards.html.twig" with {activities: participant.eventActivities} %}
+            </div>
+        </div>
+    </div>
 {% endblock %}

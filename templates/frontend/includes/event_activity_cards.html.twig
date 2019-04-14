@@ -1,0 +1,22 @@
+{% for activity in activities %}
+    <div class="col-6 col-md-4">
+        <div class="card mt-3">
+            {% if activity.imageName %}
+                <img src="{{ vich_uploader_asset(activity, 'imageFile') | imagine_filter('480xY') }}" class="card-img-top" alt="{{ activity.name }}">
+            {% endif %}
+            <div class="card-body">
+                <h5 class="card-title mb-0">{{ activity.name }}</h5>
+                <span class="badge badge-pill badge-dark pull-right mb-2">{{ activity.beginString }}</span>
+                <p class="card-text mb-4">{{ activity.shortDescription }}</p>
+                <a href="#" class="btn btn-warning btn-sm">{{ 'front.events.read_more' | trans }}</a>
+            </div>
+        </div>
+    </div>
+{% else %}
+    <div class="col-12">
+        <div class="alert alert-warning mb-0" role="alert">
+            <i class="fa exclamation-triangle"></i> {{ 'front.events.empty_warning' | trans }}
+        </div>
+    </div>
+{% endfor %}
+

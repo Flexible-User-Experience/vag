@@ -6,5 +6,12 @@
             <h1 class="display-6 text-white">{{ category.name | title }}</h1>
         </div>
     </div>
-    {% include "frontend/includes/event_activity_card.html.twig" with {activities: activities, show_title: false} %}
+    {# Activities section #}
+    <div class="jumbotron jumbotron-fluid jumbotron-light">
+        <div class="container">
+            <div class="row">
+                {% include "frontend/includes/event_activity_cards.html.twig" with {activities: activities} %}
+            </div>
+        </div>
+    </div>
 {% endblock %}
