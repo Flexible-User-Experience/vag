@@ -11,7 +11,7 @@
             <div class="row">
                 {% if participant.imageName %}
                     <div class="col-3">
-                        <img src="{{ vich_uploader_asset(participant, 'imageFile') | imagine_filter('480xY') }}" class="card-img-top" alt="{{ participant.fullname }}">
+                        <img src="{{ vich_uploader_asset(participant, 'imageFile') | imagine_filter('480xY') }}" class="img-responsive rounded w-100" alt="{{ participant.fullname }}">
                     </div>
                 {% endif %}
                 <div class="col-9">
