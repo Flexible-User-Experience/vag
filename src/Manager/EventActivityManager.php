@@ -2,15 +2,15 @@
 
 namespace App\Manager;
 
-use App\Entity\EventCategory;
-use App\Repository\EventCategoryRepository;
+use App\Entity\EventActivity;
+use App\Repository\EventActivityRepository;
 use Doctrine\ORM\NonUniqueResultException;
 use Symfony\Component\HttpFoundation\RequestStack;
 
 /**
- * Class EventCategoryManager
+ * Class EventActivityManager
  */
-class EventCategoryManager
+class EventActivityManager
 {
     /**
      * @var RequestStack
@@ -18,9 +18,9 @@ class EventCategoryManager
     private $rs;
 
     /**
-     * @var EventCategoryRepository
+     * @var EventActivityRepository
      */
-    private $ecr;
+    private $ear;
 
     /**
      * @var string
@@ -37,16 +37,16 @@ class EventCategoryManager
      */
 
     /**
-     * EventCategoryManager constructor.
+     * EventActivityManager constructor.
      *
      * @param RequestStack $rs
-     * @param EventCategoryRepository $ecr
+     * @param EventActivityRepository $ear
      * @param string $defaultLocale
      */
-    public function __construct(RequestStack $rs, EventCategoryRepository $ecr, string $defaultLocale)
+    public function __construct(RequestStack $rs, EventActivityRepository $ear, string $defaultLocale)
     {
         $this->rs = $rs;
-        $this->ecr = $ecr;
+        $this->ear = $ear;
         $this->defaultLocale = $defaultLocale;
         $this->locale = $this->rs->getCurrentRequest()->getLocale();
     }
@@ -54,15 +54,15 @@ class EventCategoryManager
     /**
      * @param string $slug
      *
-     * @return EventCategory|null
+     * @return EventActivity|null
      * @throws NonUniqueResultException
      */
-    public function getCategoryByTranslatedSlug(string $slug)
+    public function getActivityByTranslatedSlug(string $slug)
     {
         if ($this->locale === $this->defaultLocale) {
-            $category = $this->ecr->findAvailableAndSlugSortedByPriorityAndName($slug)->getQuery()->getOneOrNullResult();
+            $category = $this->ear->findAvailableAndSlug($slug)->getQuery()->getOneOrNullResult();
         } else {
-            $category = $this->ecr->findLocalizedSlugAvailableSortedByPriorityAndName($this->locale, $slug)->getQuery()->getOneOrNullResult();
+            $category = $this->ear->findLocalizedAvailableAndSlug($this->locale, $slug)->getQuery()->getOneOrNullResult();
         }
 
         return $category;

@@ -8,6 +8,7 @@ use App\Entity\EventCollaborator;
 use App\Entity\TeamMember;
 use App\Entity\TeamPartner;
 use App\Enum\UserRoleEnum;
+use App\Manager\EventActivityManager;
 use App\Manager\EventCategoryManager;
 use Doctrine\ORM\NonUniqueResultException;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
@@ -179,15 +180,26 @@ class FrontendController extends AbstractController
      * @ParamConverter("category", class="App:EventCategory", options={"mapping": {"category": "slug"}})
      * @ParamConverter("activity", class="App:EventActivity", options={"mapping": {"activity": "slug"}})
      *
-     * @param EventCategory $category
-     * @param EventActivity $activity
+     * @param string $category
+     * @param string $activity
+     * @param EventCategoryManager $ecm
+     * @param EventActivityManager $eam
      *
      * @return Response
      * @throws NotFoundHttpException
+     * @throws NonUniqueResultException
      */
-    public function activity(EventCategory $category, EventActivity $activity)
+    public function activity(string $category, string $activity, EventCategoryManager $ecm, EventActivityManager $eam)
     {
+        $category = $ecm->getCategoryByTranslatedSlug($category);
+        if (!$category) {
+            throw $this->createNotFoundException();
+        }
         if (!$category->isAvailable() && !$this->get('security.authorization_checker')->isGranted(UserRoleEnum::ROLE_CMS)) {
+            throw $this->createNotFoundException();
+        }
+        $activity = $eam->getActivityByTranslatedSlug($activity);
+        if (!$activity) {
             throw $this->createNotFoundException();
         }
         if ($activity->getCategory()->getSlug() !== $category->getSlug()) {

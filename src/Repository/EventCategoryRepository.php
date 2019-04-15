@@ -57,7 +57,7 @@ class EventCategoryRepository extends ServiceEntityRepository
      *
      * @return QueryBuilder
      */
-    public function findByLocalizedSlugAvailableSortedByPriorityAndName(string $locale, string $slug)
+    public function findLocalizedSlugAvailableSortedByPriorityAndName(string $locale, string $slug)
     {
         $qb = $this->findAvailableSortedByPriorityAndName()
             ->join('ec.translations', 't')
