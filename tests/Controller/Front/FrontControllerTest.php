@@ -31,12 +31,33 @@ class FrontControllerTest extends WebTestCase
             ['/ca/'],
             ['/es/'],
             ['/en/'],
-            ['/ca/blog'],
-            ['/es/blog'],
-            ['/en/blog'],
+            ['/ca/noticies'],
+            ['/es/noticias'],
+            ['/en/news'],
             ['/ca/entrades'],
             ['/es/entradas'],
             ['/en/tickets'],
+            ['/ca/contacte'],
+            ['/es/contacto'],
+            ['/en/contact'],
+            ['/ca/equip'],
+            ['/es/equipo'],
+            ['/en/team'],
+            ['/ca/participants'],
+            ['/es/participantes'],
+            ['/en/participants'],
+            ['/ca/participant/name-surname'],
+            ['/es/participante/name-surname'],
+            ['/en/participant/name-surname'],
+            ['/ca/activitats'],
+            ['/es/actividades'],
+            ['/en/activities'],
+            ['/ca/conferencies'],
+            ['/es/conferencias'],
+            ['/en/conferences'],
+            ['/ca/conferencies/activitat/activitat-1'],
+            ['/es/conferencias/actividad/actividad-1'],
+            ['/en/conferences/activity/activity-1'],
         ];
     }
 
@@ -61,7 +82,7 @@ class FrontControllerTest extends WebTestCase
         return [
             ['/ac/'],
             ['/ca/bloc'],
-//            ['/ca/tickets'],
+            ['/ca/participant/missing-name-surname'],
         ];
     }
 }

@@ -207,7 +207,16 @@ App\Entity\Translation\EventLocationTranslation:
         content: 'art-center'
 
 App\Entity\EventCollaborator:
-    collaborator{1..8}:
+    collaborator1:
+        gender: '<numberBetween(0,1)>'
+        name: 'Name'
+        surname: 'Surname'
+        email: '<safeEmail()>'
+        phone: '<e164PhoneNumber()>'
+        shortDescription: '<sentence()>'
+        description: '<text(500)>'
+        showInHomepage: '<boolean(50)>'
+    collaborator{2..8}:
         gender: '<numberBetween(0,1)>'
         name: '<firstName()>'
         surname: '<lastName()>'
@@ -240,7 +249,19 @@ App\Entity\Translation\EventCollaboratorTranslation:
         content: '<text(500)>'
 
 App\Entity\EventActivity:
-    activity{1..12}:
+    activity1:
+        name: 'Activitat 1'
+        begin: '<dateTimeBetween("+1 month","+2 month")>'
+        end: '<dateTimeBetween("+3 month","+4 month")>'
+        shortDescription: '<sentence()>'
+        description: '<text(500)>'
+        isAvailable: '<boolean(75)>'
+        showInHomepage: '<boolean(25)>'
+        category: '@category1'
+        location: '@location<numberBetween(1,4)>'
+        collaborators:
+            - '@collaborator<numberBetween(1,8)>'
+    activity{2..12}:
         name: '<sentence(3,false)>'
         begin: '<dateTimeBetween("+1 month","+2 month")>'
         end: '<dateTimeBetween("+3 month","+4 month")>'
@@ -254,7 +275,12 @@ App\Entity\EventActivity:
             - '@collaborator<numberBetween(1,8)>'
 
 App\Entity\Translation\EventActivityTranslation:
-    activity_translation_name_es_{1..12}:
+    activity_translation_name_es_1:
+        object: '@activity1'
+        locale: 'es'
+        field: 'name'
+        content: 'Actividad 1'
+    activity_translation_name_es_{2..12}:
         object: '@activity<current()>'
         locale: 'es'
         field: 'name'
@@ -274,7 +300,12 @@ App\Entity\Translation\EventActivityTranslation:
         locale: 'es'
         field: 'description'
         content: '<text(500)>'
-    activity_translation_name_en_{1..12}:
+    activity_translation_name_en_1:
+        object: '@activity1'
+        locale: 'en'
+        field: 'name'
+        content: 'Activity 1'
+    activity_translation_name_en_{2..12}:
         object: '@activity<current()>'
         locale: 'en'
         field: 'name'
