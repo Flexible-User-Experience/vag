@@ -8,6 +8,7 @@ use App\Entity\EventCollaborator;
 use App\Entity\TeamMember;
 use App\Entity\TeamPartner;
 use App\Enum\UserRoleEnum;
+use App\Manager\EventCategoryManager;
 use Doctrine\ORM\NonUniqueResultException;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
@@ -148,21 +149,15 @@ class FrontendController extends AbstractController
      * @Route("/{slug}", name="front_event_category")
      *
      * @param string $slug
-     * @param string $defaultLocale
+     * @param EventCategoryManager $ecm
      *
      * @return Response
      * @throws NotFoundHttpException
      * @throws NonUniqueResultException
      */
-    public function category(string $slug, string $defaultLocale)
+    public function category(string $slug, EventCategoryManager $ecm)
     {
-        $locale = $this->get('request_stack')->getCurrentRequest()->getLocale();
-        if ($locale === $defaultLocale) {
-            $category = $this->getDoctrine()->getRepository(EventCategory::class)->findOneBy(['slug' => $slug]);
-        } else {
-            $category = $this->getDoctrine()->getRepository(EventCategory::class)->findByLocalizedSlugAvailableSortedByPriorityAndName($locale, $slug)->getQuery()->getOneOrNullResult();
-        }
-
+        $category = $ecm->getCategoryByTranslatedSlug($slug);
         if (!$category) {
             throw $this->createNotFoundException();
         }
