@@ -39,6 +39,19 @@ class EventCategoryRepository extends ServiceEntityRepository
     }
 
     /**
+     * @param string $slug
+     *
+     * @return QueryBuilder
+     */
+    public function findAvailableAndSlugSortedByPriorityAndName(string $slug)
+    {
+        return $this->findAvailableSortedByPriorityAndName()
+            ->andWhere('ec.slug = :slug')
+            ->setParameter('slug', $slug)
+        ;
+    }
+
+    /**
      * @param string $locale
      * @param string $slug
      *

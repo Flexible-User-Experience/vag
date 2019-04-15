@@ -60,7 +60,7 @@ class EventCategoryManager
     public function getCategoryByTranslatedSlug(string $slug)
     {
         if ($this->locale === $this->defaultLocale) {
-            $category = $this->ecr->findOneBy(['slug' => $slug]);
+            $category = $this->ecr->findAvailableAndSlugSortedByPriorityAndName($slug)->getQuery()->getOneOrNullResult();
         } else {
             $category = $this->ecr->findByLocalizedSlugAvailableSortedByPriorityAndName($this->locale, $slug)->getQuery()->getOneOrNullResult();
         }
