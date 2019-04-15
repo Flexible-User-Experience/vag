@@ -37,7 +37,6 @@ script:
   - ./bin/console doctrine:databa:create --no-interaction --env=test
   - ./bin/console doctrine:schema:update --force --env=test
   - ./bin/console hautelook:fixtures:load --no-interaction --env=test
-  - ./bin/phpunit --no-coverage
   # this checks that the source code follows the Symfony Code Syntax rules
   - '[[ "$TRAVIS_PHP_VERSION" == "nightly" ]] || ./vendor/bin/php-cs-fixer fix --diff --dry-run -v'
   # this checks that the YAML config files contain no syntax errors
@@ -50,6 +49,8 @@ script:
   - ./bin/console security:check
   # this checks that Doctrine's mapping configurations are valid
   - ./bin/console doctrine:schema:validate --skip-sync -vvv --no-interaction
+  # testing
+  - ./bin/phpunit --no-coverage
 
 branches:
   only:
