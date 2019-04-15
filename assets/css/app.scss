@@ -3,7 +3,7 @@
 $app-radius: 10px;
 $app-vertical-gap: 15px;
 $app-alpha: 0.6;
-$app-alpha-inversed: 0.2;
+$app-alpha-inversed: 0.4;
 $app-color-black: #1A1A1A;
 $app-color-light: #F1F3F4;
 $app-color-grey: #8D897F;
@@ -62,6 +62,7 @@ $app-color-footer: #363941;
   margin-bottom: 0;
   .container {
     margin-top: 68px;
+    padding-top: 5px;
     background-color: rgba(0, 0, 0, $app-alpha);
     .btn {
       margin-bottom: $app-vertical-gap;
@@ -78,6 +79,8 @@ $app-color-footer: #363941;
   background-size: cover;
   margin-bottom: 0;
   .container {
+    padding-top: 10px;
+    padding-bottom: 10px;
     background-color: rgba(255, 255, 255, $app-alpha-inversed);
   }
   @include media-breakpoint-up(sm) {
