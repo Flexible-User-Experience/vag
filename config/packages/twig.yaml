@@ -4,7 +4,7 @@ twig:
     strict_variables: '%kernel.debug%'
     globals:
         main_brand_title: 'VAG'
-        admin_tag_version: 'v1.0.05'
+        admin_tag_version: 'v1.0.06'
         google_analytics_enabled: '%env(bool:GOOGLE_ANALYTICS_ENABLED)%'
         google_analytics_code: '%env(string:GOOGLE_ANALYTICS_CODE)%'
     form_themes:

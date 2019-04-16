@@ -177,8 +177,6 @@ class FrontendController extends AbstractController
 
     /**
      * @Route({"ca": "/{category}/activitat/{activity}", "es": "/{category}/actividad/{activity}", "en": "/{category}/activity/{activity}"}, name="front_event_activity")
-     * @ParamConverter("category", class="App:EventCategory", options={"mapping": {"category": "slug"}})
-     * @ParamConverter("activity", class="App:EventActivity", options={"mapping": {"activity": "slug"}})
      *
      * @param string $category
      * @param string $activity
