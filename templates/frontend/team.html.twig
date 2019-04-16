@@ -2,7 +2,7 @@
 
 {% block body %}
     <div class="jumbotron jumbotron-fluid jumbotron-homepage" style="background-image:url('{{ asset('build/creative-wing-light.png') }}');">
-        <div class="container">
+        <div class="container pt-2 pb-1">
             <h1 class="display-6 text-white">{{ 'front.menu.team' | trans | title }}</h1>
         </div>
     </div>
@@ -11,7 +11,7 @@
             <div class="row">
                 {% if members | length > 0 %}
                     {% for member in members %}
-                        <div class="col-6 col-sm-4">
+                        <div class="col-6 col-sm-4 mb-sm-3">
                             <div class="card">
                                 {% if member.imageName %}
                                     <img src="{{ vich_uploader_asset(member, 'imageFile') | imagine_filter('480x480') }}" class="card-img-top" alt="{{ member.fullname }}">
@@ -39,7 +39,7 @@
         </div>
     </div>
     <div class="jumbotron jumbotron-fluid jumbotron-homepage" style="background-image:url('{{ asset('build/creative-wing-light.png') | imagine_filter('flip_x') }}');">
-        <div class="container mt-0">
+        <div class="container mt-0 pt-2 pb-1">
             <h1 class="display-6 mb-0 text-white">{{ 'front.menu.partners' | trans | title }}</h1>
         </div>
     </div>
@@ -48,13 +48,13 @@
             <div class="row">
                 {% if partners | length > 0 %}
                     {% for partner in partners %}
-                        <div class="col-6 col-sm-4">
+                        <div class="col-6 col-sm-4 mb-sm-3">
                             <div class="card">
                                 {% if partner.imageName %}
                                     <img src="{{ vich_uploader_asset(partner, 'imageFile') | imagine_filter('480x480_inset') }}" class="card-img-top" alt="{{ partner.name }}">
                                 {% endif %}
                                 <div class="card-body">
-                                    <h5 class="card-title mb-3">{{ partner.name }}</h5>
+                                    <h5 class="card-title sr-only">{{ partner.name }}</h5>
                                     {% if partner.link %}
                                         <a href="{{ partner.link }}">{{ partner.link | replace({'http://': '', 'https://': ''}) }}</a>
                                     {% endif %}

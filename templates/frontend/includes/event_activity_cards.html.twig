@@ -7,7 +7,7 @@
             <div class="card-body">
                 <h5 class="card-title mb-0">{{ activity.name }}</h5>
                 <span class="badge badge-pill badge-dark pull-right mb-2">{{ activity.beginString }}</span>
-                <p class="card-text mb-4">{{ activity.shortDescription }}</p>
+                <p class="card-text mb-4">{{ activity.shortDescription | lower }}</p>
                 <a href="{{ path('front_event_activity', {category: activity.category.slug, activity: activity.slug}) }}" class="btn btn-warning btn-sm">{{ 'front.events.read_more' | trans }}</a>
             </div>
         </div>
