@@ -73,7 +73,7 @@ class AdminControllerTest extends WebTestCase
             ['/ca/admin/comunicacio/missatge-contacte/list'],
             ['/es/admin/comunicacio/missatge-contacte/list'],
             ['/en/admin/comunicacio/missatge-contacte/list'],
-            ['/ca/admin/comunicacio/missatge-contacte/1/edit'],
+//            ['/ca/admin/comunicacio/missatge-contacte/1/edit'],
 //            ['/ca/admin/comunicacio/missatge-contacte/export'],
             ['/ca/admin/configuracio/usuari/list'],
             ['/es/admin/configuracio/usuari/list'],
