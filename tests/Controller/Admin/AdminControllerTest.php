@@ -16,7 +16,10 @@ class AdminControllerTest extends WebTestCase
      */
     public function testPageIsSuccessful($url)
     {
-        $client = self::createClient();
+        $client = static::createClient([], [
+            'PHP_AUTH_USER' => 'test',
+            'PHP_AUTH_PW'   => 'test',
+        ]);
         $client->request('GET', $url);
 
         $this->assertTrue($client->getResponse()->isSuccessful());
@@ -55,6 +58,29 @@ class AdminControllerTest extends WebTestCase
             ['/ca/admin/esdeveniment/activitat/create'],
             ['/ca/admin/esdeveniment/activitat/1/edit'],
 //            ['/ca/admin/esdeveniment/activitat/export'],
+            ['/ca/admin/equip/patrocinador/list'],
+            ['/es/admin/equip/patrocinador/list'],
+            ['/en/admin/equip/patrocinador/list'],
+            ['/ca/admin/equip/patrocinador/create'],
+            ['/ca/admin/equip/patrocinador/1/edit'],
+//            ['/ca/admin/equip/patrocinador/export'],
+            ['/ca/admin/equip/membre/list'],
+            ['/es/admin/equip/membre/list'],
+            ['/en/admin/equip/membre/list'],
+            ['/ca/admin/equip/membre/create'],
+            ['/ca/admin/equip/membre/1/edit'],
+//            ['/ca/admin/equip/membre/export'],
+            ['/ca/admin/comunicacio/missatge-contacte/list'],
+            ['/es/admin/comunicacio/missatge-contacte/list'],
+            ['/en/admin/comunicacio/missatge-contacte/list'],
+//            ['/ca/admin/comunicacio/missatge-contacte/1/edit'],
+//            ['/ca/admin/comunicacio/missatge-contacte/export'],
+            ['/ca/admin/configuracio/usuari/list'],
+            ['/es/admin/configuracio/usuari/list'],
+            ['/en/admin/configuracio/usuari/list'],
+            ['/ca/admin/configuracio/usuari/create'],
+            ['/ca/admin/configuracio/usuari/1/edit'],
+//            ['/ca/admin/configuracio/usuari/export'],
         ];
     }
 
@@ -65,7 +91,10 @@ class AdminControllerTest extends WebTestCase
      */
     public function testPageIsNotFound($url)
     {
-        $client = self::createClient();
+        $client = static::createClient([], [
+            'PHP_AUTH_USER' => 'test',
+            'PHP_AUTH_PW'   => 'test',
+        ]);
         $client->request('GET', $url);
 
         $this->assertTrue($client->getResponse()->isNotFound());

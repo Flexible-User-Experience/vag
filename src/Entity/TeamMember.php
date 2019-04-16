@@ -2,14 +2,23 @@
 
 namespace App\Entity;
 
+use App\Entity\Traits\DescriptionTrait;
+use App\Entity\Traits\EmailTrait;
+use App\Entity\Traits\GenderTrait;
+use App\Entity\Traits\ImageAttributesTrait;
+use App\Entity\Traits\LinkTrait;
+use App\Entity\Traits\NameTrait;
+use App\Entity\Traits\PhoneTrait;
+use App\Entity\Traits\ShowInFrontendTrait;
+use App\Entity\Traits\SlugTrait;
+use App\Entity\Traits\SurnameTrait;
 use App\Entity\Translation\TeamMemberTranslation;
-use Exception;
-use DateTimeImmutable;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
@@ -22,6 +31,8 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
  */
 class TeamMember extends AbstractEntity
 {
+    use GenderTrait, NameTrait, SurnameTrait, SlugTrait, EmailTrait, PhoneTrait, ImageAttributesTrait, DescriptionTrait, LinkTrait, ShowInFrontendTrait;
+
     /**
      * @ORM\Column(type="smallint", nullable=true)
      *
@@ -74,6 +85,7 @@ class TeamMember extends AbstractEntity
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\Email(mode="strict")
      *
      * @var string
      */
@@ -88,6 +100,7 @@ class TeamMember extends AbstractEntity
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\Url
      *
      * @var string
      */
@@ -136,220 +149,6 @@ class TeamMember extends AbstractEntity
     }
 
     /**
-     * @return int|null
-     */
-    public function getGender(): ?int
-    {
-        return $this->gender;
-    }
-
-    /**
-     * @param int $gender
-     *
-     * @return TeamMember
-     */
-    public function setGender(int $gender): self
-    {
-        $this->gender = $gender;
-
-        return $this;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getName(): ?string
-    {
-        return $this->name;
-    }
-
-    /**
-     * @param string $name
-     *
-     * @return TeamMember
-     */
-    public function setName(string $name): self
-    {
-        $this->name = $name;
-
-        return $this;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getSurname(): ?string
-    {
-        return $this->surname;
-    }
-
-    /**
-     * @param string $surname
-     *
-     * @return TeamMember
-     */
-    public function setSurname(string $surname): self
-    {
-        $this->surname = $surname;
-
-        return $this;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getFullname(): ?string
-    {
-        return $this->name.' '.$this->surname;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getSlug(): ?string
-    {
-        return $this->slug;
-    }
-
-    /**
-     * @param string $slug
-     *
-     * @return TeamMember
-     */
-    public function setSlug(string $slug): self
-    {
-        $this->slug = $slug;
-
-        return $this;
-    }
-
-    /**
-     * @return File|null
-     */
-    public function getImageFile(): ?File
-    {
-        return $this->imageFile;
-    }
-
-    /**
-     * @param File $imageFile
-     *
-     * @return TeamMember
-     * @throws Exception
-     */
-    public function setImageFile(?File $imageFile): self
-    {
-        $this->imageFile = $imageFile;
-        if (null !== $imageFile) {
-            // It is required that at least one field changes if you are using doctrine
-            // otherwise the event listeners won't be called and the file is lost
-            $this->updated = new DateTimeImmutable();
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getImageName(): ?string
-    {
-        return $this->imageName;
-    }
-
-    /**
-     * @param string $imageName
-     *
-     * @return TeamMember
-     */
-    public function setImageName(?string $imageName): self
-    {
-        $this->imageName = $imageName;
-
-        return $this;
-    }
-
-    /**
-     * @return int|null
-     */
-    public function getImageSize(): ?int
-    {
-        return $this->imageSize;
-    }
-
-    /**
-     * @param int $imageSize
-     *
-     * @return TeamMember
-     */
-    public function setImageSize(?int $imageSize): self
-    {
-        $this->imageSize = $imageSize;
-
-        return $this;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getEmail(): ?string
-    {
-        return $this->email;
-    }
-
-    /**
-     * @param string $email
-     *
-     * @return TeamMember
-     */
-    public function setEmail(string $email): self
-    {
-        $this->email = $email;
-
-        return $this;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getPhone(): ?string
-    {
-        return $this->phone;
-    }
-
-    /**
-     * @param string|null $phone
-     *
-     * @return TeamMember
-     */
-    public function setPhone(?string $phone): self
-    {
-        $this->phone = $phone;
-
-        return $this;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getLink(): ?string
-    {
-        return $this->link;
-    }
-
-    /**
-     * @param string $link
-     *
-     * @return TeamMember
-     */
-    public function setLink(string $link): self
-    {
-        $this->link = $link;
-
-        return $this;
-    }
-
-    /**
      * @return string|null
      */
     public function getJob(): ?string
@@ -358,61 +157,13 @@ class TeamMember extends AbstractEntity
     }
 
     /**
-     * @param string $job
+     * @param string|null $job
      *
      * @return TeamMember
      */
-    public function setJob(string $job): self
+    public function setJob(?string $job): self
     {
         $this->job = $job;
-
-        return $this;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getDescription(): ?string
-    {
-        return $this->description;
-    }
-
-    /**
-     * @param string $description
-     *
-     * @return TeamMember
-     */
-    public function setDescription(string $description): self
-    {
-        $this->description = $description;
-
-        return $this;
-    }
-
-    /**
-     * @return bool|null
-     */
-    public function getShowInFrontend(): ?bool
-    {
-        return $this->showInFrontend;
-    }
-
-    /**
-     * @return bool|null
-     */
-    public function isShowInFrontend(): ?bool
-    {
-        return $this->getShowInFrontend();
-    }
-
-    /**
-     * @param bool $showInFrontend
-     *
-     * @return TeamMember
-     */
-    public function setShowInFrontend(bool $showInFrontend): self
-    {
-        $this->showInFrontend = $showInFrontend;
 
         return $this;
     }

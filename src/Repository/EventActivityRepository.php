@@ -38,6 +38,19 @@ class EventActivityRepository extends ServiceEntityRepository
     }
 
     /**
+     * @param string $slug
+     *
+     * @return QueryBuilder
+     */
+    public function findAvailableAndSlug(string $slug)
+    {
+        return $this->findAvailable()
+            ->andWhere('ea.slug = :slug')
+            ->setParameter('slug', $slug)
+        ;
+    }
+
+    /**
      * @return QueryBuilder
      */
     public function findAvailableSortedByName()
@@ -84,5 +97,26 @@ class EventActivityRepository extends ServiceEntityRepository
             ->setParameter('category', $category)
             ->orderBy('ea.name', 'ASC')
         ;
+    }
+
+    /**
+     * @param string $locale
+     * @param string $slug
+     *
+     * @return QueryBuilder
+     */
+    public function findLocalizedAvailableAndSlug(string $locale, string $slug)
+    {
+        $qb = $this->findAvailable()
+            ->join('ea.translations', 't')
+            ->andWhere('t.locale = :locale')
+            ->andWhere('t.content = :content')
+            ->andWhere('t.field = :field')
+            ->setParameter('locale', $locale)
+            ->setParameter('content', $slug)
+            ->setParameter('field', 'slug')
+        ;
+
+        return $qb;
     }
 }

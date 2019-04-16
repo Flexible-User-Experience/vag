@@ -9,7 +9,7 @@
             <a class="btn btn-warning" href="{{ path('front_tickets') }}" role="button">{{ 'front.homepage.buy_tickets' | trans }}</a>
         </div>
     </div>
-    {# Main stats section #}
+    {# Main activity categories summary section #}
     <div class="jumbotron jumbotron-fluid mb-0">
         <div class="container">
             <div class="row">
@@ -18,40 +18,70 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-12">
-                    <div class="card-deck">
-                        {% for category in categories if category.eventActivities | length > 0 %}
-                            <div class="card text-white" style="background-color:{{ category.color }}">
-                                <div class="card-body">
-                                    <h2 class="card-title text-center">{{ category | icon | raw }}</h2>
-                                    <p class="card-text text-center">{{ category.eventActivities | length }} {{ category.name | title }}</p>
-                                </div>
+                {% for category in categories %}
+                    <div class="col-6 col-sm-4 col-md-3">
+                        <div class="card text-white mb-3 mb-sm-3 mb-md-0" style="background-color:{{ category.color }}">
+                            <div class="card-body">
+                                <h2 class="card-title text-center">{{ category | icon | raw }}</h2>
+                                <p class="card-text text-center">{% if category.eventActivities | length > 0 %}{{ category.eventActivities | length }} {% endif %}{{ category.name | title }}</p>
                             </div>
-                        {% endfor %}
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+            {% if categories | length > 0 %}
+                <div class="row">
+                    <div class="col-12 mt-4 text-center">
+                        <a href="{{ path('front_activities') }}" class="btn btn-outline-dark">{{ 'front.events.show_all_activities' | trans }}</a>
                     </div>
                 </div>
-            </div>
+            {% endif %}
         </div>
     </div>
-    {# Main hightlights section #}
-    {% include "frontend/includes/homepage_higlights_silder.html.twig" with {highlights_carousel_id: 'main-highlights-carousel'} %}
-    {# First event section #}
-    <div class="jumbotron jumbotron-fluid mb-0">
+    {# Highlighted collaborators section #}
+    <div class="jumbotron jumbotron-fluid jumbotron-light">
         <div class="container">
             <div class="row">
-                <div class="col-2">
-                    <img src="{{ asset('build/vag_experience.png') }}" class="img-fluid" alt="VAG experience logo">
+                <div class="col-12">
+                    <h5 class="mt-0">{{ 'front.events.featured_speakers' | trans }}</h5>
                 </div>
-                <div class="col-10">
-                    <h2 class="display-6">{{ 'front.homepage.jumbotron_4' | trans | raw }}</h2>
-                    <p class="lead">{{ 'front.homepage.jumbotron_5' | trans | raw }}</p>
-                    <p class="lead mb-0">{{ 'front.homepage.jumbotron_6' | trans | raw }}</p>
+                {% include "frontend/includes/event_collaborator_cards.html.twig" with {collaborators: featuredSpeakers} %}
+                {% if featuredSpeakers | length > 0 %}
+                    <div class="col-12 mt-4 text-center">
+                        <a href="{{ path('front_participants') }}" class="btn btn-outline-dark">{{ 'front.events.show_all_speakers' | trans }}</a>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    {# First event section #}
+    <div class="jumbotron jumbotron-fluid jumbotron-homepage-secondary" style="background-image:url('{{ asset('build/background-blur-bokeh-close-up.png') }}');">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3 col-md-2">
+                    <img src="{{ asset('build/vag_experience.svg') }}" class="img-fluid mt-2 mb-3" alt="VAG experience logo">
+                </div>
+                <div class="col-sm-9 col-md-10">
+                    <h2 class="display-6 text-white">{{ 'front.homepage.jumbotron_4' | trans | raw }}</h2>
+                    <p class="lead mb-0 text-white">{{ 'front.homepage.jumbotron_5' | trans | raw }}</p>
                 </div>
             </div>
         </div>
     </div>
-    {# Secondary hightlights section #}
-    <div class="jumbotron jumbotron-fluid jumbotron-dark">
-        {% include "frontend/includes/event_activity_card.html.twig" with {activities: secondaryHighlights} %}
+    {# Hightlighted activities section #}
+    <div class="jumbotron jumbotron-fluid jumbotron-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h5 class="mt-0">{{ 'front.events.highlighted_activities' | trans }}</h5>
+                </div>
+                {% include "frontend/includes/event_activity_cards.html.twig" with {activities: featuredActivities} %}
+                {% if featuredActivities | length > 0 %}
+                    <div class="col-12 mt-4 text-center">
+                        <a href="{{ path('front_activities') }}" class="btn btn-outline-dark">{{ 'front.events.show_all_activities' | trans }}</a>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
     </div>
 {% endblock %}

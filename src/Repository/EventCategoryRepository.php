@@ -37,4 +37,38 @@ class EventCategoryRepository extends ServiceEntityRepository
             ->addOrderBy('ec.name', 'ASC')
         ;
     }
+
+    /**
+     * @param string $slug
+     *
+     * @return QueryBuilder
+     */
+    public function findAvailableAndSlugSortedByPriorityAndName(string $slug)
+    {
+        return $this->findAvailableSortedByPriorityAndName()
+            ->andWhere('ec.slug = :slug')
+            ->setParameter('slug', $slug)
+        ;
+    }
+
+    /**
+     * @param string $locale
+     * @param string $slug
+     *
+     * @return QueryBuilder
+     */
+    public function findLocalizedSlugAvailableSortedByPriorityAndName(string $locale, string $slug)
+    {
+        $qb = $this->findAvailableSortedByPriorityAndName()
+            ->join('ec.translations', 't')
+            ->andWhere('t.locale = :locale')
+            ->andWhere('t.content = :content')
+            ->andWhere('t.field = :field')
+            ->setParameter('locale', $locale)
+            ->setParameter('content', $slug)
+            ->setParameter('field', 'slug')
+        ;
+
+        return $qb;
+    }
 }

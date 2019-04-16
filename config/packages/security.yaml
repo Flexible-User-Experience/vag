@@ -1,16 +1,25 @@
 security:
     providers:
         fos_userbundle:
-            id: fos_user.user_provider.username
+            id: fos_user.user_provider.username_email
     encoders:
         FOS\UserBundle\Model\UserInterface: bcrypt
     access_decision_manager:
         strategy: unanimous
     role_hierarchy:
-        ROLE_ADMIN:
+        ROLE_CMS:
             - ROLE_USER
             - ROLE_SONATA_ADMIN
             - ROLE_ADMIN_EVENT_CATEGORY_ALL
+            - ROLE_ADMIN_EVENT_LOCATION_ALL
+            - ROLE_ADMIN_EVENT_COLLABORATOR_ALL
+            - ROLE_ADMIN_EVENT_ACTIVITY_ALL
+            - ROLE_ADMIN_TEAM_PARTNER_ALL
+            - ROLE_ADMIN_TEAM_MEMBER_ALL
+            - ROLE_ADMIN_CONTACT_MESSAGE_ALL
+        ROLE_ADMIN:
+            - ROLE_CMS
+            - ROLE_ADMIN_CONFIGURATION_USER_ALL
         ROLE_SUPER_ADMIN:
             - ROLE_ADMIN
             - ROLE_ALLOWED_TO_SWITCH
@@ -23,11 +32,14 @@ security:
             pattern:   ^/(ca|es|en)/admin(.*)
             context:   user
             form_login:
-                provider:     fos_userbundle
-                login_path:   /ca/admin/login
-                use_forward:  false
-                check_path:   /ca/admin/login_check
-                failure_path: /ca/admin/login
+                provider:                       fos_userbundle
+                login_path:                     /ca/admin/login
+                use_forward:                    false
+                check_path:                     /ca/admin/login_check
+                failure_path:                   /ca/admin/login
+                default_target_path:            /ca/admin/dashboard
+                always_use_default_target_path: true
+                use_referer:                    true
             logout:
                 path:   /ca/admin/logout
                 target: /ca/admin/login

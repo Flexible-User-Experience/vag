@@ -2,12 +2,16 @@
 
 namespace App\Entity;
 
-use Exception;
-use DateTimeImmutable;
+use App\Entity\Traits\ImageAttributesTrait;
+use App\Entity\Traits\LinkTrait;
+use App\Entity\Traits\NameTrait;
+use App\Entity\Traits\ShowInFrontendTrait;
+use App\Entity\Traits\SlugTrait;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\Validator\Constraints as Assert;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
@@ -18,6 +22,8 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
  */
 class TeamPartner extends AbstractEntity
 {
+    use NameTrait, SlugTrait, ImageAttributesTrait, LinkTrait, ShowInFrontendTrait;
+
     /**
      * @ORM\Column(type="string", length=255)
      *
@@ -56,6 +62,7 @@ class TeamPartner extends AbstractEntity
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\Url
      *
      * @var string
      */
@@ -71,160 +78,6 @@ class TeamPartner extends AbstractEntity
     /**
      * Methods.
      */
-
-    /**
-     * @return string|null
-     */
-    public function getName(): ?string
-    {
-        return $this->name;
-    }
-
-    /**
-     * @param string $name
-     *
-     * @return TeamPartner
-     */
-    public function setName(string $name): self
-    {
-        $this->name = $name;
-
-        return $this;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getSlug(): ?string
-    {
-        return $this->slug;
-    }
-
-    /**
-     * @param string $slug
-     *
-     * @return TeamPartner
-     */
-    public function setSlug(string $slug): self
-    {
-        $this->slug = $slug;
-
-        return $this;
-    }
-
-    /**
-     * @return File|null
-     */
-    public function getImageFile(): ?File
-    {
-        return $this->imageFile;
-    }
-
-    /**
-     * @param File $imageFile
-     *
-     * @return TeamPartner
-     * @throws Exception
-     */
-    public function setImageFile(?File $imageFile): self
-    {
-        $this->imageFile = $imageFile;
-        if (null !== $imageFile) {
-            // It is required that at least one field changes if you are using doctrine
-            // otherwise the event listeners won't be called and the file is lost
-            $this->updated = new DateTimeImmutable();
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getImageName(): ?string
-    {
-        return $this->imageName;
-    }
-
-    /**
-     * @param string $imageName
-     *
-     * @return TeamPartner
-     */
-    public function setImageName(?string $imageName): self
-    {
-        $this->imageName = $imageName;
-
-        return $this;
-    }
-
-    /**
-     * @return int|null
-     */
-    public function getImageSize(): ?int
-    {
-        return $this->imageSize;
-    }
-
-    /**
-     * @param int $imageSize
-     *
-     * @return TeamPartner
-     */
-    public function setImageSize(?int $imageSize): self
-    {
-        $this->imageSize = $imageSize;
-
-        return $this;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getLink(): ?string
-    {
-        return $this->link;
-    }
-
-    /**
-     * @param string $link
-     *
-     * @return TeamPartner
-     */
-    public function setLink(string $link): self
-    {
-        $this->link = $link;
-
-        return $this;
-    }
-
-    /**
-     * @return bool|null
-     */
-    public function getShowInFrontend(): ?bool
-    {
-        return $this->showInFrontend;
-    }
-
-    /**
-     * @return bool|null
-     */
-    public function isShowInFrontend(): ?bool
-    {
-        return $this->getShowInFrontend();
-    }
-
-    /**
-     * @param bool $showInFrontend
-     *
-     * @return TeamPartner
-     */
-    public function setShowInFrontend(bool $showInFrontend): self
-    {
-        $this->showInFrontend = $showInFrontend;
-
-        return $this;
-    }
 
     /**
      * @return string

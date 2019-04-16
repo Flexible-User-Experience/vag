@@ -1,0 +1,22 @@
+{% extends "frontend/base.html.twig" %}
+
+{% block body %}
+    <div class="jumbotron jumbotron-fluid jumbotron-homepage" style="background-image:url('{{ asset('build/creative-light-abstract-glowing.png') }}');">
+        <div class="container">
+            <h1 class="display-6 text-white">{{ 'front.events.activities' | trans | title }}</h1>
+        </div>
+    </div>
+    {% for category in categories %}
+        {# Activity section #}
+        <div class="jumbotron jumbotron-fluid mb-0{% if loop.index % 2 == 0 %} jumbotron-light{% endif %}">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <h5 class="mt-0">{{ category.name | title }}</h5>
+                    </div>
+                    {% include "frontend/includes/event_activity_cards.html.twig" with {activities: activities[category.slug]} %}
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}

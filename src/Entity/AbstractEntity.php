@@ -50,7 +50,7 @@ abstract class AbstractEntity
     }
 
     /**
-     * @return DateTimeInterface
+     * @return DateTimeInterface|null
      */
     public function getCreated(): ?DateTimeInterface
     {
@@ -58,11 +58,11 @@ abstract class AbstractEntity
     }
 
     /**
-     * @param DateTimeInterface $created
+     * @param DateTimeInterface|null $created
      *
      * @return $this
      */
-    public function setCreated(DateTimeInterface $created): self
+    public function setCreated(?DateTimeInterface $created): self
     {
         $this->created = $created;
 
@@ -70,7 +70,7 @@ abstract class AbstractEntity
     }
 
     /**
-     * @return DateTimeInterface
+     * @return DateTimeInterface|null
      */
     public function getUpdated(): ?DateTimeInterface
     {
@@ -78,11 +78,11 @@ abstract class AbstractEntity
     }
 
     /**
-     * @param DateTimeInterface $updated
+     * @param DateTimeInterface|null $updated
      *
      * @return $this
      */
-    public function setUpdated(DateTimeInterface $updated): self
+    public function setUpdated(?DateTimeInterface $updated): self
     {
         $this->updated = $updated;
 

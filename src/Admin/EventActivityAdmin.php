@@ -12,6 +12,7 @@ use Sonata\DoctrineORMAdminBundle\Filter\DateFilter;
 use Sonata\Form\Type\DateTimePickerType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 
@@ -45,9 +46,10 @@ final class EventActivityAdmin extends AbstractAdmin
     /**
      * @param FormMapper $formMapper
      */
-    protected function configureFormFields(FormMapper $formMapper) {
+    protected function configureFormFields(FormMapper $formMapper)
+    {
         $formMapper
-            ->with('admin.with.activity', ['class' => 'col-md-5'])
+            ->with('admin.with.activity', ['class' => 'col-md-4'])
             ->add(
                 'name',
                 TextType::class,
@@ -104,7 +106,27 @@ final class EventActivityAdmin extends AbstractAdmin
                 ]
             )
             ->end()
-            ->with('admin.with.controls', ['class' => 'col-md-3'])
+            ->with('admin.with.images', ['class' => 'col-md-4'])
+            ->add(
+                'imageFile',
+                FileType::class,
+                [
+                    'label' => 'admin.label.image',
+                    'help' => $this->getImageHelperFormMapperWithThumbnail(),
+                    'required' => false,
+                ]
+            )
+            ->end()
+            ->with('admin.with.controls', ['class' => 'col-md-4'])
+            ->add(
+                'slug',
+                TextType::class,
+                [
+                    'label' => 'admin.label.slug',
+                    'required' => false,
+                    'disabled' => true,
+                ]
+            )
             ->add(
                 'begin',
                 DateTimePickerType::class,
@@ -146,7 +168,8 @@ final class EventActivityAdmin extends AbstractAdmin
     /**
      * @param DatagridMapper $datagridMapper
      */
-    protected function configureDatagridFilters(DatagridMapper  $datagridMapper)  {
+    protected function configureDatagridFilters(DatagridMapper $datagridMapper)
+    {
         $datagridMapper
             ->add(
                 'begin',
@@ -253,8 +276,17 @@ final class EventActivityAdmin extends AbstractAdmin
     /**
      * @param ListMapper $listMapper
      */
-    protected function configureListFields(ListMapper $listMapper) {
+    protected function configureListFields(ListMapper $listMapper)
+    {
         $listMapper
+            ->add(
+                'image',
+                null,
+                array(
+                    'label' => 'admin.label.single_image',
+                    'template' => 'backend/cells/list__cell_image_field.html.twig',
+                )
+            )
             ->add(
                 'begin',
                 'date',

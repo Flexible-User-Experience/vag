@@ -9,6 +9,7 @@ use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ColorType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 
 /**
  * Class EventCategoryAdmin
@@ -40,7 +41,8 @@ final class EventCategoryAdmin extends AbstractAdmin
     /**
      * @param FormMapper $formMapper
      */
-    protected function configureFormFields(FormMapper $formMapper) {
+    protected function configureFormFields(FormMapper $formMapper)
+    {
         $formMapper
             ->with('admin.with.category', ['class' => 'col-md-4'])
             ->add(
@@ -48,6 +50,7 @@ final class EventCategoryAdmin extends AbstractAdmin
                 ColorType::class,
                 [
                     'label' => 'admin.label.color',
+                    'required' => false,
                 ]
             )
             ->add(
@@ -55,6 +58,8 @@ final class EventCategoryAdmin extends AbstractAdmin
                 TextType::class,
                 [
                     'label' => 'admin.label.icon',
+                    'help' => 'admin.help.icon',
+                    'required' => false,
                 ]
             )
             ->add(
@@ -65,7 +70,27 @@ final class EventCategoryAdmin extends AbstractAdmin
                 ]
             )
             ->end()
+            ->with('admin.with.images', ['class' => 'col-md-4'])
+            ->add(
+                'imageFile',
+                FileType::class,
+                [
+                    'label' => 'admin.label.image',
+                    'help' => $this->getImageHelperFormMapperWithThumbnail(),
+                    'required' => false,
+                ]
+            )
+            ->end()
             ->with('admin.with.controls', ['class' => 'col-md-3'])
+            ->add(
+                'slug',
+                TextType::class,
+                [
+                    'label' => 'admin.label.slug',
+                    'required' => false,
+                    'disabled' => true,
+                ]
+            )
             ->add(
                 'priority',
                 NumberType::class,
@@ -88,7 +113,8 @@ final class EventCategoryAdmin extends AbstractAdmin
     /**
      * @param DatagridMapper $datagridMapper
      */
-    protected function configureDatagridFilters(DatagridMapper  $datagridMapper)  {
+    protected function configureDatagridFilters(DatagridMapper $datagridMapper)
+    {
         $datagridMapper
             ->add(
                 'name',
@@ -117,8 +143,17 @@ final class EventCategoryAdmin extends AbstractAdmin
     /**
      * @param ListMapper $listMapper
      */
-    protected function configureListFields(ListMapper $listMapper) {
+    protected function configureListFields(ListMapper $listMapper)
+    {
         $listMapper
+            ->add(
+                'image',
+                null,
+                array(
+                    'label' => 'admin.label.single_image',
+                    'template' => 'backend/cells/list__cell_image_field.html.twig',
+                )
+            )
             ->add(
                 'icon',
                 null,

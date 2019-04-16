@@ -2,14 +2,24 @@
 
 namespace App\Entity;
 
+use App\Entity\Traits\DescriptionTrait;
+use App\Entity\Traits\EmailTrait;
+use App\Entity\Traits\GenderTrait;
+use App\Entity\Traits\ImageAttributesTrait;
+use App\Entity\Traits\LinkTrait;
+use App\Entity\Traits\NameTrait;
+use App\Entity\Traits\PhoneTrait;
+use App\Entity\Traits\ShortDescriptionTrait;
+use App\Entity\Traits\ShowInHomepageTrait;
+use App\Entity\Traits\SlugTrait;
+use App\Entity\Traits\SurnameTrait;
 use App\Entity\Translation\EventCollaboratorTranslation;
-use Exception;
-use DateTimeImmutable;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
@@ -22,6 +32,8 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
  */
 class EventCollaborator extends AbstractEntity
 {
+    use GenderTrait, NameTrait, SurnameTrait, SlugTrait, EmailTrait, PhoneTrait, ImageAttributesTrait, ShortDescriptionTrait, DescriptionTrait, ShowInHomepageTrait, LinkTrait;
+
     /**
      * @ORM\Column(type="smallint", nullable=true)
      *
@@ -74,6 +86,7 @@ class EventCollaborator extends AbstractEntity
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Email(mode="strict")
      *
      * @var string
      */
@@ -88,6 +101,7 @@ class EventCollaborator extends AbstractEntity
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\Url
      *
      * @var string
      */
@@ -141,288 +155,6 @@ class EventCollaborator extends AbstractEntity
     {
         $this->eventActivities = new ArrayCollection();
         $this->translations = new ArrayCollection();
-    }
-
-    /**
-     * @return int|null
-     */
-    public function getGender(): ?int
-    {
-        return $this->gender;
-    }
-
-    /**
-     * @param int $gender
-     *
-     * @return EventCollaborator
-     */
-    public function setGender(int $gender): self
-    {
-        $this->gender = $gender;
-
-        return $this;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getName(): ?string
-    {
-        return $this->name;
-    }
-
-    /**
-     * @param string $name
-     *
-     * @return EventCollaborator
-     */
-    public function setName(string $name): self
-    {
-        $this->name = $name;
-
-        return $this;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getSurname(): ?string
-    {
-        return $this->surname;
-    }
-
-    /**
-     * @param string $surname
-     *
-     * @return EventCollaborator
-     */
-    public function setSurname(string $surname): self
-    {
-        $this->surname = $surname;
-
-        return $this;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getFullname(): ?string
-    {
-        return $this->name.' '.$this->surname;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getSlug(): ?string
-    {
-        return $this->slug;
-    }
-
-    /**
-     * @param string $slug
-     *
-     * @return EventCollaborator
-     */
-    public function setSlug(string $slug): self
-    {
-        $this->slug = $slug;
-
-        return $this;
-    }
-
-    /**
-     * @return File|null
-     */
-    public function getImageFile(): ?File
-    {
-        return $this->imageFile;
-    }
-
-    /**
-     * @param File $imageFile
-     *
-     * @return EventCollaborator
-     * @throws Exception
-     */
-    public function setImageFile(?File $imageFile): self
-    {
-        $this->imageFile = $imageFile;
-        if (null !== $imageFile) {
-            // It is required that at least one field changes if you are using doctrine
-            // otherwise the event listeners won't be called and the file is lost
-            $this->updated = new DateTimeImmutable();
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getImageName(): ?string
-    {
-        return $this->imageName;
-    }
-
-    /**
-     * @param string $imageName
-     *
-     * @return EventCollaborator
-     */
-    public function setImageName(?string $imageName): self
-    {
-        $this->imageName = $imageName;
-
-        return $this;
-    }
-
-    /**
-     * @return int|null
-     */
-    public function getImageSize(): ?int
-    {
-        return $this->imageSize;
-    }
-
-    /**
-     * @param int $imageSize
-     *
-     * @return EventCollaborator
-     */
-    public function setImageSize(?int $imageSize): self
-    {
-        $this->imageSize = $imageSize;
-
-        return $this;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getEmail(): ?string
-    {
-        return $this->email;
-    }
-
-    /**
-     * @param string $email
-     *
-     * @return EventCollaborator
-     */
-    public function setEmail(string $email): self
-    {
-        $this->email = $email;
-
-        return $this;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getPhone(): ?string
-    {
-        return $this->phone;
-    }
-
-    /**
-     * @param string|null $phone
-     *
-     * @return EventCollaborator
-     */
-    public function setPhone(?string $phone): self
-    {
-        $this->phone = $phone;
-
-        return $this;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getLink(): ?string
-    {
-        return $this->link;
-    }
-
-    /**
-     * @param string $link
-     *
-     * @return EventCollaborator
-     */
-    public function setLink(string $link): self
-    {
-        $this->link = $link;
-
-        return $this;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getShortDescription(): ?string
-    {
-        return $this->shortDescription;
-    }
-
-    /**
-     * @param string $shortDescription
-     *
-     * @return EventCollaborator
-     */
-    public function setShortDescription(string $shortDescription): self
-    {
-        $this->shortDescription = $shortDescription;
-
-        return $this;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getDescription(): ?string
-    {
-        return $this->description;
-    }
-
-    /**
-     * @param string $description
-     *
-     * @return EventCollaborator
-     */
-    public function setDescription(string $description): self
-    {
-        $this->description = $description;
-
-        return $this;
-    }
-
-    /**
-     * @return bool|null
-     */
-    public function getShowInHomepage(): ?bool
-    {
-        return $this->showInHomepage;
-    }
-
-    /**
-     * @return bool|null
-     */
-    public function isShowInHomepage(): ?bool
-    {
-        return $this->getShowInHomepage();
-    }
-
-    /**
-     * @param bool $showInHomepage
-     *
-     * @return EventCollaborator
-     */
-    public function setShowInHomepage(bool $showInHomepage): self
-    {
-        $this->showInHomepage = $showInHomepage;
-
-        return $this;
     }
 
     /**

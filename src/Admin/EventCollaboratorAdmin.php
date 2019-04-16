@@ -6,9 +6,13 @@ use App\Enum\GenderEnum;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\UrlType;
 
 /**
  * Class EventCollaboratorAdmin
@@ -40,17 +44,10 @@ final class EventCollaboratorAdmin extends AbstractAdmin
     /**
      * @param FormMapper $formMapper
      */
-    protected function configureFormFields(FormMapper $formMapper) {
+    protected function configureFormFields(FormMapper $formMapper)
+    {
         $formMapper
             ->with('admin.with.collaborator', ['class' => 'col-md-4'])
-            ->add(
-                'gender',
-                ChoiceType::class,
-                [
-                    'label' => 'admin.label.gender.gender',
-                    'choices' => GenderEnum::getStaticChoices(),
-                ]
-            )
             ->add(
                 'name',
                 TextType::class,
@@ -77,6 +74,75 @@ final class EventCollaboratorAdmin extends AbstractAdmin
                 TextType::class,
                 [
                     'label' => 'admin.label.phone',
+                    'required' => false,
+                ]
+            )
+            ->end()
+            ->with('admin.with.text', ['class' => 'col-md-4'])
+            ->add(
+                'shortDescription',
+                TextType::class,
+                [
+                    'label' => 'admin.label.short_description',
+                    'required' => false,
+                ]
+            )
+            ->add(
+                'description',
+                TextareaType::class,
+                [
+                    'label' => 'admin.label.description',
+                    'required' => false,
+                    'attr' => [
+                        'rows' => '5',
+                        'style' => 'resize:vertical',
+                    ],
+                ]
+            )
+            ->end()
+            ->with('admin.with.images', ['class' => 'col-md-4'])
+            ->add(
+                'imageFile',
+                FileType::class,
+                [
+                    'label' => 'admin.label.image',
+                    'help' => $this->getImageHelperFormMapperWithThumbnail(),
+                    'required' => false,
+                ]
+            )
+            ->end()
+            ->with('admin.with.controls', ['class' => 'col-md-4'])
+            ->add(
+                'slug',
+                TextType::class,
+                [
+                    'label' => 'admin.label.slug',
+                    'required' => false,
+                    'disabled' => true,
+                ]
+            )
+            ->add(
+                'gender',
+                ChoiceType::class,
+                [
+                    'label' => 'admin.label.gender.gender',
+                    'choices' => GenderEnum::getStaticChoices(),
+                ]
+            )
+            ->add(
+                'link',
+                UrlType::class,
+                [
+                    'label' => 'admin.label.link',
+                    'required' => false,
+                ]
+            )
+            ->add(
+                'showInHomepage',
+                CheckboxType::class,
+                [
+                    'label' => 'admin.label.show_in_homepage',
+                    'required' => false,
                 ]
             )
             ->end()
@@ -86,7 +152,8 @@ final class EventCollaboratorAdmin extends AbstractAdmin
     /**
      * @param DatagridMapper $datagridMapper
      */
-    protected function configureDatagridFilters(DatagridMapper  $datagridMapper)  {
+    protected function configureDatagridFilters(DatagridMapper $datagridMapper)
+    {
         $datagridMapper
             ->add(
                 'name',
@@ -130,14 +197,30 @@ final class EventCollaboratorAdmin extends AbstractAdmin
                     'label' => 'admin.label.description',
                 ]
             )
+            ->add(
+                'showInHomepage',
+                null,
+                [
+                    'label' => 'admin.label.show_in_homepage_short',
+                ]
+            )
         ;
     }
 
     /**
      * @param ListMapper $listMapper
      */
-    protected function configureListFields(ListMapper $listMapper) {
+    protected function configureListFields(ListMapper $listMapper)
+    {
         $listMapper
+            ->add(
+                'image',
+                null,
+                array(
+                    'label' => 'admin.label.single_image',
+                    'template' => 'backend/cells/list__cell_image_field.html.twig',
+                )
+            )
             ->add(
                 'name',
                 null,
@@ -152,14 +235,6 @@ final class EventCollaboratorAdmin extends AbstractAdmin
                 [
                     'label' => 'admin.label.surname',
                     'editable' => true,
-                ]
-            )
-            ->add(
-                'slug',
-                null,
-                [
-                    'label' => 'admin.label.slug',
-                    'editable' => false,
                 ]
             )
             ->add(

@@ -2,9 +2,13 @@
 
 namespace App\Entity;
 
+use App\Entity\Traits\EmailTrait;
+use App\Entity\Traits\NameTrait;
+use App\Entity\Traits\PhoneTrait;
 use DateTime;
 use DateTimeInterface;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\TeamMemberRepository")
@@ -12,6 +16,8 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class ContactMessage extends AbstractEntity
 {
+    use NameTrait, EmailTrait, PhoneTrait;
+
     /**
      * @ORM\Column(type="string", length=255)
      *
@@ -28,6 +34,7 @@ class ContactMessage extends AbstractEntity
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Email(mode="strict")
      *
      * @var string
      */
@@ -89,79 +96,19 @@ class ContactMessage extends AbstractEntity
     /**
      * @return string|null
      */
-    public function getName(): ?string
-    {
-        return $this->name;
-    }
-
-    /**
-     * @param string $name
-     *
-     * @return ContactMessage
-     */
-    public function setName(string $name): self
-    {
-        $this->name = $name;
-
-        return $this;
-    }
-
-    /**
-     * @return string|null
-     */
     public function getSubject(): ?string
     {
         return $this->subject;
     }
 
     /**
-     * @param string $subject
+     * @param string|null $subject
      *
      * @return ContactMessage
      */
-    public function setSubject(string $subject): self
+    public function setSubject(?string $subject): self
     {
         $this->subject = $subject;
-
-        return $this;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getEmail(): ?string
-    {
-        return $this->email;
-    }
-
-    /**
-     * @param string $email
-     *
-     * @return ContactMessage
-     */
-    public function setEmail(string $email): self
-    {
-        $this->email = $email;
-
-        return $this;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getPhone(): ?string
-    {
-        return $this->phone;
-    }
-
-    /**
-     * @param string|null $phone
-     *
-     * @return ContactMessage
-     */
-    public function setPhone(?string $phone): self
-    {
-        $this->phone = $phone;
 
         return $this;
     }
@@ -175,11 +122,11 @@ class ContactMessage extends AbstractEntity
     }
 
     /**
-     * @param string $message
+     * @param string|null $message
      *
      * @return ContactMessage
      */
-    public function setMessage(string $message): self
+    public function setMessage(?string $message): self
     {
         $this->message = $message;
 
@@ -195,11 +142,11 @@ class ContactMessage extends AbstractEntity
     }
 
     /**
-     * @param string $answer
+     * @param string|null $answer
      *
      * @return ContactMessage
      */
-    public function setAnswer(string $answer): self
+    public function setAnswer(?string $answer): self
     {
         $this->answer = $answer;
 
@@ -215,11 +162,11 @@ class ContactMessage extends AbstractEntity
     }
 
     /**
-     * @param DateTimeInterface $answered
+     * @param DateTimeInterface|null $answered
      *
      * @return ContactMessage
      */
-    public function setAnswered(DateTimeInterface $answered): self
+    public function setAnswered(?DateTimeInterface $answered): self
     {
         $this->answered = $answered;
 
@@ -243,11 +190,11 @@ class ContactMessage extends AbstractEntity
     }
 
     /**
-     * @param bool $legalTermsHasBeenAccepted
+     * @param bool|null $legalTermsHasBeenAccepted
      *
      * @return ContactMessage
      */
-    public function setLegalTermsHasBeenAccepted(bool $legalTermsHasBeenAccepted): self
+    public function setLegalTermsHasBeenAccepted(?bool $legalTermsHasBeenAccepted): self
     {
         $this->legalTermsHasBeenAccepted = $legalTermsHasBeenAccepted;
 
@@ -271,11 +218,11 @@ class ContactMessage extends AbstractEntity
     }
 
     /**
-     * @param bool $hasBeenReaded
+     * @param bool|null $hasBeenReaded
      *
      * @return ContactMessage
      */
-    public function setHasBeenReaded(bool $hasBeenReaded): self
+    public function setHasBeenReaded(?bool $hasBeenReaded): self
     {
         $this->hasBeenReaded = $hasBeenReaded;
 
@@ -299,11 +246,11 @@ class ContactMessage extends AbstractEntity
     }
 
     /**
-     * @param bool $hasBeenAnswered
+     * @param bool|null $hasBeenAnswered
      *
      * @return ContactMessage
      */
-    public function setHasBeenAnswered(bool $hasBeenAnswered): self
+    public function setHasBeenAnswered(?bool $hasBeenAnswered): self
     {
         $this->hasBeenAnswered = $hasBeenAnswered;
 

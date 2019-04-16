@@ -1,5 +1,8 @@
 admin:
     with:
         event: 'Eventos'
+        team: 'Colaboradores'
+        settings: 'Configuraciones'
+        comunication: 'Comunicaciones'
 toggle_navigation: 'Cambiar navegación'
 message_close: 'Cerrar mensaje'

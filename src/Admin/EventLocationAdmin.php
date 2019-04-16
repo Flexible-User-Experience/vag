@@ -5,8 +5,10 @@ namespace App\Admin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Vich\UploaderBundle\Form\Type\VichImageType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\UrlType;
 
 /**
  * Class EventLocationAdmin
@@ -38,9 +40,24 @@ final class EventLocationAdmin extends AbstractAdmin
     /**
      * @param FormMapper $formMapper
      */
-    protected function configureFormFields(FormMapper $formMapper) {
+    protected function configureFormFields(FormMapper $formMapper)
+    {
         $formMapper
             ->with('admin.with.location', ['class' => 'col-md-4'])
+            ->add(
+                'latitude',
+                NumberType::class,
+                [
+                    'label' => 'admin.label.latitude',
+                ]
+            )
+            ->add(
+                'longitude',
+                NumberType::class,
+                [
+                    'label' => 'admin.label.longitude',
+                ]
+            )
             ->add(
                 'place',
                 TextType::class,
@@ -52,9 +69,29 @@ final class EventLocationAdmin extends AbstractAdmin
             ->with('admin.with.images', ['class' => 'col-md-4'])
             ->add(
                 'imageFile',
-                VichImageType::class,
+                FileType::class,
                 [
                     'label' => 'admin.label.image',
+                    'help' => $this->getImageHelperFormMapperWithThumbnail(),
+                    'required' => false,
+                ]
+            )
+            ->end()
+            ->with('admin.with.controls', ['class' => 'col-md-4'])
+            ->add(
+                'slug',
+                TextType::class,
+                [
+                    'label' => 'admin.label.slug',
+                    'required' => false,
+                    'disabled' => true,
+                ]
+            )
+            ->add(
+                'link',
+                UrlType::class,
+                [
+                    'label' => 'admin.label.link',
                     'required' => false,
                 ]
             )
@@ -65,7 +102,8 @@ final class EventLocationAdmin extends AbstractAdmin
     /**
      * @param DatagridMapper $datagridMapper
      */
-    protected function configureDatagridFilters(DatagridMapper  $datagridMapper)  {
+    protected function configureDatagridFilters(DatagridMapper $datagridMapper)
+    {
         $datagridMapper
             ->add(
                 'place',
@@ -80,8 +118,17 @@ final class EventLocationAdmin extends AbstractAdmin
     /**
      * @param ListMapper $listMapper
      */
-    protected function configureListFields(ListMapper $listMapper) {
+    protected function configureListFields(ListMapper $listMapper)
+    {
         $listMapper
+            ->add(
+                'image',
+                null,
+                array(
+                    'label' => 'admin.label.single_image',
+                    'template' => 'backend/cells/list__cell_image_field.html.twig',
+                )
+            )
             ->add(
                 'place',
                 null,

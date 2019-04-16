@@ -2,14 +2,19 @@
 
 namespace App\Entity;
 
+use App\Entity\Traits\DescriptionTrait;
+use App\Entity\Traits\ImageAttributesTrait;
+use App\Entity\Traits\IsAvailableTrait;
+use App\Entity\Traits\NameTrait;
+use App\Entity\Traits\ShortDescriptionTrait;
+use App\Entity\Traits\ShowInHomepageTrait;
+use App\Entity\Traits\SlugTrait;
 use App\Entity\Translation\EventActivityTranslation;
 use DateTime;
-use DateTimeImmutable;
 use DateTimeInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-use Exception;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\HttpFoundation\File\File;
@@ -23,6 +28,8 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
  */
 class EventActivity extends AbstractEntity
 {
+    use NameTrait, SlugTrait, ImageAttributesTrait, ShortDescriptionTrait, DescriptionTrait, IsAvailableTrait, ShowInHomepageTrait;
+
     /**
      * @ORM\Column(type="string", length=255, unique=true)
      * @Gedmo\Translatable
@@ -149,112 +156,6 @@ class EventActivity extends AbstractEntity
     }
 
     /**
-     * @return string|null
-     */
-    public function getName(): ?string
-    {
-        return $this->name;
-    }
-
-    /**
-     * @param string $name
-     *
-     * @return EventActivity
-     */
-    public function setName(string $name): self
-    {
-        $this->name = $name;
-
-        return $this;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getSlug(): ?string
-    {
-        return $this->slug;
-    }
-
-    /**
-     * @param string $slug
-     *
-     * @return EventActivity
-     */
-    public function setSlug(string $slug): self
-    {
-        $this->slug = $slug;
-
-        return $this;
-    }
-
-    /**
-     * @return File|null
-     */
-    public function getImageFile(): ?File
-    {
-        return $this->imageFile;
-    }
-
-    /**
-     * @param File $imageFile
-     *
-     * @return EventActivity
-     * @throws Exception
-     */
-    public function setImageFile(?File $imageFile): self
-    {
-        $this->imageFile = $imageFile;
-        if (null !== $imageFile) {
-            // It is required that at least one field changes if you are using doctrine
-            // otherwise the event listeners won't be called and the file is lost
-            $this->updated = new DateTimeImmutable();
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getImageName(): ?string
-    {
-        return $this->imageName;
-    }
-
-    /**
-     * @param string $imageName
-     *
-     * @return EventActivity
-     */
-    public function setImageName(?string $imageName): self
-    {
-        $this->imageName = $imageName;
-
-        return $this;
-    }
-
-    /**
-     * @return int|null
-     */
-    public function getImageSize(): ?int
-    {
-        return $this->imageSize;
-    }
-
-    /**
-     * @param int $imageSize
-     *
-     * @return EventActivity
-     */
-    public function setImageSize(?int $imageSize): self
-    {
-        $this->imageSize = $imageSize;
-
-        return $this;
-    }
-
-    /**
      * @return DateTimeInterface|null
      */
     public function getBegin(): ?DateTimeInterface
@@ -263,11 +164,19 @@ class EventActivity extends AbstractEntity
     }
 
     /**
-     * @param DateTimeInterface $begin
+     * @return string
+     */
+    public function getBeginString(): string
+    {
+        return $this->getBegin() ? $this->getBegin()->format('d/m/Y H:i') : '---';
+    }
+
+    /**
+     * @param DateTimeInterface|null $begin
      *
      * @return EventActivity
      */
-    public function setBegin(DateTimeInterface $begin): self
+    public function setBegin(?DateTimeInterface $begin): self
     {
         $this->begin = $begin;
 
@@ -283,109 +192,13 @@ class EventActivity extends AbstractEntity
     }
 
     /**
-     * @param DateTimeInterface $end
+     * @param DateTimeInterface|null $end
      *
      * @return EventActivity
      */
-    public function setEnd(DateTimeInterface $end): self
+    public function setEnd(?DateTimeInterface $end): self
     {
         $this->end = $end;
-
-        return $this;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getShortDescription(): ?string
-    {
-        return $this->shortDescription;
-    }
-
-    /**
-     * @param string $shortDescription
-     *
-     * @return EventActivity
-     */
-    public function setShortDescription(string $shortDescription): self
-    {
-        $this->shortDescription = $shortDescription;
-
-        return $this;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getDescription(): ?string
-    {
-        return $this->description;
-    }
-
-    /**
-     * @param string $description
-     *
-     * @return EventActivity
-     */
-    public function setDescription(string $description): self
-    {
-        $this->description = $description;
-
-        return $this;
-    }
-
-    /**
-     * @return bool|null
-     */
-    public function getIsAvailable(): ?bool
-    {
-        return $this->isAvailable;
-    }
-
-    /**
-     * @return bool|null
-     */
-    public function isAvailable(): ?bool
-    {
-        return $this->getIsAvailable();
-    }
-
-    /**
-     * @param bool $isAvailable
-     *
-     * @return EventActivity
-     */
-    public function setIsAvailable(bool $isAvailable): self
-    {
-        $this->isAvailable = $isAvailable;
-
-        return $this;
-    }
-
-    /**
-     * @return bool|null
-     */
-    public function getShowInHomepage(): ?bool
-    {
-        return $this->showInHomepage;
-    }
-
-    /**
-     * @return bool|null
-     */
-    public function isShowInHomepage(): ?bool
-    {
-        return $this->getShowInHomepage();
-    }
-
-    /**
-     * @param bool $showInHomepage
-     *
-     * @return EventActivity
-     */
-    public function setShowInHomepage(bool $showInHomepage): self
-    {
-        $this->showInHomepage = $showInHomepage;
 
         return $this;
     }

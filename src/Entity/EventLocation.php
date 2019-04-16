@@ -2,15 +2,17 @@
 
 namespace App\Entity;
 
+use App\Entity\Traits\ImageAttributesTrait;
+use App\Entity\Traits\LinkTrait;
+use App\Entity\Traits\SlugTrait;
 use App\Entity\Translation\EventLocationTranslation;
-use DateTimeImmutable;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-use Exception;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\Validator\Constraints as Assert;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
@@ -21,6 +23,8 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
  */
 class EventLocation extends AbstractEntity
 {
+    use SlugTrait, ImageAttributesTrait, LinkTrait;
+
     /**
      * @ORM\Column(type="float", nullable=true)
      *
@@ -54,6 +58,7 @@ class EventLocation extends AbstractEntity
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\Url
      *
      * @var string
      */
@@ -116,11 +121,11 @@ class EventLocation extends AbstractEntity
     }
 
     /**
-     * @param float $latitude
+     * @param float|null $latitude
      *
      * @return EventLocation
      */
-    public function setLatitude(float $latitude): self
+    public function setLatitude(?float $latitude): self
     {
         $this->latitude = $latitude;
 
@@ -136,11 +141,11 @@ class EventLocation extends AbstractEntity
     }
 
     /**
-     * @param float $longitude
+     * @param float|null $longitude
      *
      * @return EventLocation
      */
-    public function setLongitude(float $longitude): self
+    public function setLongitude(?float $longitude): self
     {
         $this->longitude = $longitude;
 
@@ -156,119 +161,13 @@ class EventLocation extends AbstractEntity
     }
 
     /**
-     * @param string $place
+     * @param string|null $place
      *
      * @return EventLocation
      */
-    public function setPlace(string $place): self
+    public function setPlace(?string $place): self
     {
         $this->place = $place;
-
-        return $this;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getSlug(): ?string
-    {
-        return $this->slug;
-    }
-
-    /**
-     * @param string $slug
-     *
-     * @return EventLocation
-     */
-    public function setSlug(string $slug): self
-    {
-        $this->slug = $slug;
-
-        return $this;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getLink(): ?string
-    {
-        return $this->link;
-    }
-
-    /**
-     * @param string $link
-     *
-     * @return EventLocation
-     */
-    public function setLink(string $link): self
-    {
-        $this->link = $link;
-
-        return $this;
-    }
-
-    /**
-     * @return File|null
-     */
-    public function getImageFile(): ?File
-    {
-        return $this->imageFile;
-    }
-
-    /**
-     * @param File $imageFile
-     *
-     * @return EventLocation
-     * @throws Exception
-     */
-    public function setImageFile(?File $imageFile): self
-    {
-        $this->imageFile = $imageFile;
-        if (null !== $imageFile) {
-            // It is required that at least one field changes if you are using doctrine
-            // otherwise the event listeners won't be called and the file is lost
-            $this->updated = new DateTimeImmutable();
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getImageName(): ?string
-    {
-        return $this->imageName;
-    }
-
-    /**
-     * @param string $imageName
-     *
-     * @return EventLocation
-     */
-    public function setImageName(?string $imageName): self
-    {
-        $this->imageName = $imageName;
-
-        return $this;
-    }
-
-    /**
-     * @return int|null
-     */
-    public function getImageSize(): ?int
-    {
-        return $this->imageSize;
-    }
-
-    /**
-     * @param int $imageSize
-     *
-     * @return EventLocation
-     */
-    public function setImageSize(?int $imageSize): self
-    {
-        $this->imageSize = $imageSize;
 
         return $this;
     }

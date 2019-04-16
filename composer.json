@@ -6,6 +6,8 @@
         "ext-ctype": "*",
         "ext-iconv": "*",
         "cypresslab/gitelephant-bundle": "^0.1",
+        "egulias/email-validator": "^2.1",
+        "gremo/zurb-ink-bundle": "^4.0",
         "knplabs/knp-menu-bundle": "^2.0",
         "liip/imagine-bundle": "^2.1",
         "sensio/framework-extra-bundle": "^5.2",
@@ -33,7 +35,9 @@
         "symfony/webpack-encore-bundle": "^1.2",
         "symfony/yaml": "4.2.*",
         "twig/extensions": "^1.5",
-        "vich/uploader-bundle": "^1.8"
+        "vich/uploader-bundle": "^1.8",
+        "welp/mailchimp-bundle": "^1.2",
+        "willdurand/negotiation": "^2.3"
     },
     "require-dev": {
         "hautelook/alice-bundle": "^2.3",

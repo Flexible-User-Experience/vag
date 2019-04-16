@@ -1,0 +1,2 @@
+welp_mailchimp:
+    api_key: '%env(string:MAILCHIMP_API_KEY)%'
