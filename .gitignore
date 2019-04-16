@@ -3,12 +3,12 @@
 /.env.local
 /.env.local.php
 /.env.*.local
-!/.env.test.local
 /public/bundles/
 /var/*
 /vendor/
 /scripts/ansible/vars
 !var/.gitkeep
+!var/.env.test.local
 !.travis.yml
 ###< symfony/framework-bundle ###
 
