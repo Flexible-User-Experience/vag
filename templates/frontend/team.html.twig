@@ -14,15 +14,15 @@
                         <div class="col-6 col-sm-4">
                             <div class="card">
                                 {% if member.imageName %}
-                                    <img src="{{ vich_uploader_asset(member, 'imageFile') | imagine_filter('480xY') }}" class="card-img-top" alt="{{ member.fullname }}">
+                                    <img src="{{ vich_uploader_asset(member, 'imageFile') | imagine_filter('480x480') }}" class="card-img-top" alt="{{ member.fullname }}">
                                 {% endif %}
                                 <div class="card-body">
-                                    <h5 class="card-title">{{ member.fullname }}</h5>
+                                    <h5 class="card-title mb-0">{{ member.fullname }}</h5>
                                     {% if member.job %}
-                                        <p class="card-text">{{ member.job }}</p>
+                                        <p class="card-text text-muted">{{ member.job }}</p>
                                     {% endif %}
                                     {% if member.link %}
-                                        <a href="{{ member.link }}">{{ member.link }}</a>
+                                        <a href="{{ member.link }}">{{ member.link | replace({'http://': '', 'https://': ''}) }}</a>
                                     {% endif %}
                                 </div>
                             </div>
@@ -51,12 +51,12 @@
                         <div class="col-6 col-sm-4">
                             <div class="card">
                                 {% if partner.imageName %}
-                                    <img src="{{ vich_uploader_asset(partner, 'imageFile') | imagine_filter('480xY') }}" class="card-img-top" alt="{{ partner.name }}">
+                                    <img src="{{ vich_uploader_asset(partner, 'imageFile') | imagine_filter('480x480_inset') }}" class="card-img-top" alt="{{ partner.name }}">
                                 {% endif %}
                                 <div class="card-body">
-                                    <h5 class="card-title">{{ partner.name }}</h5>
+                                    <h5 class="card-title mb-3">{{ partner.name }}</h5>
                                     {% if partner.link %}
-                                        <a href="{{ partner.link }}">{{ partner.link }}</a>
+                                        <a href="{{ partner.link }}">{{ partner.link | replace({'http://': '', 'https://': ''}) }}</a>
                                     {% endif %}
                                 </div>
                             </div>
