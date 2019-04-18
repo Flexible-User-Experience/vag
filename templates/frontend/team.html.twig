@@ -14,7 +14,7 @@
                         <div class="col-6 col-sm-4 mb-sm-3">
                             <div class="card">
                                 {% if member.imageName %}
-                                    <img src="{{ vich_uploader_asset(member, 'imageFile') | imagine_filter('480x480') }}" class="card-img-top" alt="{{ member.fullname }}">
+                                    <img src="{{ vich_uploader_asset(member, 'imageFile') | imagine_filter('480x480_BW') }}" class="card-img-top" alt="{{ member.fullname }}">
                                 {% endif %}
                                 <div class="card-body">
                                     <h5 class="card-title mb-0">{{ member.fullname }}</h5>
