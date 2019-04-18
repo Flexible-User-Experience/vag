@@ -26,14 +26,14 @@ class EventLocation extends AbstractEntity
     use SlugTrait, ImageAttributesTrait, LinkTrait;
 
     /**
-     * @ORM\Column(type="float", nullable=true)
+     * @ORM\Column(type="float", nullable=true, options={"precision"=14})
      *
      * @var float
      */
     private $latitude;
 
     /**
-     * @ORM\Column(type="float", nullable=true)
+     * @ORM\Column(type="float", nullable=true, options={"precision"=14})
      *
      * @var float
      */

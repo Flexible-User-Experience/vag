@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Entity\Traits\ImageAttributesTrait;
+use App\Entity\Traits\IsAvailableTrait;
 use App\Entity\Traits\NameTrait;
 use App\Entity\Traits\SlugTrait;
 use App\Entity\Translation\EventCategoryTranslation;
@@ -22,7 +23,7 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
  */
 class EventCategory extends AbstractEntity
 {
-    use NameTrait, SlugTrait, ImageAttributesTrait;
+    use NameTrait, SlugTrait, ImageAttributesTrait, IsAvailableTrait;
 
     const DEFAULT_COLOR = '#2F2F2F';
     const DEFAULT_ICON = 'fa fa-question';
@@ -136,34 +137,6 @@ class EventCategory extends AbstractEntity
     public function setPriority(?int $priority): self
     {
         $this->priority = $priority;
-
-        return $this;
-    }
-
-    /**
-     * @return bool|null
-     */
-    public function getIsAvailable(): ?bool
-    {
-        return $this->isAvailable;
-    }
-
-    /**
-     * @return bool|null
-     */
-    public function isAvailable(): ?bool
-    {
-        return $this->getIsAvailable();
-    }
-
-    /**
-     * @param bool|null $isAvailable
-     *
-     * @return EventCategory
-     */
-    public function setIsAvailable(?bool $isAvailable): self
-    {
-        $this->isAvailable = $isAvailable;
 
         return $this;
     }
