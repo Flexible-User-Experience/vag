@@ -49,6 +49,7 @@ final class EventLocationAdmin extends AbstractAdmin
                 NumberType::class,
                 [
                     'label' => 'admin.label.latitude',
+                    'scale' => 14,
                 ]
             )
             ->add(
@@ -56,6 +57,7 @@ final class EventLocationAdmin extends AbstractAdmin
                 NumberType::class,
                 [
                     'label' => 'admin.label.longitude',
+                    'scale' => 14,
                 ]
             )
             ->add(
