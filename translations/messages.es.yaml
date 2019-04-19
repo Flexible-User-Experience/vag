@@ -23,6 +23,7 @@ front:
         highlighted_locations: 'Ubicaciones destacadas'
         show_all_locations: 'Ver todas las ubicaciones'
         read_more: 'leer más'
+        read_more_activities: 'mostrar actividades'
         empty_warning: 'próximamente, se paciente...'
     carrousel:
         previous: 'anterior'

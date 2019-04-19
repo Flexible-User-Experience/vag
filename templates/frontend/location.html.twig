@@ -16,6 +16,9 @@
                     </div>
                 {% endif %}
                 <div class="col-6">
+                    <div id="gmap" style="height:100%;"></div>
+                </div>
+                <div class="col-6">
                     {% if not location.isTourismMarketResource %}
                         {% if location.eventActivities | length > 1 %}
                             <span class="badge badge-dark">{{ location.eventActivities | length }} {{ 'front.events.activities' | trans | lower }}</span>
@@ -39,4 +42,23 @@
             </div>
         </div>
     </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key={{ google_maps_api_key }}&hl={{ app.request.locale }}&callback=initMap"></script>
+    <script type="text/javascript">
+        let map;
+        let marker;
+        function initMap() {
+            map = new google.maps.Map(document.getElementById('gmap'), {
+                center: {lat: {{ location.latitude }}, lng: {{ location.longitude}}},
+                zoom: 17
+            });
+            marker = new google.maps.Marker({
+                position: {lat: {{ location.latitude }}, lng: {{ location.longitude}}},
+                map: map
+            });
+        }
+    </script>
 {% endblock %}
