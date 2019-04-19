@@ -19,7 +19,7 @@ front:
         show_all_speakers: 'Veure tots els participants'
         activities: 'Activitats'
         highlighted_activities: 'Activitats destacades'
-        show_all_activities: 'Veure tots les activitats'
+        show_all_activities: 'Veure totes les activitats'
         highlighted_locations: 'Ubicacions destacades'
         show_all_locations: 'Veure totes les ubicacions'
         read_more: 'llegir més'
