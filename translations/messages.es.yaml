@@ -19,6 +19,8 @@ front:
         activities: 'Actividades'
         highlighted_activities: 'Actividades destacadas'
         show_all_activities: 'Ver todas las actividades'
+        highlighted_locations: 'Ubicaciones destacadas'
+        show_all_locations: 'Ver todas las ubicaciones'
         read_more: 'leer más'
         empty_warning: 'próximamente, se paciente...'
     carrousel:
@@ -69,6 +71,8 @@ admin:
         collaborators: 'Colaboradores'
         image: 'Archivo'
         single_image: 'Imagen'
+        tourism_market_resource: 'Recurso turístico promocional'
+        tourism_market_resource_short: 'Recurso turístico'
         actions: 'Acciones'
         username: 'Nombre de usuario'
         user_roles: 'Roles de usuario'

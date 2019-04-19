@@ -19,6 +19,8 @@ front:
         activities: 'Activities'
         highlighted_activities: 'Outstanding activities'
         show_all_activities: 'Show all activities'
+        highlighted_locations: 'Featured locations'
+        show_all_locations: 'Show all locations'
         read_more: 'read more'
         empty_warning: 'coming soon, be patient...'
     carrousel:
@@ -69,6 +71,8 @@ admin:
         image: 'File'
         single_image: 'Image'
         actions: 'Actions'
+        tourism_market_resource: 'Tourism market resource'
+        tourism_market_resource_short: 'Tourism resource'
         username: 'Username'
         user_roles: 'Roles'
         plain_password: 'Password'

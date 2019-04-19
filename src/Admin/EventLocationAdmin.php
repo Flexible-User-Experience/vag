@@ -5,7 +5,9 @@ namespace App\Admin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\UrlType;
@@ -67,6 +69,18 @@ final class EventLocationAdmin extends AbstractAdmin
                     'label' => 'admin.label.place',
                 ]
             )
+            ->add(
+                'description',
+                TextareaType::class,
+                [
+                    'label' => 'admin.label.description',
+                    'required' => false,
+                    'attr' => [
+                        'rows' => '5',
+                        'style' => 'resize:vertical',
+                    ],
+                ]
+            )
             ->end()
             ->with('admin.with.images', ['class' => 'col-md-4'])
             ->add(
@@ -97,6 +111,22 @@ final class EventLocationAdmin extends AbstractAdmin
                     'required' => false,
                 ]
             )
+            ->add(
+                'tourismMarketResource',
+                CheckboxType::class,
+                [
+                    'label' => 'admin.label.tourism_market_resource',
+                    'required' => false,
+                ]
+            )
+            ->add(
+                'showInHomepage',
+                CheckboxType::class,
+                [
+                    'label' => 'admin.label.show_in_homepage',
+                    'required' => false,
+                ]
+            )
             ->end()
         ;
     }
@@ -112,6 +142,27 @@ final class EventLocationAdmin extends AbstractAdmin
                 null,
                 [
                     'label' => 'admin.label.place',
+                ]
+            )
+            ->add(
+                'description',
+                null,
+                [
+                    'label' => 'admin.label.description',
+                ]
+            )
+            ->add(
+                'tourismMarketResource',
+                null,
+                [
+                    'label' => 'admin.label.tourism_market_resource_short',
+                ]
+            )
+            ->add(
+                'showInHomepage',
+                null,
+                [
+                    'label' => 'admin.label.show_in_homepage_short',
                 ]
             )
         ;
@@ -140,11 +191,27 @@ final class EventLocationAdmin extends AbstractAdmin
                 ]
             )
             ->add(
-                'slug',
+                'link',
                 null,
                 [
-                    'label' => 'admin.label.slug',
-                    'editable' => false,
+                    'label' => 'admin.label.link',
+                    'editable' => true,
+                ]
+            )
+            ->add(
+                'tourismMarketResource',
+                null,
+                [
+                    'label' => 'admin.label.tourism_market_resource_short',
+                    'editable' => true,
+                ]
+            )
+            ->add(
+                'showInHomepage',
+                null,
+                [
+                    'label' => 'admin.label.show_in_homepage_short',
+                    'editable' => true,
                 ]
             )
             ->add(

@@ -19,6 +19,8 @@ front:
         activities: 'Activitats'
         highlighted_activities: 'Activitats destacades'
         show_all_activities: 'Veure tots les activitats'
+        highlighted_locations: 'Ubicacions destacades'
+        show_all_locations: 'Veure totes les ubicacions'
         read_more: 'llegir més'
         empty_warning: 'en breu, sigueu pacients...'
     carrousel:
@@ -69,6 +71,8 @@ admin:
         collaborators: 'Col·laboradors'
         image: 'Arxiu'
         single_image: 'Imatge'
+        tourism_market_resource: 'Recurs turístic promocional'
+        tourism_market_resource_short: 'Recurs turístic'
         actions: 'Accions'
         username: 'Nom d''usuari'
         user_roles: 'Rols d''usuari'

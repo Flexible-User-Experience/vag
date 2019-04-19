@@ -9,8 +9,8 @@
                     <p class="mb-4">{{ location.place }}</p>
                     <a href="#{# path('front_event_activity', {category: activity.category.slug, activity: activity.slug}) #}" class="btn btn-warning btn-sm">{{ 'front.events.read_more' | trans }}</a>
                 {% else %}
-                    <p class="mb-4">{{ location.place }}</p>
-                    <p class="mb-0">{{ location.description }}</p>
+                    <p class="mb-0">{{ location.place }}</p>
+                    <p class="text-muted mb-0">{{ location.description }}</p>
                 {% endif %}
             </div>
         </div>
