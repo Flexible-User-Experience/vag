@@ -91,7 +91,7 @@
                 <div class="col-12">
                     <h5 class="mt-0">{{ 'front.events.highlighted_locations' | trans }}</h5>
                 </div>
-                {% include "frontend/includes/event_locations_cards.html.twig" with {activities: featuredLocations} %}
+                {% include "frontend/includes/event_location_cards.html.twig" with {locations: featuredLocations} %}
                 {% if featuredLocations | length > 0 %}
                     <div class="col-12 mt-4 text-center">
                         <a href="{{ path('front_activities') }}" class="btn btn-outline-dark">{{ 'front.events.show_all_locations' | trans }}</a>

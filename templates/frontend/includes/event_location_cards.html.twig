@@ -1,0 +1,24 @@
+{% for location in locations if location.showInHomepage %}
+    <div class="col-6 col-md-4">
+        <div class="card mt-3">
+            {% if location.imageName %}
+                <img src="{{ vich_uploader_asset(location, 'imageFile') | imagine_filter('480xY') }}" class="card-img-top" alt="{{ location.place }}">
+            {% endif %}
+            <div class="card-body">
+                {% if not location.isTourismMarketResource %}
+                    <p class="mb-4">{{ location.place }}</p>
+                    <a href="#{# path('front_event_activity', {category: activity.category.slug, activity: activity.slug}) #}" class="btn btn-warning btn-sm">{{ 'front.events.read_more' | trans }}</a>
+                {% else %}
+                    <p class="mb-4">{{ location.place }}</p>
+                    <p class="mb-0">{{ location.description }}</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% else %}
+    <div class="col-12">
+        <div class="alert alert-warning mb-0" role="alert">
+            <i class="fa exclamation-triangle"></i> {{ 'front.events.empty_warning' | trans }}
+        </div>
+    </div>
+{% endfor %}
