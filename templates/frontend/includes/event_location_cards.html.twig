@@ -2,7 +2,7 @@
     <div class="col-6 col-sm-4 col-md-3">
         <div class="card mt-3">
             {% if location.imageName %}
-                <img src="{{ vich_uploader_asset(location, 'imageFile') | imagine_filter('480xY') }}" class="card-img-top" alt="{{ location.place }}">
+                <img src="{{ vich_uploader_asset(location, 'imageFile') | imagine_filter('800x600') }}" class="card-img-top" alt="{{ location.place }}">
             {% endif %}
             <div class="card-body">
                 {% if not location.isTourismMarketResource %}
