@@ -1,24 +1,28 @@
 App\Entity\EventCategory:
     category1:
         name: 'Conferències'
+        slug: 'conferencies'
         priority: '1'
         isAvailable: true
         icon: 'fa fa-chalkboard-teacher'
         color: '#D83948'
     category2:
         name: 'Exposicions'
+        slug: 'exposicions'
         priority: '2'
         isAvailable: true
         icon: 'fa fa-cube'
         color: '#38A54A'
     category3:
         name: 'Tallers'
+        slug: 'tallers'
         priority: '3'
         isAvailable: true
         icon: 'fa fa-fill-drip'
         color: '#0B80FB'
     category4:
         name: 'Espectacles'
+        slug: 'espectacles'
         priority: '4'
         isAvailable: true
         icon: 'fa fa fa-ghost'
@@ -111,100 +115,76 @@ App\Entity\EventLocation:
         place: 'Museu'
         latitude: '<latitude()>'
         longitude: '<longitude()>'
+        link: '<url()>'
+        description: '<sentence()>'
+        showInHomepage: '<boolean(95)>'
+        tourismMarketResource: '<boolean(15)>'
     location2:
         place: 'Auditori'
         latitude: '<latitude()>'
         longitude: '<longitude()>'
+        link: '<url()>'
+        description: '<sentence()>'
+        showInHomepage: '<boolean(95)>'
+        tourismMarketResource: '<boolean(15)>'
     location3:
         place: 'Plaça del Mercat'
         latitude: '<latitude()>'
         longitude: '<longitude()>'
+        link: '<url()>'
+        description: '<sentence()>'
+        showInHomepage: '<boolean(95)>'
+        tourismMarketResource: '<boolean(15)>'
     location4:
         place: 'Centre d''Art'
         latitude: '<latitude()>'
         longitude: '<longitude()>'
+        link: '<url()>'
+        description: '<sentence()>'
+        showInHomepage: '<boolean(95)>'
+        tourismMarketResource: '<boolean(15)>'
 
 App\Entity\Translation\EventLocationTranslation:
-    location1_translation_place_es:
+    location1_translation_description_es:
         object: '@location1'
         locale: 'es'
-        field: 'place'
-        content: 'Museo'
-    location1_translation_slug_es:
-        object: '@location1'
-        locale: 'es'
-        field: 'slug'
-        content: 'museo'
-    location1_translation_place_en:
+        field: 'description'
+        content: '<sentence()>'
+    location1_translation_description_en:
         object: '@location1'
         locale: 'en'
-        field: 'place'
-        content: 'Museum'
-    location1_translation_slug_en:
-        object: '@location1'
-        locale: 'en'
-        field: 'slug'
-        content: 'museum'
-    location2_translation_place_es:
+        field: 'description'
+        content: '<sentence()>'
+    location2_translation_description_es:
         object: '@location2'
         locale: 'es'
-        field: 'place'
-        content: 'Auditorio'
-    location2_translation_slug_es:
-        object: '@location2'
-        locale: 'es'
-        field: 'slug'
-        content: 'auditorio'
-    location2_translation_place_en:
+        field: 'description'
+        content: '<sentence()>'
+    location2_translation_description_en:
         object: '@location2'
         locale: 'en'
-        field: 'place'
-        content: 'Auditorium'
-    location2_translation_slug_en:
-        object: '@location2'
-        locale: 'en'
-        field: 'slug'
-        content: 'auditorium'
-    location3_translation_place_es:
+        field: 'description'
+        content: '<sentence()>'
+    location3_translation_description_es:
         object: '@location3'
         locale: 'es'
-        field: 'place'
-        content: 'Plaza del Mercado'
-    location3_translation_slug_es:
-        object: '@location3'
-        locale: 'es'
-        field: 'slug'
-        content: 'plaza-del-mercado'
-    location3_translation_place_en:
+        field: 'description'
+        content: '<sentence()>'
+    location3_translation_description_en:
         object: '@location3'
         locale: 'en'
-        field: 'place'
-        content: 'Square Market'
-    location3_translation_slug_en:
-        object: '@location3'
-        locale: 'en'
-        field: 'slug'
-        content: 'square-market'
-    location4_translation_place_es:
+        field: 'description'
+        content: '<sentence()>'
+    location4_translation_description_es:
         object: '@location4'
         locale: 'es'
-        field: 'place'
-        content: 'Centro de Arte'
-    location4_translation_slug_es:
-        object: '@location4'
-        locale: 'es'
-        field: 'slug'
-        content: 'centro-de-arte'
-    location4_translation_place_en:
+        field: 'description'
+        content: '<sentence()>'
+    location4_translation_escription_en:
         object: '@location4'
         locale: 'en'
-        field: 'place'
-        content: 'Art Center'
-    location4_translation_slug_en:
-        object: '@location4'
-        locale: 'en'
-        field: 'slug'
-        content: 'art-center'
+        field: 'description'
+        content: '<sentence()>'
 
 App\Entity\EventCollaborator:
     collaborator1:
@@ -258,8 +238,8 @@ App\Entity\EventActivity:
         description: '<text(500)>'
         isAvailable: '<boolean(75)>'
         showInHomepage: '<boolean(25)>'
-        category: '@category<numberBetween(1,4)>'
-        location: '@location<numberBetween(1,4)>'
+        category: '@category1'
+        location: '@location1'
         collaborators:
             - '@collaborator<numberBetween(1,8)>'
     activity{2..12}:

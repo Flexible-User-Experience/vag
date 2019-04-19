@@ -10,19 +10,18 @@
         <div class="container">
             <div class="row">
                 {% if location.imageName %}
-                    <div class="col-3">
-                        <img src="{{ vich_uploader_asset(location, 'imageFile') | imagine_filter('480xY') }}" class="img-responsive rounded w-100" alt="{{ location.place }}">
+                    <div class="col-6">
+                        <img src="{{ vich_uploader_asset(location, 'imageFile') | imagine_filter('800x600') }}" class="img-responsive rounded w-100 mb-2" alt="{{ location.place }}">
+                        <a href="{{ location.link }}">{{ location.link | replace({'http://': '', 'https://': ''}) }}</a>
                     </div>
                 {% endif %}
-                <div class="col-9">
+                <div class="col-6">
                     {% if not location.isTourismMarketResource %}
-                        <h5 class="text-muted mt-0">{{ location.place }}</h5>
                         {% if location.eventActivities | length > 1 %}
                             <span class="badge badge-dark">{{ location.eventActivities | length }} {{ 'front.events.activities' | trans | lower }}</span>
                             <br>
                         {% endif %}
                     {% else %}
-                        <h5 class="text-muted mt-0">{{ location.place }}</h5>
                         <p class="mb-2">{{ location.description }}</p>
                     {% endif %}
                 </div>
