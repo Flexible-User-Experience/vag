@@ -5,6 +5,7 @@ namespace App\Twig;
 use App\Entity\User;
 use App\Entity\EventCategory;
 use App\Enum\UserRoleEnum;
+use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\Translation\Translator;
 use Symfony\Contracts\Translation\TranslatorInterface;
 use Twig\Extension\AbstractExtension;
@@ -16,7 +17,12 @@ use Twig\TwigFilter;
 class AppExtension extends AbstractExtension
 {
     /**
-     * @var Translator
+     * @var RequestStack service
+     */
+    private $rss;
+
+    /**
+     * @var Translator service
      */
     private $ts;
 
@@ -37,14 +43,16 @@ class AppExtension extends AbstractExtension
     /**
      * AppExtension constructor.
      *
+     * @param RequestStack        $rss
      * @param TranslatorInterface $ts
-     * @param array               $locales
+     * @param string              $locales
      * @param string              $defaultLocale
      */
-    public function __construct(TranslatorInterface $ts, $locales, $defaultLocale)
+    public function __construct(RequestStack $rss, TranslatorInterface $ts, string $locales, string $defaultLocale)
     {
+        $this->rss = $rss;
         $this->ts = $ts;
-        $this->locales = $locales;
+        $this->locales = explode('|', $locales);
         $this->defaultLocale = $defaultLocale;
     }
 
@@ -57,6 +65,7 @@ class AppExtension extends AbstractExtension
             new TwigFilter('icon', [$this, 'drawEventCategoryIcon']),
             new TwigFilter('icon_colored', [$this, 'drawEventCategoryIconWithColor']),
             new TwigFilter('draw_role_span', [$this, 'drawRoleSpan']),
+            new TwigFilter('draw_i18n_date_string', [$this, 'drawI18nDateString']),
         ];
     }
 
@@ -104,5 +113,20 @@ class AppExtension extends AbstractExtension
         }
 
         return $span;
+    }
+
+    /**
+     * @param \DateTimeInterface $dateTime
+     *
+     * @return string
+     */
+    public function drawI18nDateString(\DateTimeInterface $dateTime)
+    {
+        $result = $dateTime->format('d/m/Y');
+        if ($this->rss->getCurrentRequest()->getLocale() == 'en') {
+            $result = $dateTime->format('m/d/Y');
+        }
+
+        return $result;
     }
 }

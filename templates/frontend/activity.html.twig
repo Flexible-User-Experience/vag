@@ -46,7 +46,7 @@
                         {# one day activity #}
                         <div class="card-header">
                             <h5 class="card-title mb-0"><i class="far fa-calendar-alt text-warning"></i></h5>
-                            <p class="mt-0 mb-0">{{ activity.begin | date('d/m/Y') }}</p>
+                            <p class="mt-0 mb-0">{{ activity.begin | draw_i18n_date_string }}</p>
                         </div>
                         <div class="card-footer">
                             <h5 class="card-title mb-0"><i class="far fa-clock text-warning"></i></h5>
@@ -56,7 +56,7 @@
                         {# more than one day activity #}
                         <div class="card-header">
                             <h5 class="card-title mb-0"><i class="far fa-calendar-alt text-warning"></i></h5>
-                            <p class="mt-0 mb-0">{{ activity.begin | date('d/m/Y') }} - {{ activity.end | date('d/m/Y') }}</p>
+                            <p class="mt-0 mb-0">{{ activity.begin | draw_i18n_date_string }} - {{ activity.end | draw_i18n_date_string }}</p>
                         </div>
                     {% endif %}
                 </div>
