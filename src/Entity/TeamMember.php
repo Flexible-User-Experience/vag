@@ -6,6 +6,7 @@ use App\Entity\Traits\DescriptionTrait;
 use App\Entity\Traits\EmailTrait;
 use App\Entity\Traits\GenderTrait;
 use App\Entity\Traits\ImageAttributesTrait;
+use App\Entity\Traits\JobTrait;
 use App\Entity\Traits\LinkTrait;
 use App\Entity\Traits\NameTrait;
 use App\Entity\Traits\PhoneTrait;
@@ -31,7 +32,7 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
  */
 class TeamMember extends AbstractEntity
 {
-    use GenderTrait, NameTrait, SurnameTrait, SlugTrait, EmailTrait, PhoneTrait, ImageAttributesTrait, DescriptionTrait, LinkTrait, ShowInFrontendTrait;
+    use GenderTrait, NameTrait, SurnameTrait, SlugTrait, EmailTrait, PhoneTrait, ImageAttributesTrait, JobTrait, DescriptionTrait, LinkTrait, ShowInFrontendTrait;
 
     /**
      * @ORM\Column(type="smallint", nullable=true)
@@ -146,26 +147,6 @@ class TeamMember extends AbstractEntity
     public function __construct()
     {
         $this->translations = new ArrayCollection();
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getJob(): ?string
-    {
-        return $this->job;
-    }
-
-    /**
-     * @param string|null $job
-     *
-     * @return TeamMember
-     */
-    public function setJob(?string $job): self
-    {
-        $this->job = $job;
-
-        return $this;
     }
 
     /**

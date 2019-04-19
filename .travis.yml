@@ -17,12 +17,8 @@ matrix:
     - php: 7.1.18
     - php: 7.2
     - php: 7.3
-    - php: nightly
-  allow_failures:
-    - php: nightly
 
 before_install:
-  - '[[ "$TRAVIS_PHP_VERSION" == "nightly" ]] || phpenv config-rm xdebug.ini'
   - composer self-update
   - cp var/.env.test.local .env
 
@@ -37,18 +33,16 @@ script:
   - ./bin/console doctrine:databa:create --no-interaction --env=test
   - ./bin/console doctrine:schema:update --force --env=test
   - ./bin/console hautelook:fixtures:load --no-interaction --env=test
-  # this checks that the source code follows the Symfony Code Syntax rules
-  - '[[ "$TRAVIS_PHP_VERSION" == "nightly" ]] || ./vendor/bin/php-cs-fixer fix --diff --dry-run -v'
   # this checks that the YAML config files contain no syntax errors
-  - ./bin/console lint:yaml config
+  - ./bin/console lint:yaml config --env=test
   # this checks that the Twig template files contain no syntax errors
-  - ./bin/console lint:twig templates
+  - ./bin/console lint:twig templates --env=test
   # this checks that the XLIFF translations contain no syntax errors
-  - ./bin/console lint:xliff translations
+  - ./bin/console lint:xliff translations --env=test
   # this checks that the application doesn't use dependencies with known security vulnerabilities
-  - ./bin/console security:check
+  - ./bin/console security:check --env=test
   # this checks that Doctrine's mapping configurations are valid
-  - ./bin/console doctrine:schema:validate --skip-sync -vvv --no-interaction
+  - ./bin/console doctrine:schema:validate --skip-sync -vvv --no-interaction --env=test
   # testing
   - ./bin/phpunit --no-coverage
 

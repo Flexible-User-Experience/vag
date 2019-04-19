@@ -1,0 +1,16 @@
+{% extends "frontend/base.html.twig" %}
+
+{% block body %}
+    <div class="jumbotron jumbotron-fluid jumbotron-homepage" style="background-image:url('{{ asset('build/number-pattern-line-color.png') }}');">
+        <div class="container pt-2 pb-1">
+            <h1 class="display-6 text-white">{{ 'front.events.locations' | trans | title }}</h1>
+        </div>
+    </div>
+    <div class="jumbotron jumbotron-fluid jumbotron-light">
+        <div class="container">
+            <div class="row">
+                {% include "frontend/includes/event_location_cards.html.twig" with {locations: locations} %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

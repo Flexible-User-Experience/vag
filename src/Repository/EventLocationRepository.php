@@ -34,4 +34,16 @@ class EventLocationRepository extends ServiceEntityRepository
             ->orderBy('el.place', 'ASC')
         ;
     }
+
+    /**
+     * @return QueryBuilder
+     */
+    public function findShowInHomepageSortedByPlace()
+    {
+        return $this->findAllSortedByPlace()
+            ->where('el.showInHomepage = :showInHomepage')
+            ->setParameter('showInHomepage', true)
+            ->orderBy('el.place', 'ASC')
+        ;
+    }
 }

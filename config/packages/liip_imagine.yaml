@@ -26,6 +26,14 @@ liip_imagine:
                     size:          [480, 480]
                     mode:          outbound
                     allow_upscale: false
+        480x480_BW:
+            quality: 90
+            filters:
+                grayscale: ~
+                thumbnail:
+                    size:          [480, 480]
+                    mode:          outbound
+                    allow_upscale: false
         480x480_inset:
             quality: 90
             filters:
@@ -43,8 +51,15 @@ liip_imagine:
                     size:          [480, null]
                     mode:          outbound
                     allow_upscale: false
+        360x360:
+            quality: 100
+            filters:
+                thumbnail:
+                    size:          [360, 360]
+                    mode:          outbound
+                    allow_upscale: false
         180x180:
-            quality: 95
+            quality: 100
             filters:
                 thumbnail:
                     size:          [180, 180]

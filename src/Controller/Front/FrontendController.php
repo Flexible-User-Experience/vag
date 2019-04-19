@@ -5,6 +5,7 @@ namespace App\Controller\Front;
 use App\Entity\EventActivity;
 use App\Entity\EventCategory;
 use App\Entity\EventCollaborator;
+use App\Entity\EventLocation;
 use App\Entity\TeamMember;
 use App\Entity\TeamPartner;
 use App\Enum\UserRoleEnum;
@@ -33,11 +34,13 @@ class FrontendController extends AbstractController
         $categories = $this->getDoctrine()->getRepository(EventCategory::class)->findAvailableSortedByPriorityAndName()->getQuery()->getResult();
         $featuredSpeakers = $this->getDoctrine()->getRepository(EventCollaborator::class)->findShowInHomepageSortedBySurnameAndName()->getQuery()->getResult();
         $featuredActivities = $this->getDoctrine()->getRepository(EventActivity::class)->findAvailableForHomepageSortedByBegin()->getQuery()->getResult();
+        $featuredLocations = $this->getDoctrine()->getRepository(EventLocation::class)->findShowInHomepageSortedByPlace()->getQuery()->getResult();
 
         return $this->render('frontend/homepage.html.twig', [
             'categories' => $categories,
             'featuredSpeakers' => $featuredSpeakers,
             'featuredActivities' => $featuredActivities,
+            'featuredLocations' => $featuredLocations,
         ]);
     }
 
@@ -112,6 +115,20 @@ class FrontendController extends AbstractController
     }
 
     /**
+     * @Route({"ca": "/ubicacions", "es": "/ubicaciones", "en": "/locations"}, name="front_locations")
+     *
+     * @return Response
+     */
+    public function locations()
+    {
+        $locations = $this->getDoctrine()->getRepository(EventLocation::class)->findAllSortedByPlace()->getQuery()->getResult();
+
+        return $this->render('frontend/locations.html.twig', [
+            'locations' => $locations,
+        ]);
+    }
+
+    /**
      * @Route({"ca": "/activitats", "es": "/actividades", "en": "/activities"}, name="front_activities")
      *
      * @return Response
@@ -143,6 +160,21 @@ class FrontendController extends AbstractController
     {
         return $this->render('frontend/participant.html.twig', [
             'participant' => $participant,
+        ]);
+    }
+
+    /**
+     * @Route({"ca": "/ubicacio/{slug}", "es": "/ubicacion/{slug}", "en": "/location/{slug}"}, name="front_location_detail")
+     * @ParamConverter("location", class="App:EventLocation")
+     *
+     * @param EventLocation $location
+     *
+     * @return Response
+     */
+    public function locationDetail(EventLocation $location)
+    {
+        return $this->render('frontend/location.html.twig', [
+            'location' => $location,
         ]);
     }
 
