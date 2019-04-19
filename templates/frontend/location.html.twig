@@ -1,0 +1,43 @@
+{% extends "frontend/base.html.twig" %}
+
+{% block body %}
+    <div class="jumbotron jumbotron-fluid jumbotron-homepage" style="background-image:url('{{ asset('build/number-pattern-line-color.png') }}');">
+        <div class="container pt-2 pb-1">
+            <h1 class="display-6 text-white">{{ location.place }}</h1>
+        </div>
+    </div>
+    <div class="jumbotron jumbotron-fluid mb-0">
+        <div class="container">
+            <div class="row">
+                {% if location.imageName %}
+                    <div class="col-3">
+                        <img src="{{ vich_uploader_asset(location, 'imageFile') | imagine_filter('480xY') }}" class="img-responsive rounded w-100" alt="{{ location.place }}">
+                    </div>
+                {% endif %}
+                <div class="col-9">
+                    {% if not location.isTourismMarketResource %}
+                        <h5 class="text-muted mt-0">{{ location.place }}</h5>
+                        {% if location.eventActivities | length > 1 %}
+                            <span class="badge badge-dark">{{ location.eventActivities | length }} {{ 'front.events.activities' | trans | lower }}</span>
+                            <br>
+                        {% endif %}
+                    {% else %}
+                        <h5 class="text-muted mt-0">{{ location.place }}</h5>
+                        <p class="mb-2">{{ location.description }}</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+    {# Activities section #}
+    <div class="jumbotron jumbotron-fluid jumbotron-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h5 class="mt-0">{{ 'front.events.activities' | trans }}</h5>
+                </div>
+                {% include "frontend/includes/event_activity_cards.html.twig" with {activities: location.eventActivities} %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

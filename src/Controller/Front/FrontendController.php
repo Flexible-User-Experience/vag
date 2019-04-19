@@ -164,6 +164,21 @@ class FrontendController extends AbstractController
     }
 
     /**
+     * @Route({"ca": "/ubicacio/{slug}", "es": "/ubicacion/{slug}", "en": "/location/{slug}"}, name="front_location_detail")
+     * @ParamConverter("location", class="App:EventLocation")
+     *
+     * @param EventLocation $location
+     *
+     * @return Response
+     */
+    public function locationDetail(EventLocation $location)
+    {
+        return $this->render('frontend/location.html.twig', [
+            'location' => $location,
+        ]);
+    }
+
+    /**
      * @Route("/{slug}", name="front_event_category")
      *
      * @param string $slug

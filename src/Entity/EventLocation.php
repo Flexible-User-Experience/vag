@@ -43,7 +43,6 @@ class EventLocation extends AbstractEntity
 
     /**
      * @ORM\Column(type="string", length=255, unique=true)
-     * @Gedmo\Translatable
      *
      * @var string
      */
@@ -52,7 +51,6 @@ class EventLocation extends AbstractEntity
     /**
      * @ORM\Column(type="string", length=255)
      * @Gedmo\Slug(fields={"place"})
-     * @Gedmo\Translatable
      *
      * @var string
      */
