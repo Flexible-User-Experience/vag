@@ -6,59 +6,79 @@
             <h1 class="display-6 text-white">{{ activity.name | title }}</h1>
         </div>
     </div>
-    <div class="container pt-1 pb-4">
-        <div class="row">
-            {# collaborators #}
-            {% for collaborator in activity.collaborators %}
+    <div class="jumbotron jumbotron-fluid mb-0">
+        <div class="container">
+            <div class="row">
+                {% if activity.imageName %}
+                    <div class="col-5">
+                        <img src="{{ vich_uploader_asset(activity, 'imageFile') | imagine_filter('800x600') }}" class="img-fluid rounded" alt="{{ activity.name }}">
+                    </div>
+                    <div class="col-7">
+                        {{ activity.description | raw }}
+                    </div>
+                {% else %}
+                    <div class="col-12">
+                        {{ activity.description | raw }}
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <div class="jumbotron jumbotron-fluid jumbotron-light mb-0">
+        <div class="container">
+            <div class="row">
+                {# collaborators #}
+                {% for collaborator in activity.collaborators %}
+                    <div class="col-4 col-md-3">
+                        <div class="card bg-light border-dark mt-3">
+                            {% if collaborator.imageName %}
+                                <img src="{{ vich_uploader_asset(collaborator, 'imageFile') | imagine_filter('360x360') }}" class="card-img-top" alt="{{ collaborator.fullname }}">
+                                <div class="card-img-overlay">
+                                    <h5 class="card-title"><i class="fas fa-comment text-warning"></i></h5>
+                                </div>
+                            {% endif %}
+                            <div class="card-body">
+                                <p class="mt-0 mb-0">{{ collaborator.fullname }}</p>
+                                <p class="text-muted mb-0">{{ collaborator.shortDescription | lower }}</p>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+                {# location #}
                 <div class="col-4 col-md-3">
                     <div class="card bg-light border-dark mt-3">
-                        {% if collaborator.imageName %}
-                            <img src="{{ vich_uploader_asset(collaborator, 'imageFile') | imagine_filter('360x360') }}" class="card-img-top" alt="{{ collaborator.fullname }}">
+                        {% if activity.location.imageName %}
+                            <img src="{{ vich_uploader_asset(activity.location, 'imageFile') | imagine_filter('360x360') }}" class="card-img-top" alt="{{ activity.location.place }}">
                             <div class="card-img-overlay">
-                                <h5 class="card-title"><i class="fas fa-comment text-warning"></i></h5>
+                                <h5 class="card-title"><i class="fas fa-map-marker-alt text-warning"></i></h5>
                             </div>
                         {% endif %}
                         <div class="card-body">
-                            <p class="mt-0 mb-0">{{ collaborator.fullname }}</p>
-                            <p class="text-muted mb-0">{{ collaborator.shortDescription | lower }}</p>
+                            <p class="mt-0 mb-0">{{ activity.location.place }}</p>
                         </div>
                     </div>
                 </div>
-            {% endfor %}
-            {# location #}
-            <div class="col-4 col-md-3">
-                <div class="card bg-light border-dark mt-3">
-                    {% if activity.location.imageName %}
-                        <img src="{{ vich_uploader_asset(activity.location, 'imageFile') | imagine_filter('360x360') }}" class="card-img-top" alt="{{ activity.location.place }}">
-                        <div class="card-img-overlay">
-                            <h5 class="card-title"><i class="fas fa-map-marker-alt text-warning"></i></h5>
-                        </div>
-                    {% endif %}
-                    <div class="card-body">
-                        <p class="mt-0 mb-0">{{ activity.location.place }}</p>
+                {# schedule #}
+                <div class="col-4 col-md-3">
+                    <div class="card text-center text-white bg-secondary border-dark mt-3">
+                        {% if activity.isOnlyOneDayLong %}
+                            {# one day activity #}
+                            <div class="card-header">
+                                <h5 class="card-title mb-0"><i class="far fa-calendar-alt text-warning"></i></h5>
+                                <p class="mt-0 mb-0">{{ activity.begin | draw_i18n_date_string }}</p>
+                            </div>
+                            <div class="card-footer">
+                                <h5 class="card-title mb-0"><i class="far fa-clock text-warning"></i></h5>
+                                <p class="mt-0 mb-0">{{ activity.begin | date('h:i') }} - {{ activity.end | date('h:i') }}</p>
+                            </div>
+                        {% else %}
+                            {# more than one day activity #}
+                            <div class="card-header">
+                                <h5 class="card-title mb-0"><i class="far fa-calendar-alt text-warning"></i></h5>
+                                <p class="mt-0 mb-0">{{ activity.begin | draw_i18n_date_string }} - {{ activity.end | draw_i18n_date_string }}</p>
+                            </div>
+                        {% endif %}
                     </div>
-                </div>
-            </div>
-            {# schedule #}
-            <div class="col-4 col-md-3">
-                <div class="card text-center text-white bg-secondary border-dark mt-3">
-                    {% if activity.isOnlyOneDayLong %}
-                        {# one day activity #}
-                        <div class="card-header">
-                            <h5 class="card-title mb-0"><i class="far fa-calendar-alt text-warning"></i></h5>
-                            <p class="mt-0 mb-0">{{ activity.begin | draw_i18n_date_string }}</p>
-                        </div>
-                        <div class="card-footer">
-                            <h5 class="card-title mb-0"><i class="far fa-clock text-warning"></i></h5>
-                            <p class="mt-0 mb-0">{{ activity.begin | date('h:i') }} - {{ activity.end | date('h:i') }}</p>
-                        </div>
-                    {% else %}
-                        {# more than one day activity #}
-                        <div class="card-header">
-                            <h5 class="card-title mb-0"><i class="far fa-calendar-alt text-warning"></i></h5>
-                            <p class="mt-0 mb-0">{{ activity.begin | draw_i18n_date_string }} - {{ activity.end | draw_i18n_date_string }}</p>
-                        </div>
-                    {% endif %}
                 </div>
             </div>
         </div>
