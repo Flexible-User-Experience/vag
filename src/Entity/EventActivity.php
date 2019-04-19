@@ -192,6 +192,14 @@ class EventActivity extends AbstractEntity
     }
 
     /**
+     * @return string
+     */
+    public function getEndString(): string
+    {
+        return $this->getEnd() ? $this->getEnd()->format('d/m/Y H:i') : '---';
+    }
+
+    /**
      * @param DateTimeInterface|null $end
      *
      * @return EventActivity
@@ -201,6 +209,19 @@ class EventActivity extends AbstractEntity
         $this->end = $end;
 
         return $this;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isOnlyOneDayLong(): bool
+    {
+        $result = false;
+        if ($this->getBegin() && $this->getEnd() && $this->getBegin()->format('d/m/Y') === $this->getEnd()->format('d/m/Y')) {
+            $result = true;
+        }
+
+        return $result;
     }
 
     /**
