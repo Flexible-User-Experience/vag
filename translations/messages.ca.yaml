@@ -23,6 +23,7 @@ front:
         highlighted_locations: 'Ubicacions destacades'
         show_all_locations: 'Veure totes les ubicacions'
         read_more: 'llegir més'
+        read_more_activities: 'mostrar activitats'
         empty_warning: 'en breu, sigueu pacients...'
     carrousel:
         previous: 'anterior'
