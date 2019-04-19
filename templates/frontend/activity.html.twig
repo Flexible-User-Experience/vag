@@ -58,6 +58,12 @@
                         </div>
                     </div>
                 </div>
+                {# map #}
+                <div class="col-4 col-md-3">
+                    <div class="card bg-light border-dark mt-3" style="height:319px;">
+                        <div id="gmap" style="height:100%;"></div>
+                    </div>
+                </div>
                 {# schedule #}
                 <div class="col-4 col-md-3">
                     <div class="card text-center text-white bg-secondary border-dark mt-3">
@@ -83,4 +89,23 @@
             </div>
         </div>
     </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key={{ google_maps_api_key }}&hl={{ app.request.locale }}&callback=initMap"></script>
+    <script type="text/javascript">
+        let map;
+        let marker;
+        function initMap() {
+            map = new google.maps.Map(document.getElementById('gmap'), {
+                center: {lat: {{ activity.location.latitude }}, lng: {{ activity.location.longitude}}},
+                zoom: 18
+            });
+            marker = new google.maps.Marker({
+                position: {lat: {{ activity.location.latitude }}, lng: {{ activity.location.longitude}}},
+                map: map
+            });
+        }
+    </script>
 {% endblock %}
