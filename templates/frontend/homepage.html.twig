@@ -94,7 +94,7 @@
                 {% include "frontend/includes/event_location_cards.html.twig" with {locations: featuredLocations} %}
                 {% if featuredLocations | length > 0 %}
                     <div class="col-12 mt-4 text-center">
-                        <a href="{{ path('front_activities') }}" class="btn btn-outline-dark">{{ 'front.events.show_all_locations' | trans }}</a>
+                        <a href="{{ path('front_locations') }}" class="btn btn-outline-dark">{{ 'front.events.show_all_locations' | trans }}</a>
                     </div>
                 {% endif %}
             </div>

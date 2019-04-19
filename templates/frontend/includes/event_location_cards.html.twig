@@ -6,10 +6,14 @@
             {% endif %}
             <div class="card-body">
                 {% if not location.isTourismMarketResource %}
-                    <p class="mb-4">{{ location.place }}</p>
-                    <a href="#{# path('front_event_activity', {category: activity.category.slug, activity: activity.slug}) #}" class="btn btn-warning btn-sm">{{ 'front.events.read_more' | trans }}</a>
+                    <h6 class="card-title mb-0">{{ location.place }}</h6>
+                    {% if location.eventActivities | length > 1 %}
+                        <span class="badge badge-dark">{{ location.eventActivities | length }} {{ 'front.events.activities' | trans | lower }}</span>
+                        <br>
+                    {% endif %}
+                    <a href="#{# path('front_event_activity', {category: activity.category.slug, activity: activity.slug}) #}" class="btn btn-warning btn-sm mt-4">{{ 'front.events.read_more' | trans }}</a>
                 {% else %}
-                    <p class="mb-0">{{ location.place }}</p>
+                    <h6 class="card-title mb-0">{{ location.place }}</h6>
                     <p class="text-muted mb-0">{{ location.description }}</p>
                 {% endif %}
             </div>

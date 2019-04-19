@@ -115,6 +115,20 @@ class FrontendController extends AbstractController
     }
 
     /**
+     * @Route({"ca": "/ubicacions", "es": "/unicaciones", "en": "/locations"}, name="front_locations")
+     *
+     * @return Response
+     */
+    public function locations()
+    {
+        $locations = $this->getDoctrine()->getRepository(EventLocation::class)->findAllSortedByPlace()->getQuery()->getResult();
+
+        return $this->render('frontend/locations.html.twig', [
+            'locations' => $locations,
+        ]);
+    }
+
+    /**
      * @Route({"ca": "/activitats", "es": "/actividades", "en": "/activities"}, name="front_activities")
      *
      * @return Response
