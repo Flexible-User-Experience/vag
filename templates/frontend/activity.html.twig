@@ -34,7 +34,7 @@
                             {% if collaborator.imageName %}
                                 <img src="{{ vich_uploader_asset(collaborator, 'imageFile') | imagine_filter('360x360') }}" class="card-img-top" alt="{{ collaborator.fullname }}">
                                 <div class="card-img-overlay">
-                                    <h5 class="card-title"><i class="fas fa-comment text-warning"></i></h5>
+                                    <h5 class="card-title"><a href="{{ path('front_participant_detail', {slug: collaborator.slug}) }}"><i class="fas fa-comment text-warning"></i></a></h5>
                                 </div>
                             {% endif %}
                             <div class="card-body">
@@ -50,7 +50,7 @@
                         {% if activity.location.imageName %}
                             <img src="{{ vich_uploader_asset(activity.location, 'imageFile') | imagine_filter('360x360') }}" class="card-img-top" alt="{{ activity.location.place }}">
                             <div class="card-img-overlay">
-                                <h5 class="card-title"><i class="fas fa-map-marker-alt text-warning"></i></h5>
+                                <h5 class="card-title"><a href="{{ path('front_location_detail', {slug: activity.location.slug}) }}"><i class="fas fa-map-marker-alt text-warning"></i></a></h5>
                             </div>
                         {% endif %}
                         <div class="card-body">
