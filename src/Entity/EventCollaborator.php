@@ -6,6 +6,7 @@ use App\Entity\Traits\DescriptionTrait;
 use App\Entity\Traits\EmailTrait;
 use App\Entity\Traits\GenderTrait;
 use App\Entity\Traits\ImageAttributesTrait;
+use App\Entity\Traits\JobTrait;
 use App\Entity\Traits\LinkTrait;
 use App\Entity\Traits\NameTrait;
 use App\Entity\Traits\PhoneTrait;
@@ -32,7 +33,7 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
  */
 class EventCollaborator extends AbstractEntity
 {
-    use GenderTrait, NameTrait, SurnameTrait, SlugTrait, EmailTrait, PhoneTrait, ImageAttributesTrait, ShortDescriptionTrait, DescriptionTrait, ShowInHomepageTrait, LinkTrait;
+    use GenderTrait, NameTrait, SurnameTrait, SlugTrait, JobTrait, EmailTrait, PhoneTrait, ImageAttributesTrait, ShortDescriptionTrait, DescriptionTrait, ShowInHomepageTrait, LinkTrait;
 
     /**
      * @ORM\Column(type="smallint", nullable=true)
@@ -62,6 +63,21 @@ class EventCollaborator extends AbstractEntity
      * @var string
      */
     private $slug;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     * @Gedmo\Translatable
+     *
+     * @var string
+     */
+    private $job;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     *
+     * @var string
+     */
+    private $company;
 
     /**
      * @Vich\UploadableField(mapping="collaborator", fileNameProperty="imageName", size="imageSize")
@@ -155,6 +171,26 @@ class EventCollaborator extends AbstractEntity
     {
         $this->eventActivities = new ArrayCollection();
         $this->translations = new ArrayCollection();
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getCompany(): ?string
+    {
+        return $this->company;
+    }
+
+    /**
+     * @param string|null $company
+     *
+     * @return EventCollaborator
+     */
+    public function setCompany(?string $company): self
+    {
+        $this->company = $company;
+
+        return $this;
     }
 
     /**

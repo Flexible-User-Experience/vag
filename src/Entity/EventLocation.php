@@ -2,8 +2,10 @@
 
 namespace App\Entity;
 
+use App\Entity\Traits\DescriptionTrait;
 use App\Entity\Traits\ImageAttributesTrait;
 use App\Entity\Traits\LinkTrait;
+use App\Entity\Traits\ShowInHomepageTrait;
 use App\Entity\Traits\SlugTrait;
 use App\Entity\Translation\EventLocationTranslation;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -23,7 +25,7 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
  */
 class EventLocation extends AbstractEntity
 {
-    use SlugTrait, ImageAttributesTrait, LinkTrait;
+    use SlugTrait, LinkTrait, ImageAttributesTrait, DescriptionTrait, ShowInHomepageTrait;
 
     /**
      * @ORM\Column(type="float", nullable=true, options={"precision"=14})
@@ -84,6 +86,28 @@ class EventLocation extends AbstractEntity
      * @var integer
      */
     private $imageSize;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     * @Gedmo\Translatable
+     *
+     * @var string
+     */
+    private $description;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true, options={"default"=1})
+     *
+     * @var bool
+     */
+    private $showInHomepage;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true, options={"default"=0})
+     *
+     * @var bool
+     */
+    private $tourismMarketResource;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\EventActivity", mappedBy="location")
@@ -168,6 +192,34 @@ class EventLocation extends AbstractEntity
     public function setPlace(?string $place): self
     {
         $this->place = $place;
+
+        return $this;
+    }
+
+    /**
+     * @return bool|null
+     */
+    public function getTourismMarketResource(): ?bool
+    {
+        return $this->tourismMarketResource;
+    }
+
+    /**
+     * @return bool|null
+     */
+    public function isTourismMarketResource(): ?bool
+    {
+        return $this->getTourismMarketResource();
+    }
+
+    /**
+     * @param bool|null $tourismMarketResource
+     *
+     * @return $this
+     */
+    public function setTourismMarketResource(?bool $tourismMarketResource): self
+    {
+        $this->tourismMarketResource = $tourismMarketResource;
 
         return $this;
     }

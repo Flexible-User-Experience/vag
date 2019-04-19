@@ -5,6 +5,7 @@ namespace App\Controller\Front;
 use App\Entity\EventActivity;
 use App\Entity\EventCategory;
 use App\Entity\EventCollaborator;
+use App\Entity\EventLocation;
 use App\Entity\TeamMember;
 use App\Entity\TeamPartner;
 use App\Enum\UserRoleEnum;
@@ -33,11 +34,13 @@ class FrontendController extends AbstractController
         $categories = $this->getDoctrine()->getRepository(EventCategory::class)->findAvailableSortedByPriorityAndName()->getQuery()->getResult();
         $featuredSpeakers = $this->getDoctrine()->getRepository(EventCollaborator::class)->findShowInHomepageSortedBySurnameAndName()->getQuery()->getResult();
         $featuredActivities = $this->getDoctrine()->getRepository(EventActivity::class)->findAvailableForHomepageSortedByBegin()->getQuery()->getResult();
+        $featuredLocations = $this->getDoctrine()->getRepository(EventLocation::class)->findShowInHomepageSortedByPlace()->getQuery()->getResult();
 
         return $this->render('frontend/homepage.html.twig', [
             'categories' => $categories,
             'featuredSpeakers' => $featuredSpeakers,
             'featuredActivities' => $featuredActivities,
+            'featuredLocations' => $featuredLocations,
         ]);
     }
 
