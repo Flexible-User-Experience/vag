@@ -70,6 +70,11 @@ admin:
         end: 'Acaba'
         short_description: 'Descripció breu'
         description: 'Descripció'
+        target: 'Public objectiu'
+        is_translated: 'Traducció'
+        tickets_amount: 'Quantitat d''entrades'
+        tickets_sold: 'Entrades venudes'
+        tickets_left: 'Entrades disponibles'
         category: 'Categoria'
         location: 'Ubicació'
         collaborators: 'Col·laboradors'
@@ -81,6 +86,11 @@ admin:
         username: 'Nom d''usuari'
         user_roles: 'Rols d''usuari'
         plain_password: 'Contrasenya'
+        language:
+            language: 'Idioma'
+            ca: 'català'
+            es: 'espanyol'
+            en: 'anglès'
         gender:
             gender: 'Gènere'
             male: 'Home'
@@ -107,6 +117,7 @@ admin:
         team_partner: 'Patrocinador'
         team_member: 'Equip'
         contact_message: 'Missatge de contacte'
+        tickets: 'Entrades'
 
 'Admin Class Event Activity List': 'Activitats'
 'Admin Class Event Activity Create': 'Nou'

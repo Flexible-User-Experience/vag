@@ -70,6 +70,11 @@ admin:
         end: 'Termina'
         short_description: 'Descripción breve'
         description: 'Descripción'
+        target: 'Público objetivo'
+        is_translated: 'Traducción'
+        tickets_amount: 'Cantidad de entradas'
+        tickets_sold: 'Entradas vendidas'
+        tickets_left: 'Entradas disponibles'
         category: 'Categoría'
         location: 'Ubicación'
         collaborators: 'Colaboradores'
@@ -81,6 +86,11 @@ admin:
         username: 'Nombre de usuario'
         user_roles: 'Roles de usuario'
         plain_password: 'Contraseña'
+        language:
+            language: 'Idioma'
+            ca: 'catalán'
+            es: 'español'
+            en: 'inglés'
         gender:
             gender: 'Género'
             male: 'Hombre'
@@ -107,6 +117,7 @@ admin:
         team_partner: 'Patrocinador'
         team_member: 'Equipo'
         contact_message: 'Mensaje de contacto'
+        tickets: 'Entradas'
 
 'Admin Class Event Activity List': 'Actividades'
 'Admin Class Event Activity Create': 'Nuevo'

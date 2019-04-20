@@ -5,6 +5,7 @@ namespace App\Admin;
 use App\Entity\EventCategory;
 use App\Entity\EventCollaborator;
 use App\Entity\EventLocation;
+use App\Enum\LanguageEnum;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
@@ -12,7 +13,9 @@ use Sonata\DoctrineORMAdminBundle\Filter\DateFilter;
 use Sonata\Form\Type\DateTimePickerType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 
@@ -75,6 +78,14 @@ final class EventActivityAdmin extends AbstractAdmin
                     ],
                 ]
             )
+            ->add(
+                'target',
+                TextType::class,
+                [
+                    'label' => 'admin.label.target',
+                    'required' => false,
+                ]
+            )
             ->end()
             ->with('admin.with.relations', ['class' => 'col-md-4'])
             ->add(
@@ -105,6 +116,23 @@ final class EventActivityAdmin extends AbstractAdmin
                     'multiple' => true,
                 ]
             )
+            ->add(
+                'language',
+                ChoiceType::class,
+                [
+                    'label' => 'admin.label.language.language',
+                    'required' => false,
+                    'choices' => LanguageEnum::getStaticChoices(),
+                ]
+            )
+            ->add(
+                'isTranslated',
+                CheckboxType::class,
+                [
+                    'label' => 'admin.label.is_translated',
+                    'required' => false,
+                ]
+            )
             ->end()
             ->with('admin.with.images', ['class' => 'col-md-4'])
             ->add(
@@ -114,6 +142,26 @@ final class EventActivityAdmin extends AbstractAdmin
                     'label' => 'admin.label.image',
                     'help' => $this->getImageHelperFormMapperWithThumbnail(),
                     'required' => false,
+                ]
+            )
+            ->end()
+            ->with('admin.with.tickets', ['class' => 'col-md-4'])
+            ->add(
+                'ticketsAmount',
+                NumberType::class,
+                [
+                    'label' => 'admin.label.tickets_amount',
+                    'required' => false,
+                    'disabled' => true,
+                ]
+            )
+            ->add(
+                'ticketsSold',
+                NumberType::class,
+                [
+                    'label' => 'admin.label.tickets_sold',
+                    'required' => false,
+                    'disabled' => true,
                 ]
             )
             ->end()
@@ -221,6 +269,14 @@ final class EventActivityAdmin extends AbstractAdmin
                 ]
             )
             ->add(
+                'target',
+                TextType::class,
+                [
+                    'label' => 'admin.label.target',
+                    'required' => false,
+                ]
+            )
+            ->add(
                 'category',
                 null,
                 [
@@ -254,6 +310,24 @@ final class EventActivityAdmin extends AbstractAdmin
                 [
                     'class' => EventCollaborator::class,
                     'query_builder' => $this->em->getRepository(EventCollaborator::class)->findAllSortedBySurnameAndName(),
+                ]
+            )
+            ->add(
+                'language',
+                null,
+                [
+                    'label' => 'admin.label.language.language',
+                ],
+                ChoiceType::class,
+                [
+                    'choices' => LanguageEnum::getStaticChoices(),
+                ]
+            )
+            ->add(
+                'isTranslated',
+                null,
+                [
+                    'label' => 'admin.label.is_translated',
                 ]
             )
             ->add(
