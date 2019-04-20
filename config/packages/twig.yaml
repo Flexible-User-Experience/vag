@@ -4,7 +4,7 @@ twig:
     strict_variables: '%kernel.debug%'
     globals:
         main_brand_title: 'VAG'
-        admin_tag_version: 'v1.0.07'
+        admin_tag_version: 'v1.0.08'
         google_analytics_enabled: '%env(bool:GOOGLE_ANALYTICS_ENABLED)%'
         google_analytics_code: '%env(string:GOOGLE_ANALYTICS_CODE)%'
         google_maps_api_key: '%env(string:GOOGLE_MAPS_API_KEY)%'
