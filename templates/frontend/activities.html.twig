@@ -3,7 +3,13 @@
 {% block body %}
     <div class="jumbotron jumbotron-fluid jumbotron-homepage" style="background-image:url('{{ asset('build/creative-light-abstract-glowing.png') }}');">
         <div class="container pt-2 pb-1">
-            <h1 class="display-6 text-white">{{ 'front.events.activities' | trans | title }}</h1>
+            <h1 class="display-6 text-white">
+                <nav aria-label="breadcrumb mb-0">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item active" aria-current="page">{{ 'front.events.activities' | trans | title }}</li>
+                    </ol>
+                </nav>
+            </h1>
         </div>
     </div>
     {% for category in categories %}
