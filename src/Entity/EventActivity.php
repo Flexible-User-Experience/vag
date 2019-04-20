@@ -99,6 +99,20 @@ class EventActivity extends AbstractEntity
     private $description;
 
     /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     *
+     * @var string
+     */
+    private $language;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     *
+     * @var string
+     */
+    private $target;
+
+    /**
      * @ORM\Column(type="boolean", nullable=true, options={"default"=1})
      *
      * @var bool
@@ -222,6 +236,46 @@ class EventActivity extends AbstractEntity
         }
 
         return $result;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getLanguage(): ?string
+    {
+        return $this->language;
+    }
+
+    /**
+     * @param string|null $language
+     *
+     * @return EventActivity
+     */
+    public function setLanguage(?string $language): self
+    {
+        $this->language = $language;
+
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getTarget(): ?string
+    {
+        return $this->target;
+    }
+
+    /**
+     * @param string|null $target
+     *
+     * @return EventActivity
+     */
+    public function setTarget(?string $target): self
+    {
+        $this->target = $target;
+
+        return $this;
     }
 
     /**

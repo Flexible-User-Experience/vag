@@ -80,6 +80,13 @@ class EventCollaborator extends AbstractEntity
     private $company;
 
     /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     *
+     * @var string
+     */
+    private $city;
+
+    /**
      * @Vich\UploadableField(mapping="collaborator", fileNameProperty="imageName", size="imageSize")
      *
      * @var File
@@ -189,6 +196,26 @@ class EventCollaborator extends AbstractEntity
     public function setCompany(?string $company): self
     {
         $this->company = $company;
+
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getCity(): ?string
+    {
+        return $this->city;
+    }
+
+    /**
+     * @param string|null $city
+     *
+     * @return EventCollaborator
+     */
+    public function setCity(?string $city): self
+    {
+        $this->city = $city;
 
         return $this;
     }
