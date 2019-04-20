@@ -270,10 +270,9 @@ final class EventActivityAdmin extends AbstractAdmin
             )
             ->add(
                 'target',
-                TextType::class,
+                null,
                 [
                     'label' => 'admin.label.target',
-                    'required' => false,
                 ]
             )
             ->add(
