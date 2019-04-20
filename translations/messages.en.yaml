@@ -47,6 +47,8 @@ admin:
         phone: 'Phone'
         job: 'Job'
         place: 'Place'
+        company: 'Company'
+        city: 'City'
         latitude: 'Latitude'
         longitude: 'Longitude'
         priority: 'Priority'

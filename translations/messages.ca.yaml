@@ -47,6 +47,8 @@ admin:
         email: 'Email'
         phone: 'Telèfon'
         job: 'Treball'
+        company: 'Empresa'
+        city: 'Ciutat'
         place: 'Lloc'
         latitude: 'Latitud'
         longitude: 'Longitud'

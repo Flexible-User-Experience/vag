@@ -80,6 +80,22 @@ final class EventCollaboratorAdmin extends AbstractAdmin
             ->end()
             ->with('admin.with.text', ['class' => 'col-md-4'])
             ->add(
+                'job',
+                TextType::class,
+                [
+                    'label' => 'admin.label.job',
+                    'required' => false,
+                ]
+            )
+            ->add(
+                'company',
+                TextType::class,
+                [
+                    'label' => 'admin.label.company',
+                    'required' => false,
+                ]
+            )
+            ->add(
                 'shortDescription',
                 TextType::class,
                 [
@@ -156,6 +172,18 @@ final class EventCollaboratorAdmin extends AbstractAdmin
     {
         $datagridMapper
             ->add(
+                'gender',
+                null,
+                [
+                    'label' => 'admin.label.gender.gender',
+                ],
+                ChoiceType::class,
+                [
+                    'label' => 'admin.label.gender.gender',
+                    'choices' => GenderEnum::getStaticChoices(),
+                ]
+            )
+            ->add(
                 'name',
                 null,
                 [
@@ -181,6 +209,27 @@ final class EventCollaboratorAdmin extends AbstractAdmin
                 null,
                 [
                     'label' => 'admin.label.phone',
+                ]
+            )
+            ->add(
+                'job',
+                null,
+                [
+                    'label' => 'admin.label.job',
+                ]
+            )
+            ->add(
+                'company',
+                null,
+                [
+                    'label' => 'admin.label.company',
+                ]
+            )
+            ->add(
+                'link',
+                null,
+                [
+                    'label' => 'admin.label.link',
                 ]
             )
             ->add(

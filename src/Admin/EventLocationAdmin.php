@@ -145,6 +145,13 @@ final class EventLocationAdmin extends AbstractAdmin
                 ]
             )
             ->add(
+                'link',
+                null,
+                [
+                    'label' => 'admin.label.link',
+                ]
+            )
+            ->add(
                 'description',
                 null,
                 [
