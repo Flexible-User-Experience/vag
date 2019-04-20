@@ -101,7 +101,7 @@ class FrontendController extends AbstractController
     }
 
     /**
-     * @Route({"ca": "/participants", "es": "/participantes", "en": "/participants"}, name="front_participants")
+     * @Route({"ca": "/participants", "es": "/participantes", "en": "/participants"}, name="front_collaborators")
      *
      * @return Response
      */
@@ -149,7 +149,7 @@ class FrontendController extends AbstractController
     }
 
     /**
-     * @Route({"ca": "/participant/{slug}", "es": "/participante/{slug}", "en": "/participant/{slug}"}, name="front_participant_detail")
+     * @Route({"ca": "/participant/{slug}", "es": "/participante/{slug}", "en": "/participant/{slug}"}, name="front_collaborator_detail")
      * @ParamConverter("participant", class="App:EventCollaborator")
      *
      * @param EventCollaborator $participant

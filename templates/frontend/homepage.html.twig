@@ -48,7 +48,7 @@
                 {% include "frontend/includes/event_collaborator_cards.html.twig" with {collaborators: featuredSpeakers} %}
                 {% if featuredSpeakers | length > 0 %}
                     <div class="col-12 mt-4 text-center">
-                        <a href="{{ path('front_participants') }}" class="btn btn-outline-dark">{{ 'front.events.show_all_speakers' | trans }}</a>
+                        <a href="{{ path('front_collaborators') }}" class="btn btn-outline-dark">{{ 'front.events.show_all_speakers' | trans }}</a>
                     </div>
                 {% endif %}
             </div>

@@ -7,7 +7,7 @@
             <div class="media-body">
                 <p class="mt-0 mb-0"><strong>{{ collaborator.fullname }}</strong></p>
                 <p class="text-muted mb-2">{{ collaborator.shortDescription | lower }}</p>
-                <a href="{{ path('front_participant_detail', {slug: collaborator.slug}) }}" class="btn btn-warning btn-sm">{{ 'front.events.read_more' | trans }}</a>
+                <a href="{{ path('front_collaborator_detail', {slug: collaborator.slug}) }}" class="btn btn-warning btn-sm">{{ 'front.events.read_more' | trans }}</a>
             </div>
         </div>
     </div>
