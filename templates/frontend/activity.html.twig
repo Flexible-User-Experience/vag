@@ -20,14 +20,23 @@
                     <div class="col-5">
                         <img src="{{ vich_uploader_asset(activity, 'imageFile') | imagine_filter('800x600') }}" class="img-fluid rounded" alt="{{ activity.name }}">
                     </div>
-                    <div class="col-7">
-                        {{ activity.description | raw }}
-                    </div>
-                {% else %}
-                    <div class="col-12">
-                        {{ activity.description | raw }}
-                    </div>
                 {% endif %}
+                <div class="{% if activity.imageName %}col-7{% else %}col-12{% endif %}">
+                    {{ activity.description | raw }}
+                    <hr>
+                    {% if activity.target %}
+                        <p class="text-muted mb-0">{{ activity.target }}</p>
+                    {% endif %}
+                    {% if activity.language %}
+                        {% set lang = 'admin.label.language.' ~ activity.language %}
+                        <p class="mt-0 mb-0"><span class="badge badge-pill badge-secondary mb-2"><i class="fas fa-language"></i> {{ lang | trans }}</span></p>
+                        {% if activity.isTranslated %}
+                            <p class="mt-0 mb-0">{{ 'admin.label.is_translated' | trans | lower }} <i class="fas fa-check text-success"></i></p>
+                        {% else %}
+                            <p class="mt-0 mb-0">{{ 'admin.label.is_translated' | trans | lower }} <i class="fas fa-times text-danger"></i></p>
+                        {% endif %}
+                    {% endif %}
+                </div>
             </div>
         </div>
     </div>
@@ -41,7 +50,7 @@
                             {% if collaborator.imageName %}
                                 <img src="{{ vich_uploader_asset(collaborator, 'imageFile') | imagine_filter('360x360') }}" class="card-img-top" alt="{{ collaborator.fullname }}">
                                 <div class="card-img-overlay">
-                                    <h5 class="card-title"><a href="{{ path('front_collaborator_detail', {slug: collaborator.slug}) }}"><i class="fas fa-comment text-warning"></i></a></h5>
+                                    <h5 class="card-title"><a href="{{ path('front_collaborator_detail', {slug: collaborator.slug}) }}"><i class="fas fa-2x fa-comment text-warning"></i></a></h5>
                                 </div>
                             {% endif %}
                             <div class="card-body">
@@ -57,7 +66,7 @@
                         {% if activity.location.imageName %}
                             <img src="{{ vich_uploader_asset(activity.location, 'imageFile') | imagine_filter('360x360') }}" class="card-img-top" alt="{{ activity.location.place }}">
                             <div class="card-img-overlay">
-                                <h5 class="card-title"><a href="{{ path('front_location_detail', {slug: activity.location.slug}) }}"><i class="fas fa-map-marker-alt text-warning"></i></a></h5>
+                                <h5 class="card-title"><a href="{{ path('front_location_detail', {slug: activity.location.slug}) }}"><i class="fas fa-2x fa-map-marker-alt text-warning"></i></a></h5>
                             </div>
                         {% endif %}
                         <div class="card-body">
@@ -66,7 +75,7 @@
                     </div>
                 </div>
                 {# map #}
-                <div class="col-4 col-md-3">
+                <div class="col-8 col-md-6">
                     <div class="card bg-light border-dark mt-3" style="height:319px;">
                         <div id="gmap" style="height:100%;"></div>
                     </div>

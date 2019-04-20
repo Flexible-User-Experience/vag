@@ -107,6 +107,7 @@ class EventActivity extends AbstractEntity
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Gedmo\Translatable
      *
      * @var string
      */
