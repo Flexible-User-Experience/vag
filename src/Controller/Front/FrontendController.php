@@ -105,11 +105,11 @@ class FrontendController extends AbstractController
      *
      * @return Response
      */
-    public function participants()
+    public function collaborators()
     {
         $participants = $this->getDoctrine()->getRepository(EventCollaborator::class)->findAllSortedBySurnameAndName()->getQuery()->getResult();
 
-        return $this->render('frontend/participants.html.twig', [
+        return $this->render('frontend/collaborators.html.twig', [
             'participants' => $participants,
         ]);
     }
@@ -156,9 +156,9 @@ class FrontendController extends AbstractController
      *
      * @return Response
      */
-    public function participantDetail(EventCollaborator $participant)
+    public function collaboratorDetail(EventCollaborator $participant)
     {
-        return $this->render('frontend/participant.html.twig', [
+        return $this->render('frontend/collaborator.html.twig', [
             'participant' => $participant,
         ]);
     }
