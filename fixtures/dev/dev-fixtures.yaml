@@ -236,8 +236,8 @@ App\Entity\EventActivity:
         end: '<dateTimeBetween("+3 month","+4 month")>'
         shortDescription: '<sentence()>'
         description: '<text(500)>'
-        isAvailable: '<boolean(75)>'
-        showInHomepage: '<boolean(25)>'
+        isAvailable: true
+        showInHomepage: true
         category: '@category1'
         location: '@location1'
         collaborators:
