@@ -77,6 +77,14 @@ final class EventCollaboratorAdmin extends AbstractAdmin
                     'required' => false,
                 ]
             )
+            ->add(
+                'city',
+                TextType::class,
+                [
+                    'label' => 'admin.label.city',
+                    'required' => false,
+                ]
+            )
             ->end()
             ->with('admin.with.text', ['class' => 'col-md-4'])
             ->add(
@@ -223,6 +231,13 @@ final class EventCollaboratorAdmin extends AbstractAdmin
                 null,
                 [
                     'label' => 'admin.label.company',
+                ]
+            )
+            ->add(
+                'city',
+                null,
+                [
+                    'label' => 'admin.label.city',
                 ]
             )
             ->add(

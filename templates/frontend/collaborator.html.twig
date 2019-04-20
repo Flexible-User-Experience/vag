@@ -18,15 +18,22 @@
             <div class="row">
                 {% if participant.imageName %}
                     <div class="col-3">
-                        <img src="{{ vich_uploader_asset(participant, 'imageFile') | imagine_filter('480xY') }}" class="img-responsive rounded w-100" alt="{{ participant.fullname }}">
+                        <img src="{{ vich_uploader_asset(participant, 'imageFile') | imagine_filter('480xY') }}" class="img-responsive rounded w-100 mb-2" alt="{{ participant.fullname }}">
+                        {% if participant.link %}
+                            <a href="{{ participant.link }}" target="_blank">{{ participant.link }}</a>
+                        {% endif %}
                     </div>
                 {% endif %}
                 <div class="col-9">
-                    <h5 class="text-muted mt-0">{{ participant.shortDescription }}</h5>
-                    <p class="mb-2">{{ participant.description }}</p>
-                    {% if participant.link %}
-                        <a href="{{ participant.link }}" target="_blank">{{ participant.link }}</a>
+                    <h5 class="text-muted mt-0">{{ participant.shortDescription | lower }}</h5>
+                    {% if participant.city %}
+                        <p class="mt-0 mb-0"><span class="badge badge-pill badge-secondary mb-2">{{ participant.city }}</span></p>
                     {% endif %}
+                    {% if participant.job or participant.company %}
+                        <p class="mb-0">{{ participant.job }} {{ participant.company }}</p>
+                    {% endif %}
+                    <hr>
+                    <p class="mb-2">{{ participant.description }}</p>
                 </div>
             </div>
         </div>
