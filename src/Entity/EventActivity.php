@@ -127,6 +127,20 @@ class EventActivity extends AbstractEntity
     private $showInHomepage;
 
     /**
+     * @ORM\Column(type="integer", nullable=true)
+     *
+     * @var integer
+     */
+    private $ticketsAmount;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     *
+     * @var integer
+     */
+    private $ticketsSold;
+
+    /**
      * @ORM\ManyToOne(targetEntity="App\Entity\EventCategory", inversedBy="eventActivities")
      * @ORM\JoinColumn(nullable=false)
      *
@@ -274,6 +288,46 @@ class EventActivity extends AbstractEntity
     public function setTarget(?string $target): self
     {
         $this->target = $target;
+
+        return $this;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getTicketsAmount(): ?int
+    {
+        return $this->ticketsAmount;
+    }
+
+    /**
+     * @param int|null $ticketsAmount
+     *
+     * @return EventActivity
+     */
+    public function setTicketsAmount(?int $ticketsAmount): self
+    {
+        $this->ticketsAmount = $ticketsAmount;
+
+        return $this;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getTicketsSold(): ?int
+    {
+        return $this->ticketsSold;
+    }
+
+    /**
+     * @param int|null $ticketsSold
+     *
+     * @return EventActivity
+     */
+    public function setTicketsSold(?int $ticketsSold): self
+    {
+        $this->ticketsSold = $ticketsSold;
 
         return $this;
     }
