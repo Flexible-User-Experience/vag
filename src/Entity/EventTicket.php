@@ -15,7 +15,7 @@ class EventTicket extends AbstractEntity
     use IsAvailableTrait;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\EventActivity", inversedBy="tickets")
+     * @ORM\ManyToOne(targetEntity="App\Entity\EventActivity")
      * @ORM\JoinColumn(nullable=false)
      *
      * @var EventActivity

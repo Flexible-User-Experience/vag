@@ -120,6 +120,13 @@ class EventActivity extends AbstractEntity
     private $isAvailable;
 
     /**
+     * @ORM\Column(type="boolean", nullable=true, options={"default"=0})
+     *
+     * @var bool
+     */
+    private $isTranslated;
+
+    /**
      * @ORM\Column(type="boolean", nullable=true, options={"default"=1})
      *
      * @var bool
@@ -288,6 +295,34 @@ class EventActivity extends AbstractEntity
     public function setTarget(?string $target): self
     {
         $this->target = $target;
+
+        return $this;
+    }
+
+    /**
+     * @return bool|null
+     */
+    public function getIsTranslated(): ?bool
+    {
+        return $this->isTranslated;
+    }
+
+    /**
+     * @return bool|null
+     */
+    public function isTranslated(): ?bool
+    {
+        return $this->getIsTranslated();
+    }
+
+    /**
+     * @param bool|null $isTranslated
+     *
+     * @return $this
+     */
+    public function setIsTranslated(?bool $isTranslated): self
+    {
+        $this->isTranslated = $isTranslated;
 
         return $this;
     }
