@@ -15,6 +15,7 @@ use App\Manager\EventActivityManager;
 use App\Manager\EventCategoryManager;
 use Doctrine\ORM\NonUniqueResultException;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\Annotation\Route;
@@ -79,12 +80,27 @@ class FrontendController extends AbstractController
     /**
      * @Route({"ca": "/contacte", "es": "/contacto", "en": "/contact"}, name="front_contact")
      *
+     * @param Request $request
+     *
      * @return Response
      */
-    public function contact()
+    public function contact(Request $request)
     {
         $contactMessage = new ContactMessage();
         $form = $this->createForm(ContactMessageType::class, $contactMessage);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $contactMessage
+                ->setLegalTermsHasBeenAccepted(true)
+                ->setSubject('front_contact')
+            ;
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($contactMessage);
+            $em->flush();
+            // TODO add Flash
+            // TODO send email notifications
+        }
 
         return $this->render('frontend/contact.html.twig', [
             'form' => $form->createView(),

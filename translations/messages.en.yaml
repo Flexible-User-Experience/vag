@@ -65,6 +65,7 @@ admin:
         has_been_readed_short: 'Readed'
         has_been_ansewered: 'Has been answered'
         has_been_ansewered_short: 'Ansewered'
+        message: 'Message'
         created: 'Created'
         begin: 'Begin'
         end: 'End'
@@ -99,6 +100,8 @@ admin:
             ROLE_USER: 'user'
             ROLE_CMS: 'editor'
             ROLE_ADMIN: 'administrator'
+    actions:
+        send: 'Send'
     help:
         icon: 'fa fa-[icon_class_name]'
     with:

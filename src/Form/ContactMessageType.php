@@ -87,7 +87,7 @@ class ContactMessageType extends AbstractType
                 'send',
                 SubmitType::class,
                 [
-                    'label' => 'admin.label.send',
+                    'label' => 'admin.actions.send',
                 ]
             )
         ;
