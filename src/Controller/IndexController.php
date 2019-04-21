@@ -2,8 +2,8 @@
 
 namespace App\Controller;
 
-use App\Service\ContentNegotiatiorService;
 use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
@@ -15,15 +15,14 @@ class IndexController extends AbstractController
     /**
      * @Route("/", name="front_start_index")
      *
-     * @param ContentNegotiatiorService $cns
-     * @param string $defaultLocale
+     * @param Request $request
      *
      * @return RedirectResponse
      */
-    public function index(ContentNegotiatiorService $cns, string $defaultLocale)
+    public function index(Request $request)
     {
-        $bestLocale = $cns->getBestLanguage();
+        $bestLocale = $request->getPreferredLanguage($this->getParameter('app_array_locales'));
 
-        return $this->redirectToRoute('front_homepage', ['_locale' => $bestLocale ? $bestLocale : $defaultLocale]);
+        return $this->redirectToRoute('front_homepage', ['_locale' => $bestLocale]);
     }
 }
