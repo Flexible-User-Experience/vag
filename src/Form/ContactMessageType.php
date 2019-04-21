@@ -6,6 +6,7 @@ use App\Entity\ContactMessage;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -27,21 +28,27 @@ class ContactMessageType extends AbstractType
                 'name',
                 TextType::class,
                 [
-                    'label' => false,
+                    'label' => 'admin.label.name',
                     'required' => true,
-                    'attr' => [
-                        'placeholder' => 'frontend.forms.name',
-                    ],
                 ]
             )
             ->add(
                 'email',
                 EmailType::class,
                 [
-                    'label' => false,
+                    'label' => 'admin.label.email',
+                    'required' => true,
+                ]
+            )
+            ->add(
+                'message',
+                TextareaType::class,
+                [
+                    'label' => 'admin.label.message',
                     'required' => true,
                     'attr' => [
-                        'placeholder' => 'frontend.forms.email',
+                        'rows' => 5,
+                        'style' => 'resize:vertical;',
                     ],
                 ]
             )
@@ -49,7 +56,7 @@ class ContactMessageType extends AbstractType
                 'privacy',
                 CheckboxType::class,
                 [
-                    'label' => 'frontend.forms.privacy',
+                    'label' => 'admin.label.legal_terms_has_been_accepted',
                     'required' => true,
                     'mapped' => false,
                 ]
@@ -80,7 +87,7 @@ class ContactMessageType extends AbstractType
                 'send',
                 SubmitType::class,
                 [
-                    'label' => 'frontend.forms.news',
+                    'label' => 'admin.label.send',
                 ]
             )
         ;

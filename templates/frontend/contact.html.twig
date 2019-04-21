@@ -9,10 +9,11 @@
     <div class="jumbotron jumbotron-fluid jumbotron-light">
         <div class="container">
             <div class="row">
-                <div class="col-sm-12">
-                    <div class="alert alert-warning mb-0" role="alert">
-                        <i class="fa exclamation-triangle"></i> {{ 'front.events.empty_warning' | trans }}
-                    </div>
+                <div class="col-6">
+                    {{ form(form) }}
+                    {#<div class="alert alert-warning mb-0" role="alert">#}
+                        {#<i class="fa exclamation-triangle"></i> {{ 'front.events.empty_warning' | trans }}#}
+                    {#</div>#}
                 </div>
             </div>
         </div>

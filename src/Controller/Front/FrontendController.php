@@ -2,6 +2,7 @@
 
 namespace App\Controller\Front;
 
+use App\Entity\ContactMessage;
 use App\Entity\EventActivity;
 use App\Entity\EventCategory;
 use App\Entity\EventCollaborator;
@@ -9,6 +10,7 @@ use App\Entity\EventLocation;
 use App\Entity\TeamMember;
 use App\Entity\TeamPartner;
 use App\Enum\UserRoleEnum;
+use App\Form\ContactMessageType;
 use App\Manager\EventActivityManager;
 use App\Manager\EventCategoryManager;
 use Doctrine\ORM\NonUniqueResultException;
@@ -81,7 +83,12 @@ class FrontendController extends AbstractController
      */
     public function contact()
     {
-        return $this->render('frontend/contact.html.twig', []);
+        $contactMessage = new ContactMessage();
+        $form = $this->createForm(ContactMessageType::class, $contactMessage);
+
+        return $this->render('frontend/contact.html.twig', [
+            'form' => $form->createView(),
+        ]);
     }
 
     /**
