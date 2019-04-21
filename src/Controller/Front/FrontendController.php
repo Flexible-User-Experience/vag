@@ -20,7 +20,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 /**
- * @Route("/")
+ * @Route("/", requirements={"_locale"="%app_locales%"})
  */
 class FrontendController extends AbstractController
 {

@@ -20,6 +20,7 @@ class ContactMessage extends AbstractEntity
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank()
      *
      * @var string
      */
@@ -34,6 +35,7 @@ class ContactMessage extends AbstractEntity
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank()
      * @Assert\Email(mode="strict")
      *
      * @var string
