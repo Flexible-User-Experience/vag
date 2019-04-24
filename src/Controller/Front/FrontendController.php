@@ -21,6 +21,7 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
  * @Route("/", requirements={"_locale"="%app_locales%"})
@@ -80,12 +81,14 @@ class FrontendController extends AbstractController
     /**
      * @Route({"ca": "/contacte", "es": "/contacto", "en": "/contact"}, name="front_contact")
      *
-     * @param Request $request
+     * @param Request             $request
+     * @param TranslatorInterface $translator
      *
      * @return Response
      */
-    public function contact(Request $request)
+    public function contact(Request $request, TranslatorInterface $translator)
     {
+        $hideForm = false;
         $contactMessage = new ContactMessage();
         $form = $this->createForm(ContactMessageType::class, $contactMessage);
         $form->handleRequest($request);
@@ -98,12 +101,17 @@ class FrontendController extends AbstractController
             $em = $this->getDoctrine()->getManager();
             $em->persist($contactMessage);
             $em->flush();
-            // TODO add Flash
+            $this->addFlash(
+                'success',
+                $translator->trans('front.flash.contact_message_send')
+            );
             // TODO send email notifications
+            $hideForm = true;
         }
 
         return $this->render('frontend/contact.html.twig', [
             'form' => $form->createView(),
+            'hideForm' => $hideForm,
         ]);
     }
 
