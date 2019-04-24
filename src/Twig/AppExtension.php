@@ -5,11 +5,16 @@ namespace App\Twig;
 use App\Entity\User;
 use App\Entity\EventCategory;
 use App\Enum\UserRoleEnum;
+use App\Repository\ContactMessageRepository;
+use DateTimeInterface;
+use Exception;
 use Symfony\Component\HttpFoundation\RequestStack;
+use Symfony\Component\Routing\RouterInterface;
 use Symfony\Component\Translation\Translator;
 use Symfony\Contracts\Translation\TranslatorInterface;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFilter;
+use Twig\TwigFunction;
 
 /**
  * Class AppExtension
@@ -25,6 +30,16 @@ class AppExtension extends AbstractExtension
      * @var Translator service
      */
     private $ts;
+
+    /**
+     * @var ContactMessageRepository service
+     */
+    private $cmrs;
+
+    /**
+     * @var RouterInterface service
+     */
+    private $rs;
 
     /**
      * @var array
@@ -43,17 +58,46 @@ class AppExtension extends AbstractExtension
     /**
      * AppExtension constructor.
      *
-     * @param RequestStack        $rss
-     * @param TranslatorInterface $ts
-     * @param string              $locales
-     * @param string              $defaultLocale
+     * @param RequestStack             $rss
+     * @param TranslatorInterface      $ts
+     * @param ContactMessageRepository $cmrs
+     * @param RouterInterface          $rs
+     * @param string                   $locales
+     * @param string                   $defaultLocale
      */
-    public function __construct(RequestStack $rss, TranslatorInterface $ts, string $locales, string $defaultLocale)
+    public function __construct(RequestStack $rss, TranslatorInterface $ts, ContactMessageRepository $cmrs, RouterInterface $rs, string $locales, string $defaultLocale)
     {
         $this->rss = $rss;
         $this->ts = $ts;
+        $this->cmrs = $cmrs;
+        $this->rs = $rs;
         $this->locales = explode('|', $locales);
         $this->defaultLocale = $defaultLocale;
+    }
+
+    /**
+     * @return array|TwigFunction[]
+     */
+    public function getFunctions()
+    {
+        return [
+            new TwigFunction('show_unread_messages', [$this, 'showUnreadMessages']),
+        ];
+    }
+
+    /**
+     * @return string
+     *
+     * @throws Exception
+     */
+    public function showUnreadMessages()
+    {
+        $result = '';
+        if ($this->cmrs->getReadPendingMessagesAmount() > 0) {
+            $result = '<li class="messages-menu"><a href="'.$this->rs->generate('admin_app_contactmessage_list').'"><i class="fa fa-envelope-o"></i><span class="label label-danger">'.$this->cmrs->getReadPendingMessagesAmount().'</span></a></li>';
+        }
+
+        return $result;
     }
 
     /**
@@ -117,11 +161,11 @@ class AppExtension extends AbstractExtension
     }
 
     /**
-     * @param \DateTimeInterface $dateTime
+     * @param DateTimeInterface $dateTime
      *
      * @return string
      */
-    public function drawI18nDateString(\DateTimeInterface $dateTime)
+    public function drawI18nDateString(DateTimeInterface $dateTime)
     {
         $result = $dateTime->format('d/m/Y');
         if ($this->rss->getCurrentRequest()->getLocale() == 'en') {
