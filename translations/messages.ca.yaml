@@ -1,4 +1,6 @@
 front:
+    flash:
+        contact_message_send: 'El teu missatge s''ha enviat correctament, gràcies per contactar amb nosaltres. Et respondrem el més aviat possible!'
     menu:
         blog: 'blog'
         tickets: 'entrades'
