@@ -11,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\TeamMemberRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\ContactMessageRepository")
  * @ORM\Table()
  */
 class ContactMessage extends AbstractEntity
