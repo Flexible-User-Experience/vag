@@ -1,5 +1,5 @@
 {% for location in locations %}
-    <div class="col-6 col-md-4 col-lg-3">
+    <div class="col-12 col-md-6 col-lg-4 col-xl-3">
         <div class="card mt-3">
             {% if location.imageName %}
                 <img src="{{ vich_uploader_asset(location, 'imageFile') | imagine_filter('800x600') }}" class="card-img-top" alt="{{ location.place }}">
