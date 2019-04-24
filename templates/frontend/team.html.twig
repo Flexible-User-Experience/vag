@@ -22,7 +22,7 @@
                                         <p class="card-text text-muted">{{ member.job }}</p>
                                     {% endif %}
                                     {% if member.link %}
-                                        <a href="{{ member.link }}">{{ member.link | replace({'http://': '', 'https://': ''}) }}</a>
+                                        <a href="{{ member.link }}">{{ member.link | remove_url_protocol }}</a>
                                     {% endif %}
                                 </div>
                             </div>
@@ -56,7 +56,7 @@
                                 <div class="card-body">
                                     <h5 class="card-title sr-only">{{ partner.name }}</h5>
                                     {% if partner.link %}
-                                        <a href="{{ partner.link }}">{{ partner.link | replace({'http://': '', 'https://': ''}) }}</a>
+                                        <a href="{{ partner.link }}">{{ partner.link | remove_url_protocol }}</a>
                                     {% endif %}
                                 </div>
                             </div>

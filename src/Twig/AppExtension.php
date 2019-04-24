@@ -66,6 +66,7 @@ class AppExtension extends AbstractExtension
             new TwigFilter('icon_colored', [$this, 'drawEventCategoryIconWithColor']),
             new TwigFilter('draw_role_span', [$this, 'drawRoleSpan']),
             new TwigFilter('draw_i18n_date_string', [$this, 'drawI18nDateString']),
+            new TwigFilter('remove_url_protocol', [$this, 'removeUrlProtocol']),
         ];
     }
 
@@ -128,5 +129,17 @@ class AppExtension extends AbstractExtension
         }
 
         return $result;
+    }
+
+    /**
+     * @param string $url
+     *
+     * @return string
+     */
+    public function removeUrlProtocol(string $url)
+    {
+        $result = str_replace('http://', '', $url);
+
+        return str_replace('https://', '', $result);
     }
 }
