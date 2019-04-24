@@ -86,7 +86,7 @@ final class EventCollaboratorAdmin extends AbstractAdmin
                 ]
             )
             ->end()
-            ->with('admin.with.text', ['class' => 'col-md-4'])
+            ->with('admin.with.text', ['class' => 'col-md-5'])
             ->add(
                 'job',
                 TextType::class,
@@ -127,7 +127,7 @@ final class EventCollaboratorAdmin extends AbstractAdmin
                 ]
             )
             ->end()
-            ->with('admin.with.images', ['class' => 'col-md-4'])
+            ->with('admin.with.images', ['class' => 'col-md-3'])
             ->add(
                 'imageFile',
                 FileType::class,

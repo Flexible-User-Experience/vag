@@ -6,6 +6,7 @@ use App\Entity\EventCategory;
 use App\Entity\EventCollaborator;
 use App\Entity\EventLocation;
 use App\Enum\LanguageEnum;
+use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
@@ -16,7 +17,6 @@ use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
-use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 /**
@@ -52,7 +52,7 @@ final class EventActivityAdmin extends AbstractAdmin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->with('admin.with.activity', ['class' => 'col-md-4'])
+            ->with('admin.with.activity', ['class' => 'col-md-5'])
             ->add(
                 'name',
                 TextType::class,
@@ -62,16 +62,28 @@ final class EventActivityAdmin extends AbstractAdmin
             )
             ->add(
                 'shortDescription',
-                TextType::class,
+                CKEditorType::class,
                 [
                     'label' => 'admin.label.short_description',
+                    'required' => false,
+                    'config' => [
+                        'language' => $this->getRequest()->getLocale(),
+                    ],
+                    'attr' => [
+                        'rows' => '5',
+                        'style' => 'resize:vertical',
+                    ],
                 ]
             )
             ->add(
                 'description',
-                TextareaType::class,
+                CKEditorType::class,
                 [
                     'label' => 'admin.label.description',
+                    'required' => false,
+                    'config' => [
+                        'language' => $this->getRequest()->getLocale(),
+                    ],
                     'attr' => [
                         'rows' => '5',
                         'style' => 'resize:vertical',
@@ -134,7 +146,7 @@ final class EventActivityAdmin extends AbstractAdmin
                 ]
             )
             ->end()
-            ->with('admin.with.images', ['class' => 'col-md-4'])
+            ->with('admin.with.images', ['class' => 'col-md-3'])
             ->add(
                 'imageFile',
                 FileType::class,
@@ -145,7 +157,7 @@ final class EventActivityAdmin extends AbstractAdmin
                 ]
             )
             ->end()
-            ->with('admin.with.tickets', ['class' => 'col-md-4'])
+            ->with('admin.with.tickets', ['class' => 'col-md-3'])
             ->add(
                 'ticketsAmount',
                 NumberType::class,

@@ -6,9 +6,9 @@
             {% endif %}
             <div class="media-body">
                 <p class="mt-0 mb-0"><strong>{{ collaborator.fullname }}</strong></p>
-                <p class="text-muted mb-0">{{ collaborator.shortDescription | lower }}</p>
+                <p class="text-muted mb-0">{{ collaborator.shortDescription | capitalize }}</p>
                 {% if collaborator.city %}
-                    <p class="mt-0 mb-0"><span class="badge badge-pill badge-secondary mb-2">{{ collaborator.city }}</span></p>
+                    <p class="mt-0 mb-0"><span class="badge badge-pill badge-secondary mb-2">{{ collaborator.city | title }}</span></p>
                 {% endif %}
                 <a href="{{ path('front_collaborator_detail', {slug: collaborator.slug}) }}" class="btn btn-warning btn-sm mt-2">{{ 'front.events.read_more' | trans }}</a>
             </div>
