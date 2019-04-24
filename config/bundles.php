@@ -33,4 +33,5 @@ return [
     Sonata\UserBundle\SonataUserBundle::class => ['all' => true],
     Welp\MailchimpBundle\WelpMailchimpBundle::class => ['all' => true],
     Gremo\ZurbInkBundle\GremoZurbInkBundle::class => ['all' => true],
+    FOS\CKEditorBundle\FOSCKEditorBundle::class => ['all' => true],
 ];

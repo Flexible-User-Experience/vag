@@ -1,5 +1,5 @@
 {% for collaborator in collaborators %}
-    <div class="col-6 col-md-4">
+    <div class="col-12 col-sm-6 col-md-4">
         <div class="media mt-3">
             {% if collaborator.imageName %}
                 <img src="{{ vich_uploader_asset(collaborator, 'imageFile') | imagine_filter('180x180') }}" alt="{{ collaborator.fullname }}" class="mr-3 rounded w-50">

@@ -3,6 +3,7 @@
 namespace App\Admin;
 
 use App\Enum\GenderEnum;
+use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
@@ -10,7 +11,6 @@ use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
-use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\UrlType;
 
@@ -113,10 +113,13 @@ final class EventCollaboratorAdmin extends AbstractAdmin
             )
             ->add(
                 'description',
-                TextareaType::class,
+                CKEditorType::class,
                 [
                     'label' => 'admin.label.description',
                     'required' => false,
+                    'config' => [
+                        'language' => $this->getRequest()->getLocale(),
+                    ],
                     'attr' => [
                         'rows' => '5',
                         'style' => 'resize:vertical',
