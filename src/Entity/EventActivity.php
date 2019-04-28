@@ -83,7 +83,7 @@ class EventActivity extends AbstractEntity
     private $end;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=1024)
      * @Gedmo\Translatable
      *
      * @var string
