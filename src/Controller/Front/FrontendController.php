@@ -13,6 +13,7 @@ use App\Enum\UserRoleEnum;
 use App\Form\ContactMessageType;
 use App\Manager\EventActivityManager;
 use App\Manager\EventCategoryManager;
+use App\Service\EmailSendingService;
 use Doctrine\ORM\NonUniqueResultException;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Component\HttpFoundation\Request;
@@ -83,10 +84,11 @@ class FrontendController extends AbstractController
      *
      * @param Request             $request
      * @param TranslatorInterface $translator
+     * @param EmailSendingService $ess
      *
      * @return Response
      */
-    public function contact(Request $request, TranslatorInterface $translator)
+    public function contact(Request $request, TranslatorInterface $translator, EmailSendingService $ess)
     {
         $hideForm = false;
         $contactMessage = new ContactMessage();
@@ -105,7 +107,7 @@ class FrontendController extends AbstractController
                 'success',
                 $translator->trans('front.flash.contact_message_send')
             );
-            // TODO send email notifications
+            $ess->sendFrontendContactMessageNotificationToAdmin($contactMessage);
             $hideForm = true;
         }
 
