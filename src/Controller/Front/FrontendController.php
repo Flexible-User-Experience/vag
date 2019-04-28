@@ -106,7 +106,6 @@ class FrontendController extends AbstractController
                 $translator->trans('front.flash.contact_message_send')
             );
             // TODO send email notifications
-            // TODO add reCaptcha
             $hideForm = true;
         }
 

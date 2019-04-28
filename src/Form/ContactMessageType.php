@@ -54,15 +54,6 @@ class ContactMessageType extends AbstractType
                 ]
             )
             ->add(
-                'privacy',
-                CheckboxType::class,
-                [
-                    'label' => 'admin.label.legal_terms_has_been_accepted',
-                    'required' => true,
-                    'mapped' => false,
-                ]
-            )
-            ->add(
                 'recaptcha',
                 EWZRecaptchaType::class,
                 array(
@@ -78,6 +69,15 @@ class ContactMessageType extends AbstractType
                         ],
                     ],
                 )
+            )
+            ->add(
+                'privacy',
+                CheckboxType::class,
+                [
+                    'label' => 'admin.label.legal_terms_has_been_accepted',
+                    'required' => true,
+                    'mapped' => false,
+                ]
             )
             ->add(
                 'send',

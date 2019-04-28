@@ -28,7 +28,11 @@ $breadcrumb-divider: quote(">");
 
 @import '~bootstrap/scss/bootstrap';
 
-.bg-dark-transparent{
+.text-black {
+  color: $app-color-black;
+}
+
+.bg-dark-transparent {
   background-color: rgba(0, 0, 0, $app-alpha + 0.2);
 }
 
