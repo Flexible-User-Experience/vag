@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\ContactMessage;
+use EWZ\Bundle\RecaptchaBundle\Form\Type\EWZRecaptchaType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
@@ -61,28 +62,23 @@ class ContactMessageType extends AbstractType
                     'mapped' => false,
                 ]
             )
-//            ->add(
-//                'recaptcha',
-//                EWZRecaptchaType::class,
-//                array(
-//                    'label' => false,
-//                    'mapped' => false,
-//                    'attr' => array(
-//                        'options' => array(
-//                            'theme' => 'light',
-//                            'type' => 'image',
-//                            'size' => 'normal',
-//                            'defer' => false,
-//                            'async' => false,
-//                        ),
-//                    ),
-//                    'constraints' => array(
-//                        new RecaptchaTrue(array(
-//                            'message' => 'Error',
-//                        )),
-//                    ),
-//                )
-//            )
+            ->add(
+                'recaptcha',
+                EWZRecaptchaType::class,
+                array(
+                    'label' => false,
+                    'mapped' => false,
+                    'attr' => [
+                        'options' => [
+                            'theme' => 'light',
+                            'type' => 'image',
+                            'size' => 'normal',
+                            'defer' => false,
+                            'async' => false,
+                        ],
+                    ],
+                )
+            )
             ->add(
                 'send',
                 SubmitType::class,

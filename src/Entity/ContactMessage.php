@@ -7,6 +7,7 @@ use App\Entity\Traits\NameTrait;
 use App\Entity\Traits\PhoneTrait;
 use DateTime;
 use DateTimeInterface;
+use EWZ\Bundle\RecaptchaBundle\Validator\Constraints as Recaptcha;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -90,6 +91,13 @@ class ContactMessage extends AbstractEntity
      * @var bool
      */
     private $hasBeenAnswered;
+
+    /**
+     * @Recaptcha\IsTrue
+     *
+     * @var string
+     */
+    private $recaptcha;
 
     /**
      * Methods.
@@ -255,6 +263,26 @@ class ContactMessage extends AbstractEntity
     public function setHasBeenAnswered(?bool $hasBeenAnswered): self
     {
         $this->hasBeenAnswered = $hasBeenAnswered;
+
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getRecaptcha(): ?string
+    {
+        return $this->recaptcha;
+    }
+
+    /**
+     * @param string|null $recaptcha
+     *
+     * @return ContactMessage
+     */
+    public function setRecaptcha(?string $recaptcha)
+    {
+        $this->recaptcha = $recaptcha;
 
         return $this;
     }
