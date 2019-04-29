@@ -43,7 +43,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <h5 class="mt-0">{{ 'front.events.featured_speakers' | trans }}</h5>
+                    <h5 class="mt-0">{{ 'front.events.speakers' | trans }}</h5>
                 </div>
                 {% include "frontend/includes/event_collaborator_cards.html.twig" with {collaborators: featuredSpeakers} %}
                 {% if featuredSpeakers | length > 0 %}
@@ -73,7 +73,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <h5 class="mt-0">{{ 'front.events.highlighted_activities' | trans }}</h5>
+                    <h5 class="mt-0">{{ 'front.events.activities' | trans }}</h5>
                 </div>
                 {% include "frontend/includes/event_activity_cards.html.twig" with {activities: featuredActivities} %}
                 {% if featuredActivities | length > 0 %}
@@ -89,7 +89,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <h5 class="mt-0">{{ 'front.events.highlighted_locations' | trans }}</h5>
+                    <h5 class="mt-0">{{ 'front.events.locations' | trans }}</h5>
                 </div>
                 {% include "frontend/includes/event_location_cards.html.twig" with {locations: featuredLocations} %}
                 {% if featuredLocations | length > 0 %}
