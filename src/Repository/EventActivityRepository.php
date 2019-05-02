@@ -79,7 +79,7 @@ class EventActivityRepository extends ServiceEntityRepository
         return $this->findAvailable()
             ->andWhere('ea.showInHomepage = :homepage')
             ->setParameter('homepage', true)
-            ->orderBy('ea.begin', 'DESC')
+            ->orderBy('ea.begin', 'ASC')
         ;
     }
 
