@@ -64,6 +64,7 @@ class FrontControllerTest extends WebTestCase
             ['/ca/conferencies/activitat/activitat-1'],
             ['/es/conferencias/actividad/actividad-1'],
             ['/en/conferences/activity/activity-1'],
+            ['/sitemap.default.xml'],
         ];
     }
 
