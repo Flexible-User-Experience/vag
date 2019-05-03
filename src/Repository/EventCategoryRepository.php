@@ -71,4 +71,26 @@ class EventCategoryRepository extends ServiceEntityRepository
 
         return $qb;
     }
+
+    /**
+     * @param string        $locale
+     * @param EventCategory $category
+     *
+     * @return QueryBuilder
+     */
+    public function findLocalizedSlugByLocaleAndCategory(string $locale, EventCategory $category)
+    {
+        $qb = $this->createQueryBuilder('ec')
+            ->select('t.content')
+            ->join('ec.translations', 't')
+            ->andWhere('t.locale = :locale')
+            ->andWhere('t.object = :category')
+            ->andWhere('t.field = :field')
+            ->setParameter('locale', $locale)
+            ->setParameter('category', $category)
+            ->setParameter('field', 'slug')
+        ;
+
+        return $qb;
+    }
 }

@@ -3,11 +3,12 @@
 namespace App\EventListener;
 
 use App\Entity\EventCategory;
+use App\Manager\EventCategoryManager;
 use App\Repository\BlogPostRepository;
 use App\Repository\EventActivityRepository;
-use App\Repository\EventCategoryRepository;
 use App\Repository\EventCollaboratorRepository;
 use App\Repository\EventLocationRepository;
+use Doctrine\ORM\NonUniqueResultException;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Presta\SitemapBundle\Event\SitemapPopulateEvent;
@@ -25,9 +26,9 @@ class SitemapSubscriberEventListener implements EventSubscriberInterface
     private $urlGenerator;
 
     /**
-     * @var EventCategoryRepository
+     * @var EventCategoryManager
      */
-    private $eventCategoryRepository;
+    private $eventCategoryManager;
 
     /**
      * @var EventCollaboratorRepository
@@ -60,17 +61,17 @@ class SitemapSubscriberEventListener implements EventSubscriberInterface
 
     /**
      * @param UrlGeneratorInterface       $urlGenerator
-     * @param EventCategoryRepository     $eventCategoryRepository
+     * @param EventCategoryManager        $eventCategoryManager
      * @param EventCollaboratorRepository $eventCollaboratorRepository
      * @param EventActivityRepository     $eventActivityRepository
      * @param EventLocationRepository     $eventLocationRepository
      * @param BlogPostRepository          $blogPostRepository
      * @param string                      $locales
      */
-    public function __construct(UrlGeneratorInterface $urlGenerator, EventCategoryRepository $eventCategoryRepository, EventCollaboratorRepository $eventCollaboratorRepository, EventActivityRepository $eventActivityRepository, EventLocationRepository $eventLocationRepository, BlogPostRepository $blogPostRepository, string $locales)
+    public function __construct(UrlGeneratorInterface $urlGenerator, EventCategoryManager $eventCategoryManager, EventCollaboratorRepository $eventCollaboratorRepository, EventActivityRepository $eventActivityRepository, EventLocationRepository $eventLocationRepository, BlogPostRepository $blogPostRepository, string $locales)
     {
         $this->urlGenerator = $urlGenerator;
-        $this->eventCategoryRepository = $eventCategoryRepository;
+        $this->eventCategoryManager = $eventCategoryManager;
         $this->eventCollaboratorRepository = $eventCollaboratorRepository;
         $this->eventActivityRepository = $eventActivityRepository;
         $this->eventLocationRepository = $eventLocationRepository;
@@ -90,6 +91,8 @@ class SitemapSubscriberEventListener implements EventSubscriberInterface
 
     /**
      * @param SitemapPopulateEvent $event
+     *
+     * @throws NonUniqueResultException
      */
     public function populate(SitemapPopulateEvent $event): void
     {
@@ -173,11 +176,13 @@ class SitemapSubscriberEventListener implements EventSubscriberInterface
 
     /**
      * @param UrlContainerInterface $urls
-     * @param string                $locale
+     * @param string $locale
+     *
+     * @throws NonUniqueResultException
      */
     public function registerFrontendEventCategories(UrlContainerInterface $urls, string $locale): void
     {
-        $categories = $this->eventCategoryRepository->findAvailableSortedByPriorityAndName()->getQuery()->getResult();
+        $categories = $this->eventCategoryManager->getAvailableSortedByPriorityAndName();
 
         /** @var EventCategory $category */
         foreach ($categories as $category) {
@@ -186,7 +191,7 @@ class SitemapSubscriberEventListener implements EventSubscriberInterface
                     $this->urlGenerator->generate(
                         'front_event_category',
                         [
-                            'slug' => $category->getSlug(),
+                            'slug' => $this->eventCategoryManager->getCategorySlugByLocale($category, $locale),
                             '_locale' => $locale,
                         ],
                         UrlGeneratorInterface::ABSOLUTE_URL
