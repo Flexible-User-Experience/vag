@@ -3,5 +3,5 @@ presta_sitemap:
     timetolive: 3600
     defaults:
         priority: 1
-        changefreq: daily
+        changefreq: monthly
         lastmod: now
