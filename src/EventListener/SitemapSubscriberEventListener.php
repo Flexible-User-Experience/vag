@@ -212,8 +212,8 @@ class SitemapSubscriberEventListener implements EventSubscriberInterface
                         $this->urlGenerator->generate(
                             'front_event_activity.'.$locale,
                             [
-                                'category' => $this->eventActivityManager->getActivitySlugByLocale($activity, $locale),
-                                'activity' => $activity->getSlug(),
+                                'category' => $this->eventCategoryManager->getCategorySlugByLocale($category, $locale),
+                                'activity' => $this->eventActivityManager->getActivitySlugByLocale($activity, $locale),
                                 '_locale' => $locale,
                             ],
                             UrlGeneratorInterface::ABSOLUTE_URL
