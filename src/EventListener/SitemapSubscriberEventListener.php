@@ -2,12 +2,13 @@
 
 namespace App\EventListener;
 
+use App\Entity\EventActivity;
 use App\Entity\EventCategory;
 use App\Entity\EventCollaborator;
 use App\Entity\EventLocation;
 use App\Manager\EventCategoryManager;
+use App\Manager\EventActivityManager;
 use App\Repository\BlogPostRepository;
-use App\Repository\EventActivityRepository;
 use App\Repository\EventCollaboratorRepository;
 use App\Repository\EventLocationRepository;
 use Doctrine\ORM\NonUniqueResultException;
@@ -33,14 +34,14 @@ class SitemapSubscriberEventListener implements EventSubscriberInterface
     private $eventCategoryManager;
 
     /**
+     * @var EventActivityManager
+     */
+    private $eventActivityManager;
+
+    /**
      * @var EventCollaboratorRepository
      */
     private $eventCollaboratorRepository;
-
-    /**
-     * @var EventActivityRepository
-     */
-    private $eventActivityRepository;
 
     /**
      * @var EventLocationRepository
@@ -64,18 +65,18 @@ class SitemapSubscriberEventListener implements EventSubscriberInterface
     /**
      * @param UrlGeneratorInterface       $urlGenerator
      * @param EventCategoryManager        $eventCategoryManager
+     * @param EventActivityManager        $eventActivityManager
      * @param EventCollaboratorRepository $eventCollaboratorRepository
-     * @param EventActivityRepository     $eventActivityRepository
      * @param EventLocationRepository     $eventLocationRepository
      * @param BlogPostRepository          $blogPostRepository
      * @param string                      $locales
      */
-    public function __construct(UrlGeneratorInterface $urlGenerator, EventCategoryManager $eventCategoryManager, EventCollaboratorRepository $eventCollaboratorRepository, EventActivityRepository $eventActivityRepository, EventLocationRepository $eventLocationRepository, BlogPostRepository $blogPostRepository, string $locales)
+    public function __construct(UrlGeneratorInterface $urlGenerator, EventCategoryManager $eventCategoryManager, EventActivityManager $eventActivityManager, EventCollaboratorRepository $eventCollaboratorRepository, EventLocationRepository $eventLocationRepository, BlogPostRepository $blogPostRepository, string $locales)
     {
         $this->urlGenerator = $urlGenerator;
         $this->eventCategoryManager = $eventCategoryManager;
+        $this->eventActivityManager = $eventActivityManager;
         $this->eventCollaboratorRepository = $eventCollaboratorRepository;
-        $this->eventActivityRepository = $eventActivityRepository;
         $this->eventLocationRepository = $eventLocationRepository;
         $this->blogPostRepository = $blogPostRepository;
         $this->locales = explode('|', $locales);
@@ -103,7 +104,7 @@ class SitemapSubscriberEventListener implements EventSubscriberInterface
             /** @var string $locale */
             foreach ($this->locales as $locale) {
                 $this->registerFrontendStaticUrls($event->getUrlContainer(), $locale);
-                $this->registerFrontendEventCategories($event->getUrlContainer(), $locale);
+                $this->registerFrontendEventCategoriesAndActivities($event->getUrlContainer(), $locale);
                 $this->registerFrontendEventCollaborators($event->getUrlContainer(), $locale);
                 $this->registerFrontendEventLocations($event->getUrlContainer(), $locale);
             }
@@ -184,7 +185,7 @@ class SitemapSubscriberEventListener implements EventSubscriberInterface
      *
      * @throws NonUniqueResultException
      */
-    public function registerFrontendEventCategories(UrlContainerInterface $urls, string $locale): void
+    public function registerFrontendEventCategoriesAndActivities(UrlContainerInterface $urls, string $locale): void
     {
         $categories = $this->eventCategoryManager->getAvailableSortedByPriorityAndName();
 
@@ -203,7 +204,36 @@ class SitemapSubscriberEventListener implements EventSubscriberInterface
                 ),
                 'default'
             );
+            $activities = $this->eventActivityManager->getAvailableByCategorySortedByName($category);
+            /** @var EventActivity $activity */
+            foreach ($activities as $activity) {
+                $urls->addUrl(
+                    new UrlConcrete(
+                        $this->urlGenerator->generate(
+                            'front_event_activity.'.$locale,
+                            [
+                                'category' => $this->eventActivityManager->getActivitySlugByLocale($activity, $locale),
+                                'activity' => $activity->getSlug(),
+                                '_locale' => $locale,
+                            ],
+                            UrlGeneratorInterface::ABSOLUTE_URL
+                        )
+                    ),
+                    'default'
+                );
+            }
         }
+    }
+
+    /**
+     * @param UrlContainerInterface $urls
+     * @param string $locale
+     *
+     * @throws NonUniqueResultException
+     */
+    public function registerFrontendEventActivities(UrlContainerInterface $urls, string $locale): void
+    {
+
     }
 
     /**

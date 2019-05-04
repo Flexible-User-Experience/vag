@@ -119,4 +119,26 @@ class EventActivityRepository extends ServiceEntityRepository
 
         return $qb;
     }
+
+    /**
+     * @param string        $locale
+     * @param EventActivity $activity
+     *
+     * @return QueryBuilder
+     */
+    public function findLocalizedSlugByLocaleAndActivity(string $locale, EventActivity $activity)
+    {
+        $qb = $this->createQueryBuilder('ea')
+            ->select('t.content')
+            ->join('ea.translations', 't')
+            ->andWhere('t.locale = :locale')
+            ->andWhere('t.object = :activity')
+            ->andWhere('t.field = :field')
+            ->setParameter('locale', $locale)
+            ->setParameter('activity', $activity)
+            ->setParameter('field', 'slug')
+        ;
+
+        return $qb;
+    }
 }

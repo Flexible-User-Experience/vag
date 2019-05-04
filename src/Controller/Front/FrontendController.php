@@ -33,14 +33,15 @@ class FrontendController extends AbstractController
      * @Route("/", name="front_homepage")
      *
      * @param EventCategoryManager $ecm
+     * @param EventActivityManager $eam
      *
      * @return Response
      */
-    public function homepage(EventCategoryManager $ecm)
+    public function homepage(EventCategoryManager $ecm, EventActivityManager $eam)
     {
         $categories = $ecm->getAvailableSortedByPriorityAndName();
         $featuredSpeakers = $this->getDoctrine()->getRepository(EventCollaborator::class)->findShowInHomepageSortedBySurnameAndName()->getQuery()->getResult();
-        $featuredActivities = $this->getDoctrine()->getRepository(EventActivity::class)->findAvailableForHomepageSortedByBegin()->getQuery()->getResult();
+        $featuredActivities = $eam->getAvailableForHomepageSortedByBegin();
         $featuredLocations = $this->getDoctrine()->getRepository(EventLocation::class)->findShowInHomepageSortedByPlace()->getQuery()->getResult();
 
         return $this->render('frontend/homepage.html.twig', [
@@ -167,16 +168,17 @@ class FrontendController extends AbstractController
      * @Route({"ca": "/activitats", "es": "/actividades", "en": "/activities"}, name="front_activities")
      *
      * @param EventCategoryManager $ecm
+     * @param EventActivityManager $eam
      *
      * @return Response
      */
-    public function activities(EventCategoryManager $ecm)
+    public function activities(EventCategoryManager $ecm, EventActivityManager $eam)
     {
         $activities = [];
         $categories = $ecm->getAvailableSortedByPriorityAndName();
         /** @var EventCategory $category */
         foreach ($categories as $category) {
-            $activities[$category->getSlug()] = $this->getDoctrine()->getRepository(EventActivity::class)->findAvailableByCategorySortedByName($category)->getQuery()->getResult();
+            $activities[$category->getSlug()] = $eam->getAvailableByCategorySortedByName($category);
         }
 
         return $this->render('frontend/activities.html.twig', [
@@ -220,12 +222,13 @@ class FrontendController extends AbstractController
      *
      * @param string $slug
      * @param EventCategoryManager $ecm
+     * @param EventActivityManager $eam
      *
      * @return Response
      * @throws NotFoundHttpException
      * @throws NonUniqueResultException
      */
-    public function category(string $slug, EventCategoryManager $ecm)
+    public function category(string $slug, EventCategoryManager $ecm, EventActivityManager $eam)
     {
         $category = $ecm->getCategoryByTranslatedSlug($slug);
         if (!$category) {
@@ -239,7 +242,7 @@ class FrontendController extends AbstractController
             'frontend/category.html.twig',
             [
                 'category' => $category,
-                'activities' => $this->getDoctrine()->getRepository(EventActivity::class)->findAvailableByCategorySortedByName($category)->getQuery()->getResult(),
+                'activities' => $eam->getAvailableByCategorySortedByName($category),
             ]
         );
     }
