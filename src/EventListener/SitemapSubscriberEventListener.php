@@ -129,7 +129,7 @@ class SitemapSubscriberEventListener implements EventSubscriberInterface
         $urls->addUrl(
             new UrlConcrete(
                 $this->urlGenerator->generate(
-                    'front_blog',
+                    'front_blog.'.$locale,
                     [
                         '_locale' => $locale,
                     ],
@@ -141,7 +141,7 @@ class SitemapSubscriberEventListener implements EventSubscriberInterface
         $urls->addUrl(
             new UrlConcrete(
                 $this->urlGenerator->generate(
-                    'front_tickets',
+                    'front_tickets.'.$locale,
                     [
                         '_locale' => $locale,
                     ],
@@ -153,7 +153,7 @@ class SitemapSubscriberEventListener implements EventSubscriberInterface
         $urls->addUrl(
             new UrlConcrete(
                 $this->urlGenerator->generate(
-                    'front_contact',
+                    'front_contact.'.$locale,
                     [
                         '_locale' => $locale,
                     ],
@@ -165,7 +165,7 @@ class SitemapSubscriberEventListener implements EventSubscriberInterface
         $urls->addUrl(
             new UrlConcrete(
                 $this->urlGenerator->generate(
-                    'front_team',
+                    'front_team.'.$locale,
                     [
                         '_locale' => $locale,
                     ],
@@ -215,7 +215,7 @@ class SitemapSubscriberEventListener implements EventSubscriberInterface
         $urls->addUrl(
             new UrlConcrete(
                 $this->urlGenerator->generate(
-                    'front_collaborators',
+                    'front_collaborators.'.$locale,
                     [
                         '_locale' => $locale,
                     ],
@@ -231,7 +231,7 @@ class SitemapSubscriberEventListener implements EventSubscriberInterface
             $urls->addUrl(
                 new UrlConcrete(
                     $this->urlGenerator->generate(
-                        'front_collaborator_detail',
+                        'front_collaborator_detail.'.$locale,
                         [
                             'slug' => $collaborator->getSlug(),
                             '_locale' => $locale,
