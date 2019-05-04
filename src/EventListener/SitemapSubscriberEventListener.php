@@ -4,6 +4,7 @@ namespace App\EventListener;
 
 use App\Entity\EventCategory;
 use App\Entity\EventCollaborator;
+use App\Entity\EventLocation;
 use App\Manager\EventCategoryManager;
 use App\Repository\BlogPostRepository;
 use App\Repository\EventActivityRepository;
@@ -104,6 +105,7 @@ class SitemapSubscriberEventListener implements EventSubscriberInterface
                 $this->registerFrontendStaticUrls($event->getUrlContainer(), $locale);
                 $this->registerFrontendEventCategories($event->getUrlContainer(), $locale);
                 $this->registerFrontendEventCollaborators($event->getUrlContainer(), $locale);
+                $this->registerFrontendEventLocations($event->getUrlContainer(), $locale);
             }
         }
     }
@@ -234,6 +236,46 @@ class SitemapSubscriberEventListener implements EventSubscriberInterface
                         'front_collaborator_detail.'.$locale,
                         [
                             'slug' => $collaborator->getSlug(),
+                            '_locale' => $locale,
+                        ],
+                        UrlGeneratorInterface::ABSOLUTE_URL
+                    )
+                ),
+                'default'
+            );
+        }
+    }
+
+    /**
+     * @param UrlContainerInterface $urls
+     * @param string $locale
+     *
+     * @throws NonUniqueResultException
+     */
+    public function registerFrontendEventLocations(UrlContainerInterface $urls, string $locale): void
+    {
+        $urls->addUrl(
+            new UrlConcrete(
+                $this->urlGenerator->generate(
+                    'front_locations.'.$locale,
+                    [
+                        '_locale' => $locale,
+                    ],
+                    UrlGeneratorInterface::ABSOLUTE_URL
+                )
+            ),
+            'default'
+        );
+
+        $locations = $this->eventLocationRepository->findAllSortedByPlace()->getQuery()->getResult();
+        /** @var EventLocation $location */
+        foreach ($locations as $location) {
+            $urls->addUrl(
+                new UrlConcrete(
+                    $this->urlGenerator->generate(
+                        'front_location_detail.'.$locale,
+                        [
+                            'slug' => $location->getSlug(),
                             '_locale' => $locale,
                         ],
                         UrlGeneratorInterface::ABSOLUTE_URL
