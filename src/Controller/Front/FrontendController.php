@@ -32,11 +32,13 @@ class FrontendController extends AbstractController
     /**
      * @Route("/", name="front_homepage")
      *
+     * @param EventCategoryManager $ecm
+     *
      * @return Response
      */
-    public function homepage()
+    public function homepage(EventCategoryManager $ecm)
     {
-        $categories = $this->getDoctrine()->getRepository(EventCategory::class)->findAvailableSortedByPriorityAndName()->getQuery()->getResult();
+        $categories = $ecm->getAvailableSortedByPriorityAndName();
         $featuredSpeakers = $this->getDoctrine()->getRepository(EventCollaborator::class)->findShowInHomepageSortedBySurnameAndName()->getQuery()->getResult();
         $featuredActivities = $this->getDoctrine()->getRepository(EventActivity::class)->findAvailableForHomepageSortedByBegin()->getQuery()->getResult();
         $featuredLocations = $this->getDoctrine()->getRepository(EventLocation::class)->findShowInHomepageSortedByPlace()->getQuery()->getResult();
@@ -164,12 +166,14 @@ class FrontendController extends AbstractController
     /**
      * @Route({"ca": "/activitats", "es": "/actividades", "en": "/activities"}, name="front_activities")
      *
+     * @param EventCategoryManager $ecm
+     *
      * @return Response
      */
-    public function activities()
+    public function activities(EventCategoryManager $ecm)
     {
         $activities = [];
-        $categories = $this->getDoctrine()->getRepository(EventCategory::class)->findAvailableSortedByPriorityAndName()->getQuery()->getResult();
+        $categories = $ecm->getAvailableSortedByPriorityAndName();
         /** @var EventCategory $category */
         foreach ($categories as $category) {
             $activities[$category->getSlug()] = $this->getDoctrine()->getRepository(EventActivity::class)->findAvailableByCategorySortedByName($category)->getQuery()->getResult();
