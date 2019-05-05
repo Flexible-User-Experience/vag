@@ -1,10 +1,10 @@
 {% extends "frontend/base.html.twig" %}
 
-{% block title %}{{ parent() }} · {{ 'front.menu.team' | trans | title }}{% endblock %}
+{% block title %}{{ parent() }} · {{ 'front.menu.partners' | trans | title }}{% endblock %}
 
 {% block body %}
     <div class="jumbotron jumbotron-fluid jumbotron-homepage" style="background-image:url('{{ asset('build/creative-wing-light.png') | imagine_filter('flip_x') }}');">
-        <div class="container mt-0 pt-2 pb-1">
+        <div class="container pt-2 pb-1">
             <h1 class="display-6 mb-0 text-white">{{ 'front.menu.partners' | trans | title }}</h1>
         </div>
     </div>

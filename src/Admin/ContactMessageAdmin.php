@@ -47,8 +47,11 @@ final class ContactMessageAdmin extends AbstractAdmin
      */
     protected function configureRoutes(RouteCollection $collection)
     {
-        parent::configureRoutes($collection);
-        $collection->remove('create');
+        $collection
+            ->remove('create')
+            ->remove('edit')
+            ->remove('batch')
+        ;
     }
 
     /**
@@ -271,7 +274,8 @@ final class ContactMessageAdmin extends AbstractAdmin
                 [
                     'label' => 'admin.label.actions',
                     'actions' => [
-                        'edit' => [],
+                        'show' => [],
+                        'delete' => [],
                     ],
                 ]
             )

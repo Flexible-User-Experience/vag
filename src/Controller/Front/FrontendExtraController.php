@@ -69,6 +69,8 @@ class FrontendExtraController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $contactMessage
                 ->setLegalTermsHasBeenAccepted(true)
+                ->setHasBeenReaded(false)
+                ->setHasBeenAnswered(false)
                 ->setSubject('front_contact')
             ;
             $em = $this->getDoctrine()->getManager();
