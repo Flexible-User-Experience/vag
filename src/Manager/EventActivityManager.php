@@ -49,7 +49,7 @@ class EventActivityManager
         $this->rs = $rs;
         $this->ear = $ear;
         $this->defaultLocale = $defaultLocale;
-        $this->locale = $this->rs->getCurrentRequest()->getLocale();
+        $this->locale = $this->rs->getCurrentRequest() ? $this->rs->getCurrentRequest()->getLocale() : $defaultLocale;
     }
 
     /**

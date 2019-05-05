@@ -48,7 +48,7 @@ class EventCategoryManager
         $this->rs = $rs;
         $this->ecr = $ecr;
         $this->defaultLocale = $defaultLocale;
-        $this->locale = $this->rs->getCurrentRequest()->getLocale();
+        $this->locale = $this->rs->getCurrentRequest() ? $this->rs->getCurrentRequest()->getLocale() : $defaultLocale;
     }
 
     /**
