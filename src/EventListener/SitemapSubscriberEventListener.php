@@ -157,6 +157,7 @@ class SitemapSubscriberEventListener implements EventSubscriberInterface
             'front_contact',
             'front_team',
             'front_privacy_policy',
+            'front_legal_warning',
         ];
     }
 

@@ -41,6 +41,16 @@ class FrontendExtraController extends AbstractController
     }
 
     /**
+     * @Route({"ca": "/avis-legal", "es": "/aviso-legal", "en": "/legal-warning"}, name="front_legal_warning")
+     *
+     * @return Response
+     */
+    public function legalWarningPolicy()
+    {
+        return $this->render('frontend/legal_warning.html.twig', []);
+    }
+
+    /**
      * @Route({"ca": "/contacte", "es": "/contacto", "en": "/contact"}, name="front_contact")
      *
      * @param Request             $request
