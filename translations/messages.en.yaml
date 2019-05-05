@@ -7,6 +7,9 @@ front:
         contact: 'contact'
         team: 'team'
         partners: 'partners'
+        privacy_policy: 'privacy policy'
+        cookies_policy: 'cookies policy'
+        legal: 'legal warning'
     homepage:
         jumbotron_1: 'The only cultural event about video games and digital art.'
         jumbotron_2: 'Don''t miss this opportunity to discover a new face of the digital entertainment industry!'
