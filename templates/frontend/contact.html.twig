@@ -2,6 +2,17 @@
 
 {% block title %}{{ parent() }} · {{ 'front.menu.contact' | trans | title }}{% endblock %}
 
+{% form_theme form _self %}
+
+{% block _contact_message_privacy_widget %}
+    <div class="checkbox">
+        <input type="checkbox" id="contact_message_privacy_checkbox" {{ block('widget_attributes') }}/>
+        <label class="control-label my-privacy-label" for="contact_message_privacy_checkbox">
+            {{ 'front.legal.privacy_policy_terms' | trans({'%href%': path('front_privacy_policy'), '%anchor%': 'front.menu.privacy_policy' | trans}, 'messages') | raw }}
+        </label>
+    </div>
+{% endblock %}
+
 {% block body %}
     <div class="jumbotron jumbotron-fluid jumbotron-homepage" style="background-image:url('{{ asset('build/creative-light-abstract-glowing-texture.png') }}');">
         <div class="container pt-2 pb-1">

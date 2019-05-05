@@ -33,6 +33,8 @@ front:
     carrousel:
         previous: 'anterior'
         next: 'siguiente'
+    legal:
+        privacy_policy_terms: 'Acepto la <a href="%href%">%anchor%</a>'
     footer:
         contact: 'contacto'
         team: 'equipo'
