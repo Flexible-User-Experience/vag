@@ -2,18 +2,13 @@
 
 namespace App\Admin;
 
-use App\Enum\GenderEnum;
+use Doctrine\DBAL\Types\Type;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
-use Sonata\AdminBundle\Form\FormMapper;
+use Sonata\AdminBundle\Show\ShowMapper;
 use Sonata\AdminBundle\Route\RouteCollection;
-use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
-use Symfony\Component\Form\Extension\Core\Type\FileType;
-use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Form\Extension\Core\Type\UrlType;
 
 /**
  * Class ContactMessageAdmin
@@ -55,24 +50,17 @@ final class ContactMessageAdmin extends AbstractAdmin
     }
 
     /**
-     * @param FormMapper $formMapper
+     * @param ShowMapper $showMapper
      */
-    protected function configureFormFields(FormMapper $formMapper)
+    protected function configureShowFields(ShowMapper $showMapper)
     {
-        $formMapper
-            ->with('admin.with.collaborator', ['class' => 'col-md-4'])
+        $showMapper
+            ->with('admin.with.contact_message', ['class' => 'col-md-4'])
             ->add(
                 'name',
                 TextType::class,
                 [
                     'label' => 'admin.label.name',
-                ]
-            )
-            ->add(
-                'surname',
-                TextType::class,
-                [
-                    'label' => 'admin.label.surname',
                 ]
             )
             ->add(
@@ -87,75 +75,45 @@ final class ContactMessageAdmin extends AbstractAdmin
                 TextType::class,
                 [
                     'label' => 'admin.label.phone',
-                    'required' => false,
                 ]
             )
             ->end()
             ->with('admin.with.text', ['class' => 'col-md-4'])
             ->add(
-                'shortDescription',
+                'message',
                 TextType::class,
                 [
-                    'label' => 'admin.label.short_description',
-                    'required' => false,
+                    'label' => 'admin.label.message',
                 ]
             )
             ->add(
-                'description',
-                TextareaType::class,
+                'answer',
+                TextType::class,
                 [
-                    'label' => 'admin.label.description',
-                    'required' => false,
-                    'attr' => [
-                        'rows' => '5',
-                        'style' => 'resize:vertical',
-                    ],
-                ]
-            )
-            ->end()
-            ->with('admin.with.images', ['class' => 'col-md-4'])
-            ->add(
-                'imageFile',
-                FileType::class,
-                [
-                    'label' => 'admin.label.image',
-                    'help' => $this->getImageHelperFormMapperWithThumbnail(),
-                    'required' => false,
+                    'label' => 'admin.label.answer',
                 ]
             )
             ->end()
             ->with('admin.with.controls', ['class' => 'col-md-4'])
             ->add(
-                'slug',
-                TextType::class,
+                'legalTermsHasBeenAccepted',
+                Type::BOOLEAN,
                 [
-                    'label' => 'admin.label.slug',
-                    'required' => false,
-                    'disabled' => true,
+                    'label' => 'admin.label.legal_terms_has_been_accepted',
                 ]
             )
             ->add(
-                'gender',
-                ChoiceType::class,
+                'hasBeenReaded',
+                Type::BOOLEAN,
                 [
-                    'label' => 'admin.label.gender.gender',
-                    'choices' => GenderEnum::getStaticChoices(),
+                    'label' => 'admin.label.has_been_readed',
                 ]
             )
             ->add(
-                'link',
-                UrlType::class,
+                'hasBeenAnswered',
+                Type::BOOLEAN,
                 [
-                    'label' => 'admin.label.link',
-                    'required' => false,
-                ]
-            )
-            ->add(
-                'showInHomepage',
-                CheckboxType::class,
-                [
-                    'label' => 'admin.label.show_in_homepage',
-                    'required' => false,
+                    'label' => 'admin.label.has_been_answered',
                 ]
             )
             ->end()
@@ -207,7 +165,7 @@ final class ContactMessageAdmin extends AbstractAdmin
                 'hasBeenAnswered',
                 null,
                 [
-                    'label' => 'admin.label.has_been_ansewered_short',
+                    'label' => 'admin.label.has_been_answered_short',
                 ]
             )
         ;
