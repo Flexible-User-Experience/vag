@@ -74,6 +74,7 @@ admin:
         has_been_answered: 'Ha estat contestat'
         has_been_answered_short: 'Contestat'
         answer: 'Resposta'
+        answered: 'Data resposta'
         message: 'Missatge'
         created: 'Creat'
         begin: 'Comença'

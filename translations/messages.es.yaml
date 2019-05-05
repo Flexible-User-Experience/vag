@@ -74,6 +74,7 @@ admin:
         has_been_answered: 'Ha sido contestado'
         has_been_answered_short: 'Contestado'
         answer: 'Respuesta'
+        answered: 'Fecha respuesta'
         message: 'Mensaje'
         created: 'Creado'
         begin: 'Empieza'

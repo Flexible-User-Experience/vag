@@ -80,10 +80,24 @@ final class ContactMessageAdmin extends AbstractAdmin
             ->end()
             ->with('admin.with.text', ['class' => 'col-md-4'])
             ->add(
+                'createdString',
+                TextType::class,
+                [
+                    'label' => 'admin.label.created',
+                ]
+            )
+            ->add(
                 'message',
                 TextType::class,
                 [
                     'label' => 'admin.label.message',
+                ]
+            )
+            ->add(
+                'answeredString',
+                TextType::class,
+                [
+                    'label' => 'admin.label.answered',
                 ]
             )
             ->add(
@@ -222,7 +236,7 @@ final class ContactMessageAdmin extends AbstractAdmin
                 'hasBeenAnswered',
                 null,
                 [
-                    'label' => 'admin.label.has_been_ansewered_short',
+                    'label' => 'admin.label.has_been_answered_short',
                     'editable' => false,
                 ]
             )

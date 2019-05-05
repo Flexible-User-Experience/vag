@@ -74,6 +74,7 @@ admin:
         has_been_answered: 'Has been answered'
         has_been_answered_short: 'Answered'
         answer: 'Answer'
+        answered: 'Answer date'
         message: 'Message'
         created: 'Created'
         begin: 'Begin'

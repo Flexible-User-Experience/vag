@@ -172,6 +172,14 @@ class ContactMessage extends AbstractEntity
     }
 
     /**
+     * @return string
+     */
+    public function getAnsweredString(): string
+    {
+        return $this->getAnswered() ? $this->getAnswered()->format('d/m/Y H:i') : '---';
+    }
+
+    /**
      * @param DateTimeInterface|null $answered
      *
      * @return ContactMessage
