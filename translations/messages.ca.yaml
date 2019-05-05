@@ -37,7 +37,8 @@ front:
         privacy_policy_terms: 'Accepto la <a href="%href%">%anchor%</a>'
     footer:
         contact: 'contacte'
-        team: 'equip'
+        team: 'qui som'
+        partners: 'patrocinadors'
         privacy: 'privacitat'
         terms: 'legal'
         company: 'empresa'

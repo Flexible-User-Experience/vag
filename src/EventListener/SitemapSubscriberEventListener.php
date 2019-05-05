@@ -156,6 +156,7 @@ class SitemapSubscriberEventListener implements EventSubscriberInterface
             'front_tickets',
             'front_contact',
             'front_team',
+            'front_partners',
             'front_privacy_policy',
             'front_legal_warning',
         ];

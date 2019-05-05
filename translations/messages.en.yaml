@@ -37,7 +37,8 @@ front:
         privacy_policy_terms: 'I accept the <a href="%href%">%anchor%</a>'
     footer:
         contact: 'contact'
-        team: 'team'
+        team: 'who we are'
+        partners: 'partners'
         privacy: 'privacy'
         terms: 'terms'
         company: 'company'

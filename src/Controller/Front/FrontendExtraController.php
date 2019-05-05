@@ -89,17 +89,29 @@ class FrontendExtraController extends AbstractController
     }
 
     /**
-     * @Route({"ca": "/equip", "es": "/equipo", "en": "/team"}, name="front_team")
+     * @Route({"ca": "/qui-som", "es": "/quienes-somos", "en": "/who-we-are"}, name="front_team")
      *
      * @return Response
      */
     public function team()
     {
         $members = $this->getDoctrine()->getRepository(TeamMember::class)->findShowInFrontendSortedBySurnameAndName()->getQuery()->getResult();
-        $partners = $this->getDoctrine()->getRepository(TeamPartner::class)->findShowInFrontendSortedByName()->getQuery()->getResult();
 
         return $this->render('frontend/team.html.twig', [
             'members' => $members,
+        ]);
+    }
+
+    /**
+     * @Route({"ca": "/patrocinadors", "es": "/patrocinadores", "en": "/partners"}, name="front_partners")
+     *
+     * @return Response
+     */
+    public function partners()
+    {
+        $partners = $this->getDoctrine()->getRepository(TeamPartner::class)->findShowInFrontendSortedByName()->getQuery()->getResult();
+
+        return $this->render('frontend/partners.html.twig', [
             'partners' => $partners,
         ]);
     }
