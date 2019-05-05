@@ -4,6 +4,7 @@ twig:
     strict_variables: '%kernel.debug%'
     globals:
         main_brand_title: 'VAG'
+        main_brand_email: '%env(string:MAILER_SENDER_ADDRESS)%'
         admin_tag_version: 'v1.0.08'
         google_analytics_enabled: '%env(bool:GOOGLE_ANALYTICS_ENABLED)%'
         google_analytics_code: '%env(string:GOOGLE_ANALYTICS_CODE)%'

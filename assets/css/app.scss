@@ -25,6 +25,7 @@ $breadcrumb-border-radius: 0;
 $breadcrumb-active-color: $app-color-light;
 $breadcrumb-divider-color: $app-color-grey;
 $breadcrumb-divider: quote(">");
+$enable-responsive-font-sizes: true;
 
 @import '~bootstrap/scss/bootstrap';
 
