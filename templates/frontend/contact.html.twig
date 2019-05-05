@@ -1,5 +1,7 @@
 {% extends "frontend/base.html.twig" %}
 
+{% block title %}{{ parent() }} · {{ 'front.menu.contact' | trans | title }}{% endblock %}
+
 {% block body %}
     <div class="jumbotron jumbotron-fluid jumbotron-homepage" style="background-image:url('{{ asset('build/creative-light-abstract-glowing-texture.png') }}');">
         <div class="container pt-2 pb-1">

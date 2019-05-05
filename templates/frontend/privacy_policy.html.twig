@@ -1,5 +1,7 @@
 {% extends "frontend/base.html.twig" %}
 
+{% block title %}{{ parent() }} · {{ 'front.menu.privacy_policy' | trans | title }}{% endblock %}
+
 {% block body %}
     {# Main heading sections test #}
     <div class="jumbotron jumbotron-fluid jumbotron-homepage" style="background-image:url('{{ asset('build/creative-light-abstract-glowing-texture.png') }}');">

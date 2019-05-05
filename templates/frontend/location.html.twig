@@ -1,5 +1,7 @@
 {% extends "frontend/base.html.twig" %}
 
+{% block title %}{{ parent() }} · {{ location.place }}{% endblock %}
+
 {% block body %}
     <div class="jumbotron jumbotron-fluid jumbotron-homepage" style="background-image:url('{{ asset('build/number-pattern-line-color.png') }}');">
         <div class="container pt-2 pb-1">
