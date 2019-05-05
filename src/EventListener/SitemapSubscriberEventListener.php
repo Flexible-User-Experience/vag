@@ -129,54 +129,35 @@ class SitemapSubscriberEventListener implements EventSubscriberInterface
             ),
             'default'
         );
-        $urls->addUrl(
-            new UrlConcrete(
-                $this->urlGenerator->generate(
-                    'front_blog.'.$locale,
-                    [
-                        '_locale' => $locale,
-                    ],
-                    UrlGeneratorInterface::ABSOLUTE_URL
-                )
-            ),
-            'default'
-        );
-        $urls->addUrl(
-            new UrlConcrete(
-                $this->urlGenerator->generate(
-                    'front_tickets.'.$locale,
-                    [
-                        '_locale' => $locale,
-                    ],
-                    UrlGeneratorInterface::ABSOLUTE_URL
-                )
-            ),
-            'default'
-        );
-        $urls->addUrl(
-            new UrlConcrete(
-                $this->urlGenerator->generate(
-                    'front_contact.'.$locale,
-                    [
-                        '_locale' => $locale,
-                    ],
-                    UrlGeneratorInterface::ABSOLUTE_URL
-                )
-            ),
-            'default'
-        );
-        $urls->addUrl(
-            new UrlConcrete(
-                $this->urlGenerator->generate(
-                    'front_team.'.$locale,
-                    [
-                        '_locale' => $locale,
-                    ],
-                    UrlGeneratorInterface::ABSOLUTE_URL
-                )
-            ),
-            'default'
-        );
+        /** @var string $route */
+        foreach ($this->getStaticRoutesArray() as $route) {
+            $urls->addUrl(
+                new UrlConcrete(
+                    $this->urlGenerator->generate(
+                        $route.'.'.$locale,
+                        [
+                            '_locale' => $locale,
+                        ],
+                        UrlGeneratorInterface::ABSOLUTE_URL
+                    )
+                ),
+                'default'
+            );
+        }
+    }
+
+    /**
+     * @return array
+     */
+    private function getStaticRoutesArray()
+    {
+        return [
+            'front_blog',
+            'front_tickets',
+            'front_contact',
+            'front_team',
+            'front_privacy_policy',
+        ];
     }
 
     /**
