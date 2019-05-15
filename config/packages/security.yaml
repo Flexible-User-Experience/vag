@@ -53,6 +53,6 @@ security:
         - { path: ^/(ca|es|en)/admin/logout$, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/(ca|es|en)/admin/login_check$, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/(ca|es|en)/admin/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/(ca|es|en)/admin/, role: [ROLE_ADMIN, ROLE_SONATA_ADMIN] }
+        - { path: ^/(ca|es|en)/admin/, role: [ROLE_CMS, ROLE_SONATA_ADMIN] }
         # enabled public entry points
         - { path: ^/.*, role: IS_AUTHENTICATED_ANONYMOUSLY }
