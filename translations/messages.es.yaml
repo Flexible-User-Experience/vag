@@ -131,6 +131,8 @@ admin:
         team_member: 'Equipo'
         contact_message: 'Mensaje de contacto'
         tickets: 'Entradas'
+        blog: 'Blog'
+        blog_category: 'Categoría'
 
 'Admin Class Event Activity List': 'Actividades'
 'Admin Class Event Activity Create': 'Nuevo'

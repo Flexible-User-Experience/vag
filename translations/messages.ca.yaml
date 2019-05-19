@@ -131,6 +131,8 @@ admin:
         team_member: 'Equip'
         contact_message: 'Missatge de contacte'
         tickets: 'Entrades'
+        blog: 'Blog'
+        blog_category: 'Categoria'
 
 'Admin Class Event Activity List': 'Activitats'
 'Admin Class Event Activity Create': 'Nou'
