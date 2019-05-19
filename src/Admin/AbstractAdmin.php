@@ -110,4 +110,12 @@ abstract class AbstractAdmin extends BaseAdmin
                 : ''
             : '');
     }
+
+    /**
+     * @return bool
+     */
+    public function formBuilderIsInEditMode()
+    {
+        return $this->id($this->getSubject());
+    }
 }
