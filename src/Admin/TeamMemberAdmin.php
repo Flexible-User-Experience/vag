@@ -100,18 +100,23 @@ final class TeamMemberAdmin extends AbstractAdmin
                     ],
                 ]
             )
-            ->end()
-            ->with('admin.with.images', ['class' => 'col-md-4'])
-            ->add(
-                'imageFile',
-                FileType::class,
-                [
-                    'label' => 'admin.label.image',
-                    'help' => $this->getImageHelperFormMapperWithThumbnail(),
-                    'required' => false,
-                ]
-            )
-            ->end()
+            ->end();
+        if ($this->formBuilderIsInEditMode()) {
+            $formMapper
+                ->with('admin.with.images', ['class' => 'col-md-4'])
+                ->add(
+                    'imageFile',
+                    FileType::class,
+                    [
+                        'label' => 'admin.label.image',
+                        'help' => $this->getImageHelperFormMapperWithThumbnail(),
+                        'required' => false,
+                    ]
+                )
+                ->end()
+            ;
+        }
+        $formMapper
             ->with('admin.with.controls', ['class' => 'col-md-4'])
             ->add(
                 'slug',

@@ -146,17 +146,23 @@ final class EventActivityAdmin extends AbstractAdmin
                 ]
             )
             ->end()
-            ->with('admin.with.images', ['class' => 'col-md-3'])
-            ->add(
-                'imageFile',
-                FileType::class,
-                [
-                    'label' => 'admin.label.image',
-                    'help' => $this->getImageHelperFormMapperWithThumbnail(),
-                    'required' => false,
-                ]
-            )
-            ->end()
+        ;
+        if ($this->formBuilderIsInEditMode()) {
+            $formMapper
+                ->with('admin.with.images', ['class' => 'col-md-3'])
+                ->add(
+                    'imageFile',
+                    FileType::class,
+                    [
+                        'label' => 'admin.label.image',
+                        'help' => $this->getImageHelperFormMapperWithThumbnail(),
+                        'required' => false,
+                    ]
+                )
+                ->end()
+            ;
+        }
+        $formMapper
             ->with('admin.with.tickets', ['class' => 'col-md-3'])
             ->add(
                 'ticketsAmount',
