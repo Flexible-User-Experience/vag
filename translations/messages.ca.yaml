@@ -133,6 +133,7 @@ admin:
         tickets: 'Entrades'
         blog: 'Blog'
         blog_category: 'Categoria'
+        post: 'Article'
 
 'Admin Class Event Activity List': 'Activitats'
 'Admin Class Event Activity Create': 'Nou'

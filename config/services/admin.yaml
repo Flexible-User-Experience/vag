@@ -37,6 +37,11 @@ services:
         arguments: [~, App\Entity\BlogCategory, ~, '@sonata.admin.entity_manager', '@vich_uploader.templating.helper.uploader_helper', '@liip_imagine.cache.manager']
         tags:
             - { name: sonata.admin, manager_type: orm, label: 'admin.with.blog_category', group: 'admin.with.blog' }
+    admin.blog_post:
+        class: App\Admin\BlogPostAdmin
+        arguments: [~, App\Entity\BlogPost, ~, '@sonata.admin.entity_manager', '@vich_uploader.templating.helper.uploader_helper', '@liip_imagine.cache.manager']
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: 'admin.with.blog_post', group: 'admin.with.blog' }
     # comunication
     admin.contact_message:
         class: App\Admin\ContactMessageAdmin

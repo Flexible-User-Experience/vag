@@ -6,31 +6,30 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
-use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Form\Extension\Core\Type\UrlType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 
 /**
- * Class TeamPartnerAdmin
+ * Class BlogPostAdmin
  */
-final class TeamPartnerAdmin extends AbstractAdmin
+final class BlogPostAdmin extends AbstractAdmin
 {
     /**
      * @var string
      */
-    protected $classnameLabel = 'admin.class.team_partner';
+    protected $classnameLabel = 'admin.class.blog_post';
 
     /**
      * @var string
      */
-    protected $baseRoutePattern = 'equip/patrocinador';
+    protected $baseRoutePattern = 'blog/article';
 
     /**
      * @var array
      */
     protected $datagridValues = array(
-        '_sort_by' => 'name',
-        '_sort_order' => 'ASC',
+        '_sort_by' => 'published',
+        '_sort_order' => 'DESC',
     );
 
     /**
@@ -43,7 +42,7 @@ final class TeamPartnerAdmin extends AbstractAdmin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->with('admin.with.team_partner', ['class' => 'col-md-4'])
+            ->with('admin.with.post', ['class' => 'col-md-4'])
             ->add(
                 'name',
                 TextType::class,
@@ -54,22 +53,22 @@ final class TeamPartnerAdmin extends AbstractAdmin
             ->end()
         ;
         if ($this->formBuilderIsInEditMode()) {
-            $formMapper
-                ->with('admin.with.images', ['class' => 'col-md-4'])
-                ->add(
-                    'imageFile',
-                    FileType::class,
-                    [
-                        'label' => 'admin.label.image',
-                        'help' => $this->getImageHelperFormMapperWithThumbnail(),
-                        'required' => false,
-                    ]
-                )
+            $formMapper->
+                with('admin.with.images', ['class' => 'col-md-4'])
+                    ->add(
+                        'imageFile',
+                        FileType::class,
+                        [
+                            'label' => 'admin.label.image',
+                            'help' => $this->getImageHelperFormMapperWithThumbnail(),
+                            'required' => false,
+                        ]
+                    )
                 ->end()
             ;
         }
         $formMapper
-            ->with('admin.with.controls', ['class' => 'col-md-4'])
+            ->with('admin.with.controls', ['class' => 'col-md-3'])
             ->add(
                 'slug',
                 TextType::class,
@@ -80,18 +79,10 @@ final class TeamPartnerAdmin extends AbstractAdmin
                 ]
             )
             ->add(
-                'link',
-                UrlType::class,
-                [
-                    'label' => 'admin.label.link',
-                    'required' => false,
-                ]
-            )
-            ->add(
-                'showInFrontend',
+                'isAvailable',
                 CheckboxType::class,
                 [
-                    'label' => 'admin.label.show_in_frontend',
+                    'label' => 'admin.label.is_available_female',
                     'required' => false,
                 ]
             )
@@ -113,10 +104,10 @@ final class TeamPartnerAdmin extends AbstractAdmin
                 ]
             )
             ->add(
-                'showInFrontend',
+                'isAvailable',
                 null,
                 [
-                    'label' => 'admin.label.show_in_frontend_short',
+                    'label' => 'admin.label.is_available_female',
                 ]
             )
         ;
@@ -137,6 +128,14 @@ final class TeamPartnerAdmin extends AbstractAdmin
                 )
             )
             ->add(
+                'published',
+                null,
+                [
+                    'label' => 'admin.label.published',
+                    'editable' => true,
+                ]
+            )
+            ->add(
                 'name',
                 null,
                 [
@@ -145,10 +144,18 @@ final class TeamPartnerAdmin extends AbstractAdmin
                 ]
             )
             ->add(
-                'showInFrontend',
+                'slug',
                 null,
                 [
-                    'label' => 'admin.label.show_in_frontend_short',
+                    'label' => 'admin.label.slug',
+                    'editable' => false,
+                ]
+            )
+            ->add(
+                'isAvailable',
+                null,
+                [
+                    'label' => 'admin.label.is_available_female',
                     'editable' => true,
                 ]
             )

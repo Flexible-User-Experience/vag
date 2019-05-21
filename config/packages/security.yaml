@@ -17,6 +17,7 @@ security:
             - ROLE_ADMIN_TEAM_PARTNER_ALL
             - ROLE_ADMIN_TEAM_MEMBER_ALL
             - ROLE_ADMIN_BLOG_CATEGORY_ALL
+            - ROLE_ADMIN_BLOG_POST_ALL
             - ROLE_ADMIN_CONTACT_MESSAGE_ALL
         ROLE_ADMIN:
             - ROLE_CMS
