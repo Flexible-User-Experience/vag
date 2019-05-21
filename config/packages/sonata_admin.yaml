@@ -20,7 +20,7 @@ sonata_admin:
             'admin.with.team':
                 icon: "<i class='fa fa-users'></i>"
             'admin.with.blog':
-                icon: "<i class='fa fa-cog'></i>"
+                icon: "<i class='fa fa-chrome'></i>"
             'admin.with.comunication':
                 icon: "<i class='fa fa-paper-plane-o'></i>"
             'admin.with.settings':
