@@ -5,6 +5,8 @@ namespace App\Admin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Sonata\DoctrineORMAdminBundle\Filter\DateFilter;
+use Sonata\Form\Type\DatePickerType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
@@ -79,6 +81,15 @@ final class BlogPostAdmin extends AbstractAdmin
                 ]
             )
             ->add(
+                'published',
+                DatePickerType::class,
+                [
+                    'label' => 'admin.label.published',
+                    'format' => 'd/M/y',
+                    'required' => true,
+                ]
+            )
+            ->add(
                 'isAvailable',
                 CheckboxType::class,
                 [
@@ -96,6 +107,20 @@ final class BlogPostAdmin extends AbstractAdmin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
+            ->add(
+                'published',
+                DateFilter::class,
+                array(
+                    'label' => 'admin.label.published',
+                    'field_type' => DatePickerType::class,
+                    'format' => 'd/m/Y',
+                ),
+                null,
+                array(
+                    'widget' => 'single_text',
+                    'format' => 'dd/MM/yyyy',
+                )
+            )
             ->add(
                 'name',
                 null,
@@ -129,10 +154,11 @@ final class BlogPostAdmin extends AbstractAdmin
             )
             ->add(
                 'published',
-                null,
+                'date',
                 [
                     'label' => 'admin.label.published',
-                    'editable' => true,
+                    'format' => 'd/m/Y',
+                    'editable' => false,
                 ]
             )
             ->add(
