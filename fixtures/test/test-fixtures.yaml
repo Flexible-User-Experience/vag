@@ -348,3 +348,16 @@ App\Entity\ContactMessage:
         phone: '<e164PhoneNumber()>'
         message: '<text(500)>'
         legalTermsHasBeenAccepted: '<boolean(99)>'
+
+App\Entity\BlogCategory:
+    blog_category{1..2}:
+        name: '<firstName()>'
+        isAvailable: '<boolean(99)>'
+
+App\Entity\BlogPost:
+    blog_post{1..2}:
+        name: '<name()>'
+        published: '<dateTimeBetween("+3 month","+4 month")>'
+        shortDescription: '<sentence()>'
+        description: '<sentence()>'
+        isAvailable: '<boolean(99)>'
