@@ -1,0 +1,26 @@
+{% extends "frontend/base.html.twig" %}
+
+{% block title %}{{ parent() }} · {{ 'front.menu.blog' | trans | title }}{% endblock %}
+
+{% block body %}
+    <div class="jumbotron jumbotron-fluid jumbotron-homepage" style="background-image:url('{{ asset('build/abstract-abstraction.png') }}');">
+        <div class="container pt-2 pb-1">
+            <h1 class="display-6 text-white">{{ 'front.menu.blog' | trans | title }}</h1>
+        </div>
+    </div>
+    <div class="jumbotron jumbotron-fluid jumbotron-light">
+        <div class="container">
+            <div class="row">
+                {% if pagination | length > 0 %}
+
+                {% else %}
+                    <div class="col-sm-12">
+                        <div class="alert alert-warning mb-0" role="alert">
+                            <i class="fa exclamation-triangle"></i> {{ 'front.events.empty_warning' | trans }}
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
