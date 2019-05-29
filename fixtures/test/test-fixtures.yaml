@@ -352,7 +352,7 @@ App\Entity\ContactMessage:
 App\Entity\BlogCategory:
     blog_category{1..2}:
         name: '<firstName()>'
-        isAvailable: '<boolean(99)>'
+        isAvailable: '<boolean(100)>'
 
 App\Entity\BlogPost:
     blog_post{1..2}:
@@ -360,4 +360,4 @@ App\Entity\BlogPost:
         published: '<dateTimeBetween("+3 month","+4 month")>'
         shortDescription: '<sentence()>'
         description: '<sentence()>'
-        isAvailable: '<boolean(99)>'
+        isAvailable: '<boolean(100)>'

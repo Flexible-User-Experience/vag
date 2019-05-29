@@ -11,26 +11,40 @@
     <div class="jumbotron jumbotron-fluid jumbotron-light">
         <div class="container">
             {% if tags | length > 0 %}
-                <ul class="nav">
-                    {% for tag in tags %}
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">{{ tag.name }}</a>
-                        </li>
-                    {% endfor %}
-                </ul>
-            {% else %}
-                <h1>hit</h1>
+                <div class="row">
+                    <div class="col-12 mb-3">
+                        <ul class="nav">
+                            {% for tag in tags %}
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">{{ tag.name }}</a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
             {% endif %}
             <div class="row">
-                {% if posts | length > 0 %}
-
+                {% for post in posts %}
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <div class="card mt-3">
+                            {% if post.imageName %}
+                                <img src="{{ vich_uploader_asset(post, 'imageFile') | imagine_filter('480xY') }}" class="card-img-top" alt="{{ post.name }}">
+                            {% endif %}
+                            <div class="card-body">
+                                <h5 class="card-title mb-0">{{ post.name }}</h5>
+                                <span class="badge badge-pill badge-dark mb-2">{{ post.published | draw_i18n_date_string }}</span>
+                                <p class="card-text mb-4">{{ post.shortDescription | raw }}</p>
+                                <a href="#{# path('front_event_activity', {category: activity.category.slug, activity: activity.slug}) #}" class="btn btn-warning btn-sm">{{ 'front.events.read_more' | trans }}</a>
+                            </div>
+                        </div>
+                    </div>
                 {% else %}
-                    <div class="col-sm-12">
+                    <div class="col-12">
                         <div class="alert alert-warning mb-0" role="alert">
                             <i class="fa exclamation-triangle"></i> {{ 'front.events.empty_warning' | trans }}
                         </div>
                     </div>
-                {% endif %}
+                {% endfor %}
             </div>
         </div>
     </div>
