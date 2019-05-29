@@ -10,8 +10,19 @@
     </div>
     <div class="jumbotron jumbotron-fluid jumbotron-light">
         <div class="container">
+            {% if tags | length > 0 %}
+                <ul class="nav">
+                    {% for tag in tags %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">{{ tag.name }}</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <h1>hit</h1>
+            {% endif %}
             <div class="row">
-                {% if pagination | length > 0 %}
+                {% if posts | length > 0 %}
 
                 {% else %}
                     <div class="col-sm-12">

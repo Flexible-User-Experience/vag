@@ -44,16 +44,6 @@ class FrontendMainController extends AbstractController
     }
 
     /**
-     * @Route({"ca": "/noticies", "es": "/noticias", "en": "/news"}, name="front_blog")
-     *
-     * @return Response
-     */
-    public function blog()
-    {
-        return $this->render('frontend/blog.html.twig', []);
-    }
-
-    /**
      * @Route({"ca": "/entrades", "es": "/entradas", "en": "/tickets"}, name="front_tickets")
      *
      * @return Response

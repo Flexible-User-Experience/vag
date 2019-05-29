@@ -15,7 +15,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class FrontendBlogController extends AbstractController
 {
     /**
-     * @Route("/{page}", name="front_blog_posts_list")
+     * @Route({"ca": "/noticies/{page}", "es": "/noticias/{page}", "en": "/news/{page}"}, name="front_blog")
      *
      * @param int $page
      *
@@ -27,12 +27,13 @@ class FrontendBlogController extends AbstractController
         $posts = $this->getDoctrine()->getRepository(BlogPost::class)->findAll();
 //        $posts = $this->getDoctrine()->getRepository(BlogPost::class)->getAllEnabledSortedByPublishedDateWithJoinUntilNow();
 
-        $paginator = $this->get('knp_paginator');
-        $pagination = $paginator->paginate($posts, $page, 9);
+//        $paginator = $this->get('knp_paginator');
+//        $pagination = $paginator->paginate($posts, $page, 9);
 
         return $this->render('frontend/blog/list.html.twig', [
             'tags' => $tags,
-            'pagination' => $pagination,
+            'posts' => $posts,
+//            'pagination' => $pagination,
         ]);
     }
 }
