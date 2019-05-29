@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\BlogCategory;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\QueryBuilder;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**
@@ -22,5 +23,17 @@ class BlogCategoryRepository extends ServiceEntityRepository
     public function __construct(RegistryInterface $registry)
     {
         parent::__construct($registry, BlogCategory::class);
+    }
+
+    /**
+     * @return QueryBuilder
+     */
+    public function findAvailableSortedByName()
+    {
+        return $this->createQueryBuilder('bc')
+            ->andWhere('bc.isAvailable = :available')
+            ->setParameter('available', true)
+            ->orderBy('bc.name', 'ASC')
+        ;
     }
 }

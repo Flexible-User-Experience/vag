@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\BlogPost;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\QueryBuilder;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**
@@ -22,5 +23,18 @@ class BlogPostRepository extends ServiceEntityRepository
     public function __construct(RegistryInterface $registry)
     {
         parent::__construct($registry, BlogPost::class);
+    }
+
+    /**
+     * @return QueryBuilder
+     */
+    public function findAvailableSortedByPublishedDateAndName()
+    {
+        return $this->createQueryBuilder('bp')
+            ->andWhere('bp.isAvailable = :available')
+            ->setParameter('available', true)
+            ->orderBy('bp.published', 'DESC')
+            ->addOrderBy('bp.name', 'ASC')
+        ;
     }
 }
