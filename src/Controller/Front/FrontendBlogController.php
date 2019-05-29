@@ -24,7 +24,8 @@ class FrontendBlogController extends AbstractController
     public function index($page = 1)
     {
         $tags = $this->getDoctrine()->getRepository(BlogCategory::class)->findAvailableSortedByName()->getQuery()->getResult();
-        $posts = $this->getDoctrine()->getRepository(BlogPost::class)->findAvailableSortedByPublishedDateAndName()->getQuery()->getResult();
+        $posts = $this->getDoctrine()->getRepository(BlogPost::class)->findAvailableSortedByPublishedDateAndName()->getQuery()->getResult(); // TODO before today
+
 //        $posts = $this->getDoctrine()->getRepository(BlogPost::class)->getAllEnabledSortedByPublishedDateWithJoinUntilNow();
 
 //        $paginator = $this->get('knp_paginator');

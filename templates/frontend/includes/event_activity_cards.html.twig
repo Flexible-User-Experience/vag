@@ -1,5 +1,5 @@
 {% for activity in activities if activity.category.isAvailable %}
-    <div class="col-12 col-md-6 col-lg-4">
+    <div class="col-12 col-lg-6">
         <div class="card mt-3">
             {% if activity.imageName %}
                 <img src="{{ vich_uploader_asset(activity, 'imageFile') | imagine_filter('480xY') }}" class="card-img-top" alt="{{ activity.name }}">

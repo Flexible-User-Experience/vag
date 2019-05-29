@@ -37,4 +37,6 @@ class BlogPostRepository extends ServiceEntityRepository
             ->addOrderBy('bp.name', 'ASC')
         ;
     }
+
+    // TODO findAvailableSortedByPublishedDateAndName before today
 }
