@@ -4,6 +4,7 @@ namespace App\Controller\Front;
 
 use App\Entity\BlogCategory;
 use App\Entity\BlogPost;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Response;
@@ -48,22 +49,27 @@ class FrontendBlogController extends AbstractController
      * @param string $slug
      *
      * @return Response|AccessDeniedException
+     *
+     * @throws NotFoundHttpException
      * @throws \Exception
      */
     public function postDetail($year, $month, $day, $slug)
     {
+        $published = new \DateTime();
+        $published->setDate($year, $month, $day);
         $tags = $this->getDoctrine()->getRepository(BlogCategory::class)->findAvailableSortedByName()->getQuery()->getResult();
-        $posts = $this->getDoctrine()->getRepository(BlogPost::class)->findUpTodayAvailableSortedByPublishedDateAndName()->getQuery()->getResult();
+        $post = $this->getDoctrine()->getRepository(BlogPost::class)->findByPublishedAndSlug($published, $slug)->getQuery()->getOneOrNullResult();
 
-//        $posts = $this->getDoctrine()->getRepository(BlogPost::class)->getAllEnabledSortedByPublishedDateWithJoinUntilNow();
+        if (!$post) {
+            $this->createNotFoundException();
+        }
 
-//        $paginator = $this->get('knp_paginator');
-//        $pagination = $paginator->paginate($posts, $page, 9);
+        // TODO throw exception if today is before the post publish date
+        // TODO throw exception post is unavailable only for anonymous users
 
-        return $this->render('frontend/blog/list.html.twig', [
+        return $this->render('frontend/blog/detail.html.twig', [
             'tags' => $tags,
-            'posts' => $posts,
-//            'pagination' => $pagination,
+            'post' => $post,
         ]);
     }
 }

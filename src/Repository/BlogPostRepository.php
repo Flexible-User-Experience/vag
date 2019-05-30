@@ -52,4 +52,22 @@ class BlogPostRepository extends ServiceEntityRepository
             ->setParameter('published', $today)
         ;
     }
+
+    /**
+     * @param \DateTime $published
+     * @param string $slug
+     *
+     * @return QueryBuilder
+     *
+     * @throws \Exception
+     */
+    public function findByPublishedAndSlug(\DateTime $published, $slug)
+    {
+        return $this->createQueryBuilder('bp')
+            ->where('bp.slug = :slug')
+            ->andWhere('DATE(bp.published) <= DATE(:published)')
+            ->setParameter('slug', $slug)
+            ->setParameter('published', $published)
+        ;
+    }
 }
