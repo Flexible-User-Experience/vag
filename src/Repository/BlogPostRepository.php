@@ -31,12 +31,25 @@ class BlogPostRepository extends ServiceEntityRepository
     public function findAvailableSortedByPublishedDateAndName()
     {
         return $this->createQueryBuilder('bp')
-            ->andWhere('bp.isAvailable = :available')
+            ->where('bp.isAvailable = :available')
             ->setParameter('available', true)
             ->orderBy('bp.published', 'DESC')
             ->addOrderBy('bp.name', 'ASC')
         ;
     }
 
-    // TODO findAvailableSortedByPublishedDateAndName before today
+    /**
+     * @return QueryBuilder
+     *
+     * @throws \Exception
+     */
+    public function findUpTodayAvailableSortedByPublishedDateAndName()
+    {
+        $today = new \DateTimeImmutable();
+
+        return $this->findAvailableSortedByPublishedDateAndName()
+            ->andWhere('bp.published <= :published')
+            ->setParameter('published', $today->format('Y-m-d H:i:s'))
+        ;
+    }
 }

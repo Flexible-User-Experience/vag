@@ -2,6 +2,7 @@
 
 namespace App\Admin;
 
+use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
@@ -50,6 +51,36 @@ final class BlogPostAdmin extends AbstractAdmin
                 TextType::class,
                 [
                     'label' => 'admin.label.name',
+                ]
+            )
+            ->add(
+                'shortDescription',
+                CKEditorType::class,
+                [
+                    'label' => 'admin.label.short_description',
+                    'required' => false,
+                    'config' => [
+                        'language' => $this->getRequest()->getLocale(),
+                    ],
+                    'attr' => [
+                        'rows' => '5',
+                        'style' => 'resize:vertical',
+                    ],
+                ]
+            )
+            ->add(
+                'description',
+                CKEditorType::class,
+                [
+                    'label' => 'admin.label.description',
+                    'required' => false,
+                    'config' => [
+                        'language' => $this->getRequest()->getLocale(),
+                    ],
+                    'attr' => [
+                        'rows' => '5',
+                        'style' => 'resize:vertical',
+                    ],
                 ]
             )
             ->end()
@@ -126,6 +157,20 @@ final class BlogPostAdmin extends AbstractAdmin
                 null,
                 [
                     'label' => 'admin.label.name',
+                ]
+            )
+            ->add(
+                'shortDescription',
+                null,
+                [
+                    'label' => 'admin.label.short_description',
+                ]
+            )
+            ->add(
+                'description',
+                null,
+                [
+                    'label' => 'admin.label.description',
                 ]
             )
             ->add(
