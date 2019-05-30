@@ -13,10 +13,10 @@
             </h1>
         </div>
     </div>
-    <div class="jumbotron jumbotron-fluid jumbotron-light">
+    <div class="jumbotron jumbotron-fluid mb-0">
         <div class="container">
             {% if not post.available %}
-                <div class="row">
+                <div class="row mb-5">
                     <div class="col-12">
                         <div class="alert alert-danger mb-0" role="alert">
                             <i class="fa exclamation-triangle"></i> {{ 'front.blog.draft' | trans }}
@@ -39,18 +39,21 @@
 {#                </div>#}
 {#            {% endif %}#}
             <div class="row">
-                <div class="col-12 col-sm-6">
-                    <div class="card mt-3">
-                        {% if post.imageName %}
-                            <img src="{{ vich_uploader_asset(post, 'imageFile') | imagine_filter('480xY') }}" class="card-img-top" alt="{{ post.name }}">
-                        {% endif %}
-                        <div class="card-body">
-                            <h5 class="card-title mb-0">{{ post.name }}</h5>
-                            <span class="badge badge-pill badge-dark mb-2">{{ post.published | draw_i18n_date_string }}</span>
-                            <p class="card-text mb-4">{{ post.shortDescription | raw }}</p>
-                            <a href="{{ path('front_blog_post_detail', {year: post.published | date('Y'), month: post.published | date('m'), day: post.published | date('d'), slug: post.slug}) }}" class="btn btn-warning btn-sm">{{ 'front.events.read_more' | trans }}</a>
-                        </div>
+                {% if post.imageName %}
+                    <div class="col-12 col-sm-6 col-md-5 col-lg-4 col-xl-3">
+                        <img src="{{ vich_uploader_asset(post, 'imageFile') | imagine_filter('480xY') }}" class="img-responsive rounded w-100 mb-2" alt="{{ post.name }}">
                     </div>
+                {% endif %}
+                <div class="col-12 col-sm-6 col-md-7 col-lg-8 col-xl-9">
+                    <h5 class="text-muted mt-0 mb-0">{{ post.name }}</h5>
+{#                    {% if participant.job or participant.company %}#}
+{#                        <p class="mb-0">{{ participant.job }} {% if participant.company %}({{ participant.company }}){% endif %}</p>#}
+{#                    {% endif %}#}
+{#                    {% if participant.city %}#}
+{#                        <p class="mt-0 mb-0"><span class="badge badge-pill badge-secondary mb-2">{{ participant.city }}</span></p>#}
+{#                    {% endif %}#}
+                    <hr>
+                    <p class="mb-2">{{ post.description | raw }}</p>
                 </div>
             </div>
         </div>
