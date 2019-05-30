@@ -1,15 +1,29 @@
 {% extends "frontend/base.html.twig" %}
 
-{% block title %}{{ parent() }} · {{ 'front.menu.blog' | trans | title }}{% endblock %}
+{% block title %}{{ parent() }} · {{ post.name }}{% endblock %}
 
 {% block body %}
     <div class="jumbotron jumbotron-fluid jumbotron-homepage" style="background-image:url('{{ asset('build/abstract-abstraction.png') }}');">
         <div class="container pt-2 pb-1">
-            <h1 class="display-6 text-white">{{ 'front.menu.blog' | trans | title }}</h1>
+            <h1 class="display-6 text-white">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{{ path('front_blog') }}" class="breadcrumb-anchor">{{ 'front.menu.blog' | trans | title }}</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">{{ post.name }}</li>
+                </ol>
+            </h1>
         </div>
     </div>
     <div class="jumbotron jumbotron-fluid jumbotron-light">
         <div class="container">
+            {% if not post.available %}
+                <div class="row">
+                    <div class="col-12">
+                        <div class="alert alert-danger mb-0" role="alert">
+                            <i class="fa exclamation-triangle"></i> {{ 'front.blog.draft' | trans }}
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
 {# TODO #}
 {#            {% if tags | length > 0 %}#}
 {#                <div class="row">#}

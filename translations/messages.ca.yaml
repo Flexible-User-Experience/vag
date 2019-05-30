@@ -33,6 +33,8 @@ front:
     carrousel:
         previous: 'anterior'
         next: 'següent'
+    blog:
+        draft: 'Mode esborrany. Pàgina només visible para usuaris que hagin accedit al gestor de continguts.'
     legal:
         privacy_policy_terms: 'Accepto la <a href="%href%">%anchor%</a>'
     footer:
