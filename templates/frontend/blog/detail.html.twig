@@ -15,6 +15,20 @@
     </div>
     <div class="jumbotron jumbotron-fluid mb-0">
         <div class="container">
+            {# TODO #}
+            {#            {% if tags | length > 0 %}#}
+            {#                <div class="row">#}
+            {#                    <div class="col-12 mb-3">#}
+            {#                        <ul class="nav">#}
+            {#                            {% for tag in tags %}#}
+            {#                                <li class="nav-item">#}
+            {#                                    <a class="nav-link" href="#">{{ tag.name }}</a>#}
+            {#                                </li>#}
+            {#                            {% endfor %}#}
+            {#                        </ul>#}
+            {#                    </div>#}
+            {#                </div>#}
+            {#            {% endif %}#}
             {% if not post.available %}
                 <div class="row mb-5">
                     <div class="col-12">
@@ -24,20 +38,6 @@
                     </div>
                 </div>
             {% endif %}
-{# TODO #}
-{#            {% if tags | length > 0 %}#}
-{#                <div class="row">#}
-{#                    <div class="col-12 mb-3">#}
-{#                        <ul class="nav">#}
-{#                            {% for tag in tags %}#}
-{#                                <li class="nav-item">#}
-{#                                    <a class="nav-link" href="#">{{ tag.name }}</a>#}
-{#                                </li>#}
-{#                            {% endfor %}#}
-{#                        </ul>#}
-{#                    </div>#}
-{#                </div>#}
-{#            {% endif %}#}
             <div class="row">
                 {% if post.imageName %}
                     <div class="col-12 col-sm-6 col-md-5 col-lg-4 col-xl-3">
@@ -46,6 +46,7 @@
                 {% endif %}
                 <div class="col-12 col-sm-6 col-md-7 col-lg-8 col-xl-9">
                     <h5 class="text-muted mt-0 mb-0">{{ post.name }}</h5>
+                    <span class="badge badge-pill badge-dark mb-2">{{ post.published | draw_i18n_date_string }}</span>
 {#                    {% if participant.job or participant.company %}#}
 {#                        <p class="mb-0">{{ participant.job }} {% if participant.company %}({{ participant.company }}){% endif %}</p>#}
 {#                    {% endif %}#}
@@ -53,7 +54,7 @@
 {#                        <p class="mt-0 mb-0"><span class="badge badge-pill badge-secondary mb-2">{{ participant.city }}</span></p>#}
 {#                    {% endif %}#}
                     <hr>
-                    <p class="mb-2">{{ post.description | raw }}</p>
+                    <p class="mb-0">{{ post.description | raw }}</p>
                 </div>
             </div>
         </div>
