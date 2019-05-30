@@ -25,27 +25,19 @@
 {#                </div>#}
 {#            {% endif %}#}
             <div class="row">
-                {% for post in posts %}
-                    <div class="col-12 col-sm-6">
-                        <div class="card mt-3">
-                            {% if post.imageName %}
-                                <img src="{{ vich_uploader_asset(post, 'imageFile') | imagine_filter('480xY') }}" class="card-img-top" alt="{{ post.name }}">
-                            {% endif %}
-                            <div class="card-body">
-                                <h5 class="card-title mb-0">{{ post.name }}</h5>
-                                <span class="badge badge-pill badge-dark mb-2">{{ post.published | draw_i18n_date_string }}</span>
-                                <p class="card-text mb-4">{{ post.shortDescription | raw }}</p>
-                                <a href="{{ path('front_blog_post_detail', {year: post.published | date('Y'), month: post.published | date('m'), day: post.published | date('d'), slug: post.slug}) }}" class="btn btn-warning btn-sm">{{ 'front.events.read_more' | trans }}</a>
-                            </div>
+                <div class="col-12 col-sm-6">
+                    <div class="card mt-3">
+                        {% if post.imageName %}
+                            <img src="{{ vich_uploader_asset(post, 'imageFile') | imagine_filter('480xY') }}" class="card-img-top" alt="{{ post.name }}">
+                        {% endif %}
+                        <div class="card-body">
+                            <h5 class="card-title mb-0">{{ post.name }}</h5>
+                            <span class="badge badge-pill badge-dark mb-2">{{ post.published | draw_i18n_date_string }}</span>
+                            <p class="card-text mb-4">{{ post.shortDescription | raw }}</p>
+                            <a href="{{ path('front_blog_post_detail', {year: post.published | date('Y'), month: post.published | date('m'), day: post.published | date('d'), slug: post.slug}) }}" class="btn btn-warning btn-sm">{{ 'front.events.read_more' | trans }}</a>
                         </div>
                     </div>
-                {% else %}
-                    <div class="col-12">
-                        <div class="alert alert-warning mb-0" role="alert">
-                            <i class="fa exclamation-triangle"></i> {{ 'front.events.empty_warning' | trans }}
-                        </div>
-                    </div>
-                {% endfor %}
+                </div>
             </div>
         </div>
     </div>

@@ -4,8 +4,12 @@ namespace App\Controller\Front;
 
 use App\Entity\BlogCategory;
 use App\Entity\BlogPost;
+use App\Enum\UserRoleEnum;
+use DateTime;
+use DateTimeImmutable;
+use Exception;
+use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
-use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -20,18 +24,19 @@ class FrontendBlogController extends AbstractController
      *
      * @param int $page
      *
-     * @return Response|AccessDeniedException
-     * @throws \Exception
+     * @return Response
+     * @throws Exception
      */
     public function index($page = 1)
     {
         $tags = $this->getDoctrine()->getRepository(BlogCategory::class)->findAvailableSortedByName()->getQuery()->getResult();
         $posts = $this->getDoctrine()->getRepository(BlogPost::class)->findUpTodayAvailableSortedByPublishedDateAndName()->getQuery()->getResult();
 
-//        $posts = $this->getDoctrine()->getRepository(BlogPost::class)->getAllEnabledSortedByPublishedDateWithJoinUntilNow();
+        // TODO add pagination
+        // $posts = $this->getDoctrine()->getRepository(BlogPost::class)->getAllEnabledSortedByPublishedDateWithJoinUntilNow();
 
-//        $paginator = $this->get('knp_paginator');
-//        $pagination = $paginator->paginate($posts, $page, 9);
+        // $paginator = $this->get('knp_paginator');
+        // $pagination = $paginator->paginate($posts, $page, 9);
 
         return $this->render('frontend/blog/list.html.twig', [
             'tags' => $tags,
@@ -48,24 +53,32 @@ class FrontendBlogController extends AbstractController
      * @param string $day
      * @param string $slug
      *
-     * @return Response|AccessDeniedException
+     * @return Response
      *
      * @throws NotFoundHttpException
-     * @throws \Exception
+     * @throws AccessDeniedHttpException
+     * @throws Exception
      */
     public function postDetail($year, $month, $day, $slug)
     {
-        $published = new \DateTime();
+        $published = new DateTime();
         $published->setDate($year, $month, $day);
         $tags = $this->getDoctrine()->getRepository(BlogCategory::class)->findAvailableSortedByName()->getQuery()->getResult();
+        /** @var BlogPost $post */
         $post = $this->getDoctrine()->getRepository(BlogPost::class)->findByPublishedAndSlug($published, $slug)->getQuery()->getOneOrNullResult();
 
         if (!$post) {
-            $this->createNotFoundException();
+            throw $this->createNotFoundException();
         }
 
-        // TODO throw exception if today is before the post publish date
-        // TODO throw exception post is unavailable only for anonymous users
+        $today = new DateTimeImmutable();
+        if ($today->format('Y-m-d') < $published->format('Y-m-d')) {
+            throw $this->createNotFoundException();
+        }
+
+        if (!$post->isAvailable() && !$this->get('security.authorization_checker')->isGranted(UserRoleEnum::ROLE_CMS)) {
+            throw $this->createAccessDeniedException();
+        }
 
         return $this->render('frontend/blog/detail.html.twig', [
             'tags' => $tags,
