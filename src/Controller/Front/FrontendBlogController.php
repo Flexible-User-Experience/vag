@@ -8,6 +8,7 @@ use App\Enum\UserRoleEnum;
 use DateTime;
 use DateTimeImmutable;
 use Exception;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\Annotation\Route;
@@ -39,6 +40,34 @@ class FrontendBlogController extends AbstractController
         // $pagination = $paginator->paginate($posts, $page, 9);
 
         return $this->render('frontend/blog/list.html.twig', [
+            'tags' => $tags,
+            'posts' => $posts,
+//            'pagination' => $pagination,
+        ]);
+    }
+
+    /**
+     * @Route({"ca": "/etiqueta/{slug}", "es": "/etiqueta/{slug}", "en": "/tag/{slug}"}, name="front_blog_tag")
+     * @ParamConverter("tag", class="App:BlogCategory")
+     *
+     * @param BlogCategory $tag
+     *
+     * @return Response
+     * @throws Exception
+     */
+    public function tagDetail(BlogCategory $tag)
+    {
+        $tags = $this->getDoctrine()->getRepository(BlogCategory::class)->findAvailableSortedByName()->getQuery()->getResult();
+        $posts = $this->getDoctrine()->getRepository(BlogPost::class)->findUpTodayAvailableSortedByPublishedDateNameAndTag($tag)->getQuery()->getResult();
+
+        // TODO add pagination
+        // $posts = $this->getDoctrine()->getRepository(BlogPost::class)->getAllEnabledSortedByPublishedDateWithJoinUntilNow();
+
+        // $paginator = $this->get('knp_paginator');
+        // $pagination = $paginator->paginate($posts, $page, 9);
+
+        return $this->render('frontend/blog/tag.html.twig', [
+            'selected_tag' => $tag,
             'tags' => $tags,
             'posts' => $posts,
 //            'pagination' => $pagination,

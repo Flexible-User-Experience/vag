@@ -2,6 +2,7 @@
 
 namespace App\Repository;
 
+use App\Entity\BlogCategory;
 use App\Entity\BlogPost;
 use DateTime;
 use DateTimeImmutable;
@@ -53,6 +54,21 @@ class BlogPostRepository extends ServiceEntityRepository
         return $this->findAvailableSortedByPublishedDateAndName()
             ->andWhere('DATE(bp.published) <= DATE(:published)')
             ->setParameter('published', $today)
+        ;
+    }
+
+    /**
+     * @param BlogCategory $category
+     *
+     * @return QueryBuilder
+     *
+     * @throws Exception
+     */
+    public function findUpTodayAvailableSortedByPublishedDateNameAndTag(BlogCategory $category)
+    {
+        return $this->findUpTodayAvailableSortedByPublishedDateAndName()
+            ->andWhere('bp.tags')
+            ->setParameter('category', $category)
         ;
     }
 
