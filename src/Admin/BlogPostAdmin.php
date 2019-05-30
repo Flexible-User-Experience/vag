@@ -2,12 +2,14 @@
 
 namespace App\Admin;
 
+use App\Entity\BlogCategory;
 use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\DoctrineORMAdminBundle\Filter\DateFilter;
 use Sonata\Form\Type\DatePickerType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
@@ -121,6 +123,16 @@ final class BlogPostAdmin extends AbstractAdmin
                 ]
             )
             ->add(
+                'tags',
+                EntityType::class,
+                [
+                    'label' => 'admin.label.blog_tags',
+                    'class' => BlogCategory::class,
+                    'query_builder' => $this->em->getRepository(BlogCategory::class)->findAvailableSortedByName(),
+                    'multiple' => true,
+                ]
+            )
+            ->add(
                 'isAvailable',
                 CheckboxType::class,
                 [
@@ -158,6 +170,18 @@ final class BlogPostAdmin extends AbstractAdmin
                 [
                     'label' => 'admin.label.name',
                 ]
+            )
+            ->add(
+                'tags',
+                null,
+                [
+                    'label' => 'admin.label.blog_tags',
+                ],
+                EntityType::class,
+                array(
+                    'class' => BlogCategory::class,
+                    'query_builder' => $this->em->getRepository(BlogCategory::class)->findAllQB(),
+                )
             )
             ->add(
                 'shortDescription',
@@ -215,10 +239,10 @@ final class BlogPostAdmin extends AbstractAdmin
                 ]
             )
             ->add(
-                'slug',
+                'tags',
                 null,
                 [
-                    'label' => 'admin.label.slug',
+                    'label' => 'admin.label.blog_tags',
                     'editable' => false,
                 ]
             )

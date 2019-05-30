@@ -89,6 +89,7 @@ admin:
         tickets_amount: 'Quantitat d''entrades'
         tickets_sold: 'Entrades venudes'
         tickets_left: 'Entrades disponibles'
+        blog_tags: 'Etiquetes'
         category: 'Categoria'
         location: 'Ubicació'
         collaborators: 'Col·laboradors'

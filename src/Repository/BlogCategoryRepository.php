@@ -28,6 +28,16 @@ class BlogCategoryRepository extends ServiceEntityRepository
     /**
      * @return QueryBuilder
      */
+    public function findAllQB()
+    {
+        return $this->createQueryBuilder('bc')
+            ->orderBy('bc.name', 'ASC')
+        ;
+    }
+
+    /**
+     * @return QueryBuilder
+     */
     public function findAvailableSortedByName()
     {
         return $this->createQueryBuilder('bc')
