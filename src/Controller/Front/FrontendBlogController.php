@@ -15,7 +15,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class FrontendBlogController extends AbstractController
 {
     /**
-     * @Route({"ca": "/noticies/{page}", "es": "/noticias/{page}", "en": "/news/{page}"}, name="front_blog")
+     * @Route({"ca": "/noticies/{page}", "es": "/noticias/{page}", "en": "/news/{page}"}, name="front_blog", requirements={"page"="\d+"})
      *
      * @param int $page
      *
@@ -23,6 +23,34 @@ class FrontendBlogController extends AbstractController
      * @throws \Exception
      */
     public function index($page = 1)
+    {
+        $tags = $this->getDoctrine()->getRepository(BlogCategory::class)->findAvailableSortedByName()->getQuery()->getResult();
+        $posts = $this->getDoctrine()->getRepository(BlogPost::class)->findUpTodayAvailableSortedByPublishedDateAndName()->getQuery()->getResult();
+
+//        $posts = $this->getDoctrine()->getRepository(BlogPost::class)->getAllEnabledSortedByPublishedDateWithJoinUntilNow();
+
+//        $paginator = $this->get('knp_paginator');
+//        $pagination = $paginator->paginate($posts, $page, 9);
+
+        return $this->render('frontend/blog/list.html.twig', [
+            'tags' => $tags,
+            'posts' => $posts,
+//            'pagination' => $pagination,
+        ]);
+    }
+
+    /**
+     * @Route({"ca": "/{year}/{month}/{day}/{slug}", "es": "/{year}/{month}/{day}/{slug}", "en": "/{year}/{month}/{day}/{slug}"}, name="front_blog_post_detail", requirements={"year"="\d{4}", "month"="\d{2}", "day"="\d{2}"})
+     *
+     * @param string $year
+     * @param string $month
+     * @param string $day
+     * @param string $slug
+     *
+     * @return Response|AccessDeniedException
+     * @throws \Exception
+     */
+    public function postDetail($year, $month, $day, $slug)
     {
         $tags = $this->getDoctrine()->getRepository(BlogCategory::class)->findAvailableSortedByName()->getQuery()->getResult();
         $posts = $this->getDoctrine()->getRepository(BlogPost::class)->findUpTodayAvailableSortedByPublishedDateAndName()->getQuery()->getResult();

@@ -10,19 +10,20 @@
     </div>
     <div class="jumbotron jumbotron-fluid jumbotron-light">
         <div class="container">
-            {% if tags | length > 0 %}
-                <div class="row">
-                    <div class="col-12 mb-3">
-                        <ul class="nav">
-                            {% for tag in tags %}
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">{{ tag.name }}</a>
-                                </li>
-                            {% endfor %}
-                        </ul>
-                    </div>
-                </div>
-            {% endif %}
+{# TODO #}
+{#            {% if tags | length > 0 %}#}
+{#                <div class="row">#}
+{#                    <div class="col-12 mb-3">#}
+{#                        <ul class="nav">#}
+{#                            {% for tag in tags %}#}
+{#                                <li class="nav-item">#}
+{#                                    <a class="nav-link" href="#">{{ tag.name }}</a>#}
+{#                                </li>#}
+{#                            {% endfor %}#}
+{#                        </ul>#}
+{#                    </div>#}
+{#                </div>#}
+{#            {% endif %}#}
             <div class="row">
                 {% for post in posts %}
                     <div class="col-12 col-sm-6">
@@ -34,7 +35,7 @@
                                 <h5 class="card-title mb-0">{{ post.name }}</h5>
                                 <span class="badge badge-pill badge-dark mb-2">{{ post.published | draw_i18n_date_string }}</span>
                                 <p class="card-text mb-4">{{ post.shortDescription | raw }}</p>
-                                <a href="#{# path('front_event_activity', {category: activity.category.slug, activity: activity.slug}) #}" class="btn btn-warning btn-sm">{{ 'front.events.read_more' | trans }}</a>
+                                <a href="{{ path('front_blog_post_detail', {year: post.published | date('Y'), month: post.published | date('m'), day: post.published | date('d'), slug: post.slug}) }}" class="btn btn-warning btn-sm">{{ 'front.events.read_more' | trans }}</a>
                             </div>
                         </div>
                     </div>
