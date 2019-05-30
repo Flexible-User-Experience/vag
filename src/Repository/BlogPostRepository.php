@@ -67,8 +67,8 @@ class BlogPostRepository extends ServiceEntityRepository
     public function findUpTodayAvailableSortedByPublishedDateNameAndTag(BlogCategory $category)
     {
         return $this->findUpTodayAvailableSortedByPublishedDateAndName()
-            ->andWhere('bp.tags')
-            ->setParameter('category', $category)
+            ->andWhere('bp.tags IN (:ids)')
+            ->setParameter('ids', $category)
         ;
     }
 
