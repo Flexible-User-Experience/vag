@@ -48,8 +48,8 @@ class BlogPostRepository extends ServiceEntityRepository
         $today = new \DateTimeImmutable();
 
         return $this->findAvailableSortedByPublishedDateAndName()
-            ->andWhere('bp.published <= :published')
-            ->setParameter('published', $today->format('Y-m-d H:i:s'))
+            ->andWhere('DATE(bp.published) <= DATE(:published)')
+            ->setParameter('published', $today)
         ;
     }
 }

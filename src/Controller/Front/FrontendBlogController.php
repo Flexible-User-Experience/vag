@@ -20,6 +20,7 @@ class FrontendBlogController extends AbstractController
      * @param int $page
      *
      * @return Response|AccessDeniedException
+     * @throws \Exception
      */
     public function index($page = 1)
     {
