@@ -46,4 +46,38 @@ class BlogCategoryRepository extends ServiceEntityRepository
             ->orderBy('bc.name', 'ASC')
         ;
     }
+
+    /**
+     * @param string $slug
+     *
+     * @return QueryBuilder
+     */
+    public function findAvailableAndSlugSortedByName(string $slug)
+    {
+        return $this->findAvailableSortedByName()
+            ->andWhere('bc.slug = :slug')
+            ->setParameter('slug', $slug)
+        ;
+    }
+
+    /**
+     * @param string $locale
+     * @param string $slug
+     *
+     * @return QueryBuilder
+     */
+    public function findLocalizedSlugAvailableSortedByName(string $locale, string $slug)
+    {
+        $qb = $this->findAvailableSortedByName()
+            ->join('bc.translations', 't')
+            ->andWhere('t.locale = :locale')
+            ->andWhere('t.content = :content')
+            ->andWhere('t.field = :field')
+            ->setParameter('locale', $locale)
+            ->setParameter('content', $slug)
+            ->setParameter('field', 'slug')
+        ;
+
+        return $qb;
+    }
 }

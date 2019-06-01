@@ -5,6 +5,7 @@ namespace App\Controller\Front;
 use App\Entity\BlogCategory;
 use App\Entity\BlogPost;
 use App\Enum\UserRoleEnum;
+use App\Manager\BlogCategoryManager;
 use DateTime;
 use DateTimeImmutable;
 use Exception;
@@ -48,18 +49,24 @@ class FrontendBlogController extends AbstractController
 
     /**
      * @Route({"ca": "/etiqueta/{slug}/{page}", "es": "/etiqueta/{slug}/{page}", "en": "/tag/{slug}/{page}"}, name="front_blog_tag", requirements={"page"="\d+"})
-     * @ParamConverter("tag", class="App:BlogCategory")
      *
-     * @param BlogCategory $tag
+     * @param string $slug
      * @param int $page
+     * @param BlogCategoryManager $bcm
      *
      * @return Response
+     * @throws NotFoundHttpException
      * @throws Exception
      */
-    public function tagDetail(BlogCategory $tag, $page = 1)
+    public function tagDetail(string $slug, $page = 1, BlogCategoryManager $bcm)
     {
+        $selectedTag = $bcm->getTagByTranslatedSlug($slug);
+        if (!$selectedTag) {
+            throw $this->createNotFoundException();
+        }
+
         $tags = $this->getDoctrine()->getRepository(BlogCategory::class)->findAvailableSortedByName()->getQuery()->getResult();
-        $posts = $this->getDoctrine()->getRepository(BlogPost::class)->findUpTodayAvailableSortedByPublishedDateNameAndTag($tag)->getQuery()->getResult();
+        $posts = $this->getDoctrine()->getRepository(BlogPost::class)->findUpTodayAvailableSortedByPublishedDateNameAndTag($selectedTag)->getQuery()->getResult();
 
         // TODO add pagination
         // $posts = $this->getDoctrine()->getRepository(BlogPost::class)->getAllEnabledSortedByPublishedDateWithJoinUntilNow();
@@ -68,7 +75,7 @@ class FrontendBlogController extends AbstractController
         // $pagination = $paginator->paginate($posts, $page, 9);
 
         return $this->render('frontend/blog/tag.html.twig', [
-            'selected_tag' => $tag,
+            'selected_tag' => $selectedTag,
             'tags' => $tags,
             'posts' => $posts,
 //            'pagination' => $pagination,
