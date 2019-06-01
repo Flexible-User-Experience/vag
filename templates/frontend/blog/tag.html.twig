@@ -1,6 +1,6 @@
 {% extends "frontend/base.html.twig" %}
 
-{% block title %}{{ parent() }} · {{ 'front.menu.blog' | trans | title }}{% endblock %}
+{% block title %}{{ parent() }} · {{ selected_tag.name }} · {{ 'front.menu.blog' | trans | title }}{% endblock %}
 
 {% block body %}
     <div class="jumbotron jumbotron-fluid jumbotron-homepage" style="background-image:url('{{ asset('build/abstract-abstraction.png') }}');">
