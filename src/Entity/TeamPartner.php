@@ -76,8 +76,43 @@ class TeamPartner extends AbstractEntity
     private $showInFrontend;
 
     /**
+     * @ORM\Column(type="boolean", nullable=true, options={"default"=0})
+     *
+     * @var bool
+     */
+    private $isCollaborator;
+
+    /**
      * Methods.
      */
+
+    /**
+     * @return bool|null
+     */
+    public function getIsCollaborator(): ?bool
+    {
+        return $this->isCollaborator;
+    }
+
+    /**
+     * @return bool|null
+     */
+    public function isCollaborator(): ?bool
+    {
+        return $this->getIsCollaborator();
+    }
+
+    /**
+     * @param bool|null $isCollaborator
+     *
+     * @return $this
+     */
+    public function setIsCollaborator(?bool $isCollaborator): self
+    {
+        $this->isCollaborator = $isCollaborator;
+
+        return $this;
+    }
 
     /**
      * @return string

@@ -47,15 +47,16 @@ class FrontendBlogController extends AbstractController
     }
 
     /**
-     * @Route({"ca": "/etiqueta/{slug}", "es": "/etiqueta/{slug}", "en": "/tag/{slug}"}, name="front_blog_tag")
+     * @Route({"ca": "/etiqueta/{slug}/{page}", "es": "/etiqueta/{slug}/{page}", "en": "/tag/{slug}/{page}"}, name="front_blog_tag", requirements={"page"="\d+"})
      * @ParamConverter("tag", class="App:BlogCategory")
      *
      * @param BlogCategory $tag
+     * @param int $page
      *
      * @return Response
      * @throws Exception
      */
-    public function tagDetail(BlogCategory $tag)
+    public function tagDetail(BlogCategory $tag, $page = 1)
     {
         $tags = $this->getDoctrine()->getRepository(BlogCategory::class)->findAvailableSortedByName()->getQuery()->getResult();
         $posts = $this->getDoctrine()->getRepository(BlogPost::class)->findUpTodayAvailableSortedByPublishedDateNameAndTag($tag)->getQuery()->getResult();
