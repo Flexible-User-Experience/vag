@@ -21,7 +21,9 @@
                 {% if location.imageName %}
                     <div class="col-6">
                         <img src="{{ vich_uploader_asset(location, 'imageFile') | imagine_filter('800x600') }}" class="img-responsive rounded w-100 mb-2" alt="{{ location.place }}">
-                        <a href="{{ location.link }}">{{ location.link | remove_url_protocol }}</a>
+                        {% if location.link %}
+                            <a href="{{ location.link }}">{{ location.link | remove_url_protocol }}</a>
+                        {% endif %}
                     </div>
                 {% endif %}
                 <div class="col-6">
