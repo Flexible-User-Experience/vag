@@ -52,8 +52,8 @@ class BlogPostRepository extends ServiceEntityRepository
         $today = new DateTimeImmutable();
 
         return $this->findAvailableSortedByPublishedDateAndName()
-            ->andWhere('DATE(bp.published) <= DATE(:published)')
-            ->setParameter('published', $today)
+            ->andWhere('DATE(bp.published) <= DATE(:today)')
+            ->setParameter('today', $today)
         ;
     }
 
@@ -67,8 +67,9 @@ class BlogPostRepository extends ServiceEntityRepository
     public function findUpTodayAvailableSortedByPublishedDateNameAndTag(BlogCategory $category)
     {
         return $this->findUpTodayAvailableSortedByPublishedDateAndName()
-            ->andWhere('bp.tags IN (:ids)')
-            ->setParameter('ids', $category)
+            ->innerJoin('bp.tags', 'bc')
+            ->andWhere('bc.id = :id')
+            ->setParameter('id', $category->getId())
         ;
     }
 
