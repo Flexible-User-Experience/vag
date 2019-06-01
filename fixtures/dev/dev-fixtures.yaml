@@ -350,14 +350,39 @@ App\Entity\ContactMessage:
         legalTermsHasBeenAccepted: '<boolean(99)>'
 
 App\Entity\BlogCategory:
-    blog_category{1..2}:
-        name: '<firstName()>'
-        isAvailable: '<boolean(99)>'
+    blog_category1:
+        name: 'art'
+        isAvailable: '<boolean(100)>'
+
+App\Entity\Translation\BlogCategoryTranslation:
+    blog_category_translation_name_es_1:
+        object: '@blog_category1'
+        locale: 'es'
+        field: 'name'
+        content: 'arte'
+    blog_category_translation_slug_es_1:
+        object: '@blog_category1'
+        locale: 'es'
+        field: 'slug'
+        content: 'arte'
+    blog_category_translation_name_en_1:
+        object: '@blog_category1'
+        locale: 'en'
+        field: 'name'
+        content: 'art'
+    blog_category_translation_slug_en_1:
+        object: '@blog_category1'
+        locale: 'en'
+        field: 'slug'
+        content: 'art'
 
 App\Entity\BlogPost:
     blog_post{1..2}:
-        name: '<name()>'
+        name: 'Blog post title <current()>'
+        slug: 'blog-post-title-<current()>'
         published: '<dateTimeBetween("+3 month","+4 month")>'
         shortDescription: '<sentence()>'
         description: '<sentence()>'
-        isAvailable: '<boolean(99)>'
+        isAvailable: '<boolean(100)>'
+        tags:
+            - "@blog_category1"

@@ -65,6 +65,8 @@ admin:
         priority: 'Prioridad'
         is_available: 'Activo'
         is_available_female: 'Activa'
+        is_collaborator: 'Miembro sólo colaborador'
+        is_collaborator_short: 'Colaborador'
         show_in_homepage: 'Mostrar en la página inicial'
         show_in_homepage_short: 'Homepage'
         show_in_frontend: 'Mostrar en la página web'

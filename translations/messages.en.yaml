@@ -65,6 +65,8 @@ admin:
         priority: 'Priority'
         is_available: 'Available'
         is_available_female: 'Available'
+        is_collaborator: 'Only collaborator member'
+        is_collaborator_short: 'Collaborator'
         show_in_homepage: 'Show in homepage'
         show_in_homepage_short: 'Homepage'
         show_in_frontend: 'Show in webpage'
