@@ -53,7 +53,7 @@ class TeamPartnerRepository extends ServiceEntityRepository
     {
         return $this->findShowInFrontendSortedByName()
             ->andWhere('tp.isCollaborator = :isCollaborator')
-            ->setParameter('showInFrontend', false)
+            ->setParameter('isCollaborator', false)
         ;
     }
 
@@ -64,7 +64,7 @@ class TeamPartnerRepository extends ServiceEntityRepository
     {
         return $this->findShowInFrontendSortedByName()
             ->andWhere('tp.isCollaborator = :isCollaborator')
-            ->setParameter('showInFrontend', true)
+            ->setParameter('isCollaborator', true)
         ;
     }
 }

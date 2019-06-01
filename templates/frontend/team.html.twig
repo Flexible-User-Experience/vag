@@ -5,6 +5,18 @@
 {% block body %}
     <div class="jumbotron jumbotron-fluid jumbotron-homepage" style="background-image:url('{{ asset('build/creative-wing-light.png') }}');">
         <div class="container pt-2 pb-1">
+            <h1 class="display-6 text-white">{{ 'admin.label.is_collaborator_short' | trans | title }}</h1>
+        </div>
+    </div>
+    <div class="jumbotron jumbotron-fluid mb-0">
+        <div class="container">
+            <div class="row">
+                {% include "frontend/includes/collaborator_or_partner_cards.html.twig" with {partners: collaborators} %}
+            </div>
+        </div>
+    </div>
+    <div class="jumbotron jumbotron-fluid jumbotron-homepage" style="background-image:url('{{ asset('build/creative-wing-light.png') }}');">
+        <div class="container mt-0 pt-2 pb-1">
             <h1 class="display-6 text-white">{{ 'front.menu.team' | trans | title }}</h1>
         </div>
     </div>

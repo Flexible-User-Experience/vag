@@ -11,29 +11,7 @@
     <div class="jumbotron jumbotron-fluid mb-0">
         <div class="container">
             <div class="row">
-                {% if partners | length > 0 %}
-                    {% for partner in partners %}
-                        <div class="col-6 col-sm-4 mb-sm-3">
-                            <div class="card">
-                                {% if partner.imageName %}
-                                    <img src="{{ vich_uploader_asset(partner, 'imageFile') | imagine_filter('480x480_inset') }}" class="card-img-top" alt="{{ partner.name }}">
-                                {% endif %}
-                                <div class="card-body">
-                                    <h5 class="card-title sr-only">{{ partner.name }}</h5>
-                                    {% if partner.link %}
-                                        <a href="{{ partner.link }}">{{ partner.link | remove_url_protocol }}</a>
-                                    {% endif %}
-                                </div>
-                            </div>
-                        </div>
-                    {% endfor %}
-                {% else %}
-                    <div class="col-12">
-                        <div class="alert alert-warning mb-0" role="alert">
-                            <i class="fa exclamation-triangle"></i> {{ 'front.events.empty_warning' | trans }}
-                        </div>
-                    </div>
-                {% endif %}
+                {% include "frontend/includes/collaborator_or_partner_cards.html.twig" with {partners: partners} %}
             </div>
         </div>
     </div>
