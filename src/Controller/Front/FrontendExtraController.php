@@ -98,9 +98,11 @@ class FrontendExtraController extends AbstractController
     public function team()
     {
         $members = $this->getDoctrine()->getRepository(TeamMember::class)->findShowInFrontendSortedBySurnameAndName()->getQuery()->getResult();
+        $collaborators = $this->getDoctrine()->getRepository(TeamPartner::class)->findOnlyCollaboratorsShowInFrontendSortedByName()->getQuery()->getResult();
 
         return $this->render('frontend/team.html.twig', [
             'members' => $members,
+            'collaborators' => $collaborators,
         ]);
     }
 
@@ -111,7 +113,7 @@ class FrontendExtraController extends AbstractController
      */
     public function partners()
     {
-        $partners = $this->getDoctrine()->getRepository(TeamPartner::class)->findShowInFrontendSortedByName()->getQuery()->getResult();
+        $partners = $this->getDoctrine()->getRepository(TeamPartner::class)->findOnlyPartnersShowInFrontendSortedByName()->getQuery()->getResult();
 
         return $this->render('frontend/partners.html.twig', [
             'partners' => $partners,
