@@ -2,13 +2,15 @@
     <div class="col-12 col-lg-6">
         <div class="card mt-3">
             {% if activity.imageName %}
-                <img src="{{ vich_uploader_asset(activity, 'imageFile') | imagine_filter('480xY') }}" class="card-img-top" alt="{{ activity.name }}">
+                <a href="{{ path('front_event_activity', {category: activity.category.slug, activity: activity.slug}) }}">
+                    <img src="{{ vich_uploader_asset(activity, 'imageFile') | imagine_filter('480xY') }}" class="card-img-top" alt="{{ activity.name }}">
+                </a>
             {% endif %}
             <div class="card-body">
                 <h5 class="card-title mb-0">{{ activity.name }}</h5>
                 <span class="badge badge-pill badge-dark mb-2">{% if activity.isOnlyOneDayLong %}{{ activity.begin | draw_i18n_date_string }} {{ activity.begin | date('H:i') }}{% else %}{{ activity.begin | draw_i18n_date_string }} - {{ activity.end | draw_i18n_date_string }}{% endif %}</span>
-                <p class="card-text mb-4">{{ activity.shortDescription | raw }}</p>
-                <a href="{{ path('front_event_activity', {category: activity.category.slug, activity: activity.slug}) }}" class="btn btn-warning btn-sm">{{ 'front.events.read_more' | trans }}</a>
+                <p class="card-text mb-0">{{ activity.shortDescription | raw }}</p>
+                {#<a href="{{ path('front_event_activity', {category: activity.category.slug, activity: activity.slug}) }}" class="btn btn-warning btn-sm">{{ 'front.events.read_more' | trans }}</a>#}
             </div>
         </div>
     </div>
