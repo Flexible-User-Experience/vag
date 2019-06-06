@@ -1,15 +1,16 @@
 {% for partner in partners %}
-    <div class="col-6 col-sm-4 mb-sm-3">
+    <div class="{% if mode == 'partners' %}col-6 col-sm-4 mb-3{% else %}col-4 col-sm-3 mb-3{% endif %}">
         <div class="card">
             {% if partner.imageName %}
-                <img src="{{ vich_uploader_asset(partner, 'imageFile') | imagine_filter('480x480_inset') }}" class="card-img-top" alt="{{ partner.name }}">
-            {% endif %}
-            <div class="card-body">
-                <h5 class="card-title sr-only">{{ partner.name }}</h5>
                 {% if partner.link %}
-                    <a href="{{ partner.link }}">{{ partner.link | remove_url_protocol }}</a>
+                    <a href="{{ partner.link }}" target="_blank">
+                        <img src="{{ vich_uploader_asset(partner, 'imageFile') | imagine_filter('480x480_inset') }}" class="card-img-top" alt="{{ partner.name }}">
+                    </a>
+                {% else %}
+                    <img src="{% if mode == 'partners' %}{{ vich_uploader_asset(partner, 'imageFile') | imagine_filter('480x480_inset') }}{% else %}{{ vich_uploader_asset(partner, 'imageFile') | imagine_filter('480x480_BW_inset') }}{% endif %}" class="card-img-top" alt="{{ partner.name }}">
                 {% endif %}
-            </div>
+            {% endif %}
+            <h5 class="card-title sr-only">{{ partner.name }}</h5>
         </div>
     </div>
 {% else %}

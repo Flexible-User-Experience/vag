@@ -34,6 +34,17 @@ liip_imagine:
                     size:          [480, 480]
                     mode:          outbound
                     allow_upscale: false
+        480x480_BW_inset:
+            quality: 90
+            filters:
+                grayscale: ~
+                thumbnail:
+                    size:          [440, 440]
+                    mode:          inset
+                background:
+                    color: '#FFFFFF'
+                    size: [480, 480]
+                    position: center
         480x480_inset:
             quality: 90
             filters:
