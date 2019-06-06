@@ -23,6 +23,7 @@ front:
         featured_speakers: 'Participants destacats'
         show_all_speakers: 'Veure tots els participants'
         activities: 'Activitats'
+        activities_choice: '{0} Activitats|{1} Activitat|]1,Inf] Activitats'
         highlighted_activities: 'Activitats destacades'
         show_all_activities: 'Veure totes les activitats'
         highlighted_locations: 'Ubicacions destacades'
