@@ -23,6 +23,7 @@ front:
         featured_speakers: 'Featured participants'
         show_all_speakers: 'Show all participants'
         activities: 'Activities'
+        activities_choice: '{0} Activities|{1} Activity|]1,Inf] Activities'
         highlighted_activities: 'Outstanding activities'
         show_all_activities: 'Show all activities'
         highlighted_locations: 'Featured locations'
