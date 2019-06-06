@@ -4,7 +4,7 @@
             {% if partner.imageName %}
                 {% if partner.link %}
                     <a href="{{ partner.link }}" target="_blank">
-                        <img src="{{ vich_uploader_asset(partner, 'imageFile') | imagine_filter('480x480_inset') }}" class="card-img-top" alt="{{ partner.name }}">
+                        <img src="{% if mode == 'partners' %}{{ vich_uploader_asset(partner, 'imageFile') | imagine_filter('480x480_inset') }}{% else %}{{ vich_uploader_asset(partner, 'imageFile') | imagine_filter('480x480_BW_inset') }}{% endif %}" class="card-img-top" alt="{{ partner.name }}">
                     </a>
                 {% else %}
                     <img src="{% if mode == 'partners' %}{{ vich_uploader_asset(partner, 'imageFile') | imagine_filter('480x480_inset') }}{% else %}{{ vich_uploader_asset(partner, 'imageFile') | imagine_filter('480x480_BW_inset') }}{% endif %}" class="card-img-top" alt="{{ partner.name }}">
