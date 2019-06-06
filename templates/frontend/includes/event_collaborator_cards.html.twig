@@ -2,7 +2,9 @@
     <div class="col-12 col-md-6 col-lg-4">
         <div class="media mt-3">
             {% if collaborator.imageName %}
-                <img src="{{ vich_uploader_asset(collaborator, 'imageFile') | imagine_filter('180x180') }}" alt="{{ collaborator.fullname }}" class="mr-3 rounded w-50">
+                <a href="{{ path('front_collaborator_detail', {slug: collaborator.slug}) }}">
+                    <img src="{{ vich_uploader_asset(collaborator, 'imageFile') | imagine_filter('180x180') }}" alt="{{ collaborator.fullname }}" class="mb-3 mr-3 rounded">
+                </a>
             {% endif %}
             <div class="media-body">
                 <p class="mt-0 mb-0"><strong>{{ collaborator.fullname }}</strong></p>
@@ -10,7 +12,7 @@
                 {% if collaborator.city %}
                     <p class="mt-0 mb-0"><span class="badge badge-pill badge-secondary mb-2">{{ collaborator.city | title }}</span></p>
                 {% endif %}
-                <a href="{{ path('front_collaborator_detail', {slug: collaborator.slug}) }}" class="btn btn-warning btn-sm mt-2">{{ 'front.events.read_more' | trans }}</a>
+                {#<a href="{{ path('front_collaborator_detail', {slug: collaborator.slug}) }}" class="btn btn-warning btn-sm mt-2">{{ 'front.events.read_more' | trans }}</a>#}
             </div>
         </div>
     </div>
