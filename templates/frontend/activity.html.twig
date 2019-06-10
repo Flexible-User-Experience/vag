@@ -47,7 +47,7 @@
             <div class="row">
                 {# collaborators #}
                 {% for collaborator in activity.collaborators %}
-                    <div class="col-4 col-md-3">
+                    <div class="col-6 col-sm-4 col-md-3">
                         <div class="card bg-light border-dark mt-3">
                             {% if collaborator.imageName %}
                                 <img src="{{ vich_uploader_asset(collaborator, 'imageFile') | imagine_filter('360x360') }}" class="card-img-top" alt="{{ collaborator.fullname }}">
@@ -63,7 +63,7 @@
                     </div>
                 {% endfor %}
                 {# location #}
-                <div class="col-4 col-md-3">
+                <div class="col-6 col-sm-4 col-md-3">
                     <div class="card bg-light border-dark mt-3">
                         {% if activity.location.imageName %}
                             <img src="{{ vich_uploader_asset(activity.location, 'imageFile') | imagine_filter('360x360') }}" class="card-img-top" alt="{{ activity.location.place }}">
@@ -76,14 +76,8 @@
                         </div>
                     </div>
                 </div>
-                {# map #}
-                <div class="col-8 col-md-6">
-                    <div class="card bg-light border-dark mt-3" style="height:319px;">
-                        <div id="gmap" style="height:100%;"></div>
-                    </div>
-                </div>
                 {# schedule #}
-                <div class="col-4 col-md-3">
+                <div class="col-6 col-sm-4 col-md-3">
                     <div class="card text-center text-white bg-secondary border-dark mt-3">
                         {% if activity.isOnlyOneDayLong %}
                             {# one day activity #}
@@ -102,6 +96,12 @@
                                 <p class="mt-0 mb-0">{{ activity.begin | draw_i18n_date_string }} - {{ activity.end | draw_i18n_date_string }}</p>
                             </div>
                         {% endif %}
+                    </div>
+                </div>
+                {# map #}
+                <div class="col-12 col-sm-8 col-md-6">
+                    <div class="card bg-light border-dark mt-3" style="height:319px;">
+                        <div id="gmap" style="height:100%;"></div>
                     </div>
                 </div>
             </div>
