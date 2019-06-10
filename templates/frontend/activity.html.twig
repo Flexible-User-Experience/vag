@@ -76,34 +76,65 @@
                         </div>
                     </div>
                 </div>
-                {# schedule #}
-                <div class="col-6 col-sm-4 col-md-3">
-                    <div class="card text-center text-white bg-secondary border-dark mt-3">
-                        {% if activity.isOnlyOneDayLong %}
-                            {# one day activity #}
-                            <div class="card-header">
-                                <h5 class="card-title mb-0"><i class="far fa-calendar-alt text-warning"></i></h5>
-                                <p class="mt-0 mb-0">{{ activity.begin | draw_i18n_date_string }}</p>
-                            </div>
-                            <div class="card-footer">
-                                <h5 class="card-title mb-0"><i class="far fa-clock text-warning"></i></h5>
-                                <p class="mt-0 mb-0">{{ activity.begin | date('H:i') }} - {{ activity.end | date('H:i') }}</p>
-                            </div>
-                        {% else %}
-                            {# more than one day activity #}
-                            <div class="card-header">
-                                <h5 class="card-title mb-0"><i class="far fa-calendar-alt text-warning"></i></h5>
-                                <p class="mt-0 mb-0">{{ activity.begin | draw_i18n_date_string }} - {{ activity.end | draw_i18n_date_string }}</p>
-                            </div>
-                        {% endif %}
+                {% if activity.collaborators | length > 0 %}
+                    {# schedule #}
+                    <div class="col-6 col-sm-4 col-md-3">
+                        <div class="card text-center text-white bg-secondary border-dark mt-3">
+                            {% if activity.isOnlyOneDayLong %}
+                                {# one day activity #}
+                                <div class="card-header">
+                                    <h5 class="card-title mb-0"><i class="far fa-calendar-alt text-warning"></i></h5>
+                                    <p class="mt-0 mb-0">{{ activity.begin | draw_i18n_date_string }}</p>
+                                </div>
+                                <div class="card-footer">
+                                    <h5 class="card-title mb-0"><i class="far fa-clock text-warning"></i></h5>
+                                    <p class="mt-0 mb-0">{{ activity.begin | date('H:i') }} - {{ activity.end | date('H:i') }}</p>
+                                </div>
+                            {% else %}
+                                {# more than one day activity #}
+                                <div class="card-header">
+                                    <h5 class="card-title mb-0"><i class="far fa-calendar-alt text-warning"></i></h5>
+                                    <p class="mt-0 mb-0">{{ activity.begin | draw_i18n_date_string }} - {{ activity.end | draw_i18n_date_string }}</p>
+                                </div>
+                            {% endif %}
+                        </div>
                     </div>
-                </div>
-                {# map #}
-                <div class="col-12 col-sm-8 col-md-6">
-                    <div class="card bg-light border-dark mt-3" style="height:319px;">
-                        <div id="gmap" style="height:100%;"></div>
+                    {# map #}
+                    <div class="col-12 col-sm-8 col-md-6">
+                        <div class="card bg-light border-dark mt-3" style="height:319px;">
+                            <div id="gmap" style="height:100%;"></div>
+                        </div>
                     </div>
-                </div>
+                {% else %}
+                    {# map #}
+                    <div class="col-12 col-sm-8 col-md-6">
+                        <div class="card bg-light border-dark mt-3" style="height:319px;">
+                            <div id="gmap" style="height:100%;"></div>
+                        </div>
+                    </div>
+                    {# schedule #}
+                    <div class="col-6 col-sm-4 col-md-3">
+                        <div class="card text-center text-white bg-secondary border-dark mt-3">
+                            {% if activity.isOnlyOneDayLong %}
+                                {# one day activity #}
+                                <div class="card-header">
+                                    <h5 class="card-title mb-0"><i class="far fa-calendar-alt text-warning"></i></h5>
+                                    <p class="mt-0 mb-0">{{ activity.begin | draw_i18n_date_string }}</p>
+                                </div>
+                                <div class="card-footer">
+                                    <h5 class="card-title mb-0"><i class="far fa-clock text-warning"></i></h5>
+                                    <p class="mt-0 mb-0">{{ activity.begin | date('H:i') }} - {{ activity.end | date('H:i') }}</p>
+                                </div>
+                            {% else %}
+                                {# more than one day activity #}
+                                <div class="card-header">
+                                    <h5 class="card-title mb-0"><i class="far fa-calendar-alt text-warning"></i></h5>
+                                    <p class="mt-0 mb-0">{{ activity.begin | draw_i18n_date_string }} - {{ activity.end | draw_i18n_date_string }}</p>
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endif %}
             </div>
         </div>
     </div>
