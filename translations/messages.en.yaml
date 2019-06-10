@@ -2,6 +2,8 @@ front:
     flash:
         contact_message_send: 'Your message has been sent successfully, thanks for contact us. We will answer you as soon as possible!'
     menu:
+        show: 'show'
+        shows: 'shows'
         blog: 'blog'
         tickets: 'tickets'
         contact: 'contact'
