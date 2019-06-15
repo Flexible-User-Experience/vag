@@ -349,6 +349,13 @@ App\Entity\ContactMessage:
         message: '<text(500)>'
         legalTermsHasBeenAccepted: '<boolean(99)>'
 
+App\Entity\ContactNewsletter:
+    contact_newsletter{1..2}:
+        name: '<name()>'
+        email: '<safeEmail()>'
+        phone: '<e164PhoneNumber()>'
+        legalTermsHasBeenAccepted: '<boolean(99)>'
+
 App\Entity\BlogCategory:
     blog_category1:
         name: 'art'
