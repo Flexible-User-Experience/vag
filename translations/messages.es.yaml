@@ -48,6 +48,7 @@ front:
         terms: 'legal'
         company: 'empresa'
         social_networks: 'redes sociales'
+        contact_newsletter: 'boletín electrónico'
 
 admin:
     label:
@@ -121,6 +122,7 @@ admin:
             ROLE_ADMIN: 'administrador'
     actions:
         send: 'Enviar'
+        subscribe: 'Quiero suscribirme'
     help:
         icon: 'fa fa-[icon_class_name]'
     with:

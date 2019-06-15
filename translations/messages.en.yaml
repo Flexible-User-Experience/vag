@@ -48,6 +48,7 @@ front:
         terms: 'terms'
         company: 'company'
         social_networks: 'social networks'
+        contact_newsletter: 'newsletter'
 
 admin:
     label:
@@ -121,6 +122,7 @@ admin:
             ROLE_ADMIN: 'administrator'
     actions:
         send: 'Send'
+        subscribe: 'Subscribe me'
     help:
         icon: 'fa fa-[icon_class_name]'
     with:

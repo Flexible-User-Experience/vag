@@ -52,6 +52,9 @@ class ContactNewsletterType extends AbstractType
                 CheckboxType::class,
                 [
                     'label' => 'admin.label.legal_terms_has_been_accepted',
+                    'attr' => [
+                        'class' => 'text-white',
+                    ],
                     'required' => true,
                     'mapped' => false,
                 ]
@@ -60,7 +63,7 @@ class ContactNewsletterType extends AbstractType
                 'send',
                 SubmitType::class,
                 [
-                    'label' => 'admin.actions.send',
+                    'label' => 'admin.actions.subscribe',
                     'attr' => [
                         'class' => 'btn btn-primary btn-sm',
                     ],
