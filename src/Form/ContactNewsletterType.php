@@ -27,7 +27,11 @@ class ContactNewsletterType extends AbstractType
                 'name',
                 TextType::class,
                 [
-                    'label' => 'admin.label.name',
+                    'label' => null,
+                    'attr' => [
+                        'placeholder' => 'admin.label.name',
+                        'class' => 'form-control form-control-sm mb-2',
+                    ],
                     'required' => true,
                 ]
             )
@@ -35,7 +39,11 @@ class ContactNewsletterType extends AbstractType
                 'email',
                 EmailType::class,
                 [
-                    'label' => 'admin.label.email',
+                    'label' => null,
+                    'attr' => [
+                        'placeholder' => 'admin.label.email',
+                        'class' => 'form-control form-control-sm mb-2',
+                    ],
                     'required' => true,
                 ]
             )
@@ -53,6 +61,9 @@ class ContactNewsletterType extends AbstractType
                 SubmitType::class,
                 [
                     'label' => 'admin.actions.send',
+                    'attr' => [
+                        'class' => 'btn btn-primary btn-sm',
+                    ],
                 ]
             )
         ;

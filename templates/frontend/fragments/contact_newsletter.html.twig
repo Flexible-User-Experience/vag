@@ -1,1 +1,7 @@
-{{ form(form) }}
+{{ form_start(form) }}
+    {{ form_widget(form.name) }}
+    {{ form_errors(form.name) }}
+    {{ form_widget(form.email) }}
+    {{ form_errors(form.email) }}
+    {{ form_rest(form) }}
+{{ form_end(form) }}
