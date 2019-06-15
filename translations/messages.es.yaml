@@ -139,6 +139,7 @@ admin:
         team_partner: 'Patrocinador'
         team_member: 'Equipo'
         contact_message: 'Mensaje de contacto'
+        contact_newsletter: 'Contacto de boletín'
         tickets: 'Entradas'
         blog: 'Blog'
         blog_category: 'Categoría'
@@ -165,3 +166,5 @@ admin:
 'Admin Class Team Member Create': 'Nuevo'
 'Admin Class Contact Message List': 'Mensajes de contacto'
 'Admin Class Contact Message Create': 'Nuevo'
+'Admin Class Contact Newsletter List': 'Contactos de boletín'
+'Admin Class Contact Newsletter Create': 'Nou'
