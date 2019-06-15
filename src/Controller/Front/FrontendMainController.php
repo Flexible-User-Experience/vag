@@ -2,24 +2,62 @@
 
 namespace App\Controller\Front;
 
+use App\Entity\ContactNewsletter;
 use App\Entity\EventCategory;
 use App\Entity\EventCollaborator;
 use App\Entity\EventLocation;
 use App\Enum\UserRoleEnum;
+use App\Form\ContactNewsletterType;
 use App\Manager\EventActivityManager;
 use App\Manager\EventCategoryManager;
 use Doctrine\ORM\NonUniqueResultException;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Translation\TranslatorInterface;
 
 /**
  * @Route("/", requirements={"_locale"="%app_locales%"})
  */
 class FrontendMainController extends AbstractController
 {
+    /**
+     * @param Request $request
+     * @param TranslatorInterface $translator
+     *
+     * @return Response
+     */
+    public function contactNewsletterFragment(Request $request, TranslatorInterface $translator)
+    {
+        $contactNewsletter = new ContactNewsletter();
+        $form = $this->createForm(ContactNewsletterType::class, $contactNewsletter);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $contactNewsletter
+                ->setLegalTermsHasBeenAccepted(true)
+                ->setIsAvailable(true)
+            ;
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($contactNewsletter);
+            $em->flush();
+            $this->addFlash(
+                'success',
+                $translator->trans('front.flash.contact_newsletter_send')
+            );
+//            $ess->sendFrontendContactMessageNotificationToAdmin($contactMessage);
+            $hideForm = true;
+        }
+
+        return $this->render('frontend/fragments/contact_newsletter.html.twig', [
+            'form' => $form->createView(),
+//            'hideForm' => $hideForm,
+        ]);
+    }
+
     /**
      * @Route("/", name="front_homepage")
      *
