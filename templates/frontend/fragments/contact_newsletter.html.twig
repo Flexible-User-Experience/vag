@@ -1,8 +1,12 @@
-{{ form_start(form) }}
-    {{ form_widget(form.name) }}
-    {{ form_errors(form.name) }}
-    {{ form_widget(form.email) }}
-    {{ form_errors(form.email) }}
-    {{ form_row(form.privacy) }}
-    {{ form_rest(form) }}
-{{ form_end(form) }}
+{% if hide_contact_form %}
+
+{% else %}
+    {{ form_start(form) }}
+        {{ form_widget(form.name) }}
+        {{ form_errors(form.name) }}
+        {{ form_widget(form.email) }}
+        {{ form_errors(form.email) }}
+        {{ form_row(form.privacy) }}
+        {{ form_rest(form) }}
+    {{ form_end(form) }}
+{% endif %}

@@ -32,6 +32,7 @@ class FrontendMainController extends AbstractController
      */
     public function contactNewsletterFragment(Request $request, TranslatorInterface $translator)
     {
+        $hideContactForm = false;
         $contactNewsletter = new ContactNewsletter();
         $form = $this->createForm(ContactNewsletterType::class, $contactNewsletter);
         $form->handleRequest($request);
@@ -48,13 +49,13 @@ class FrontendMainController extends AbstractController
                 'success',
                 $translator->trans('front.flash.contact_newsletter_send')
             );
-//            $ess->sendFrontendContactMessageNotificationToAdmin($contactMessage);
-            $hideForm = true;
+            // TODO $ess->sendFrontendContactNewsletterNotificationTo...($contactNewsletter);
+            $hideContactForm = true;
         }
 
         return $this->render('frontend/fragments/contact_newsletter.html.twig', [
             'form' => $form->createView(),
-//            'hideForm' => $hideForm,
+            'hide_contact_form' => $hideContactForm,
         ]);
     }
 
