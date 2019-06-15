@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use App\Entity\Traits\IsAvailableTrait;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -10,6 +11,15 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class ContactNewsletter extends AbstractContactPerson
 {
+    use IsAvailableTrait;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true, options={"default"=1})
+     *
+     * @var bool
+     */
+    private $isAvailable;
+
     /**
      * @ORM\Column(type="boolean", nullable=true, options={"default"=0})
      *
