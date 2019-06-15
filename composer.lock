@@ -4033,16 +4033,16 @@
         },
         {
             "name": "sonata-project/user-bundle",
-            "version": "4.3.0",
+            "version": "4.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataUserBundle.git",
-                "reference": "a0f5f0daa58b35eae593cfa2a9a040de85a7eae7"
+                "reference": "9082b5c06ddd0fa3f1ed39582a92f53bfcbc768a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataUserBundle/zipball/a0f5f0daa58b35eae593cfa2a9a040de85a7eae7",
-                "reference": "a0f5f0daa58b35eae593cfa2a9a040de85a7eae7",
+                "url": "https://api.github.com/repos/sonata-project/SonataUserBundle/zipball/9082b5c06ddd0fa3f1ed39582a92f53bfcbc768a",
+                "reference": "9082b5c06ddd0fa3f1ed39582a92f53bfcbc768a",
                 "shasum": ""
             },
             "require": {
@@ -4068,7 +4068,7 @@
             },
             "conflict": {
                 "friendsofsymfony/rest-bundle": "<2.1 || >=3.0",
-                "jms/serializer": "<0.13 || >=2.0",
+                "jms/serializer": "<0.13 || >=3.0",
                 "nelmio/api-doc-bundle": "<2.4",
                 "sonata-project/block-bundle": "<3.11",
                 "sonata-project/doctrine-orm-admin-bundle": "<3.0",
@@ -4078,14 +4078,14 @@
             "require-dev": {
                 "doctrine/orm": "^2.0",
                 "friendsofsymfony/rest-bundle": "^2.1",
-                "jms/serializer-bundle": "^1.0 || ^2.0",
+                "jms/serializer-bundle": "^1.0 || ^2.0 || ^3.0",
                 "matthiasnoback/symfony-config-test": "^4.0",
                 "matthiasnoback/symfony-dependency-injection-test": "^3.0",
                 "nelmio/api-doc-bundle": "^2.4",
                 "sonata-project/block-bundle": "^3.11",
                 "sonata-project/google-authenticator": "^1.0 || ^2.0",
                 "sonata-project/seo-bundle": "^2.0",
-                "symfony/phpunit-bridge": "^4.1"
+                "symfony/phpunit-bridge": "^4.3"
             },
             "suggest": {
                 "friendsofsymfony/rest-bundle": "For using the public API methods.",
@@ -4128,7 +4128,7 @@
                 "sonata",
                 "user"
             ],
-            "time": "2019-01-30T22:27:28+00:00"
+            "time": "2019-06-13T19:50:20+00:00"
         },
         {
             "name": "stof/doctrine-extensions-bundle",
@@ -5268,16 +5268,16 @@
         },
         {
             "name": "symfony/flex",
-            "version": "v1.2.6",
+            "version": "v1.2.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/flex.git",
-                "reference": "5ed49091eb73f912dd23dab92bf07c0180cfb009"
+                "reference": "8618b243d44bac71e4006062f245d807d84f7a6c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/flex/zipball/5ed49091eb73f912dd23dab92bf07c0180cfb009",
-                "reference": "5ed49091eb73f912dd23dab92bf07c0180cfb009",
+                "url": "https://api.github.com/repos/symfony/flex/zipball/8618b243d44bac71e4006062f245d807d84f7a6c",
+                "reference": "8618b243d44bac71e4006062f245d807d84f7a6c",
                 "shasum": ""
             },
             "require": {
@@ -5313,7 +5313,7 @@
                 }
             ],
             "description": "Composer plugin for Symfony",
-            "time": "2019-06-05T14:26:30+00:00"
+            "time": "2019-06-15T07:15:42+00:00"
         },
         {
             "name": "symfony/form",
@@ -8654,16 +8654,16 @@
         },
         {
             "name": "facebook/webdriver",
-            "version": "1.7.0",
+            "version": "1.7.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/facebook/php-webdriver.git",
-                "reference": "9a52b1ac036743c31bc127fd7f2f4710e2bc968a"
+                "reference": "e43de70f3c7166169d0f14a374505392734160e5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/facebook/php-webdriver/zipball/9a52b1ac036743c31bc127fd7f2f4710e2bc968a",
-                "reference": "9a52b1ac036743c31bc127fd7f2f4710e2bc968a",
+                "url": "https://api.github.com/repos/facebook/php-webdriver/zipball/e43de70f3c7166169d0f14a374505392734160e5",
+                "reference": "e43de70f3c7166169d0f14a374505392734160e5",
                 "shasum": ""
             },
             "require": {
@@ -8710,7 +8710,7 @@
                 "selenium",
                 "webdriver"
             ],
-            "time": "2019-06-10T14:32:25+00:00"
+            "time": "2019-06-13T08:02:18+00:00"
         },
         {
             "name": "fzaninotto/faker",
