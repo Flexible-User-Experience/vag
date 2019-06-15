@@ -21,7 +21,7 @@ abstract class AbstractContactPerson extends AbstractEntity
      *
      * @var string
      */
-    private $name;
+    protected $name;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -30,14 +30,14 @@ abstract class AbstractContactPerson extends AbstractEntity
      *
      * @var string
      */
-    private $email;
+    protected $email;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      *
      * @var string
      */
-    private $phone;
+    protected $phone;
 
     /**
      * Methods.
