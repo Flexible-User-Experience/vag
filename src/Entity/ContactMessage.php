@@ -2,53 +2,23 @@
 
 namespace App\Entity;
 
-use App\Entity\Traits\EmailTrait;
-use App\Entity\Traits\NameTrait;
-use App\Entity\Traits\PhoneTrait;
 use DateTime;
 use DateTimeInterface;
 use EWZ\Bundle\RecaptchaBundle\Validator\Constraints as Recaptcha;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ContactMessageRepository")
  * @ORM\Table()
  */
-class ContactMessage extends AbstractEntity
+class ContactMessage extends AbstractContactPerson
 {
-    use NameTrait, EmailTrait, PhoneTrait;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     * @Assert\NotBlank()
-     *
-     * @var string
-     */
-    private $name;
-
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      *
      * @var string
      */
     private $subject;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     * @Assert\NotBlank()
-     * @Assert\Email(mode="strict")
-     *
-     * @var string
-     */
-    private $email;
-
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     *
-     * @var string
-     */
-    private $phone;
 
     /**
      * @ORM\Column(type="text", length=4000)
