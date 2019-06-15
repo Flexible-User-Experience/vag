@@ -5,7 +5,7 @@ twig:
     globals:
         main_brand_title: 'VAG'
         main_brand_email: '%env(string:MAILER_SENDER_ADDRESS)%'
-        admin_tag_version: 'v1.0.10'
+        admin_tag_version: 'v1.0.09'
         google_analytics_enabled: '%env(bool:GOOGLE_ANALYTICS_ENABLED)%'
         google_analytics_code: '%env(string:GOOGLE_ANALYTICS_CODE)%'
         google_maps_api_key: '%env(string:GOOGLE_MAPS_API_KEY)%'
