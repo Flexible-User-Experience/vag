@@ -1,5 +1,7 @@
 {% if hide_contact_form %}
-
+    <div class="alert alert-success" role="alert">
+        <i class="far fa-paper-plane"></i> {{ 'front.flash.contact_newsletter_send' | trans }}
+    </div>
 {% else %}
     {{ form_start(form) }}
         {{ form_widget(form.name) }}
