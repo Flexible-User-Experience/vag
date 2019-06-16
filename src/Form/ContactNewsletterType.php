@@ -48,18 +48,6 @@ class ContactNewsletterType extends AbstractType
                 ]
             )
             ->add(
-                'privacy',
-                CheckboxType::class,
-                [
-                    'label' => 'admin.label.legal_terms_has_been_accepted',
-                    'attr' => [
-                        'class' => 'text-white',
-                    ],
-                    'required' => true,
-                    'mapped' => false,
-                ]
-            )
-            ->add(
                 'send',
                 SubmitType::class,
                 [
@@ -80,6 +68,7 @@ class ContactNewsletterType extends AbstractType
         $resolver->setDefaults(
             [
                 'data_class' => ContactNewsletter::class,
+                'allow_extra_fields' => true,
             ]
         );
     }
