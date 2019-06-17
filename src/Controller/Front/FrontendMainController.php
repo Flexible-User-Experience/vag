@@ -70,7 +70,7 @@ class FrontendMainController extends AbstractController
     public function homepage(EventCategoryManager $ecm, EventActivityManager $eam)
     {
         $categories = $ecm->getAvailableSortedByPriorityAndName();
-        $featuredSpeakers = $this->getDoctrine()->getRepository(EventCollaborator::class)->findShowInHomepageSortedBySurnameAndName()->getQuery()->getResult();
+        $featuredSpeakers = $this->getDoctrine()->getRepository(EventCollaborator::class)->findAvailableAndShowInHomepageSortedBySurnameAndName()->getQuery()->getResult();
         $featuredActivities = $eam->getAvailableForHomepageSortedByBegin();
         $featuredLocations = $this->getDoctrine()->getRepository(EventLocation::class)->findShowInHomepageSortedByPlace()->getQuery()->getResult();
 
@@ -99,7 +99,7 @@ class FrontendMainController extends AbstractController
      */
     public function collaborators()
     {
-        $participants = $this->getDoctrine()->getRepository(EventCollaborator::class)->findAllSortedBySurnameAndName()->getQuery()->getResult();
+        $participants = $this->getDoctrine()->getRepository(EventCollaborator::class)->findAvailableSortedBySurnameAndName()->getQuery()->getResult();
 
         return $this->render('frontend/collaborators.html.twig', [
             'participants' => $participants,
@@ -150,9 +150,14 @@ class FrontendMainController extends AbstractController
      * @param EventCollaborator $participant
      *
      * @return Response
+     * @throws NotFoundHttpException
      */
     public function collaboratorDetail(EventCollaborator $participant)
     {
+        if (!$participant->isAvailable() && !$this->get('security.authorization_checker')->isGranted(UserRoleEnum::ROLE_CMS)) {
+            throw $this->createNotFoundException();
+        }
+
         return $this->render('frontend/collaborator.html.twig', [
             'participant' => $participant,
         ]);
