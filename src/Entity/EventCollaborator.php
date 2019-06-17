@@ -6,6 +6,7 @@ use App\Entity\Traits\DescriptionTrait;
 use App\Entity\Traits\EmailTrait;
 use App\Entity\Traits\GenderTrait;
 use App\Entity\Traits\ImageAttributesTrait;
+use App\Entity\Traits\IsAvailableTrait;
 use App\Entity\Traits\JobTrait;
 use App\Entity\Traits\LinkTrait;
 use App\Entity\Traits\NameTrait;
@@ -33,7 +34,7 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
  */
 class EventCollaborator extends AbstractEntity
 {
-    use GenderTrait, NameTrait, SurnameTrait, SlugTrait, JobTrait, EmailTrait, PhoneTrait, ImageAttributesTrait, ShortDescriptionTrait, DescriptionTrait, ShowInHomepageTrait, LinkTrait;
+    use GenderTrait, NameTrait, SurnameTrait, SlugTrait, JobTrait, EmailTrait, PhoneTrait, ImageAttributesTrait, ShortDescriptionTrait, DescriptionTrait, ShowInHomepageTrait, LinkTrait, IsAvailableTrait;
 
     /**
      * @ORM\Column(type="smallint", nullable=true)
@@ -152,6 +153,13 @@ class EventCollaborator extends AbstractEntity
      * @var bool
      */
     private $showInHomepage;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true, options={"default"=1})
+     *
+     * @var bool
+     */
+    private $isAvailable;
 
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\EventActivity", mappedBy="collaborators")
