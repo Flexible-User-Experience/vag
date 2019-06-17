@@ -196,6 +196,7 @@ App\Entity\EventCollaborator:
         shortDescription: '<sentence()>'
         description: '<text(500)>'
         showInHomepage: '<boolean(50)>'
+        isAvailable: true
     collaborator{2..8}:
         gender: '<numberBetween(0,1)>'
         name: '<firstName()>'
@@ -205,6 +206,7 @@ App\Entity\EventCollaborator:
         shortDescription: '<sentence()>'
         description: '<text(500)>'
         showInHomepage: '<boolean(50)>'
+        isAvailable: true
 
 App\Entity\Translation\EventCollaboratorTranslation:
     collaborator_translation_short_description_es_{1..8}:

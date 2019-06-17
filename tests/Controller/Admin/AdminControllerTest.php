@@ -88,6 +88,12 @@ class AdminControllerTest extends WebTestCase
             ['/ca/admin/comunicacio/missatge-contacte/1/show'],
             ['/ca/admin/comunicacio/missatge-contacte/1/delete'],
 //            ['/ca/admin/comunicacio/missatge-contacte/export'],
+            ['/ca/admin/comunicacio/newsletter-contacte/list'],
+            ['/es/admin/comunicacio/newsletter-contacte/list'],
+            ['/en/admin/comunicacio/newsletter-contacte/list'],
+            ['/ca/admin/comunicacio/newsletter-contacte/1/show'],
+            ['/ca/admin/comunicacio/newsletter-contacte/1/delete'],
+//            ['/ca/admin/comunicacio/newsletter-contacte/export'],
             ['/ca/admin/configuracio/usuari/list'],
             ['/es/admin/configuracio/usuari/list'],
             ['/en/admin/configuracio/usuari/list'],
@@ -142,6 +148,8 @@ class AdminControllerTest extends WebTestCase
             ['/ca/admin/blog/article/1/delete'],
             ['/ca/admin/comunicacio/missatge-contacte/1/edit'],
             ['/ca/admin/comunicacio/missatge-contacte/create'],
+            ['/ca/admin/comunicacio/newsletter-contacte/1/edit'],
+            ['/ca/admin/comunicacio/newsletter-contacte/create'],
         ];
     }
 }
