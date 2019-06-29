@@ -5,6 +5,8 @@ namespace App\Admin;
 use App\Entity\EventCategory;
 use App\Entity\EventCollaborator;
 use App\Entity\EventLocation;
+use App\Enum\LanguageEnum;
+use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
@@ -12,8 +14,9 @@ use Sonata\DoctrineORMAdminBundle\Filter\DateFilter;
 use Sonata\Form\Type\DateTimePickerType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
-use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 /**
@@ -49,7 +52,7 @@ final class EventActivityAdmin extends AbstractAdmin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->with('admin.with.activity', ['class' => 'col-md-4'])
+            ->with('admin.with.activity', ['class' => 'col-md-5'])
             ->add(
                 'name',
                 TextType::class,
@@ -59,20 +62,40 @@ final class EventActivityAdmin extends AbstractAdmin
             )
             ->add(
                 'shortDescription',
-                TextType::class,
+                CKEditorType::class,
                 [
                     'label' => 'admin.label.short_description',
-                ]
-            )
-            ->add(
-                'description',
-                TextareaType::class,
-                [
-                    'label' => 'admin.label.description',
+                    'required' => false,
+                    'config' => [
+                        'language' => $this->getRequest()->getLocale(),
+                    ],
                     'attr' => [
                         'rows' => '5',
                         'style' => 'resize:vertical',
                     ],
+                ]
+            )
+            ->add(
+                'description',
+                CKEditorType::class,
+                [
+                    'label' => 'admin.label.description',
+                    'required' => false,
+                    'config' => [
+                        'language' => $this->getRequest()->getLocale(),
+                    ],
+                    'attr' => [
+                        'rows' => '5',
+                        'style' => 'resize:vertical',
+                    ],
+                ]
+            )
+            ->add(
+                'target',
+                TextType::class,
+                [
+                    'label' => 'admin.label.target',
+                    'required' => false,
                 ]
             )
             ->end()
@@ -105,15 +128,58 @@ final class EventActivityAdmin extends AbstractAdmin
                     'multiple' => true,
                 ]
             )
-            ->end()
-            ->with('admin.with.images', ['class' => 'col-md-4'])
             ->add(
-                'imageFile',
-                FileType::class,
+                'language',
+                ChoiceType::class,
                 [
-                    'label' => 'admin.label.image',
-                    'help' => $this->getImageHelperFormMapperWithThumbnail(),
+                    'label' => 'admin.label.language.language',
                     'required' => false,
+                    'choices' => LanguageEnum::getStaticChoices(),
+                ]
+            )
+            ->add(
+                'isTranslated',
+                CheckboxType::class,
+                [
+                    'label' => 'admin.label.is_translated',
+                    'required' => false,
+                ]
+            )
+            ->end()
+        ;
+        if ($this->formBuilderIsInEditMode()) {
+            $formMapper
+                ->with('admin.with.images', ['class' => 'col-md-3'])
+                ->add(
+                    'imageFile',
+                    FileType::class,
+                    [
+                        'label' => 'admin.label.image',
+                        'help' => $this->getImageHelperFormMapperWithThumbnail(),
+                        'required' => false,
+                    ]
+                )
+                ->end()
+            ;
+        }
+        $formMapper
+            ->with('admin.with.tickets', ['class' => 'col-md-3'])
+            ->add(
+                'ticketsAmount',
+                NumberType::class,
+                [
+                    'label' => 'admin.label.tickets_amount',
+                    'required' => false,
+                    'disabled' => true,
+                ]
+            )
+            ->add(
+                'ticketsSold',
+                NumberType::class,
+                [
+                    'label' => 'admin.label.tickets_sold',
+                    'required' => false,
+                    'disabled' => true,
                 ]
             )
             ->end()
@@ -221,6 +287,13 @@ final class EventActivityAdmin extends AbstractAdmin
                 ]
             )
             ->add(
+                'target',
+                null,
+                [
+                    'label' => 'admin.label.target',
+                ]
+            )
+            ->add(
                 'category',
                 null,
                 [
@@ -254,6 +327,24 @@ final class EventActivityAdmin extends AbstractAdmin
                 [
                     'class' => EventCollaborator::class,
                     'query_builder' => $this->em->getRepository(EventCollaborator::class)->findAllSortedBySurnameAndName(),
+                ]
+            )
+            ->add(
+                'language',
+                null,
+                [
+                    'label' => 'admin.label.language.language',
+                ],
+                ChoiceType::class,
+                [
+                    'choices' => LanguageEnum::getStaticChoices(),
+                ]
+            )
+            ->add(
+                'isTranslated',
+                null,
+                [
+                    'label' => 'admin.label.is_translated',
                 ]
             )
             ->add(

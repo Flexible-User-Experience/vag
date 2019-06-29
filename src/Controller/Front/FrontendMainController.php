@@ -2,38 +2,76 @@
 
 namespace App\Controller\Front;
 
-use App\Entity\EventActivity;
+use App\Entity\ContactNewsletter;
 use App\Entity\EventCategory;
 use App\Entity\EventCollaborator;
 use App\Entity\EventLocation;
-use App\Entity\TeamMember;
-use App\Entity\TeamPartner;
 use App\Enum\UserRoleEnum;
+use App\Form\ContactNewsletterType;
 use App\Manager\EventActivityManager;
 use App\Manager\EventCategoryManager;
 use Doctrine\ORM\NonUniqueResultException;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
-use Symfony\Component\Security\Core\Exception\AccessDeniedException;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Translation\TranslatorInterface;
 
 /**
- * @Route("/")
+ * @Route("/", requirements={"_locale"="%app_locales%"})
  */
-class FrontendController extends AbstractController
+class FrontendMainController extends AbstractController
 {
     /**
-     * @Route("/", name="front_homepage")
+     * @param Request $request
+     * @param TranslatorInterface $translator
      *
      * @return Response
      */
-    public function homepage()
+    public function contactNewsletterFragment(Request $request, TranslatorInterface $translator)
     {
-        $categories = $this->getDoctrine()->getRepository(EventCategory::class)->findAvailableSortedByPriorityAndName()->getQuery()->getResult();
-        $featuredSpeakers = $this->getDoctrine()->getRepository(EventCollaborator::class)->findShowInHomepageSortedBySurnameAndName()->getQuery()->getResult();
-        $featuredActivities = $this->getDoctrine()->getRepository(EventActivity::class)->findAvailableForHomepageSortedByBegin()->getQuery()->getResult();
+        $hideContactForm = false;
+        $contactNewsletter = new ContactNewsletter();
+        $form = $this->createForm(ContactNewsletterType::class, $contactNewsletter);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $contactNewsletter
+                ->setLegalTermsHasBeenAccepted(true)
+                ->setIsAvailable(true)
+            ;
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($contactNewsletter);
+            $em->flush();
+            $this->addFlash(
+                'success',
+                $translator->trans('front.flash.contact_newsletter_send')
+            );
+            // TODO $ess->sendFrontendContactNewsletterNotificationTo...($contactNewsletter);
+            $hideContactForm = true;
+        }
+
+        return $this->render('frontend/fragments/contact_newsletter.html.twig', [
+            'form' => $form->createView(),
+            'hide_contact_form' => $hideContactForm,
+        ]);
+    }
+
+    /**
+     * @Route("/", name="front_homepage")
+     *
+     * @param EventCategoryManager $ecm
+     * @param EventActivityManager $eam
+     *
+     * @return Response
+     */
+    public function homepage(EventCategoryManager $ecm, EventActivityManager $eam)
+    {
+        $categories = $ecm->getAvailableSortedByPriorityAndName();
+        $featuredSpeakers = $this->getDoctrine()->getRepository(EventCollaborator::class)->findAvailableAndShowInHomepageSortedBySurnameAndName()->getQuery()->getResult();
+        $featuredActivities = $eam->getAvailableForHomepageSortedByBegin();
         $featuredLocations = $this->getDoctrine()->getRepository(EventLocation::class)->findShowInHomepageSortedByPlace()->getQuery()->getResult();
 
         return $this->render('frontend/homepage.html.twig', [
@@ -42,26 +80,6 @@ class FrontendController extends AbstractController
             'featuredActivities' => $featuredActivities,
             'featuredLocations' => $featuredLocations,
         ]);
-    }
-
-    /**
-     * @Route("/test", name="front_test")
-     *
-     * @return Response|AccessDeniedException
-     */
-    public function homepageTest()
-    {
-        return !$this->get('security.authorization_checker')->isGranted(UserRoleEnum::ROLE_CMS) ? $this->createAccessDeniedException() : $this->render('frontend/homepage_test.html.twig', []);
-    }
-
-    /**
-     * @Route({"ca": "/noticies", "es": "/noticias", "en": "/news"}, name="front_blog")
-     *
-     * @return Response
-     */
-    public function blog()
-    {
-        return $this->render('frontend/blog.html.twig', []);
     }
 
     /**
@@ -75,41 +93,15 @@ class FrontendController extends AbstractController
     }
 
     /**
-     * @Route({"ca": "/contacte", "es": "/contacto", "en": "/contact"}, name="front_contact")
+     * @Route({"ca": "/participants", "es": "/participantes", "en": "/participants"}, name="front_collaborators")
      *
      * @return Response
      */
-    public function contact()
+    public function collaborators()
     {
-        return $this->render('frontend/contact.html.twig', []);
-    }
+        $participants = $this->getDoctrine()->getRepository(EventCollaborator::class)->findAvailableSortedBySurnameAndName()->getQuery()->getResult();
 
-    /**
-     * @Route({"ca": "/equip", "es": "/equipo", "en": "/team"}, name="front_team")
-     *
-     * @return Response
-     */
-    public function team()
-    {
-        $members = $this->getDoctrine()->getRepository(TeamMember::class)->findShowInFrontendSortedBySurnameAndName()->getQuery()->getResult();
-        $partners = $this->getDoctrine()->getRepository(TeamPartner::class)->findShowInFrontendSortedByName()->getQuery()->getResult();
-
-        return $this->render('frontend/team.html.twig', [
-            'members' => $members,
-            'partners' => $partners,
-        ]);
-    }
-
-    /**
-     * @Route({"ca": "/participants", "es": "/participantes", "en": "/participants"}, name="front_participants")
-     *
-     * @return Response
-     */
-    public function participants()
-    {
-        $participants = $this->getDoctrine()->getRepository(EventCollaborator::class)->findAllSortedBySurnameAndName()->getQuery()->getResult();
-
-        return $this->render('frontend/participants.html.twig', [
+        return $this->render('frontend/collaborators.html.twig', [
             'participants' => $participants,
         ]);
     }
@@ -131,15 +123,18 @@ class FrontendController extends AbstractController
     /**
      * @Route({"ca": "/activitats", "es": "/actividades", "en": "/activities"}, name="front_activities")
      *
+     * @param EventCategoryManager $ecm
+     * @param EventActivityManager $eam
+     *
      * @return Response
      */
-    public function activities()
+    public function activities(EventCategoryManager $ecm, EventActivityManager $eam)
     {
         $activities = [];
-        $categories = $this->getDoctrine()->getRepository(EventCategory::class)->findAvailableSortedByPriorityAndName()->getQuery()->getResult();
+        $categories = $ecm->getAvailableSortedByPriorityAndName();
         /** @var EventCategory $category */
         foreach ($categories as $category) {
-            $activities[$category->getSlug()] = $this->getDoctrine()->getRepository(EventActivity::class)->findAvailableByCategorySortedByName($category)->getQuery()->getResult();
+            $activities[$category->getSlug()] = $eam->getAvailableByCategorySortedByName($category);
         }
 
         return $this->render('frontend/activities.html.twig', [
@@ -149,16 +144,21 @@ class FrontendController extends AbstractController
     }
 
     /**
-     * @Route({"ca": "/participant/{slug}", "es": "/participante/{slug}", "en": "/participant/{slug}"}, name="front_participant_detail")
+     * @Route({"ca": "/participant/{slug}", "es": "/participante/{slug}", "en": "/participant/{slug}"}, name="front_collaborator_detail")
      * @ParamConverter("participant", class="App:EventCollaborator")
      *
      * @param EventCollaborator $participant
      *
      * @return Response
+     * @throws NotFoundHttpException
      */
-    public function participantDetail(EventCollaborator $participant)
+    public function collaboratorDetail(EventCollaborator $participant)
     {
-        return $this->render('frontend/participant.html.twig', [
+        if (!$participant->isAvailable() && !$this->get('security.authorization_checker')->isGranted(UserRoleEnum::ROLE_CMS)) {
+            throw $this->createNotFoundException();
+        }
+
+        return $this->render('frontend/collaborator.html.twig', [
             'participant' => $participant,
         ]);
     }
@@ -183,12 +183,13 @@ class FrontendController extends AbstractController
      *
      * @param string $slug
      * @param EventCategoryManager $ecm
+     * @param EventActivityManager $eam
      *
      * @return Response
      * @throws NotFoundHttpException
      * @throws NonUniqueResultException
      */
-    public function category(string $slug, EventCategoryManager $ecm)
+    public function category(string $slug, EventCategoryManager $ecm, EventActivityManager $eam)
     {
         $category = $ecm->getCategoryByTranslatedSlug($slug);
         if (!$category) {
@@ -202,7 +203,7 @@ class FrontendController extends AbstractController
             'frontend/category.html.twig',
             [
                 'category' => $category,
-                'activities' => $this->getDoctrine()->getRepository(EventActivity::class)->findAvailableByCategorySortedByName($category)->getQuery()->getResult(),
+                'activities' => $eam->getAvailableByCategorySortedByName($category),
             ]
         );
     }

@@ -1,5 +1,7 @@
 {% extends "frontend/base.html.twig" %}
 
+{% block title %}{{ parent() }} · {{ category.name | title }}{% endblock %}
+
 {% block body %}
     <div class="jumbotron jumbotron-fluid jumbotron-homepage" style="background-image:url('{{ asset('build/nightlife-neon-techno.png') }}');">
         <div class="container pt-2 pb-1">

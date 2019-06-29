@@ -104,9 +104,18 @@ abstract class AbstractAdmin extends BaseAdmin
      */
     public function getImageHelperFormMapperWithThumbnail()
     {
-        return ($this->getSubject() ? $this->getSubject()->getImageName() ? '<img src="' . $this->lis->getBrowserPath(
-                    $this->vus->asset($this->getSubject(), 'imageFile'),
-                    '480xY'
-                ) . '" class="admin-preview img-responsive" alt="thumbnail"/>' : '' : '');
+        return ($this->getSubject() ?
+            $this->getSubject()->getImageName() ?
+                '<img src="' . $this->lis->getBrowserPath($this->vus->asset($this->getSubject(), 'imageFile'), '480xY') . '" class="admin-preview img-responsive" style="margin-bottom:5px;" alt="thumbnail"/><a href="'.$this->vus->asset($this->getSubject(), 'imageFile').'" class="btn btn-primary btn-sm" title="download" download><i class="fa fa-download"></i></a>'
+                : ''
+            : '');
+    }
+
+    /**
+     * @return bool
+     */
+    public function formBuilderIsInEditMode()
+    {
+        return $this->id($this->getSubject());
     }
 }

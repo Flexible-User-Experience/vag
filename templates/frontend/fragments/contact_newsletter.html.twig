@@ -1,0 +1,20 @@
+{% if hide_contact_form %}
+    <div class="alert alert-success" role="alert">
+        <i class="far fa-check-circle"></i> {{ 'front.flash.contact_newsletter_send' | trans }}
+    </div>
+{% else %}
+    {{ form_start(form) }}
+        {{ form_widget(form.name) }}
+        {{ form_errors(form.name) }}
+        {{ form_widget(form.email) }}
+        {{ form_errors(form.email) }}
+        <div class="form-group">
+            <div class="form-check">
+                <input type="checkbox" id="contact_newsletter_privacy" name="contact_newsletter[privacy]" required="required" class="text-white form-check-input" value="1">
+                <label class="form-check-label required text-white" for="contact_newsletter_privacy">{{ 'front.legal.privacy_policy_terms' | trans({'%href%': path('front_privacy_policy'), '%anchor%': 'front.menu.privacy_policy' | trans}, 'messages') | raw }}</label>
+            </div>
+        </div>
+        {#{{ form_row(form.privacy) }}#}
+        {{ form_rest(form) }}
+    {{ form_end(form) }}
+{% endif %}

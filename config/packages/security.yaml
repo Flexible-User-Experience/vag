@@ -16,7 +16,10 @@ security:
             - ROLE_ADMIN_EVENT_ACTIVITY_ALL
             - ROLE_ADMIN_TEAM_PARTNER_ALL
             - ROLE_ADMIN_TEAM_MEMBER_ALL
+            - ROLE_ADMIN_BLOG_CATEGORY_ALL
+            - ROLE_ADMIN_BLOG_POST_ALL
             - ROLE_ADMIN_CONTACT_MESSAGE_ALL
+            - ROLE_ADMIN_CONTACT_NEWSLETTER_ALL
         ROLE_ADMIN:
             - ROLE_CMS
             - ROLE_ADMIN_CONFIGURATION_USER_ALL
@@ -53,6 +56,6 @@ security:
         - { path: ^/(ca|es|en)/admin/logout$, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/(ca|es|en)/admin/login_check$, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/(ca|es|en)/admin/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/(ca|es|en)/admin/, role: [ROLE_ADMIN, ROLE_SONATA_ADMIN] }
+        - { path: ^/(ca|es|en)/admin/, role: [ROLE_CMS, ROLE_SONATA_ADMIN] }
         # enabled public entry points
         - { path: ^/.*, role: IS_AUTHENTICATED_ANONYMOUSLY }

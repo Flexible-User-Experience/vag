@@ -3,6 +3,7 @@
 namespace App\Admin;
 
 use App\Enum\GenderEnum;
+use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
@@ -10,7 +11,6 @@ use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
-use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\UrlType;
 
@@ -77,8 +77,32 @@ final class EventCollaboratorAdmin extends AbstractAdmin
                     'required' => false,
                 ]
             )
+            ->add(
+                'city',
+                TextType::class,
+                [
+                    'label' => 'admin.label.city',
+                    'required' => false,
+                ]
+            )
             ->end()
-            ->with('admin.with.text', ['class' => 'col-md-4'])
+            ->with('admin.with.text', ['class' => 'col-md-5'])
+            ->add(
+                'job',
+                TextType::class,
+                [
+                    'label' => 'admin.label.job',
+                    'required' => false,
+                ]
+            )
+            ->add(
+                'company',
+                TextType::class,
+                [
+                    'label' => 'admin.label.company',
+                    'required' => false,
+                ]
+            )
             ->add(
                 'shortDescription',
                 TextType::class,
@@ -89,10 +113,13 @@ final class EventCollaboratorAdmin extends AbstractAdmin
             )
             ->add(
                 'description',
-                TextareaType::class,
+                CKEditorType::class,
                 [
                     'label' => 'admin.label.description',
                     'required' => false,
+                    'config' => [
+                        'language' => $this->getRequest()->getLocale(),
+                    ],
                     'attr' => [
                         'rows' => '5',
                         'style' => 'resize:vertical',
@@ -100,17 +127,23 @@ final class EventCollaboratorAdmin extends AbstractAdmin
                 ]
             )
             ->end()
-            ->with('admin.with.images', ['class' => 'col-md-4'])
-            ->add(
-                'imageFile',
-                FileType::class,
-                [
-                    'label' => 'admin.label.image',
-                    'help' => $this->getImageHelperFormMapperWithThumbnail(),
-                    'required' => false,
-                ]
-            )
-            ->end()
+        ;
+        if ($this->formBuilderIsInEditMode()) {
+            $formMapper
+                ->with('admin.with.images', ['class' => 'col-md-3'])
+                ->add(
+                    'imageFile',
+                    FileType::class,
+                    [
+                        'label' => 'admin.label.image',
+                        'help' => $this->getImageHelperFormMapperWithThumbnail(),
+                        'required' => false,
+                    ]
+                )
+                ->end()
+            ;
+        }
+        $formMapper
             ->with('admin.with.controls', ['class' => 'col-md-4'])
             ->add(
                 'slug',
@@ -145,6 +178,14 @@ final class EventCollaboratorAdmin extends AbstractAdmin
                     'required' => false,
                 ]
             )
+            ->add(
+                'isAvailable',
+                CheckboxType::class,
+                [
+                    'label' => 'admin.label.is_available',
+                    'required' => false,
+                ]
+            )
             ->end()
         ;
     }
@@ -155,6 +196,18 @@ final class EventCollaboratorAdmin extends AbstractAdmin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
+            ->add(
+                'gender',
+                null,
+                [
+                    'label' => 'admin.label.gender.gender',
+                ],
+                ChoiceType::class,
+                [
+                    'label' => 'admin.label.gender.gender',
+                    'choices' => GenderEnum::getStaticChoices(),
+                ]
+            )
             ->add(
                 'name',
                 null,
@@ -184,6 +237,34 @@ final class EventCollaboratorAdmin extends AbstractAdmin
                 ]
             )
             ->add(
+                'job',
+                null,
+                [
+                    'label' => 'admin.label.job',
+                ]
+            )
+            ->add(
+                'company',
+                null,
+                [
+                    'label' => 'admin.label.company',
+                ]
+            )
+            ->add(
+                'city',
+                null,
+                [
+                    'label' => 'admin.label.city',
+                ]
+            )
+            ->add(
+                'link',
+                null,
+                [
+                    'label' => 'admin.label.link',
+                ]
+            )
+            ->add(
                 'shortDescription',
                 null,
                 [
@@ -202,6 +283,13 @@ final class EventCollaboratorAdmin extends AbstractAdmin
                 null,
                 [
                     'label' => 'admin.label.show_in_homepage_short',
+                ]
+            )
+            ->add(
+                'isAvailable',
+                null,
+                [
+                    'label' => 'admin.label.is_available',
                 ]
             )
         ;
@@ -250,6 +338,14 @@ final class EventCollaboratorAdmin extends AbstractAdmin
                 null,
                 [
                     'label' => 'admin.label.show_in_homepage_short',
+                    'editable' => true,
+                ]
+            )
+            ->add(
+                'isAvailable',
+                null,
+                [
+                    'label' => 'admin.label.is_available',
                     'editable' => true,
                 ]
             )

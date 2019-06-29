@@ -1,5 +1,4 @@
-@import '~bootstrap/scss/bootstrap';
-
+// custom app variables
 $app-radius: 10px;
 $app-vertical-gap: 15px;
 $app-alpha: 0.6;
@@ -7,8 +6,8 @@ $app-alpha-inversed: 0.4;
 $app-color-black: #1A1A1A;
 $app-color-light: #F1F3F4;
 $app-color-grey: #8D897F;
-$app-color-green: #78B74B;
-$app-color-red: #D74036;
+$app-color-green: #71BC52;
+$app-color-red: #DF1333;
 $app-color-blue-light: #88CCD1;
 $app-color-blue: #2C6CA4;
 $app-color-ocher: #B58255;
@@ -17,7 +16,24 @@ $app-color-yellow: #E1DF56;
 $app-color-warning-light: #FDBF2F;
 $app-color-footer: #363941;
 
-.bg-dark-transparent{
+// custom bootstrap variables before import (mandatory)
+$breadcrumb-bg: transparent;
+$breadcrumb-padding-y: 0;
+$breadcrumb-padding-x: 0;
+$breadcrumb-margin-bottom: 0;
+$breadcrumb-border-radius: 0;
+$breadcrumb-active-color: $app-color-light;
+$breadcrumb-divider-color: $app-color-grey;
+$breadcrumb-divider: quote(">");
+$enable-responsive-font-sizes: true;
+
+@import '~bootstrap/scss/bootstrap';
+
+.text-black {
+  color: $app-color-black;
+}
+
+.bg-dark-transparent {
   background-color: rgba(0, 0, 0, $app-alpha + 0.2);
 }
 
@@ -81,7 +97,7 @@ $app-color-footer: #363941;
   .container {
     padding-top: 10px;
     padding-bottom: 10px;
-    background-color: rgba(255, 255, 255, $app-alpha-inversed);
+    background-color: rgba(255, 255, 255, $app-alpha);
   }
   @include media-breakpoint-up(sm) {
     .container {
@@ -98,6 +114,13 @@ $app-color-footer: #363941;
 .jumbotron-light {
   background-color: $app-color-light;
   margin-bottom: 0;
+}
+
+.breadcrumb-anchor {
+  color: $app-color-grey;
+  &:hover {
+    color: $app-color-grey;
+  }
 }
 
 .dark-footer {

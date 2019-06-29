@@ -4,5 +4,6 @@ admin:
         team: 'Col·laboradors'
         settings: 'Configuració'
         comunication: 'Comunicacions'
+        blog: 'Blog'
 toggle_navigation: 'Canviar navegació'
 message_close: 'Tancar missatge'

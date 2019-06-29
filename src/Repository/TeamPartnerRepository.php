@@ -45,4 +45,26 @@ class TeamPartnerRepository extends ServiceEntityRepository
             ->setParameter('showInFrontend', true)
         ;
     }
+
+    /**
+     * @return QueryBuilder
+     */
+    public function findOnlyPartnersShowInFrontendSortedByName()
+    {
+        return $this->findShowInFrontendSortedByName()
+            ->andWhere('tp.isCollaborator = :isCollaborator')
+            ->setParameter('isCollaborator', false)
+        ;
+    }
+
+    /**
+     * @return QueryBuilder
+     */
+    public function findOnlyCollaboratorsShowInFrontendSortedByName()
+    {
+        return $this->findShowInFrontendSortedByName()
+            ->andWhere('tp.isCollaborator = :isCollaborator')
+            ->setParameter('isCollaborator', true)
+        ;
+    }
 }

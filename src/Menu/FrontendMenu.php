@@ -13,6 +13,8 @@ use Symfony\Contracts\Translation\TranslatorInterface;
  */
 class FrontendMenu
 {
+    const SHOWS_CATEGORY_ID = 4;
+
     /**
      * @var FactoryInterface
      */

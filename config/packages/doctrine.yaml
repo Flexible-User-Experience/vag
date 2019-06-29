@@ -22,3 +22,6 @@ doctrine:
                 alias:     App
             FOSUserBundle:    ~
             SonataUserBundle: ~
+        dql:
+            datetime_functions:
+                date: DoctrineExtensions\Query\Mysql\Date

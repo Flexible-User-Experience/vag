@@ -23,7 +23,7 @@
                         <div class="card text-white mb-3 mb-sm-3 mb-md-0" style="background-color:{{ category.color }}">
                             <div class="card-body">
                                 <h2 class="card-title text-center">{{ category | icon | raw }}</h2>
-                                <p class="card-text text-center">{% if category.eventActivities | length > 0 %}{{ category.eventActivities | length }} {% endif %}{{ category.name | title }}</p>
+                                <p class="card-text text-center">{% if category.eventActivities | length > 0 %}{{ category.eventActivities | length }} {% endif %}{% if category.id == constant('App\\Menu\\FrontendMenu::SHOWS_CATEGORY_ID') %}{{ 'front.menu.show' | trans | title }}{% else %}{{ category.name | title }}{% endif %}</p>
                             </div>
                         </div>
                     </div>
@@ -43,12 +43,12 @@
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <h5 class="mt-0">{{ 'front.events.featured_speakers' | trans }}</h5>
+                    <h5 class="mt-0">{{ 'front.events.speakers' | trans }}</h5>
                 </div>
                 {% include "frontend/includes/event_collaborator_cards.html.twig" with {collaborators: featuredSpeakers} %}
                 {% if featuredSpeakers | length > 0 %}
                     <div class="col-12 mt-4 text-center">
-                        <a href="{{ path('front_participants') }}" class="btn btn-outline-dark">{{ 'front.events.show_all_speakers' | trans }}</a>
+                        <a href="{{ path('front_collaborators') }}" class="btn btn-outline-dark">{{ 'front.events.show_all_speakers' | trans }}</a>
                     </div>
                 {% endif %}
             </div>
@@ -62,8 +62,8 @@
                     <img src="{{ asset('build/vag_experience.svg') }}" class="img-fluid mt-2 mb-3" alt="VAG experience logo">
                 </div>
                 <div class="col-sm-9 col-md-10">
-                    <h2 class="display-6 text-white">{{ 'front.homepage.jumbotron_4' | trans | raw }}</h2>
-                    <p class="lead mb-0 text-white">{{ 'front.homepage.jumbotron_5' | trans | raw }}</p>
+                    <h2 class="display-6 text-black">{{ 'front.homepage.jumbotron_4' | trans | raw }}</h2>
+                    <p class="lead mb-0 text-black">{{ 'front.homepage.jumbotron_5' | trans | raw }}</p>
                 </div>
             </div>
         </div>
@@ -73,7 +73,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <h5 class="mt-0">{{ 'front.events.highlighted_activities' | trans }}</h5>
+                    <h5 class="mt-0">{{ 'front.events.activities' | trans }}</h5>
                 </div>
                 {% include "frontend/includes/event_activity_cards.html.twig" with {activities: featuredActivities} %}
                 {% if featuredActivities | length > 0 %}
@@ -89,7 +89,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <h5 class="mt-0">{{ 'front.events.highlighted_locations' | trans }}</h5>
+                    <h5 class="mt-0">{{ 'front.events.locations' | trans }}</h5>
                 </div>
                 {% include "frontend/includes/event_location_cards.html.twig" with {locations: featuredLocations} %}
                 {% if featuredLocations | length > 0 %}

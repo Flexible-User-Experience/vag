@@ -1,0 +1,55 @@
+{% extends "frontend/base.html.twig" %}
+
+{% block title %}{{ parent() }} · {{ post.name }} · {{ 'front.menu.blog' | trans | title }}{% endblock %}
+
+{% block body %}
+    <div class="jumbotron jumbotron-fluid jumbotron-homepage" style="background-image:url('{{ asset('build/abstract-abstraction.png') }}');">
+        <div class="container pt-2 pb-1">
+            <h1 class="display-6 text-white">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{{ path('front_blog') }}" class="breadcrumb-anchor">{{ 'front.menu.blog' | trans | title }}</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">{{ post.name }}</li>
+                </ol>
+            </h1>
+        </div>
+    </div>
+    <div class="jumbotron jumbotron-fluid mb-0">
+        <div class="container">
+            {% if tags | length > 0 %}
+                <div class="row">
+                    <div class="col-12 mb-3">
+                        <ul class="nav nav-pills">
+                            {% for tag in tags %}
+                                <li class="nav-item mr-2">
+                                    <a class="nav-link{% if tag in post.tags %} active{% endif %}" href="{{ path('front_blog_tag', {slug: tag.slug}) }}">{{ tag.name }}</a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            {% endif %}
+            {% if not post.available %}
+                <div class="row mb-5">
+                    <div class="col-12">
+                        <div class="alert alert-danger mb-0" role="alert">
+                            <i class="fa exclamation-triangle"></i> {{ 'front.blog.draft' | trans }}
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+            <div class="row">
+                {% if post.imageName %}
+                    <div class="col-12 col-sm-6 col-md-5 col-lg-4 col-xl-3">
+                        <img src="{{ vich_uploader_asset(post, 'imageFile') | imagine_filter('480xY') }}" class="img-responsive rounded w-100 mb-2" alt="{{ post.name }}">
+                    </div>
+                {% endif %}
+                <div class="col-12 col-sm-6 col-md-7 col-lg-8 col-xl-9">
+                    <h4 class="text-muted mt-0 mb-0">{{ post.name }}</h4>
+                    <span class="badge badge-pill badge-dark mb-2">{{ post.published | draw_i18n_date_string }}</span>
+                    <hr>
+                    <p class="mb-0">{{ post.description | raw }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

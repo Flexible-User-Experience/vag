@@ -2,50 +2,23 @@
 
 namespace App\Entity;
 
-use App\Entity\Traits\EmailTrait;
-use App\Entity\Traits\NameTrait;
-use App\Entity\Traits\PhoneTrait;
 use DateTime;
 use DateTimeInterface;
+use EWZ\Bundle\RecaptchaBundle\Validator\Constraints as Recaptcha;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\TeamMemberRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\ContactMessageRepository")
  * @ORM\Table()
  */
-class ContactMessage extends AbstractEntity
+class ContactMessage extends AbstractContactPerson
 {
-    use NameTrait, EmailTrait, PhoneTrait;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     *
-     * @var string
-     */
-    private $name;
-
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      *
      * @var string
      */
     private $subject;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     * @Assert\Email(mode="strict")
-     *
-     * @var string
-     */
-    private $email;
-
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     *
-     * @var string
-     */
-    private $phone;
 
     /**
      * @ORM\Column(type="text", length=4000)
@@ -88,6 +61,13 @@ class ContactMessage extends AbstractEntity
      * @var bool
      */
     private $hasBeenAnswered;
+
+    /**
+     * @Recaptcha\IsTrue
+     *
+     * @var string
+     */
+    private $recaptcha;
 
     /**
      * Methods.
@@ -159,6 +139,14 @@ class ContactMessage extends AbstractEntity
     public function getAnswered(): ?DateTimeInterface
     {
         return $this->answered;
+    }
+
+    /**
+     * @return string
+     */
+    public function getAnsweredString(): string
+    {
+        return $this->getAnswered() ? $this->getAnswered()->format('d/m/Y H:i') : '---';
     }
 
     /**
@@ -258,10 +246,22 @@ class ContactMessage extends AbstractEntity
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function __toString()
+    public function getRecaptcha(): ?string
     {
-        return $this->id ? $this->getName() : '---';
+        return $this->recaptcha;
+    }
+
+    /**
+     * @param string|null $recaptcha
+     *
+     * @return ContactMessage
+     */
+    public function setRecaptcha(?string $recaptcha)
+    {
+        $this->recaptcha = $recaptcha;
+
+        return $this;
     }
 }

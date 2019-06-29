@@ -45,8 +45,9 @@
                         <ul class="list-unstyled text-small">
                             <li><a class="text-muted" href="{{ path('front_contact') }}">{{ 'front.footer.contact' | trans }}</a></li>
                             <li><a class="text-muted" href="{{ path('front_team') }}">{{ 'front.footer.team' | trans }}</a></li>
-                            <li><a class="text-muted" href="#">{{ 'front.footer.privacy' | trans }}</a></li>
-                            <li><a class="text-muted" href="#">{{ 'front.footer.terms' | trans }}</a></li>
+                            <li><a class="text-muted" href="{{ path('front_partners') }}">{{ 'front.footer.partners' | trans }}</a></li>
+                            <li><a class="text-muted" href="{{ path('front_privacy_policy') }}">{{ 'front.footer.privacy' | trans }}</a></li>
+                            <li><a class="text-muted" href="{{ path('front_legal_warning') }}">{{ 'front.footer.terms' | trans }}</a></li>
                         </ul>
                     </div>
                     <div class="col">
@@ -56,6 +57,10 @@
                             <li><a class="text-muted" href="https://www.facebook.com/VAGExperience" target="_blank">facebook</a></li>
                             <li><a class="text-muted" href="https://twitter.com/VaGexperience" target="_blank">twitter</a></li>
                         </ul>
+                    </div>
+                    <div class="col">
+                        <h6 class="text-white">{{ 'front.footer.contact_newsletter' | trans | title }}</h6>
+                        {{ render(controller('App\\Controller\\Front\\FrontendMainController::contactNewsletterFragment', {request: app.request})) }}
                     </div>
                     <div class="col-5 text-right">
                         <div class="btn-group" role="group" aria-label="language selector">

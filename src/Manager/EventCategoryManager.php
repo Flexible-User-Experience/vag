@@ -48,7 +48,7 @@ class EventCategoryManager
         $this->rs = $rs;
         $this->ecr = $ecr;
         $this->defaultLocale = $defaultLocale;
-        $this->locale = $this->rs->getCurrentRequest()->getLocale();
+        $this->locale = $this->rs->getCurrentRequest() ? $this->rs->getCurrentRequest()->getLocale() : $defaultLocale;
     }
 
     /**
@@ -66,5 +66,30 @@ class EventCategoryManager
         }
 
         return $category;
+    }
+
+    /**
+     * @param EventCategory $category
+     * @param string        $locale
+     *
+     * @return EventCategory|null
+     * @throws NonUniqueResultException
+     */
+    public function getCategorySlugByLocale(EventCategory $category, $locale)
+    {
+        $slug = $category->getSlug();
+        if ($locale !== $this->defaultLocale) {
+            $slug = $this->ecr->findLocalizedSlugByLocaleAndCategory($locale, $category)->getQuery()->getSingleScalarResult();
+        }
+
+        return $slug;
+    }
+
+    /**
+     * @return EventCategory[]|null
+     */
+    public function getAvailableSortedByPriorityAndName()
+    {
+        return $this->ecr->findAvailableSortedByPriorityAndName()->getQuery()->getResult();
     }
 }

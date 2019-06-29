@@ -4,5 +4,6 @@ admin:
         team: 'Collaborators'
         settings: 'Settings'
         comunication: 'Comunications'
+        blog: 'Blog'
 toggle_navigation: 'Toggle navigation'
 message_close: 'Message close'

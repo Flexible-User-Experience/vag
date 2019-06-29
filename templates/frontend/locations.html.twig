@@ -1,9 +1,17 @@
 {% extends "frontend/base.html.twig" %}
 
+{% block title %}{{ parent() }} · {{ 'front.events.locations' | trans | title }}{% endblock %}
+
 {% block body %}
     <div class="jumbotron jumbotron-fluid jumbotron-homepage" style="background-image:url('{{ asset('build/number-pattern-line-color.png') }}');">
         <div class="container pt-2 pb-1">
-            <h1 class="display-6 text-white">{{ 'front.events.locations' | trans | title }}</h1>
+            <h1 class="display-6 text-white">
+                <nav aria-label="breadcrumb mb-0">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item active" aria-current="page">{{ 'front.events.locations' | trans | title }}</li>
+                    </ol>
+                </nav>
+            </h1>
         </div>
     </div>
     <div class="jumbotron jumbotron-fluid jumbotron-light">

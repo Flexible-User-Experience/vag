@@ -79,7 +79,7 @@ class EventActivityRepository extends ServiceEntityRepository
         return $this->findAvailable()
             ->andWhere('ea.showInHomepage = :homepage')
             ->setParameter('homepage', true)
-            ->orderBy('ea.begin', 'DESC')
+            ->orderBy('ea.begin', 'ASC')
         ;
     }
 
@@ -114,6 +114,28 @@ class EventActivityRepository extends ServiceEntityRepository
             ->andWhere('t.field = :field')
             ->setParameter('locale', $locale)
             ->setParameter('content', $slug)
+            ->setParameter('field', 'slug')
+        ;
+
+        return $qb;
+    }
+
+    /**
+     * @param string        $locale
+     * @param EventActivity $activity
+     *
+     * @return QueryBuilder
+     */
+    public function findLocalizedSlugByLocaleAndActivity(string $locale, EventActivity $activity)
+    {
+        $qb = $this->createQueryBuilder('ea')
+            ->select('t.content')
+            ->join('ea.translations', 't')
+            ->andWhere('t.locale = :locale')
+            ->andWhere('t.object = :activity')
+            ->andWhere('t.field = :field')
+            ->setParameter('locale', $locale)
+            ->setParameter('activity', $activity)
             ->setParameter('field', 'slug')
         ;
 

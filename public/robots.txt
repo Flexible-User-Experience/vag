@@ -1,0 +1,2 @@
+User-agent: *
+Sitemap: https://www.vag.cat/sitemap.default.xml

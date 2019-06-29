@@ -3,6 +3,7 @@
 namespace App\Manager;
 
 use App\Entity\EventActivity;
+use App\Entity\EventCategory;
 use App\Repository\EventActivityRepository;
 use Doctrine\ORM\NonUniqueResultException;
 use Symfony\Component\HttpFoundation\RequestStack;
@@ -48,7 +49,7 @@ class EventActivityManager
         $this->rs = $rs;
         $this->ear = $ear;
         $this->defaultLocale = $defaultLocale;
-        $this->locale = $this->rs->getCurrentRequest()->getLocale();
+        $this->locale = $this->rs->getCurrentRequest() ? $this->rs->getCurrentRequest()->getLocale() : $defaultLocale;
     }
 
     /**
@@ -66,5 +67,40 @@ class EventActivityManager
         }
 
         return $category;
+    }
+
+    /**
+     * @param EventActivity $activity
+     * @param string        $locale
+     *
+     * @return EventCategory|null
+     * @throws NonUniqueResultException
+     */
+    public function getActivitySlugByLocale(EventActivity $activity, $locale)
+    {
+        $slug = $activity->getSlug();
+        if ($locale !== $this->defaultLocale) {
+            $slug = $this->ear->findLocalizedSlugByLocaleAndActivity($locale, $activity)->getQuery()->getSingleScalarResult();
+        }
+
+        return $slug;
+    }
+
+    /**
+     * @param EventCategory $category
+     *
+     * @return EventActivity[]|null
+     */
+    public function getAvailableByCategorySortedByName(EventCategory $category)
+    {
+        return $this->ear->findAvailableByCategorySortedByName($category)->getQuery()->getResult();
+    }
+
+    /**
+     * @return EventActivity[]|null
+     */
+    public function getAvailableForHomepageSortedByBegin()
+    {
+        return $this->ear->findAvailableForHomepageSortedByBegin()->getQuery()->getResult();
     }
 }

@@ -58,6 +58,14 @@ abstract class AbstractEntity
     }
 
     /**
+     * @return string
+     */
+    public function getCreatedString(): string
+    {
+        return $this->getCreated() ? $this->getCreated()->format('d/m/Y H:i') : '---';
+    }
+
+    /**
      * @param DateTimeInterface|null $created
      *
      * @return $this

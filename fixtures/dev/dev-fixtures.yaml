@@ -196,6 +196,7 @@ App\Entity\EventCollaborator:
         shortDescription: '<sentence()>'
         description: '<text(500)>'
         showInHomepage: '<boolean(50)>'
+        isAvailable: true
     collaborator{2..8}:
         gender: '<numberBetween(0,1)>'
         name: '<firstName()>'
@@ -205,6 +206,7 @@ App\Entity\EventCollaborator:
         shortDescription: '<sentence()>'
         description: '<text(500)>'
         showInHomepage: '<boolean(50)>'
+        isAvailable: true
 
 App\Entity\Translation\EventCollaboratorTranslation:
     collaborator_translation_short_description_es_{1..8}:
@@ -236,8 +238,8 @@ App\Entity\EventActivity:
         end: '<dateTimeBetween("+3 month","+4 month")>'
         shortDescription: '<sentence()>'
         description: '<text(500)>'
-        isAvailable: '<boolean(75)>'
-        showInHomepage: '<boolean(25)>'
+        isAvailable: true
+        showInHomepage: true
         category: '@category1'
         location: '@location1'
         collaborators:
@@ -348,3 +350,48 @@ App\Entity\ContactMessage:
         phone: '<e164PhoneNumber()>'
         message: '<text(500)>'
         legalTermsHasBeenAccepted: '<boolean(99)>'
+
+App\Entity\ContactNewsletter:
+    contact_newsletter{1..2}:
+        name: '<name()>'
+        email: '<safeEmail()>'
+        phone: '<e164PhoneNumber()>'
+        legalTermsHasBeenAccepted: '<boolean(99)>'
+
+App\Entity\BlogCategory:
+    blog_category1:
+        name: 'art'
+        isAvailable: '<boolean(100)>'
+
+App\Entity\Translation\BlogCategoryTranslation:
+    blog_category_translation_name_es_1:
+        object: '@blog_category1'
+        locale: 'es'
+        field: 'name'
+        content: 'arte'
+    blog_category_translation_slug_es_1:
+        object: '@blog_category1'
+        locale: 'es'
+        field: 'slug'
+        content: 'arte'
+    blog_category_translation_name_en_1:
+        object: '@blog_category1'
+        locale: 'en'
+        field: 'name'
+        content: 'art'
+    blog_category_translation_slug_en_1:
+        object: '@blog_category1'
+        locale: 'en'
+        field: 'slug'
+        content: 'art'
+
+App\Entity\BlogPost:
+    blog_post{1..2}:
+        name: 'Blog post title <current()>'
+        slug: 'blog-post-title-<current()>'
+        published: '<dateTimeBetween("+3 month","+4 month")>'
+        shortDescription: '<sentence()>'
+        description: '<sentence()>'
+        isAvailable: '<boolean(100)>'
+        tags:
+            - "@blog_category1"

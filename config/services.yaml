@@ -7,6 +7,9 @@ parameters:
     locale: 'ca'
     app_array_locales: ['ca', 'es', 'en']
     app_locales: ca|es|en
+    app_mailer_sender_address: '%env(MAILER_SENDER_ADDRESS)%'
+    app_mailer_sender_name: '%env(MAILER_SENDER_NAME)%'
+    google_recaptcha_site_key: '%env(GOOGLE_RECAPTCHA_SITE_KEY)%'
 
 # Services
 services:
@@ -17,6 +20,7 @@ services:
         bind:
             $locales: '%app_locales%'
             $defaultLocale: '%locale%'
+            $mailerSenderAddress: '%app_mailer_sender_address%'
     App\:
         resource: '../src/*'
         exclude: '../src/{DependencyInjection,Entity,Migrations,Tests,Kernel.php}'

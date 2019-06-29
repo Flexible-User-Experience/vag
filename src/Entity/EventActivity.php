@@ -83,7 +83,7 @@ class EventActivity extends AbstractEntity
     private $end;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=1024)
      * @Gedmo\Translatable
      *
      * @var string
@@ -99,6 +99,21 @@ class EventActivity extends AbstractEntity
     private $description;
 
     /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     *
+     * @var string
+     */
+    private $language;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     * @Gedmo\Translatable
+     *
+     * @var string
+     */
+    private $target;
+
+    /**
      * @ORM\Column(type="boolean", nullable=true, options={"default"=1})
      *
      * @var bool
@@ -106,11 +121,32 @@ class EventActivity extends AbstractEntity
     private $isAvailable;
 
     /**
+     * @ORM\Column(type="boolean", nullable=true, options={"default"=0})
+     *
+     * @var bool
+     */
+    private $isTranslated;
+
+    /**
      * @ORM\Column(type="boolean", nullable=true, options={"default"=1})
      *
      * @var bool
      */
     private $showInHomepage;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     *
+     * @var integer
+     */
+    private $ticketsAmount;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     *
+     * @var integer
+     */
+    private $ticketsSold;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\EventCategory", inversedBy="eventActivities")
@@ -222,6 +258,114 @@ class EventActivity extends AbstractEntity
         }
 
         return $result;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getLanguage(): ?string
+    {
+        return $this->language;
+    }
+
+    /**
+     * @param string|null $language
+     *
+     * @return EventActivity
+     */
+    public function setLanguage(?string $language): self
+    {
+        $this->language = $language;
+
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getTarget(): ?string
+    {
+        return $this->target;
+    }
+
+    /**
+     * @param string|null $target
+     *
+     * @return EventActivity
+     */
+    public function setTarget(?string $target): self
+    {
+        $this->target = $target;
+
+        return $this;
+    }
+
+    /**
+     * @return bool|null
+     */
+    public function getIsTranslated(): ?bool
+    {
+        return $this->isTranslated;
+    }
+
+    /**
+     * @return bool|null
+     */
+    public function isTranslated(): ?bool
+    {
+        return $this->getIsTranslated();
+    }
+
+    /**
+     * @param bool|null $isTranslated
+     *
+     * @return $this
+     */
+    public function setIsTranslated(?bool $isTranslated): self
+    {
+        $this->isTranslated = $isTranslated;
+
+        return $this;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getTicketsAmount(): ?int
+    {
+        return $this->ticketsAmount;
+    }
+
+    /**
+     * @param int|null $ticketsAmount
+     *
+     * @return EventActivity
+     */
+    public function setTicketsAmount(?int $ticketsAmount): self
+    {
+        $this->ticketsAmount = $ticketsAmount;
+
+        return $this;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getTicketsSold(): ?int
+    {
+        return $this->ticketsSold;
+    }
+
+    /**
+     * @param int|null $ticketsSold
+     *
+     * @return EventActivity
+     */
+    public function setTicketsSold(?int $ticketsSold): self
+    {
+        $this->ticketsSold = $ticketsSold;
+
+        return $this;
     }
 
     /**

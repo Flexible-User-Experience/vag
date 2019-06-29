@@ -1,9 +1,18 @@
 {% extends "frontend/base.html.twig" %}
 
+{% block title %}{{ parent() }} · {{ activity.name }}{% endblock %}
+
 {% block body %}
     <div class="jumbotron jumbotron-fluid jumbotron-homepage" style="background-image:url('{{ asset('build/creative-light-abstract-glowing.png') }}');">
         <div class="container pt-2 pb-1">
-            <h1 class="display-6 text-white">{{ activity.name | title }}</h1>
+            <h1 class="display-6 text-white">
+                <nav aria-label="breadcrumb mb-0">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{{ path('front_activities') }}" class="breadcrumb-anchor">{{ 'front.events.activities' | trans | title }}</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">{{ activity.name }}</li>
+                    </ol>
+                </nav>
+            </h1>
         </div>
     </div>
     <div class="jumbotron jumbotron-fluid mb-0">
@@ -13,14 +22,23 @@
                     <div class="col-5">
                         <img src="{{ vich_uploader_asset(activity, 'imageFile') | imagine_filter('800x600') }}" class="img-fluid rounded" alt="{{ activity.name }}">
                     </div>
-                    <div class="col-7">
-                        {{ activity.description | raw }}
-                    </div>
-                {% else %}
-                    <div class="col-12">
-                        {{ activity.description | raw }}
-                    </div>
                 {% endif %}
+                <div class="{% if activity.imageName %}col-7{% else %}col-12{% endif %}">
+                    {{ activity.description | raw }}
+                    <hr>
+                    {% if activity.target %}
+                        <p class="text-muted mb-0">{{ activity.target }}</p>
+                    {% endif %}
+                    {% if activity.language %}
+                        {% set lang = 'admin.label.language.' ~ activity.language %}
+                        <p class="mt-0 mb-0"><span class="badge badge-pill badge-secondary mb-2"><i class="fas fa-language"></i> {{ lang | trans }}</span></p>
+                        {% if activity.isTranslated %}
+                            <p class="mt-0 mb-0">{{ 'admin.label.is_translated' | trans | lower }} <i class="fas fa-check text-success"></i></p>
+                        {% else %}
+                            <p class="mt-0 mb-0">{{ 'admin.label.is_translated' | trans | lower }} <i class="fas fa-times text-danger"></i></p>
+                        {% endif %}
+                    {% endif %}
+                </div>
             </div>
         </div>
     </div>
@@ -29,12 +47,12 @@
             <div class="row">
                 {# collaborators #}
                 {% for collaborator in activity.collaborators %}
-                    <div class="col-4 col-md-3">
+                    <div class="col-6 col-sm-4 col-md-3">
                         <div class="card bg-light border-dark mt-3">
                             {% if collaborator.imageName %}
                                 <img src="{{ vich_uploader_asset(collaborator, 'imageFile') | imagine_filter('360x360') }}" class="card-img-top" alt="{{ collaborator.fullname }}">
                                 <div class="card-img-overlay">
-                                    <h5 class="card-title"><i class="fas fa-comment text-warning"></i></h5>
+                                    <h5 class="card-title"><a href="{{ path('front_collaborator_detail', {slug: collaborator.slug}) }}"><i class="fas fa-2x fa-comment text-warning"></i></a></h5>
                                 </div>
                             {% endif %}
                             <div class="card-body">
@@ -45,12 +63,12 @@
                     </div>
                 {% endfor %}
                 {# location #}
-                <div class="col-4 col-md-3">
+                <div class="col-6 col-sm-4 col-md-3">
                     <div class="card bg-light border-dark mt-3">
                         {% if activity.location.imageName %}
                             <img src="{{ vich_uploader_asset(activity.location, 'imageFile') | imagine_filter('360x360') }}" class="card-img-top" alt="{{ activity.location.place }}">
                             <div class="card-img-overlay">
-                                <h5 class="card-title"><i class="fas fa-map-marker-alt text-warning"></i></h5>
+                                <h5 class="card-title"><a href="{{ path('front_location_detail', {slug: activity.location.slug}) }}"><i class="fas fa-2x fa-map-marker-alt text-warning"></i></a></h5>
                             </div>
                         {% endif %}
                         <div class="card-body">
@@ -58,29 +76,85 @@
                         </div>
                     </div>
                 </div>
-                {# schedule #}
-                <div class="col-4 col-md-3">
-                    <div class="card text-center text-white bg-secondary border-dark mt-3">
-                        {% if activity.isOnlyOneDayLong %}
-                            {# one day activity #}
-                            <div class="card-header">
-                                <h5 class="card-title mb-0"><i class="far fa-calendar-alt text-warning"></i></h5>
-                                <p class="mt-0 mb-0">{{ activity.begin | draw_i18n_date_string }}</p>
-                            </div>
-                            <div class="card-footer">
-                                <h5 class="card-title mb-0"><i class="far fa-clock text-warning"></i></h5>
-                                <p class="mt-0 mb-0">{{ activity.begin | date('H:i') }} - {{ activity.end | date('H:i') }}</p>
-                            </div>
-                        {% else %}
-                            {# more than one day activity #}
-                            <div class="card-header">
-                                <h5 class="card-title mb-0"><i class="far fa-calendar-alt text-warning"></i></h5>
-                                <p class="mt-0 mb-0">{{ activity.begin | draw_i18n_date_string }} - {{ activity.end | draw_i18n_date_string }}</p>
-                            </div>
-                        {% endif %}
+                {% if activity.collaborators | length > 0 %}
+                    {# schedule #}
+                    <div class="col-6 col-sm-4 col-md-3">
+                        <div class="card text-center text-white bg-secondary border-dark mt-3">
+                            {% if activity.isOnlyOneDayLong %}
+                                {# one day activity #}
+                                <div class="card-header">
+                                    <h5 class="card-title mb-0"><i class="far fa-calendar-alt text-warning"></i></h5>
+                                    <p class="mt-0 mb-0">{{ activity.begin | draw_i18n_date_string }}</p>
+                                </div>
+                                <div class="card-footer">
+                                    <h5 class="card-title mb-0"><i class="far fa-clock text-warning"></i></h5>
+                                    <p class="mt-0 mb-0">{{ activity.begin | date('H:i') }} - {{ activity.end | date('H:i') }}</p>
+                                </div>
+                            {% else %}
+                                {# more than one day activity #}
+                                <div class="card-header">
+                                    <h5 class="card-title mb-0"><i class="far fa-calendar-alt text-warning"></i></h5>
+                                    <p class="mt-0 mb-0">{{ activity.begin | draw_i18n_date_string }} - {{ activity.end | draw_i18n_date_string }}</p>
+                                </div>
+                            {% endif %}
+                        </div>
                     </div>
-                </div>
+                    {# map #}
+                    <div class="col-12 col-sm-8 col-md-6">
+                        <div class="card bg-light border-dark mt-3" style="height:319px;">
+                            <div id="gmap" style="height:100%;"></div>
+                        </div>
+                    </div>
+                {% else %}
+                    {# map #}
+                    <div class="col-12 col-sm-8 col-md-6">
+                        <div class="card bg-light border-dark mt-3" style="height:319px;">
+                            <div id="gmap" style="height:100%;"></div>
+                        </div>
+                    </div>
+                    {# schedule #}
+                    <div class="col-6 col-sm-4 col-md-3">
+                        <div class="card text-center text-white bg-secondary border-dark mt-3">
+                            {% if activity.isOnlyOneDayLong %}
+                                {# one day activity #}
+                                <div class="card-header">
+                                    <h5 class="card-title mb-0"><i class="far fa-calendar-alt text-warning"></i></h5>
+                                    <p class="mt-0 mb-0">{{ activity.begin | draw_i18n_date_string }}</p>
+                                </div>
+                                <div class="card-footer">
+                                    <h5 class="card-title mb-0"><i class="far fa-clock text-warning"></i></h5>
+                                    <p class="mt-0 mb-0">{{ activity.begin | date('H:i') }} - {{ activity.end | date('H:i') }}</p>
+                                </div>
+                            {% else %}
+                                {# more than one day activity #}
+                                <div class="card-header">
+                                    <h5 class="card-title mb-0"><i class="far fa-calendar-alt text-warning"></i></h5>
+                                    <p class="mt-0 mb-0">{{ activity.begin | draw_i18n_date_string }} - {{ activity.end | draw_i18n_date_string }}</p>
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endif %}
             </div>
         </div>
     </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key={{ google_maps_api_key }}&hl={{ app.request.locale }}&callback=initMap"></script>
+    <script type="text/javascript">
+        let map;
+        let marker;
+        function initMap() {
+            map = new google.maps.Map(document.getElementById('gmap'), {
+                center: {lat: {{ activity.location.latitude }}, lng: {{ activity.location.longitude}}},
+                zoom: 18
+            });
+            marker = new google.maps.Marker({
+                position: {lat: {{ activity.location.latitude }}, lng: {{ activity.location.longitude}}},
+                map: map
+            });
+        }
+    </script>
 {% endblock %}

@@ -39,11 +39,33 @@ class EventCollaboratorRepository extends ServiceEntityRepository
     /**
      * @return QueryBuilder
      */
+    public function findAvailableSortedBySurnameAndName()
+    {
+        return $this->findAllSortedBySurnameAndName()
+            ->andWhere('ec.isAvailable = :isAvailable')
+            ->setParameter('isAvailable', true)
+        ;
+    }
+
+    /**
+     * @return QueryBuilder
+     */
     public function findShowInHomepageSortedBySurnameAndName()
     {
         return $this->findAllSortedBySurnameAndName()
             ->andWhere('ec.showInHomepage = :showInHomepage')
             ->setParameter('showInHomepage', true)
+        ;
+    }
+
+    /**
+     * @return QueryBuilder
+     */
+    public function findAvailableAndShowInHomepageSortedBySurnameAndName()
+    {
+        return $this->findShowInHomepageSortedBySurnameAndName()
+            ->andWhere('ec.isAvailable = :isAvailable')
+            ->setParameter('isAvailable', true)
         ;
     }
 }

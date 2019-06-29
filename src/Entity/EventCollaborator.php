@@ -6,6 +6,7 @@ use App\Entity\Traits\DescriptionTrait;
 use App\Entity\Traits\EmailTrait;
 use App\Entity\Traits\GenderTrait;
 use App\Entity\Traits\ImageAttributesTrait;
+use App\Entity\Traits\IsAvailableTrait;
 use App\Entity\Traits\JobTrait;
 use App\Entity\Traits\LinkTrait;
 use App\Entity\Traits\NameTrait;
@@ -33,7 +34,7 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
  */
 class EventCollaborator extends AbstractEntity
 {
-    use GenderTrait, NameTrait, SurnameTrait, SlugTrait, JobTrait, EmailTrait, PhoneTrait, ImageAttributesTrait, ShortDescriptionTrait, DescriptionTrait, ShowInHomepageTrait, LinkTrait;
+    use GenderTrait, NameTrait, SurnameTrait, SlugTrait, JobTrait, EmailTrait, PhoneTrait, ImageAttributesTrait, ShortDescriptionTrait, DescriptionTrait, ShowInHomepageTrait, LinkTrait, IsAvailableTrait;
 
     /**
      * @ORM\Column(type="smallint", nullable=true)
@@ -78,6 +79,13 @@ class EventCollaborator extends AbstractEntity
      * @var string
      */
     private $company;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     *
+     * @var string
+     */
+    private $city;
 
     /**
      * @Vich\UploadableField(mapping="collaborator", fileNameProperty="imageName", size="imageSize")
@@ -147,6 +155,13 @@ class EventCollaborator extends AbstractEntity
     private $showInHomepage;
 
     /**
+     * @ORM\Column(type="boolean", nullable=true, options={"default"=1})
+     *
+     * @var bool
+     */
+    private $isAvailable;
+
+    /**
      * @ORM\ManyToMany(targetEntity="App\Entity\EventActivity", mappedBy="collaborators")
      *
      * @var ArrayCollection
@@ -189,6 +204,26 @@ class EventCollaborator extends AbstractEntity
     public function setCompany(?string $company): self
     {
         $this->company = $company;
+
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getCity(): ?string
+    {
+        return $this->city;
+    }
+
+    /**
+     * @param string|null $city
+     *
+     * @return EventCollaborator
+     */
+    public function setCity(?string $city): self
+    {
+        $this->city = $city;
 
         return $this;
     }

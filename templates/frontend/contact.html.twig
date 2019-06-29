@@ -1,5 +1,18 @@
 {% extends "frontend/base.html.twig" %}
 
+{% block title %}{{ parent() }} · {{ 'front.menu.contact' | trans | title }}{% endblock %}
+
+{% form_theme form _self %}
+
+{% block _contact_message_privacy_widget %}
+    <div class="checkbox">
+        <input type="checkbox" id="contact_message_privacy_checkbox" {{ block('widget_attributes') }}/>
+        <label class="control-label my-privacy-label" for="contact_message_privacy_checkbox">
+            {{ 'front.legal.privacy_policy_terms' | trans({'%href%': path('front_privacy_policy'), '%anchor%': 'front.menu.privacy_policy' | trans}, 'messages') | raw }}
+        </label>
+    </div>
+{% endblock %}
+
 {% block body %}
     <div class="jumbotron jumbotron-fluid jumbotron-homepage" style="background-image:url('{{ asset('build/creative-light-abstract-glowing-texture.png') }}');">
         <div class="container pt-2 pb-1">
@@ -9,12 +22,52 @@
     <div class="jumbotron jumbotron-fluid jumbotron-light">
         <div class="container">
             <div class="row">
-                <div class="col-sm-12">
-                    <div class="alert alert-warning mb-0" role="alert">
-                        <i class="fa exclamation-triangle"></i> {{ 'front.events.empty_warning' | trans }}
+                <div class="col-12 col-sm-6">
+                    <h5 class="mt-0 mb-4"><i class="fas fa-envelope-open-text"></i> feel free to contact us</h5>
+                    {% for label, messages in app.flashes %}
+                        {% for message in messages %}
+                            <div class="flash-{{ label }}">
+                                <div class="alert alert-{{ label }}" role="alert">
+                                    <i class="far fa-paper-plane"></i> {{ message }}
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {% endfor %}
+                    {% if not hideForm %}
+                        {{ form(form) }}
+                    {% endif %}
+                </div>
+                <div class="col-12 col-sm-6">
+                    <h5 class="mt-0 mb-4"><i class="fas fa-rocket"></i> space invaders are welcome!</h5>
+                    <div id="gmap" style="height:500px;" class="d-block mb-2"></div>
+                    <div class="d-block">
+                        <address>
+                            <strong>Espai Kowo</strong><br>
+                            C. Primer de Maig, 1 3er B<br>
+                            43870 Amposta (Tarragona)<br>
+                        </address>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key={{ google_maps_api_key }}&hl={{ app.request.locale }}&callback=initMap"></script>
+    <script type="text/javascript">
+        let map;
+        let marker;
+        function initMap() {
+            map = new google.maps.Map(document.getElementById('gmap'), {
+                center: {lat: 40.712174, lng: 0.578266},
+                zoom: 4
+            });
+            marker = new google.maps.Marker({
+                position: {lat: 40.712174, lng: 0.578266},
+                map: map
+            });
+        }
+    </script>
 {% endblock %}
