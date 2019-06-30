@@ -96,14 +96,14 @@
                                     {% endif %}
                                 </td>
                                 <td>
-                                    {% if secondFridayConference.eventbriteId %}
-                                        <button id="eventbrite-button-id-{{ secondFridayConference.eventbriteId }}" class="btn btn-warning" type="button" data-toggle="modal"><i class="fas fa-ticket-alt"></i> {{ 'front.homepage.lock_entrance' | trans | capitalize }} · 0 €</button>
+                                    {% if saturdayRoundTable.eventbriteId %}
+                                        <button id="eventbrite-button-id-{{ saturdayRoundTable.eventbriteId }}" class="btn btn-warning" type="button" data-toggle="modal"><i class="fas fa-ticket-alt"></i> {{ 'front.homepage.lock_entrance' | trans | capitalize }} · 0 €</button>
                                         <script type="text/javascript">
                                             window.EBWidgets.createWidget({
                                                 widgetType: "checkout",
-                                                eventId: "{{ secondFridayConference.eventbriteId }}",
+                                                eventId: "{{ saturdayRoundTable.eventbriteId }}",
                                                 modal: true,
-                                                modalTriggerElementId: "eventbrite-button-id-{{ secondFridayConference.eventbriteId }}",
+                                                modalTriggerElementId: "eventbrite-button-id-{{ saturdayRoundTable.eventbriteId }}",
                                             });
                                         </script>
                                     {% endif %}
