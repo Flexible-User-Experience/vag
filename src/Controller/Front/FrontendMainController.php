@@ -95,11 +95,19 @@ class FrontendMainController extends AbstractController
         $firstFridayConference = $ear->find(2);
         $secondFridayConference = $ear->find(1);
         $fridayShow = $ear->find(10);
+        $firstSaturdayWorkshop = $ear->find(5);
+        $secondSaturdayWorkshop = $ear->find(9);
+        $thirdSaturdayWorkshop = $ear->find(7);
+        $fourthSaturdayWorkshop = $ear->find(8);
 
         return $this->render('frontend/tickets.html.twig', [
             'firstFridayConference' => $firstFridayConference,
             'secondFridayConference' => $secondFridayConference,
             'fridayShow' => $fridayShow,
+            'firstSaturdayWorkshop' => $firstSaturdayWorkshop,
+            'secondSaturdayWorkshop' => $secondSaturdayWorkshop,
+            'thirdSaturdayWorkshop' => $thirdSaturdayWorkshop,
+            'fourthSaturdayWorkshop' => $fourthSaturdayWorkshop,
         ]);
     }
 

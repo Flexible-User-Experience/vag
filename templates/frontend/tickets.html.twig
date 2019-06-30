@@ -16,18 +16,31 @@
                         <thead>
                         <tr>
                             <th scope="col"></th>
-                            <th scope="col" class="text-center">04/10/2019</th>
-                            <th scope="col" class="text-center">05/10/2019</th>
+                            <th scope="col" class="text-center">{{ firstFridayConference.begin | draw_i18n_date_string }}</th>
+                            <th scope="col" class="text-center">{{ firstSaturdayWorkshop.begin | draw_i18n_date_string }}</th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr class="bg-warning">
-                            <th scope="row" colspan="3" class="text-center">matí</th>
+                            <th scope="row" colspan="3" class="text-center">{{ 'front.calendar.morning' | trans }}</th>
                         </tr>
                         <tr>
-                            <th scope="row" class="text-center">10:00h</th>
+                            <th scope="row" class="text-center">{{ firstSaturdayWorkshop.begin | date('H:i') }}h</th>
                             <td></td>
-                            <td>Tallers Auditori</td>
+                            <td>
+                                {{ firstSaturdayWorkshop.name | truncate(30, true) }}<br>
+                                <span class="badge badge-danger"><i class="fas fa-user"></i> {{ firstSaturdayWorkshop.collaborators[0].fullname }}</span><br>
+                                <span class="badge badge-primary"><i class="fas fa-map-marker-alt"></i> {{ firstSaturdayWorkshop.location.place }}</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row" class="text-center">{{ secondSaturdayWorkshop.begin | date('H:i') }}h</th>
+                            <td></td>
+                            <td>
+                                {{ secondSaturdayWorkshop.name | truncate(30, true) }}<br>
+                                <span class="badge badge-danger"><i class="fas fa-user"></i> {{ secondSaturdayWorkshop.collaborators[0].fullname }}</span><span class="ml-1 badge badge-danger"><i class="fas fa-user"></i> {{ secondSaturdayWorkshop.collaborators[1].fullname }}</span><br>
+                                <span class="badge badge-primary"><i class="fas fa-map-marker-alt"></i> {{ secondSaturdayWorkshop.location.place }}</span>
+                            </td>
                         </tr>
                         <tr class="bg-info">
                             <th scope="row" colspan="3" class="text-center">tarde</th>
@@ -43,9 +56,9 @@
                             <td>Projecció Documental</td>
                         </tr>
                         <tr>
-                            <th scope="row" class="text-center">19:30h</th>
+                            <th scope="row" class="text-center">{{ firstFridayConference.begin | date('H:i') }}h</th>
                             <td>
-                                {{ firstFridayConference.name }}<br>
+                                {{ firstFridayConference.name | truncate(30, true) }}<br>
                                 <span class="badge badge-danger"><i class="fas fa-user"></i> {{ firstFridayConference.collaborators[0].fullname }}</span><br>
                                 <span class="badge badge-primary"><i class="fas fa-map-marker-alt"></i> {{ firstFridayConference.location.place }}</span>
                             </td>
@@ -54,7 +67,7 @@
                         <tr>
                             <th scope="row" class="text-center">20:30h</th>
                             <td>
-                                {{ secondFridayConference.name }}<br>
+                                {{ secondFridayConference.name | truncate(30, true) }}<br>
                                 <span class="badge badge-danger"><i class="fas fa-user"></i> {{ secondFridayConference.collaborators[0].fullname }}</span><br>
                                 <span class="badge badge-primary"><i class="fas fa-map-marker-alt"></i> {{ secondFridayConference.location.place }}</span>
                             </td>
@@ -66,7 +79,7 @@
                         <tr>
                             <th scope="row" class="text-center">22:30h</th>
                             <td>
-                                {{ fridayShow.name }}<br>
+                                {{ fridayShow.name | truncate(30, true) }}<br>
                                 <span class="badge badge-primary"><i class="fas fa-map-marker-alt"></i> {{ fridayShow.location.place }}</span>
                             </td>
                             <td><i class="far fa-question"></i></td>

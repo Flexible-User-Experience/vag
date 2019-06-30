@@ -34,6 +34,10 @@ front:
         read_more: 'llegir més'
         read_more_activities: 'mostrar activitats'
         empty_warning: 'en breu, sigueu pacients...'
+    calendar:
+        morning: 'matí'
+        afternoon: 'tarda'
+        night: 'nit'
     carrousel:
         previous: 'anterior'
         next: 'següent'

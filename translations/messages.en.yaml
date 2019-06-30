@@ -34,6 +34,10 @@ front:
         read_more: 'read more'
         read_more_activities: 'show activities'
         empty_warning: 'coming soon, be patient...'
+    calendar:
+        morning: 'morning'
+        afternoon: 'afternoon'
+        night: 'night'
     carrousel:
         previous: 'previous'
         next: 'next'
