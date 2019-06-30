@@ -8,16 +8,12 @@
         <br>
         <button id="eventbrite-button-id-{{ item.eventbriteId }}" class="btn btn-warning mt-3" type="button" data-toggle="modal"><i class="fas fa-ticket-alt"></i> {{ 'front.homepage.buy_tickets' | trans }}</button>
         <script type="text/javascript">
-//            $(document).ready(function() {
-                window.EBWidgets.createWidget({
-                    widgetType: "checkout",
-                    eventId: "{{ item.eventbriteId }}",
-                    modal: true,
-                    iframeContainerId: "eventbrite-button-id-{{ item.eventbriteId }}",
-                    iframeContainerHeight: 425,
-                    iFrameAutoAdapt: 100
-                });
-//            });
+            window.EBWidgets.createWidget({
+                widgetType: "checkout",
+                eventId: "{{ item.eventbriteId }}",
+                modal: true,
+                modalTriggerElementId: "eventbrite-button-id-{{ item.eventbriteId }}",
+            });
         </script>
     {% endif %}
 </td>
