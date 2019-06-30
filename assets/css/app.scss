@@ -123,6 +123,29 @@ $enable-responsive-font-sizes: true;
   }
 }
 
+// anchors
+a {
+  div.card {
+    div.card-body {
+      h5.card-title {
+        color: $app-color-black;
+        &:hover {
+          color: $app-color-black;
+          text-decoration: none;
+        }
+      }
+    }
+  }
+}
+
+h5.anchor {
+  color: $app-color-black;
+  &:hover {
+    color: $app-color-black;
+    text-decoration: none;
+  }
+}
+
 .dark-footer {
   background-color: $app-color-footer;
 }
