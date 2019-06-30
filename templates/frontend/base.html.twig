@@ -16,6 +16,7 @@
         <title>{% block title %}VAG{% endblock %}</title>
         <link rel="icon" type="image/png" href="{{ asset('favicon.png') }}">
         {% block stylesheets %}{{ encore_entry_link_tags('app') }}{% endblock %}
+        {% block javascripts_head %}{% endblock %}
     </head>
     <body>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark-transparent fixed-top">

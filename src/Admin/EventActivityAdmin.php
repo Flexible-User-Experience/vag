@@ -182,6 +182,14 @@ final class EventActivityAdmin extends AbstractAdmin
                     'disabled' => true,
                 ]
             )
+            ->add(
+                'eventbriteId',
+                TextType::class,
+                [
+                    'label' => 'admin.label.eventbrite_id',
+                    'required' => false,
+                ]
+            )
             ->end()
             ->with('admin.with.controls', ['class' => 'col-md-4'])
             ->add(
@@ -348,6 +356,13 @@ final class EventActivityAdmin extends AbstractAdmin
                 ]
             )
             ->add(
+                'eventbriteId',
+                null,
+                [
+                    'label' => 'admin.label.eventbrite_id',
+                ]
+            )
+            ->add(
                 'showInHomepage',
                 null,
                 [
@@ -417,6 +432,14 @@ final class EventActivityAdmin extends AbstractAdmin
                     'sortable' => true,
                     'sort_field_mapping' => array('fieldName' => 'place'),
                     'sort_parent_association_mappings' => array(array('fieldName' => 'location')),
+                ]
+            )
+            ->add(
+                'eventbriteId',
+                null,
+                [
+                    'label' => 'admin.label.eventbrite_id',
+                    'editable' => true,
                 ]
             )
             ->add(

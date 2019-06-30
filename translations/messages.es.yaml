@@ -34,6 +34,11 @@ front:
         read_more: 'leer más'
         read_more_activities: 'mostrar actividades'
         empty_warning: 'próximamente, se paciente...'
+    calendar:
+        to: 'a'
+        morning: 'mañana'
+        afternoon: 'tarde'
+        night: 'noche'
     carrousel:
         previous: 'anterior'
         next: 'siguiente'
@@ -96,6 +101,7 @@ admin:
         tickets_amount: 'Cantidad de entradas'
         tickets_sold: 'Entradas vendidas'
         tickets_left: 'Entradas disponibles'
+        eventbrite_id: 'Eventbrite ID'
         blog_tags: 'Etiquetas'
         category: 'Categoría'
         location: 'Ubicación'

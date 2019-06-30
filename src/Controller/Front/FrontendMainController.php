@@ -10,6 +10,7 @@ use App\Enum\UserRoleEnum;
 use App\Form\ContactNewsletterType;
 use App\Manager\EventActivityManager;
 use App\Manager\EventCategoryManager;
+use App\Repository\EventActivityRepository;
 use Doctrine\ORM\NonUniqueResultException;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Component\HttpFoundation\Request;
@@ -85,11 +86,37 @@ class FrontendMainController extends AbstractController
     /**
      * @Route({"ca": "/entrades", "es": "/entradas", "en": "/tickets"}, name="front_tickets")
      *
+     * @param EventActivityRepository $ear
+     *
      * @return Response
      */
-    public function tickets()
+    public function tickets(EventActivityRepository $ear)
     {
-        return $this->render('frontend/tickets.html.twig', []);
+        $firstFridayConference = $ear->find(2);
+        $secondFridayConference = $ear->find(1);
+        $fridayShow = $ear->find(10);
+        $firstSaturdayWorkshop = $ear->find(5);
+        $secondSaturdayWorkshop = $ear->find(9);
+        $thirdSaturdayWorkshop = $ear->find(7);
+        $fourthSaturdayWorkshop = $ear->find(8);
+        $firstSaturdayConference = null; // TODO
+        $saturdayDocumentaryFilm = $ear->find(3);
+        $saturdayRoundTable = $ear->find(12);
+        $saturdayShow = null; // TODO
+
+        return $this->render('frontend/tickets.html.twig', [
+            'firstFridayConference' => $firstFridayConference,
+            'secondFridayConference' => $secondFridayConference,
+            'fridayShow' => $fridayShow,
+            'firstSaturdayWorkshop' => $firstSaturdayWorkshop,
+            'secondSaturdayWorkshop' => $secondSaturdayWorkshop,
+            'thirdSaturdayWorkshop' => $thirdSaturdayWorkshop,
+            'fourthSaturdayWorkshop' => $fourthSaturdayWorkshop,
+            'firstSaturdayConference' => $firstSaturdayConference,
+            'saturdayDocumentaryFilm' => $saturdayDocumentaryFilm,
+            'saturdayRoundTable' => $saturdayRoundTable,
+            'saturdayShow' => $saturdayShow,
+        ]);
     }
 
     /**

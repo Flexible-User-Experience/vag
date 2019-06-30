@@ -42,7 +42,19 @@
             </div>
         </div>
     </div>
-    <div class="jumbotron jumbotron-fluid jumbotron-light mb-0">
+    {% if activity.eventbriteId %}
+        <div class="jumbotron jumbotron-fluid jumbotron-light mb-0">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <h2 class="display-6 mt-0">{{ 'admin.with.tickets' | trans }}</h2>
+                        <div id="eventbrite-widget-trigger"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+    <div class="jumbotron jumbotron-fluid {% if not activity.eventbriteId %}jumbotron-light {% endif %}mb-0">
         <div class="container">
             <div class="row">
                 {# collaborators #}
@@ -157,4 +169,17 @@
             });
         }
     </script>
+    {% if activity.eventbriteId %}
+        <script src="https://www.eventbrite.com/static/widgets/eb_widgets.js"></script>
+        <script type="text/javascript">
+            window.EBWidgets.createWidget({
+                widgetType: "checkout",
+                eventId: "{{ activity.eventbriteId }}",
+                modal: false,
+                iframeContainerId: "eventbrite-widget-trigger",
+                iframeContainerHeight: 425,
+                iFrameAutoAdapt: 100
+            });
+        </script>
+    {% endif %}
 {% endblock %}
