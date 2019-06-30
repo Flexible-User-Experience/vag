@@ -99,3 +99,8 @@
         </div>
     </div>
 {% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="https://www.eventbrite.com/static/widgets/eb_widgets.js"></script>
+{% endblock %}
