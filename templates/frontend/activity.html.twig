@@ -42,7 +42,19 @@
             </div>
         </div>
     </div>
-    <div class="jumbotron jumbotron-fluid jumbotron-light mb-0">
+    {% if activity.eventbriteId %}
+        <div class="jumbotron jumbotron-fluid jumbotron-light mb-0">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <h2 class="display-6 mt-0">{{ 'admin.with.tickets' | trans }}</h2>
+                        <div id="eventbrite-widget-trigger"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+    <div class="jumbotron jumbotron-fluid {% if not activity.eventbriteId %}jumbotron-light {% endif %}mb-0">
         <div class="container">
             <div class="row">
                 {# collaborators #}
@@ -138,17 +150,6 @@
             </div>
         </div>
     </div>
-    {% if activity.eventbriteId %}
-        <div class="jumbotron jumbotron-fluid mb-0">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <div id="eventbrite-widget-trigger"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    {% endif %}
 {% endblock %}
 
 {% block javascripts %}
