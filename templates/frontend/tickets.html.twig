@@ -74,7 +74,7 @@
                                 {{ firstFridayConference.end | date('H:i') }}h
                             </th>
                             {% include "frontend/includes/timetable_ticket_cell.html.twig" with {item: firstFridayConference} %}
-                            {% include "frontend/includes/timetable_ticket_cell.html.twig" with {item: saturdayRoundTable, rowspan: 2} %}
+                            {% include "frontend/includes/timetable_ticket_cell.html.twig" with {item: saturdayRoundTable, rowspan: 2, hide_tickets_button: true} %}
                         </tr>
                         <tr>
                             <th scope="row" class="text-center align-middle">
