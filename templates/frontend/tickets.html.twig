@@ -57,7 +57,7 @@
                                     19:00h
                                 </th>
                                 <td></td>
-                                <td><i class="far fa-question"></i></td>
+                                <td class="text-center align-middle"><i class="far fa-question"></i></td>
                             </tr>
                             <tr>
                                 <th scope="row" class="text-center align-middle">
@@ -84,7 +84,7 @@
                                 <th scope="row" class="text-center align-middle"></th>
                                 <td>
                                     {% if firstFridayConference.eventbriteId %}
-                                        <button id="eventbrite-button-id-{{ firstFridayConference.eventbriteId }}" class="btn btn-warning" type="button" data-toggle="modal"><i class="fas fa-ticket-alt"></i> {{ 'front.homepage.lock_entrance' | trans | capitalize }} · 0 €</button>
+                                        <button id="eventbrite-button-id-{{ firstFridayConference.eventbriteId }}" class="btn btn-warning btn-block" type="button" data-toggle="modal"><i class="fas fa-ticket-alt"></i> {{ 'front.homepage.lock_entrance' | trans | capitalize }} · 0 €</button>
                                         <script type="text/javascript">
                                             window.EBWidgets.createWidget({
                                                 widgetType: "checkout",
@@ -97,7 +97,7 @@
                                 </td>
                                 <td>
                                     {% if saturdayRoundTable.eventbriteId %}
-                                        <button id="eventbrite-button-id-{{ saturdayRoundTable.eventbriteId }}" class="btn btn-warning" type="button" data-toggle="modal"><i class="fas fa-ticket-alt"></i> {{ 'front.homepage.lock_entrance' | trans | capitalize }} · 0 €</button>
+                                        <button id="eventbrite-button-id-{{ saturdayRoundTable.eventbriteId }}" class="btn btn-warning btn-block" type="button" data-toggle="modal"><i class="fas fa-ticket-alt"></i> {{ 'front.homepage.lock_entrance' | trans | capitalize }} · 0 €</button>
                                         <script type="text/javascript">
                                             window.EBWidgets.createWidget({
                                                 widgetType: "checkout",
@@ -119,7 +119,7 @@
                                     {{ fridayShow.end | date('H:i') }}h
                                 </th>
                                 {% include "frontend/includes/timetable_ticket_cell.html.twig" with {item: fridayShow, show_tickets_button: true} %}
-                                <td><i class="far fa-question"></i></td>
+                                <td class="text-center align-middle"><i class="far fa-question"></i></td>
                             </tr>
                             </tbody>
                         </table>
