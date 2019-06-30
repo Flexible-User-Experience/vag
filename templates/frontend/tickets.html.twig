@@ -66,7 +66,7 @@
                                     {{ saturdayDocumentaryFilm.end | date('H:i') }}h
                                 </th>
                                 <td></td>
-                                {% include "frontend/includes/timetable_ticket_cell.html.twig" with {item: saturdayDocumentaryFilm, show_tickets_button: true} %}
+                                {% include "frontend/includes/timetable_ticket_cell.html.twig" with {item: saturdayDocumentaryFilm, show_tickets_button: false} %}
                             </tr>
                             <tr>
                                 <th scope="row" rowspan="2" class="text-center align-middle">
@@ -75,7 +75,7 @@
                                     {{ secondFridayConference.end | date('H:i') }}h
                                 </th>
                                 {% include "frontend/includes/timetable_ticket_cell.html.twig" with {item: firstFridayConference, show_tickets_button: false} %}
-                                {% include "frontend/includes/timetable_ticket_cell.html.twig" with {item: saturdayRoundTable, rowspan: 2, show_tickets_button: false} %}
+                                {% include "frontend/includes/timetable_ticket_cell.html.twig" with {item: saturdayRoundTable, rowspan: 2, show_tickets_button: true} %}
                             </tr>
                             <tr>
                                 {% include "frontend/includes/timetable_ticket_cell.html.twig" with {item: secondFridayConference, show_tickets_button: true} %}
