@@ -6,7 +6,7 @@
     <a href="{{ path('front_location_detail', {slug: item.location.slug}) }}"><span class="badge badge-primary"><i class="fas fa-map-marker-alt"></i> {{ item.location.place }}</span></a>
     {% if item.eventbriteId and show_tickets_button %}
         <br>
-        <button id="eventbrite-button-id-{{ item.eventbriteId }}" class="btn btn-warning mt-3" type="button" data-toggle="modal"><i class="fas fa-ticket-alt"></i> {{ 'front.homepage.buy_tickets' | trans }} · {{ item.ticketPrice }} €</button>
+        <button id="eventbrite-button-id-{{ item.eventbriteId }}" class="btn btn-warning mt-3" type="button" data-toggle="modal"><i class="fas fa-ticket-alt"></i> {{ 'front.homepage.buy_tickets' | trans | capitalize }} · {{ item.ticketPrice }} €</button>
         <script type="text/javascript">
             window.EBWidgets.createWidget({
                 widgetType: "checkout",
