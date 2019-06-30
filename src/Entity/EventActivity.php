@@ -149,6 +149,13 @@ class EventActivity extends AbstractEntity
     private $ticketsSold;
 
     /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     *
+     * @var string
+     */
+    private $eventbriteId;
+
+    /**
      * @ORM\ManyToOne(targetEntity="App\Entity\EventCategory", inversedBy="eventActivities")
      * @ORM\JoinColumn(nullable=false)
      *
@@ -364,6 +371,26 @@ class EventActivity extends AbstractEntity
     public function setTicketsSold(?int $ticketsSold): self
     {
         $this->ticketsSold = $ticketsSold;
+
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getEventbriteId(): ?string
+    {
+        return $this->eventbriteId;
+    }
+
+    /**
+     * @param string|null $eventbriteId
+     *
+     * @return EventActivity
+     */
+    public function setEventbriteId(?string $eventbriteId): self
+    {
+        $this->eventbriteId = $eventbriteId;
 
         return $this;
     }

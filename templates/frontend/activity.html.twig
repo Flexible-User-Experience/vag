@@ -138,6 +138,17 @@
             </div>
         </div>
     </div>
+    {% if activity.eventbriteId %}
+        <div class="jumbotron jumbotron-fluid mb-0">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div id="eventbrite-widget-trigger"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
 {% endblock %}
 
 {% block javascripts %}
@@ -157,4 +168,17 @@
             });
         }
     </script>
+    {% if activity.eventbriteId %}
+        <script src="https://www.eventbrite.com/static/widgets/eb_widgets.js"></script>
+        <script type="text/javascript">
+            window.EBWidgets.createWidget({
+                widgetType: "checkout",
+                eventId: "{{ activity.eventbriteId }}",
+                modal: false,
+                iframeContainerId: "eventbrite-widget-trigger",
+                iframeContainerHeight: 425,
+                iFrameAutoAdapt: 100
+            });
+        </script>
+    {% endif %}
 {% endblock %}
