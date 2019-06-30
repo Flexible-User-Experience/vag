@@ -2,6 +2,10 @@
 
 {% block title %}{{ parent() }} · {{ 'front.menu.tickets' | trans | title }}{% endblock %}
 
+{% block javascripts_head %}
+    <script src="https://www.eventbrite.com/static/widgets/eb_widgets.js"></script>
+{% endblock %}
+
 {% block body %}
     <div class="jumbotron jumbotron-fluid jumbotron-homepage" style="background-image:url('{{ asset('build/background-blur-bokeh-close-up.png') }}');">
         <div class="container pt-2 pb-1">
@@ -98,9 +102,4 @@
             </div>
         </div>
     </div>
-{% endblock %}
-
-{% block javascripts %}
-    {{ parent() }}
-    <script src="https://www.eventbrite.com/static/widgets/eb_widgets.js"></script>
 {% endblock %}
