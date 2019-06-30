@@ -10,6 +10,7 @@ use App\Enum\UserRoleEnum;
 use App\Form\ContactNewsletterType;
 use App\Manager\EventActivityManager;
 use App\Manager\EventCategoryManager;
+use App\Repository\EventActivityRepository;
 use Doctrine\ORM\NonUniqueResultException;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Component\HttpFoundation\Request;
@@ -85,11 +86,21 @@ class FrontendMainController extends AbstractController
     /**
      * @Route({"ca": "/entrades", "es": "/entradas", "en": "/tickets"}, name="front_tickets")
      *
+     * @param EventActivityRepository $ear
+     *
      * @return Response
      */
-    public function tickets()
+    public function tickets(EventActivityRepository $ear)
     {
-        return $this->render('frontend/tickets.html.twig', []);
+        $firstFridayConference = $ear->find(2);
+        $secondFridayConference = $ear->find(1);
+        $fridayShow = $ear->find(10);
+
+        return $this->render('frontend/tickets.html.twig', [
+            'firstFridayConference' => $firstFridayConference,
+            'secondFridayConference' => $secondFridayConference,
+            'fridayShow' => $fridayShow,
+        ]);
     }
 
     /**
