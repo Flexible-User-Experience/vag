@@ -101,6 +101,7 @@ admin:
         tickets_amount: 'Cantidad de entradas'
         tickets_sold: 'Entradas vendidas'
         tickets_left: 'Entradas disponibles'
+        ticket_price: 'Precio'
         eventbrite_id: 'Eventbrite ID'
         blog_tags: 'Etiquetas'
         category: 'Categoría'

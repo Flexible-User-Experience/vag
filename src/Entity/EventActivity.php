@@ -149,6 +149,13 @@ class EventActivity extends AbstractEntity
     private $ticketsSold;
 
     /**
+     * @ORM\Column(type="integer", nullable=true)
+     *
+     * @var integer
+     */
+    private $ticketPrice;
+
+    /**
      * @ORM\Column(type="string", length=255, nullable=true)
      *
      * @var string
@@ -371,6 +378,26 @@ class EventActivity extends AbstractEntity
     public function setTicketsSold(?int $ticketsSold): self
     {
         $this->ticketsSold = $ticketsSold;
+
+        return $this;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getTicketPrice(): ?int
+    {
+        return $this->ticketPrice;
+    }
+
+    /**
+     * @param int|null $ticketPrice
+     *
+     * @return EventActivity
+     */
+    public function setTicketPrice(?int $ticketPrice): self
+    {
+        $this->ticketPrice = $ticketPrice;
 
         return $this;
     }
