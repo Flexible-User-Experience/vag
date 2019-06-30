@@ -21,8 +21,8 @@
                             <thead>
                             <tr>
                                 <th scope="col"></th>
-                                <th scope="col" class="text-center">{{ firstFridayConference.begin | draw_i18n_date_string }}</th>
-                                <th scope="col" class="text-center">{{ firstSaturdayWorkshop.begin | draw_i18n_date_string }}</th>
+                                <th scope="col" class="text-center">{{ 'front.calendar.friday' | trans }} {{ firstFridayConference.begin | draw_i18n_date_string }}</th>
+                                <th scope="col" class="text-center">{{ 'front.calendar.saturday' | trans }} {{ firstSaturdayWorkshop.begin | draw_i18n_date_string }}</th>
                             </tr>
                             </thead>
                             <tbody>

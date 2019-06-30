@@ -40,6 +40,8 @@ front:
         morning: 'matí'
         afternoon: 'tarda'
         night: 'nit'
+        friday: 'divendres'
+        saturday: 'dissabte'
     carrousel:
         previous: 'anterior'
         next: 'següent'

@@ -40,6 +40,8 @@ front:
         morning: 'morning'
         afternoon: 'afternoon'
         night: 'night'
+        friday: 'friday'
+        saturday: 'saturday'
     carrousel:
         previous: 'previous'
         next: 'next'
