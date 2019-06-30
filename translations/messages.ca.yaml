@@ -35,6 +35,7 @@ front:
         read_more_activities: 'mostrar activitats'
         empty_warning: 'en breu, sigueu pacients...'
     calendar:
+        to: 'a'
         morning: 'matí'
         afternoon: 'tarda'
         night: 'nit'

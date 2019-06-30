@@ -12,7 +12,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <table class="table table-bordered table-dark table-hover">
+                    <table class="table table-bordered table-dark">
                         <thead>
                         <tr>
                             <th scope="col"></th>
@@ -25,33 +25,41 @@
                             <th scope="row" colspan="3" class="text-center">{{ 'front.calendar.morning' | trans }}</th>
                         </tr>
                         <tr>
-                            <th scope="row" class="text-center">{{ firstSaturdayWorkshop.begin | date('H:i') }}h</th>
-                            <td></td>
-                            <td>
-                                {{ firstSaturdayWorkshop.name | truncate(30, true) }}<br>
-                                <span class="badge badge-danger"><i class="fas fa-user"></i> {{ firstSaturdayWorkshop.collaborators[0].fullname }}</span><br>
-                                <span class="badge badge-primary"><i class="fas fa-map-marker-alt"></i> {{ firstSaturdayWorkshop.location.place }}</span>
-                            </td>
+                            <th scope="row" rowspan="4" class="text-center align-middle">
+                                {{ firstSaturdayWorkshop.begin | date('H:i') }}h<br>
+                                {{ 'front.calendar.to' | trans }}<br>
+                                {{ firstSaturdayWorkshop.end | date('H:i') }}h
+                            </th>
+                            <td rowspan="4"></td>
+                            {% include "frontend/includes/timetable_ticket_cell.html.twig" with {item: firstSaturdayWorkshop} %}
                         </tr>
                         <tr>
-                            <th scope="row" class="text-center">{{ secondSaturdayWorkshop.begin | date('H:i') }}h</th>
-                            <td></td>
-                            <td>
-                                {{ secondSaturdayWorkshop.name | truncate(30, true) }}<br>
-                                <span class="badge badge-danger"><i class="fas fa-user"></i> {{ secondSaturdayWorkshop.collaborators[0].fullname }}</span><span class="ml-1 badge badge-danger"><i class="fas fa-user"></i> {{ secondSaturdayWorkshop.collaborators[1].fullname }}</span><br>
-                                <span class="badge badge-primary"><i class="fas fa-map-marker-alt"></i> {{ secondSaturdayWorkshop.location.place }}</span>
-                            </td>
+                            {% include "frontend/includes/timetable_ticket_cell.html.twig" with {item: secondSaturdayWorkshop} %}
+                        </tr>
+                        <tr>
+                            {% include "frontend/includes/timetable_ticket_cell.html.twig" with {item: thirdSaturdayWorkshop} %}
+                        </tr>
+                        <tr>
+                            {% include "frontend/includes/timetable_ticket_cell.html.twig" with {item: fourthSaturdayWorkshop} %}
                         </tr>
                         <tr class="bg-info">
-                            <th scope="row" colspan="3" class="text-center">tarde</th>
+                            <th scope="row" colspan="3" class="text-center">{{ 'front.calendar.afternoon' | trans }}</th>
                         </tr>
                         <tr>
-                            <th scope="row" class="text-center">18:00h</th>
+                            <th scope="row" class="text-center align-middle">
+                                18:00h<br>
+                                {{ 'front.calendar.to' | trans }}<br>
+                                19:00h
+                            </th>
                             <td></td>
-                            <td>Conferència emprenedoria</td>
+                            <td><i class="far fa-question"></i></td>
                         </tr>
                         <tr>
-                            <th scope="row" class="text-center">19:00h</th>
+                            <th scope="row" class="text-center align-middle">
+                                19:00h<br>
+                                {{ 'front.calendar.to' | trans }}<br>
+                                19:30h
+                            </th>
                             <td></td>
                             <td>Projecció Documental</td>
                         </tr>
@@ -74,7 +82,7 @@
                             <td></td>
                         </tr>
                         <tr class="bg-primary">
-                            <th scope="row" colspan="3" class="text-center">nit</th>
+                            <th scope="row" colspan="3" class="text-center">{{ 'front.calendar.night' | trans }}</th>
                         </tr>
                         <tr>
                             <th scope="row" class="text-center">22:30h</th>
@@ -86,9 +94,6 @@
                         </tr>
                         </tbody>
                     </table>
-                    {#<div class="alert alert-warning mb-0" role="alert">#}
-                        {#<i class="fa exclamation-triangle"></i> {{ 'front.events.empty_warning' | trans }}#}
-                    {#</div>#}
                 </div>
             </div>
         </div>
