@@ -1,5 +1,7 @@
-<td>
-    <a href="{{ path('front_event_activity', {category: item.category.slug, activity: item.slug}) }}" class="text-white">{{ item.name | truncate(30, true) }}</a><br>
-    <span class="badge badge-danger"><i class="fas fa-user"></i> {{ item.collaborators[0].fullname }}</span>{% if item.collaborators | length > 1 %}<span class="ml-1 badge badge-danger"><i class="fas fa-user"></i> {{ item.collaborators[1].fullname }}</span>{% endif %}<br>
+<td{% if rowspan is defined %} rowspan="{{ rowspan }}"{% endif %}>
+    <a href="{{ path('front_event_activity', {category: item.category.slug, activity: item.slug}) }}" class="text-white">{{ item.name }}</a><br>
+    {% for collaborator in item.collaborators %}
+        <span class="badge badge-danger mr-1"><i class="fas fa-user"></i> {{ collaborator.fullname }}</span>
+    {% endfor %}{% if item.collaborators | length > 0 %}<br>{% endif %}
     <span class="badge badge-primary"><i class="fas fa-map-marker-alt"></i> {{ item.location.place }}</span>
 </td>

@@ -56,40 +56,40 @@
                         </tr>
                         <tr>
                             <th scope="row" class="text-center align-middle">
-                                19:00h<br>
+                                {{ saturdayDocumentaryFilm.begin | date('H:i') }}h<br>
                                 {{ 'front.calendar.to' | trans }}<br>
-                                19:30h
+                                {{ saturdayDocumentaryFilm.end | date('H:i') }}h
                             </th>
                             <td></td>
-                            <td>Projecció Documental</td>
+                            {% include "frontend/includes/timetable_ticket_cell.html.twig" with {item: saturdayDocumentaryFilm} %}
                         </tr>
                         <tr>
-                            <th scope="row" class="text-center">{{ firstFridayConference.begin | date('H:i') }}h</th>
-                            <td>
-                                {{ firstFridayConference.name | truncate(30, true) }}<br>
-                                <span class="badge badge-danger"><i class="fas fa-user"></i> {{ firstFridayConference.collaborators[0].fullname }}</span><br>
-                                <span class="badge badge-primary"><i class="fas fa-map-marker-alt"></i> {{ firstFridayConference.location.place }}</span>
-                            </td>
-                            <td>Debat sobre documental</td>
+                            <th scope="row" class="text-center align-middle">
+                                {{ firstFridayConference.begin | date('H:i') }}h<br>
+                                {{ 'front.calendar.to' | trans }}<br>
+                                {{ firstFridayConference.end | date('H:i') }}h
+                            </th>
+                            {% include "frontend/includes/timetable_ticket_cell.html.twig" with {item: firstFridayConference} %}
+                            {% include "frontend/includes/timetable_ticket_cell.html.twig" with {item: saturdayRoundTable, rowspan: 2} %}
                         </tr>
                         <tr>
-                            <th scope="row" class="text-center">20:30h</th>
-                            <td>
-                                {{ secondFridayConference.name | truncate(30, true) }}<br>
-                                <span class="badge badge-danger"><i class="fas fa-user"></i> {{ secondFridayConference.collaborators[0].fullname }}</span><br>
-                                <span class="badge badge-primary"><i class="fas fa-map-marker-alt"></i> {{ secondFridayConference.location.place }}</span>
-                            </td>
-                            <td></td>
+                            <th scope="row" class="text-center align-middle">
+                                {{ secondFridayConference.begin | date('H:i') }}h<br>
+                                {{ 'front.calendar.to' | trans }}<br>
+                                {{ secondFridayConference.end | date('H:i') }}h
+                            </th>
+                            {% include "frontend/includes/timetable_ticket_cell.html.twig" with {item: secondFridayConference} %}
                         </tr>
                         <tr class="bg-primary">
                             <th scope="row" colspan="3" class="text-center">{{ 'front.calendar.night' | trans }}</th>
                         </tr>
                         <tr>
-                            <th scope="row" class="text-center">22:30h</th>
-                            <td>
-                                {{ fridayShow.name | truncate(30, true) }}<br>
-                                <span class="badge badge-primary"><i class="fas fa-map-marker-alt"></i> {{ fridayShow.location.place }}</span>
-                            </td>
+                            <th scope="row" class="text-center align-middle">
+                                {{ fridayShow.begin | date('H:i') }}h<br>
+                                {{ 'front.calendar.to' | trans }}<br>
+                                {{ fridayShow.end | date('H:i') }}h
+                            </th>
+                            {% include "frontend/includes/timetable_ticket_cell.html.twig" with {item: fridayShow} %}
                             <td><i class="far fa-question"></i></td>
                         </tr>
                         </tbody>
