@@ -20,6 +20,7 @@ front:
         jumbotron_4: 'It has been designed for everybody who love the digital entertainment scene.'
         jumbotron_5: 'In this edition we have chosen 2 topics: the digital archeology and the impact of the female gender on the industry. Enjoy all daytime activities and digital art night shows.'
         buy_tickets: 'buy tickets'
+        lock_entrance: 'afternoon booking'
     events:
         locations: 'Locations'
         speakers: 'Participants'

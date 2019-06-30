@@ -75,10 +75,39 @@
                                     {{ secondFridayConference.end | date('H:i') }}h
                                 </th>
                                 {% include "frontend/includes/timetable_ticket_cell.html.twig" with {item: firstFridayConference, show_tickets_button: false} %}
-                                {% include "frontend/includes/timetable_ticket_cell.html.twig" with {item: saturdayRoundTable, rowspan: 2, show_tickets_button: true} %}
+                                {% include "frontend/includes/timetable_ticket_cell.html.twig" with {item: saturdayRoundTable, rowspan: 2, show_tickets_button: false} %}
                             </tr>
                             <tr>
-                                {% include "frontend/includes/timetable_ticket_cell.html.twig" with {item: secondFridayConference, show_tickets_button: true} %}
+                                {% include "frontend/includes/timetable_ticket_cell.html.twig" with {item: secondFridayConference, show_tickets_button: false} %}
+                            </tr>
+                            <tr>
+                                <th scope="row" class="text-center align-middle"></th>
+                                <td>
+                                    {% if firstFridayConference.eventbriteId %}
+                                        <button id="eventbrite-button-id-{{ firstFridayConference.eventbriteId }}" class="btn btn-warning" type="button" data-toggle="modal"><i class="fas fa-ticket-alt"></i> {{ 'front.homepage.lock_entrance' | trans | capitalize }} · 0 €</button>
+                                        <script type="text/javascript">
+                                            window.EBWidgets.createWidget({
+                                                widgetType: "checkout",
+                                                eventId: "{{ firstFridayConference.eventbriteId }}",
+                                                modal: true,
+                                                modalTriggerElementId: "eventbrite-button-id-{{ firstFridayConference.eventbriteId }}",
+                                            });
+                                        </script>
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    {% if secondFridayConference.eventbriteId %}
+                                        <button id="eventbrite-button-id-{{ secondFridayConference.eventbriteId }}" class="btn btn-warning" type="button" data-toggle="modal"><i class="fas fa-ticket-alt"></i> {{ 'front.homepage.lock_entrance' | trans | capitalize }} · 0 €</button>
+                                        <script type="text/javascript">
+                                            window.EBWidgets.createWidget({
+                                                widgetType: "checkout",
+                                                eventId: "{{ secondFridayConference.eventbriteId }}",
+                                                modal: true,
+                                                modalTriggerElementId: "eventbrite-button-id-{{ secondFridayConference.eventbriteId }}",
+                                            });
+                                        </script>
+                                    {% endif %}
+                                </td>
                             </tr>
                             <tr class="bg-info">
                                 <th scope="row" colspan="3" class="text-center">{{ 'front.calendar.night' | trans }}</th>

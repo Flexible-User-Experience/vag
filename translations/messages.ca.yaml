@@ -20,6 +20,7 @@ front:
         jumbotron_4: 'Ha estat dissenyat per a totes les persones que estimen l''escena de l''entreteniment digital.'
         jumbotron_5: 'En aquesta edició hem escollit 2 temes: l''arquelogia digital i l''impacte del gènere femení a la indústria. Gaudeix de totes les activitats diàries i els espectacles nocturns d''art digital.'
         buy_tickets: 'comprar entrades'
+        lock_entrance: 'reservar assitència tarda'
     events:
         locations: 'Ubicacions'
         speakers: 'Participants'
