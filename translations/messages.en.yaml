@@ -96,6 +96,7 @@ admin:
         tickets_amount: 'Tickets amount'
         tickets_sold: 'Tickets sold'
         tickets_left: 'Tickets left'
+        eventbrite_id: 'Eventbrite ID'
         blog_tags: 'Tags'
         category: 'Category'
         location: 'Location'
