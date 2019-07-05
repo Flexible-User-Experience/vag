@@ -118,7 +118,7 @@
                                     {{ 'front.calendar.to' | trans }}<br>
                                     {{ fridayShow.end | date('H:i') }}h
                                 </th>
-                                {% include "frontend/includes/timetable_ticket_cell.html.twig" with {item: fridayShow, show_tickets_button: true} %}
+                                {% include "frontend/includes/timetable_ticket_cell_not_embeded.html.twig" with {item: fridayShow, show_tickets_button: true} %}
                                 <td class="text-center align-middle"><i class="far fa-question"></i></td>
                             </tr>
                             </tbody>

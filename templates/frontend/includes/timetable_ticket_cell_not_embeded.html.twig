@@ -1,0 +1,14 @@
+<td{% if rowspan is defined %} rowspan="{{ rowspan }}"{% endif %} class="align-middle">
+    <div class="media">
+        <a href="{{ path('front_event_activity', {category: item.category.slug, activity: item.slug}) }}">
+            <img src="{{ vich_uploader_asset(item, 'imageFile') | imagine_filter('60x60') }}" class="mr-3 img-fluid rounded" alt="{{ item.name }} logo">
+        </a>
+        <div class="media-body">
+            {{ item.name | truncate(55) }}<br>
+            <a href="{{ path('front_location_detail', {slug: item.location.slug}) }}"><span class="badge badge-primary"><i class="fas fa-map-marker-alt"></i> {{ item.location.place }}</span></a>
+        </div>
+    </div>
+    {% if item.eventbriteId and show_tickets_button %}
+        <a class="btn btn-warning btn-block mt-3" href="https://www.eventbrite.es/e/entradas-concert-filharmonic-videojocs-{{ item.eventbriteId }}?ref=elink" target="_blank"><i class="fas fa-ticket-alt"></i> {{ 'front.homepage.buy_tickets' | trans | capitalize }} · {{ item.ticketPrice }} €</a>
+    {% endif %}
+</td>
