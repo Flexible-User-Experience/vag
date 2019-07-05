@@ -40,6 +40,8 @@ front:
         morning: 'mañana'
         afternoon: 'tarde'
         night: 'noche'
+        friday: 'viernes'
+        saturday: 'sábado'
     carrousel:
         previous: 'anterior'
         next: 'siguiente'

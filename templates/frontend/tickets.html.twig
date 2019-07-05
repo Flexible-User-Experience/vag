@@ -21,8 +21,8 @@
                             <thead>
                             <tr>
                                 <th scope="col"></th>
-                                <th scope="col" class="text-center">{{ firstFridayConference.begin | draw_i18n_date_string }}</th>
-                                <th scope="col" class="text-center">{{ firstSaturdayWorkshop.begin | draw_i18n_date_string }}</th>
+                                <th scope="col" class="text-center">{{ 'front.calendar.friday' | trans }} {{ firstFridayConference.begin | draw_i18n_date_string }}</th>
+                                <th scope="col" class="text-center">{{ 'front.calendar.saturday' | trans }} {{ firstSaturdayWorkshop.begin | draw_i18n_date_string }}</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -57,7 +57,7 @@
                                     19:00h
                                 </th>
                                 <td></td>
-                                <td><i class="far fa-question"></i></td>
+                                {% include "frontend/includes/timetable_ticket_cell.html.twig" with {item: firstSaturdayConference, show_tickets_button: false} %}
                             </tr>
                             <tr>
                                 <th scope="row" class="text-center align-middle">
@@ -84,7 +84,7 @@
                                 <th scope="row" class="text-center align-middle"></th>
                                 <td>
                                     {% if firstFridayConference.eventbriteId %}
-                                        <button id="eventbrite-button-id-{{ firstFridayConference.eventbriteId }}" class="btn btn-warning" type="button" data-toggle="modal"><i class="fas fa-ticket-alt"></i> {{ 'front.homepage.lock_entrance' | trans | capitalize }} · 0 €</button>
+                                        <button id="eventbrite-button-id-{{ firstFridayConference.eventbriteId }}" class="btn btn-warning btn-block" type="button" data-toggle="modal"><i class="fas fa-ticket-alt"></i> {{ 'front.homepage.lock_entrance' | trans | capitalize }} · 0 €</button>
                                         <script type="text/javascript">
                                             window.EBWidgets.createWidget({
                                                 widgetType: "checkout",
@@ -97,7 +97,7 @@
                                 </td>
                                 <td>
                                     {% if saturdayRoundTable.eventbriteId %}
-                                        <button id="eventbrite-button-id-{{ saturdayRoundTable.eventbriteId }}" class="btn btn-warning" type="button" data-toggle="modal"><i class="fas fa-ticket-alt"></i> {{ 'front.homepage.lock_entrance' | trans | capitalize }} · 0 €</button>
+                                        <button id="eventbrite-button-id-{{ saturdayRoundTable.eventbriteId }}" class="btn btn-warning btn-block" type="button" data-toggle="modal"><i class="fas fa-ticket-alt"></i> {{ 'front.homepage.lock_entrance' | trans | capitalize }} · 0 €</button>
                                         <script type="text/javascript">
                                             window.EBWidgets.createWidget({
                                                 widgetType: "checkout",
