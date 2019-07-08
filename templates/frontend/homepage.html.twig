@@ -23,12 +23,14 @@
             <div class="row">
                 {% for category in categories %}
                     <div class="col-6 col-sm-4 col-md-3">
-                        <div class="card text-white mb-3 mb-sm-3 mb-md-0" style="background-color:{{ category.color }}">
-                            <div class="card-body">
-                                <h2 class="card-title text-center">{{ category | icon | raw }}</h2>
-                                <p class="card-text text-center">{% if category.eventActivities | length > 0 %}{{ category.eventActivities | length }} {% endif %}{% if category.id == constant('App\\Menu\\FrontendMenu::SHOWS_CATEGORY_ID') %}{{ 'front.menu.show' | trans | title }}{% else %}{{ category.name | title }}{% endif %}</p>
+                        <a href="{{ path('front_event_category', {slug: category.slug}) }}">
+                            <div class="card text-white mb-3 mb-sm-3 mb-md-0" style="background-color:{{ category.color }}">
+                                <div class="card-body">
+                                    <h2 class="card-title text-center">{{ category | icon | raw }}</h2>
+                                    <p class="card-text text-center">{% if category.eventActivities | length > 0 %}{{ category.eventActivities | length }} {% endif %}{% if category.id == constant('App\\Menu\\FrontendMenu::SHOWS_CATEGORY_ID') %}{{ 'front.menu.show' | trans | title }}{% else %}{{ category.name | title }}{% endif %}</p>
+                                </div>
                             </div>
-                        </div>
+                        </a>
                     </div>
                 {% endfor %}
             </div>
