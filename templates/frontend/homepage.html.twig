@@ -37,7 +37,7 @@
             {% if categories | length > 0 %}
                 <div class="row">
                     <div class="col-12 mt-4 text-center">
-                        <a href="{{ path('front_activities') }}" class="btn btn-outline-dark">{{ 'front.events.show_all_activities' | trans }}</a>
+                        <a href="{{ path('front_activities') }}" class="btn btn-outline-dark"><i class="far fa-plus-square"></i> {{ 'front.events.show_all_activities' | trans }}</a>
                     </div>
                 </div>
             {% endif %}
@@ -53,7 +53,7 @@
                 {% include "frontend/includes/event_collaborator_cards.html.twig" with {collaborators: featuredSpeakers} %}
                 {% if featuredSpeakers | length > 0 %}
                     <div class="col-12 mt-4 text-center">
-                        <a href="{{ path('front_collaborators') }}" class="btn btn-outline-dark">{{ 'front.events.show_all_speakers' | trans }}</a>
+                        <a href="{{ path('front_collaborators') }}" class="btn btn-outline-dark"><i class="far fa-plus-square"></i> {{ 'front.events.show_all_speakers' | trans }}</a>
                     </div>
                 {% endif %}
             </div>
@@ -83,7 +83,7 @@
                 {% include "frontend/includes/event_activity_cards.html.twig" with {activities: featuredActivities} %}
                 {% if featuredActivities | length > 0 %}
                     <div class="col-12 mt-4 text-center">
-                        <a href="{{ path('front_activities') }}" class="btn btn-outline-dark">{{ 'front.events.show_all_activities' | trans }}</a>
+                        <a href="{{ path('front_activities') }}" class="btn btn-outline-dark"><i class="far fa-plus-square"></i> {{ 'front.events.show_all_activities' | trans }}</a>
                     </div>
                 {% endif %}
             </div>
@@ -99,7 +99,7 @@
                 {% include "frontend/includes/event_location_cards.html.twig" with {locations: featuredLocations} %}
                 {% if featuredLocations | length > 0 %}
                     <div class="col-12 mt-4 text-center">
-                        <a href="{{ path('front_locations') }}" class="btn btn-outline-dark">{{ 'front.events.show_all_locations' | trans }}</a>
+                        <a href="{{ path('front_locations') }}" class="btn btn-outline-dark"><i class="far fa-plus-square"></i> {{ 'front.events.show_all_locations' | trans }}</a>
                     </div>
                 {% endif %}
             </div>
