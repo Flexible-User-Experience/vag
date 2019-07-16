@@ -24,7 +24,7 @@
                                         <p class="card-text text-muted">{{ member.job }}</p>
                                     {% endif %}
                                     {% if member.link %}
-                                        <a href="{{ member.link }}">{{ member.link | remove_url_protocol }}</a>
+                                        <a href="{{ member.link }}">{% if member.linkName %}{{ member.linkName }}{% else %}{{ member.link | remove_url_protocol }}{% endif %}</a>
                                     {% endif %}
                                 </div>
                             </div>
