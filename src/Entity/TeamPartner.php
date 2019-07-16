@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Entity\Traits\ImageAttributesTrait;
+use App\Entity\Traits\LinkNameTrait;
 use App\Entity\Traits\LinkTrait;
 use App\Entity\Traits\NameTrait;
 use App\Entity\Traits\ShowInFrontendTrait;
@@ -22,7 +23,7 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
  */
 class TeamPartner extends AbstractEntity
 {
-    use NameTrait, SlugTrait, ImageAttributesTrait, LinkTrait, ShowInFrontendTrait;
+    use NameTrait, SlugTrait, ImageAttributesTrait, LinkTrait, LinkNameTrait, ShowInFrontendTrait;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -67,6 +68,13 @@ class TeamPartner extends AbstractEntity
      * @var string
      */
     private $link;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     *
+     * @var string
+     */
+    private $linkName;
 
     /**
      * @ORM\Column(type="boolean", nullable=true, options={"default"=1})
