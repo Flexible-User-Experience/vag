@@ -74,8 +74,11 @@
                                     {{ 'front.calendar.to' | trans }}<br>
                                     19:30h
                                 </th>
-                                <td class="text-center align-middle"><i class="fas fa-rocket"></i> {{ 'front.calendar.inaguration' | trans }}</td>
-                                <td class="text-center align-middle"><i class="fas fa-coffee"></i> {{ 'front.calendar.pause' | trans }}</td>
+                                <td>
+                                    <i class="fas fa-rocket"></i> {{ 'front.calendar.inaguration' | trans }}<br>
+                                    <span class="badge badge-primary"><i class="fas fa-map-marker-alt"></i> {{ firstFridayConference.location.place }}</span>
+                                </td>
+                                <td class="text-muted text-center align-middle"><i class="fas fa-coffee"></i> {{ 'front.calendar.pause' | trans }}</td>
                             </tr>
                             <tr>
                                 <th scope="row" class="text-center align-middle">
