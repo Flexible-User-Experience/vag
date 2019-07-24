@@ -42,6 +42,8 @@ front:
         night: 'nit'
         friday: 'divendres'
         saturday: 'dissabte'
+        inaguration: 'Inauguració oficial'
+        pause: 'pausa'
     carrousel:
         previous: 'anterior'
         next: 'següent'

@@ -31,9 +31,9 @@
                             </tr>
                             <tr>
                                 <th scope="row" rowspan="4" class="text-center align-middle">
-                                    {{ firstSaturdayWorkshop.begin | date('H:i') }}h<br>
+                                    10:00h<br>
                                     {{ 'front.calendar.to' | trans }}<br>
-                                    {{ firstSaturdayWorkshop.end | date('H:i') }}h
+                                    12:00h
                                 </th>
                                 <td rowspan="4"></td>
                                 {% include "frontend/includes/timetable_ticket_cell.html.twig" with {item: firstSaturdayWorkshop, show_tickets_button: true} %}
@@ -54,31 +54,46 @@
                                 <th scope="row" class="text-center align-middle">
                                     18:00h<br>
                                     {{ 'front.calendar.to' | trans }}<br>
-                                    19:00h
+                                    18:30h
                                 </th>
                                 <td></td>
                                 {% include "frontend/includes/timetable_ticket_cell.html.twig" with {item: firstSaturdayConference, show_tickets_button: false} %}
                             </tr>
                             <tr>
                                 <th scope="row" class="text-center align-middle">
-                                    {{ saturdayDocumentaryFilm.begin | date('H:i') }}h<br>
+                                    18:30h<br>
                                     {{ 'front.calendar.to' | trans }}<br>
-                                    {{ saturdayDocumentaryFilm.end | date('H:i') }}h
+                                    19:20h
                                 </th>
                                 <td></td>
+                                {% include "frontend/includes/timetable_ticket_cell.html.twig" with {item: secondSaturdayConference, show_tickets_button: false} %}
+                            </tr>
+                            <tr>
+                                <th scope="row" class="text-center align-middle">
+                                    19:20h<br>
+                                    {{ 'front.calendar.to' | trans }}<br>
+                                    19:30h
+                                </th>
+                                <td class="text-center align-middle"><i class="fas fa-rocket"></i> {{ 'front.calendar.inaguration' | trans }}</td>
+                                <td class="text-center align-middle"><i class="fas fa-coffee"></i> {{ 'front.calendar.pause' | trans }}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row" class="text-center align-middle">
+                                    19:30h<br>
+                                    {{ 'front.calendar.to' | trans }}<br>
+                                    20:00h
+                                </th>
+                                {% include "frontend/includes/timetable_ticket_cell.html.twig" with {item: firstFridayConference, show_tickets_button: false} %}
                                 {% include "frontend/includes/timetable_ticket_cell.html.twig" with {item: saturdayDocumentaryFilm, show_tickets_button: false} %}
                             </tr>
                             <tr>
-                                <th scope="row" rowspan="2" class="text-center align-middle">
-                                    {{ firstFridayConference.begin | date('H:i') }}h<br>
+                                <th scope="row" class="text-center align-middle">
+                                    20:00h<br>
                                     {{ 'front.calendar.to' | trans }}<br>
-                                    {{ secondFridayConference.end | date('H:i') }}h
+                                    21:00h
                                 </th>
-                                {% include "frontend/includes/timetable_ticket_cell.html.twig" with {item: firstFridayConference, show_tickets_button: false} %}
-                                {% include "frontend/includes/timetable_ticket_cell.html.twig" with {item: saturdayRoundTable, rowspan: 2, show_tickets_button: false} %}
-                            </tr>
-                            <tr>
                                 {% include "frontend/includes/timetable_ticket_cell.html.twig" with {item: secondFridayConference, show_tickets_button: false} %}
+                                {% include "frontend/includes/timetable_ticket_cell.html.twig" with {item: saturdayRoundTable, show_tickets_button: false} %}
                             </tr>
                             <tr>
                                 <th scope="row" class="text-center align-middle"></th>
@@ -114,9 +129,9 @@
                             </tr>
                             <tr>
                                 <th scope="row" class="text-center align-middle">
-                                    {{ fridayShow.begin | date('H:i') }}h<br>
+                                    22:30h<br>
                                     {{ 'front.calendar.to' | trans }}<br>
-                                    {{ fridayShow.end | date('H:i') }}h
+                                    23:30h
                                 </th>
                                 {% include "frontend/includes/timetable_ticket_cell_not_embeded.html.twig" with {item: fridayShow, show_tickets_button: true} %}
                                 <td class="text-center align-middle"><i class="far fa-question"></i></td>

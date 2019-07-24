@@ -99,7 +99,8 @@ class FrontendMainController extends AbstractController
         $secondSaturdayWorkshop = $ear->find(9);
         $thirdSaturdayWorkshop = $ear->find(7);
         $fourthSaturdayWorkshop = $ear->find(8);
-        $firstSaturdayConference = $ear->find(13);
+        $firstSaturdayConference = $ear->find(14);
+        $secondSaturdayConference = $ear->find(13);
         $saturdayDocumentaryFilm = $ear->find(3);
         $saturdayRoundTable = $ear->find(12);
         $saturdayShow = null; // TODO
@@ -113,6 +114,7 @@ class FrontendMainController extends AbstractController
             'thirdSaturdayWorkshop' => $thirdSaturdayWorkshop,
             'fourthSaturdayWorkshop' => $fourthSaturdayWorkshop,
             'firstSaturdayConference' => $firstSaturdayConference,
+            'secondSaturdayConference' => $secondSaturdayConference,
             'saturdayDocumentaryFilm' => $saturdayDocumentaryFilm,
             'saturdayRoundTable' => $saturdayRoundTable,
             'saturdayShow' => $saturdayShow,

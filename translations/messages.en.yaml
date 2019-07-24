@@ -42,6 +42,8 @@ front:
         night: 'night'
         friday: 'friday'
         saturday: 'saturday'
+        inaguration: 'inaguration'
+        pause: 'break'
     carrousel:
         previous: 'previous'
         next: 'next'
