@@ -9,6 +9,6 @@
         </div>
     </div>
     {% if item.eventbriteId and show_tickets_button %}
-        <a class="btn btn-warning btn-block mt-3" href="https://www.eventbrite.es/e/entradas-concert-filharmonic-videojocs-{{ item.eventbriteId }}?ref=elink" target="_blank"><i class="fas fa-ticket-alt"></i> {{ 'front.homepage.buy_tickets' | trans | capitalize }} · {{ item.ticketPrice }} €</a>
+        <a class="btn btn-warning mt-3" href="https://www.eventbrite.es/e/entradas-vag-experience-concert-musica-videojoc-gris-{{ item.eventbriteId }}?ref=elink" target="_blank"><i class="fas fa-ticket-alt"></i> {{ 'front.homepage.buy_tickets' | trans | capitalize }} · {{ item.ticketPrice }} €</a>
     {% endif %}
 </td>
