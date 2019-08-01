@@ -21,6 +21,9 @@ front:
         jumbotron_5: 'In this edition we have chosen 2 topics: the digital archeology and the impact of the female gender on the industry. Enjoy all daytime activities and digital art night shows.'
         buy_tickets: 'buy tickets'
         lock_entrance: 'afternoon booking'
+        lock_entrance_friday_opening: 'Opening admission'
+        lock_entrance_saturday_conferences: 'Conferences admission'
+        lock_entrance_saturday_gamejam: 'Game Jam admission'
     events:
         locations: 'Locations'
         speakers: 'Participants'

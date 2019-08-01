@@ -3459,16 +3459,16 @@
         },
         {
             "name": "sonata-project/block-bundle",
-            "version": "3.15.0",
+            "version": "3.16.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataBlockBundle.git",
-                "reference": "d0a67fcd6873e234467cd58b35aa3feb5b54a6ff"
+                "reference": "2fe7a119cfda9acbc94f7cf3b35810619151e3db"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataBlockBundle/zipball/d0a67fcd6873e234467cd58b35aa3feb5b54a6ff",
-                "reference": "d0a67fcd6873e234467cd58b35aa3feb5b54a6ff",
+                "url": "https://api.github.com/repos/sonata-project/SonataBlockBundle/zipball/2fe7a119cfda9acbc94f7cf3b35810619151e3db",
+                "reference": "2fe7a119cfda9acbc94f7cf3b35810619151e3db",
                 "shasum": ""
             },
             "require": {
@@ -3527,13 +3527,13 @@
             ],
             "authors": [
                 {
-                    "name": "Sonata Community",
-                    "homepage": "https://github.com/sonata-project/SonataBlockBundle/contributors"
-                },
-                {
                     "name": "Thomas Rabaix",
                     "email": "thomas.rabaix@sonata-project.org",
                     "homepage": "https://sonata-project.org"
+                },
+                {
+                    "name": "Sonata Community",
+                    "homepage": "https://github.com/sonata-project/SonataBlockBundle/contributors"
                 }
             ],
             "description": "Symfony SonataBlockBundle",
@@ -3542,7 +3542,7 @@
                 "block",
                 "sonata"
             ],
-            "time": "2019-03-03T22:38:47+00:00"
+            "time": "2019-07-31T21:40:59+00:00"
         },
         {
             "name": "sonata-project/cache",

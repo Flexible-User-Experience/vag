@@ -21,6 +21,9 @@ front:
         jumbotron_5: 'En aquesta edició hem escollit 2 temes: l''arquelogia digital i l''impacte del gènere femení a la indústria. Gaudeix de totes les activitats diàries i els espectacles nocturns d''art digital.'
         buy_tickets: 'comprar entrades'
         lock_entrance: 'reservar assitència tarda'
+        lock_entrance_friday_opening: 'Entrada inauguració'
+        lock_entrance_saturday_conferences: 'Entrada conferències'
+        lock_entrance_saturday_gamejam: 'Entrada Game Jam'
     events:
         locations: 'Ubicacions'
         speakers: 'Participants'
