@@ -14,311 +14,34 @@
     </div>
     <div class="jumbotron jumbotron-fluid jumbotron-light">
         <div class="container">
-{#            <div class="row mb-4">#}
-{#                <div class="col-12">#}
-{#                    <div id="list-example" class="list-group list-group-horizontal">#}
-{#                        <a class="list-group-item list-group-item-action list-group-item-dark" href="#list-item-1">{{ 'front.calendar.friday' | trans }}</a>#}
-{#                        <a class="list-group-item list-group-item-action list-group-item-dark" href="#list-item-2">{{ 'front.calendar.saturday' | trans }}</a>#}
-{#                    </div>#}
-{#                </div>#}
-{#            </div>#}
             <div class="row">
                 <div class="col-12">
-                    <div data-spy="scroll" data-target="#list-example" data-offset="100" class="scrollspy-example">
-                        <div id="list-item-1" class="table-responsive mb-5">
-                            <table class="table table-bordered table-dark mb-0">
-                                <thead>
-                                <tr>
-                                    <th scope="col"></th>
-                                    <th scope="col" class="text-center">{{ 'front.calendar.friday' | trans }} {{ firstFridayConference.begin | draw_i18n_date_string }}</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr class="bg-info">
-                                    <th scope="row" class="text-center"></th>
-                                    <th scope="row" class="text-center">{{ 'front.calendar.afternoon' | trans }}</th>
-                                </tr>
-                                <tr>
-                                    <th scope="row" class="text-center align-middle">
-                                        19:20h
-                                    </th>
-                                    <td>
-                                        <div class="media">
-                                            <div class="media-body">
-                                                <i class="fas fa-rocket"></i> {{ 'front.calendar.inaguration' | trans }}<br>
-                                                <span class="badge badge-primary"><i class="fas fa-map-marker-alt"></i> {{ firstFridayConference.location.place }}</span>
-                                            </div>
-                                        </div>
-                                        {% if firstFridayConference.eventbriteId %}
-                                            <button id="eventbrite-button-id-{{ firstFridayConference.eventbriteId }}" class="btn btn-warning mt-3" type="button" data-toggle="modal"><i class="fas fa-ticket-alt"></i> {{ 'front.homepage.lock_entrance_friday_opening' | trans }} · 0 €</button>
-                                            <script type="text/javascript">
-                                                window.EBWidgets.createWidget({
-                                                    widgetType: "checkout",
-                                                    eventId: "{{ firstFridayConference.eventbriteId }}",
-                                                    modal: true,
-                                                    modalTriggerElementId: "eventbrite-button-id-{{ firstFridayConference.eventbriteId }}",
-                                                });
-                                            </script>
-                                        {% endif %}
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row" class="text-center align-middle">
-                                        19:30h
-                                    </th>
-                                    {% include "frontend/includes/timetable_ticket_cell.html.twig" with {item: firstFridayConference, show_tickets_button: false} %}
-                                </tr>
-                                <tr>
-                                    <th scope="row" class="text-center align-middle">
-                                        20:00h
-                                    </th>
-                                    {% include "frontend/includes/timetable_ticket_cell.html.twig" with {item: secondFridayConference, show_tickets_button: false} %}
-                                </tr>
-                                <tr class="bg-info">
-                                    <th scope="row" class="text-center"></th>
-                                    <th scope="row" class="text-center">{{ 'front.calendar.night' | trans }}</th>
-                                </tr>
-                                <tr>
-                                    <th scope="row" class="text-center align-middle">
-                                        22:30h
-                                    </th>
-                                    {% include "frontend/includes/timetable_ticket_cell_not_embeded.html.twig" with {item: fridayShow, show_tickets_button: true} %}
-                                </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <hr>
-                        <div id="list-item-2" class="table-responsive mt-5">
-                            <table class="table table-bordered table-dark mb-0">
-                                <thead>
-                                <tr>
-                                    <th scope="col"></th>
-                                    <th scope="col" class="text-center" colspan="2">{{ 'front.calendar.saturday' | trans }} {{ firstSaturdayWorkshop.begin | draw_i18n_date_string }}</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr class="bg-info">
-                                    <th scope="row" class="text-center"></th>
-                                    <th scope="row" colspan="2" class="text-center">{{ 'front.calendar.morning' | trans }}</th>
-                                </tr>
-                                <tr>
-                                    <th scope="row" rowspan="4" class="text-center align-middle">
-                                        10:00h
-                                    </th>
-                                    {% include "frontend/includes/timetable_ticket_cell.html.twig" with {item: firstSaturdayWorkshop, show_tickets_button: true, colspan: 2} %}
-                                </tr>
-                                <tr>
-                                    {% include "frontend/includes/timetable_ticket_cell.html.twig" with {item: secondSaturdayWorkshop, show_tickets_button: true, colspan: 2} %}
-                                </tr>
-                                <tr>
-                                    {% include "frontend/includes/timetable_ticket_cell.html.twig" with {item: thirdSaturdayWorkshop, show_tickets_button: true, colspan: 2} %}
-                                </tr>
-                                <tr>
-                                    {% include "frontend/includes/timetable_ticket_cell.html.twig" with {item: fourthSaturdayWorkshop, show_tickets_button: true, colspan: 2} %}
-                                </tr>
-                                <tr class="bg-info">
-                                    <th scope="row" class="text-center"></th>
-                                    <th scope="row" colspan="2" class="text-center">{{ 'front.calendar.afternoon' | trans }}</th>
-                                </tr>
-                                <tr>
-                                    <th scope="row" class="text-center align-middle">
-                                        16:00h
-                                    </th>
-                                    <td style="width:46%"></td>
-                                    <td rowspan="5" style="width:46%" class="align-middle">
-                                        <div class="media">
-                                            <a href="{{ path('front_event_activity', {category: saturdayGameJam.category.slug, activity: saturdayGameJam.slug}) }}">
-                                                <img src="{{ vich_uploader_asset(saturdayGameJam, 'imageFile') | imagine_filter('60x60') }}" class="mr-3 img-fluid rounded" alt="{{ saturdayGameJam.name }} logo">
-                                            </a>
-                                            <div class="media-body">
-                                                {{ saturdayGameJam.name | truncate(55) }}<br>
-                                                <a href="{{ path('front_location_detail', {slug: saturdayGameJam.location.slug}) }}"><span class="badge badge-primary"><i class="fas fa-map-marker-alt"></i> {{ saturdayGameJam.location.place }}</span></a>
-                                            </div>
-                                        </div>
-                                        {% if saturdayGameJam.eventbriteId %}
-                                            <button id="eventbrite-button-id-{{ saturdayGameJam.eventbriteId }}" class="btn btn-warning mt-3" type="button" data-toggle="modal"><i class="fas fa-ticket-alt"></i> {{ 'front.homepage.lock_entrance_saturday_gamejam' | trans }} · 0 €</button>
-                                            <script type="text/javascript">
-                                                window.EBWidgets.createWidget({
-                                                    widgetType: "checkout",
-                                                    eventId: "{{ saturdayGameJam.eventbriteId }}",
-                                                    modal: true,
-                                                    modalTriggerElementId: "eventbrite-button-id-{{ saturdayGameJam.eventbriteId }}",
-                                                });
-                                            </script>
-                                        {% endif %}
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row" class="text-center align-middle">
-                                        18:00h
-                                    </th>
-                                    {% include "frontend/includes/timetable_ticket_cell.html.twig" with {item: firstSaturdayConference, show_tickets_button: true} %}
-                                </tr>
-                                <tr>
-                                    <th scope="row" class="text-center align-middle">
-                                        18:30h
-                                    </th>
-                                    {% include "frontend/includes/timetable_ticket_cell.html.twig" with {item: secondSaturdayConference, show_tickets_button: false} %}
-                                </tr>
-                                <tr>
-                                    <th scope="row" class="text-center align-middle">
-                                        19:20h
-                                    </th>
-                                    <td class="text-muted text-center align-middle"><i class="fas fa-coffee"></i> {{ 'front.calendar.pause' | trans }}</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row" class="text-center align-middle">
-                                        19:30h
-                                    </th>
-                                    {% include "frontend/includes/timetable_ticket_cell.html.twig" with {item: saturdayDocumentaryFilm, show_tickets_button: false} %}
-                                </tr>
-                                <tr>
-                                    <th scope="row" class="text-center align-middle">
-                                        20:00h
-                                    </th>
-                                    {% include "frontend/includes/timetable_ticket_cell.html.twig" with {item: saturdayRoundTable, show_tickets_button: false} %}
-                                </tr>
-                                <tr class="bg-info">
-                                    <th scope="row" class="text-center"></th>
-                                    <th scope="row" colspan="2" class="text-center">{{ 'front.calendar.night' | trans }}</th>
-                                </tr>
-                                <tr>
-                                    <th scope="row" class="text-center align-middle">
-                                        22:30h
-                                    </th>
-                                    <td class="text-center align-middle" colspan="2"><i class="far fa-question"></i></td>
-                                </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-
-
-            {# TODO to remove it #}
-            <div class="row">
-                <div class="col-12">
-                    <hr>
-                    <hr>
-                    <hr>
-                    <hr>
-                    <hr>
-                    <hr>
-                    <div class="table-responsive">
+                    <div class="table-responsive mb-5">
                         <table class="table table-bordered table-dark mb-0">
                             <thead>
                             <tr>
                                 <th scope="col"></th>
                                 <th scope="col" class="text-center">{{ 'front.calendar.friday' | trans }} {{ firstFridayConference.begin | draw_i18n_date_string }}</th>
-                                <th scope="col" class="text-center" colspan="2">{{ 'front.calendar.saturday' | trans }} {{ firstSaturdayWorkshop.begin | draw_i18n_date_string }}</th>
                             </tr>
                             </thead>
                             <tbody>
                             <tr class="bg-info">
                                 <th scope="row" class="text-center"></th>
-                                <th scope="row" class="text-center">{{ 'front.calendar.morning' | trans }}</th>
-                                <th scope="row" colspan="2" class="text-center">{{ 'front.calendar.morning' | trans }}</th>
-                            </tr>
-                            <tr>
-                                <th scope="row" rowspan="4" class="text-center align-middle">
-                                    10:00h<br>
-                                    {{ 'front.calendar.to' | trans }}<br>
-                                    12:00h
-                                </th>
-                                <td rowspan="4"></td>
-                                {% include "frontend/includes/timetable_ticket_cell.html.twig" with {item: firstSaturdayWorkshop, show_tickets_button: true, colspan: 2} %}
-                            </tr>
-                            <tr>
-                                {% include "frontend/includes/timetable_ticket_cell.html.twig" with {item: secondSaturdayWorkshop, show_tickets_button: true, colspan: 2} %}
-                            </tr>
-                            <tr>
-                                {% include "frontend/includes/timetable_ticket_cell.html.twig" with {item: thirdSaturdayWorkshop, show_tickets_button: true, colspan: 2} %}
-                            </tr>
-                            <tr>
-                                {% include "frontend/includes/timetable_ticket_cell.html.twig" with {item: fourthSaturdayWorkshop, show_tickets_button: true, colspan: 2} %}
-                            </tr>
-                            <tr class="bg-info">
-                                <th scope="row" class="text-center"></th>
                                 <th scope="row" class="text-center">{{ 'front.calendar.afternoon' | trans }}</th>
-                                <th scope="row" colspan="2" class="text-center">{{ 'front.calendar.afternoon' | trans }}</th>
                             </tr>
                             <tr>
                                 <th scope="row" class="text-center align-middle">
-                                    16:00h<br>
-                                    {{ 'front.calendar.to' | trans }}<br>
-                                    18:00h
-                                </th>
-                                <td style="width:31%"></td>
-                                <td style="width:31%"></td>
-                                <td rowspan="5" style="width:31%">
-                                    <div class="media">
-                                        <a href="{{ path('front_event_activity', {category: saturdayGameJam.category.slug, activity: saturdayGameJam.slug}) }}">
-                                            <img src="{{ vich_uploader_asset(saturdayGameJam, 'imageFile') | imagine_filter('60x60') }}" class="mr-3 img-fluid rounded" alt="{{ saturdayGameJam.name }} logo">
-                                        </a>
-                                        <div class="media-body">
-                                            {{ saturdayGameJam.name | truncate(55) }}<br>
-                                            <a href="{{ path('front_location_detail', {slug: saturdayGameJam.location.slug}) }}"><span class="badge badge-primary"><i class="fas fa-map-marker-alt"></i> {{ saturdayGameJam.location.place }}</span></a>
-                                        </div>
-                                    </div>
-
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row" class="text-center align-middle">
-                                    18:00h<br>
-                                    {{ 'front.calendar.to' | trans }}<br>
-                                    18:30h
-                                </th>
-                                <td></td>
-                                {% include "frontend/includes/timetable_ticket_cell.html.twig" with {item: firstSaturdayConference, show_tickets_button: false} %}
-                            </tr>
-                            <tr>
-                                <th scope="row" class="text-center align-middle">
-                                    18:30h<br>
-                                    {{ 'front.calendar.to' | trans }}<br>
                                     19:20h
                                 </th>
-                                <td></td>
-                                {% include "frontend/includes/timetable_ticket_cell.html.twig" with {item: secondSaturdayConference, show_tickets_button: false} %}
-                            </tr>
-                            <tr>
-                                <th scope="row" class="text-center align-middle">
-                                    19:20h<br>
-                                    {{ 'front.calendar.to' | trans }}<br>
-                                    19:30h
-                                </th>
                                 <td>
-                                    <i class="fas fa-rocket"></i> {{ 'front.calendar.inaguration' | trans }}<br>
-                                    <span class="badge badge-primary"><i class="fas fa-map-marker-alt"></i> {{ firstFridayConference.location.place }}</span>
-                                </td>
-                                <td class="text-muted text-center align-middle"><i class="fas fa-coffee"></i> {{ 'front.calendar.pause' | trans }}</td>
-                            </tr>
-                            <tr>
-                                <th scope="row" class="text-center align-middle">
-                                    19:30h<br>
-                                    {{ 'front.calendar.to' | trans }}<br>
-                                    20:00h
-                                </th>
-                                {% include "frontend/includes/timetable_ticket_cell.html.twig" with {item: firstFridayConference, show_tickets_button: false} %}
-                                {% include "frontend/includes/timetable_ticket_cell.html.twig" with {item: saturdayDocumentaryFilm, show_tickets_button: false} %}
-                            </tr>
-                            <tr>
-                                <th scope="row" class="text-center align-middle">
-                                    20:00h<br>
-                                    {{ 'front.calendar.to' | trans }}<br>
-                                    21:00h
-                                </th>
-                                {% include "frontend/includes/timetable_ticket_cell.html.twig" with {item: secondFridayConference, show_tickets_button: false} %}
-                                {% include "frontend/includes/timetable_ticket_cell.html.twig" with {item: saturdayRoundTable, show_tickets_button: false} %}
-                            </tr>
-                            <tr>
-                                <th scope="row" class="text-center align-middle"></th>
-                                <td>
+                                    <div class="media">
+                                        <div class="media-body">
+                                            <i class="fas fa-rocket"></i> {{ 'front.calendar.inaguration' | trans }}<br>
+                                            <span class="badge badge-primary"><i class="fas fa-map-marker-alt"></i> {{ firstFridayConference.location.place }}</span>
+                                        </div>
+                                    </div>
                                     {% if firstFridayConference.eventbriteId %}
-                                        <button id="eventbrite-button-id-{{ firstFridayConference.eventbriteId }}" class="btn btn-warning" type="button" data-toggle="modal"><i class="fas fa-ticket-alt"></i> {{ 'front.homepage.lock_entrance_friday_opening' | trans }} · 0 €</button>
+                                        <button id="eventbrite-button-id-{{ firstFridayConference.eventbriteId }}" class="btn btn-warning mt-3" type="button" data-toggle="modal"><i class="fas fa-ticket-alt"></i> {{ 'front.homepage.lock_entrance_friday_opening' | trans }} · 0 €</button>
                                         <script type="text/javascript">
                                             window.EBWidgets.createWidget({
                                                 widgetType: "checkout",
@@ -329,22 +52,78 @@
                                         </script>
                                     {% endif %}
                                 </td>
-                                <td>
-                                    {% if saturdayRoundTable.eventbriteId %}
-                                        <button id="eventbrite-button-id-{{ saturdayRoundTable.eventbriteId }}" class="btn btn-warning" type="button" data-toggle="modal"><i class="fas fa-ticket-alt"></i> {{ 'front.homepage.lock_entrance_saturday_conferences' | trans }} · 0 €</button>
-                                        <script type="text/javascript">
-                                            window.EBWidgets.createWidget({
-                                                widgetType: "checkout",
-                                                eventId: "{{ saturdayRoundTable.eventbriteId }}",
-                                                modal: true,
-                                                modalTriggerElementId: "eventbrite-button-id-{{ saturdayRoundTable.eventbriteId }}",
-                                            });
-                                        </script>
-                                    {% endif %}
-                                </td>
-                                <td>
+                            </tr>
+                            <tr>
+                                <th scope="row" class="text-center align-middle">
+                                    19:30h
+                                </th>
+                                {% include "frontend/includes/timetable_ticket_cell.html.twig" with {item: firstFridayConference, show_tickets_button: false} %}
+                            </tr>
+                            <tr>
+                                <th scope="row" class="text-center align-middle">
+                                    20:00h
+                                </th>
+                                {% include "frontend/includes/timetable_ticket_cell.html.twig" with {item: secondFridayConference, show_tickets_button: false} %}
+                            </tr>
+                            <tr class="bg-info">
+                                <th scope="row" class="text-center"></th>
+                                <th scope="row" class="text-center">{{ 'front.calendar.night' | trans }}</th>
+                            </tr>
+                            <tr>
+                                <th scope="row" class="text-center align-middle">
+                                    22:30h
+                                </th>
+                                {% include "frontend/includes/timetable_ticket_cell_not_embeded.html.twig" with {item: fridayShow, show_tickets_button: true} %}
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    {#<hr>#}
+                    <hr>
+                    {#<hr>#}
+                    <div class="table-responsive mt-5">
+                        <table class="table table-bordered table-dark mb-0">
+                            <thead>
+                            <tr>
+                                <th scope="col"></th>
+                                <th scope="col" class="text-center" colspan="4">{{ 'front.calendar.saturday' | trans }} {{ firstSaturdayWorkshop.begin | draw_i18n_date_string }}</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr class="bg-info">
+                                <th scope="row" class="text-center"></th>
+                                <th scope="row" colspan="4" class="text-center">{{ 'front.calendar.morning' | trans }}</th>
+                            </tr>
+                            <tr>
+                                <th scope="row" class="text-center align-middle">
+                                    10:00h
+                                </th>
+                                {% include "frontend/includes/timetable_ticket_cell.html.twig" with {item: firstSaturdayWorkshop, show_tickets_button: true, width: 24} %}
+                                {% include "frontend/includes/timetable_ticket_cell.html.twig" with {item: secondSaturdayWorkshop, show_tickets_button: true, width: 24} %}
+                                {% include "frontend/includes/timetable_ticket_cell.html.twig" with {item: thirdSaturdayWorkshop, show_tickets_button: true, width: 24} %}
+                                {% include "frontend/includes/timetable_ticket_cell.html.twig" with {item: fourthSaturdayWorkshop, show_tickets_button: true, width: 24} %}
+                            </tr>
+                            <tr class="bg-info">
+                                <th scope="row" class="text-center"></th>
+                                <th scope="row" colspan="4" class="text-center">{{ 'front.calendar.afternoon' | trans }}</th>
+                            </tr>
+                            <tr>
+                                <th scope="row" class="text-center align-middle">
+                                    16:00h
+                                </th>
+                                <td colspan="2"></td>
+                                <td colspan="2" rowspan="5" class="align-middle">
+                                    <div class="media">
+                                        <a href="{{ path('front_event_activity', {category: saturdayGameJam.category.slug, activity: saturdayGameJam.slug}) }}">
+                                            <img src="{{ vich_uploader_asset(saturdayGameJam, 'imageFile') | imagine_filter('60x60') }}" class="mr-3 img-fluid rounded" alt="{{ saturdayGameJam.name }} logo">
+                                        </a>
+                                        <div class="media-body">
+                                            {{ saturdayGameJam.name | truncate(55) }}<br>
+                                            <a href="{{ path('front_location_detail', {slug: saturdayGameJam.location.slug}) }}"><span class="badge badge-primary"><i class="fas fa-map-marker-alt"></i> {{ saturdayGameJam.location.place }}</span></a>
+                                        </div>
+                                    </div>
                                     {% if saturdayGameJam.eventbriteId %}
-                                        <button id="eventbrite-button-id-{{ saturdayGameJam.eventbriteId }}" class="btn btn-warning" type="button" data-toggle="modal"><i class="fas fa-ticket-alt"></i> {{ 'front.homepage.lock_entrance_saturday_gamejam' | trans }} · 0 €</button>
+                                        <button id="eventbrite-button-id-{{ saturdayGameJam.eventbriteId }}" class="btn btn-warning mt-3" type="button" data-toggle="modal"><i class="fas fa-ticket-alt"></i> {{ 'front.homepage.lock_entrance_saturday_gamejam' | trans }} · 0 €</button>
                                         <script type="text/javascript">
                                             window.EBWidgets.createWidget({
                                                 widgetType: "checkout",
@@ -356,19 +135,45 @@
                                     {% endif %}
                                 </td>
                             </tr>
-                            <tr class="bg-info">
-                                <th scope="row" class="text-center"></th>
-                                <th scope="row" class="text-center">{{ 'front.calendar.night' | trans }}</th>
-                                <th scope="row" colspan="2" class="text-center">{{ 'front.calendar.night' | trans }}</th>
+                            <tr>
+                                <th scope="row" class="text-center align-middle">
+                                    18:00h
+                                </th>
+                                {% include "frontend/includes/timetable_ticket_cell.html.twig" with {item: firstSaturdayConference, show_tickets_button: true, colspan: 2} %}
                             </tr>
                             <tr>
                                 <th scope="row" class="text-center align-middle">
-                                    22:30h<br>
-                                    {{ 'front.calendar.to' | trans }}<br>
-                                    23:30h
+                                    18:30h
                                 </th>
-                                {% include "frontend/includes/timetable_ticket_cell_not_embeded.html.twig" with {item: fridayShow, show_tickets_button: true} %}
-                                <td class="text-center align-middle" colspan="2"><i class="far fa-question"></i></td>
+                                {% include "frontend/includes/timetable_ticket_cell.html.twig" with {item: secondSaturdayConference, show_tickets_button: false, colspan: 2} %}
+                            </tr>
+                            <tr>
+                                <th scope="row" class="text-center align-middle">
+                                    19:20h
+                                </th>
+                                <td class="text-muted text-center align-middle" colspan="2"><i class="fas fa-coffee"></i> {{ 'front.calendar.pause' | trans }}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row" class="text-center align-middle">
+                                    19:30h
+                                </th>
+                                {% include "frontend/includes/timetable_ticket_cell.html.twig" with {item: saturdayDocumentaryFilm, show_tickets_button: false, colspan: 2} %}
+                            </tr>
+                            <tr>
+                                <th scope="row" class="text-center align-middle">
+                                    20:00h
+                                </th>
+                                {% include "frontend/includes/timetable_ticket_cell.html.twig" with {item: saturdayRoundTable, show_tickets_button: false, colspan: 2} %}
+                            </tr>
+                            <tr class="bg-info">
+                                <th scope="row" class="text-center"></th>
+                                <th scope="row" colspan="4" class="text-center">{{ 'front.calendar.night' | trans }}</th>
+                            </tr>
+                            <tr>
+                                <th scope="row" class="text-center align-middle">
+                                    22:30h
+                                </th>
+                                <td class="text-center align-middle" colspan="4"><i class="far fa-question"></i></td>
                             </tr>
                             </tbody>
                         </table>

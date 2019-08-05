@@ -1,4 +1,4 @@
-<td{% if rowspan is defined %} rowspan="{{ rowspan }}"{% endif %}{% if colspan is defined %} colspan="{{ colspan }}"{% endif %} class="align-middle">
+<td{% if rowspan is defined %} rowspan="{{ rowspan }}"{% endif %}{% if colspan is defined %} colspan="{{ colspan }}"{% endif %}{% if width is defined %} style="width:{{ width }}%"{% endif %} class="align-middle">
     <div class="media">
         <a href="{{ path('front_event_activity', {category: item.category.slug, activity: item.slug}) }}">
             <img src="{{ vich_uploader_asset(item, 'imageFile') | imagine_filter('60x60') }}" class="mr-3 img-fluid rounded" alt="{{ item.name }} logo">
