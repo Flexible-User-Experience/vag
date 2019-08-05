@@ -3459,16 +3459,16 @@
         },
         {
             "name": "sonata-project/block-bundle",
-            "version": "3.16.0",
+            "version": "3.16.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataBlockBundle.git",
-                "reference": "2fe7a119cfda9acbc94f7cf3b35810619151e3db"
+                "reference": "4606e3c7e156c3ede16abed8a893ce3116e44103"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataBlockBundle/zipball/2fe7a119cfda9acbc94f7cf3b35810619151e3db",
-                "reference": "2fe7a119cfda9acbc94f7cf3b35810619151e3db",
+                "url": "https://api.github.com/repos/sonata-project/SonataBlockBundle/zipball/4606e3c7e156c3ede16abed8a893ce3116e44103",
+                "reference": "4606e3c7e156c3ede16abed8a893ce3116e44103",
                 "shasum": ""
             },
             "require": {
@@ -3542,7 +3542,7 @@
                 "block",
                 "sonata"
             ],
-            "time": "2019-07-31T21:40:59+00:00"
+            "time": "2019-08-05T06:06:34+00:00"
         },
         {
             "name": "sonata-project/cache",
@@ -8428,16 +8428,16 @@
     "packages-dev": [
         {
             "name": "composer/ca-bundle",
-            "version": "1.2.1",
+            "version": "1.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/ca-bundle.git",
-                "reference": "33810d865dd06a674130fceb729b2f279dc79e8c"
+                "reference": "f26a67e397be0e5c00d7c52ec7b5010098e15ce5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/ca-bundle/zipball/33810d865dd06a674130fceb729b2f279dc79e8c",
-                "reference": "33810d865dd06a674130fceb729b2f279dc79e8c",
+                "url": "https://api.github.com/repos/composer/ca-bundle/zipball/f26a67e397be0e5c00d7c52ec7b5010098e15ce5",
+                "reference": "f26a67e397be0e5c00d7c52ec7b5010098e15ce5",
                 "shasum": ""
             },
             "require": {
@@ -8480,7 +8480,7 @@
                 "ssl",
                 "tls"
             ],
-            "time": "2019-07-31T08:13:16+00:00"
+            "time": "2019-08-02T09:05:43+00:00"
         },
         {
             "name": "doctrine/data-fixtures",
@@ -8644,16 +8644,16 @@
         },
         {
             "name": "hautelook/alice-bundle",
-            "version": "2.5.0",
+            "version": "v2.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/hautelook/AliceBundle.git",
-                "reference": "b9fa7985a522a7aed335976c168019cadb07396e"
+                "reference": "a4d25ba319b551d14082cd7e9916f5ddcd8bc0f2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/hautelook/AliceBundle/zipball/b9fa7985a522a7aed335976c168019cadb07396e",
-                "reference": "b9fa7985a522a7aed335976c168019cadb07396e",
+                "url": "https://api.github.com/repos/hautelook/AliceBundle/zipball/a4d25ba319b551d14082cd7e9916f5ddcd8bc0f2",
+                "reference": "a4d25ba319b551d14082cd7e9916f5ddcd8bc0f2",
                 "shasum": ""
             },
             "require": {
@@ -8708,7 +8708,7 @@
                 "orm",
                 "symfony"
             ],
-            "time": "2019-04-10T10:32:44+00:00"
+            "time": "2019-08-04T18:39:27+00:00"
         },
         {
             "name": "myclabs/deep-copy",

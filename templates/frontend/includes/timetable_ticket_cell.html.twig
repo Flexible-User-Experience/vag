@@ -4,7 +4,7 @@
             <img src="{{ vich_uploader_asset(item, 'imageFile') | imagine_filter('60x60') }}" class="mr-3 img-fluid rounded" alt="{{ item.name }} logo">
         </a>
         <div class="media-body">
-            {{ item.name | truncate(55) }}<br>
+            {{ item.name }}<br>
             <a href="{{ path('front_location_detail', {slug: item.location.slug}) }}"><span class="badge badge-primary"><i class="fas fa-map-marker-alt"></i> {{ item.location.place }}</span></a>
         </div>
     </div>
