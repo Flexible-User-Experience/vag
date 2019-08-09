@@ -4,4 +4,39 @@ fos_ck_editor:
     default_config: my_config
     configs:
         my_config:
-            toolbar: 'basic'
+            toolbar: 'my_toolbar'
+    toolbars:
+        configs:
+            my_toolbar:
+                -
+                    - 'Bold'
+                    - 'Italic'
+                    - 'Underline'
+                    - 'Strike'
+                    - 'Subscript'
+                    - 'Superscript'
+                    - '-'
+                    - 'CopyFormatting'
+                    - 'RemoveFormat'
+                    - '-'
+                    - 'NumberedList'
+                    - 'BulletedList'
+                    - '-'
+                    - 'Outdent'
+                    - 'Indent'
+                    - '-'
+                    - 'Blockquote'
+                    - 'Link'
+                    - 'Unlink'
+                    - 'Source'
+                -
+                    '/'
+                -
+                    - 'Image'
+                    - 'Flash'
+                    - 'Table'
+                    - 'HorizontalRule'
+                    - 'Smiley'
+                    - 'SpecialChar'
+                    - 'PageBreak'
+                    - 'Iframe'
