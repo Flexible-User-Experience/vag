@@ -47,7 +47,7 @@ final class BlogPostAdmin extends AbstractAdmin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->with('admin.with.post', ['class' => 'col-md-4'])
+            ->with('admin.with.post', ['class' => 'col-md-5'])
             ->add(
                 'name',
                 TextType::class,
