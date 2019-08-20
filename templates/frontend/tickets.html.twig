@@ -114,9 +114,11 @@
                                 <td colspan="2"></td>
                                 <td colspan="2" rowspan="5" class="align-middle">
                                     <div class="media">
-                                        <a href="{{ path('front_event_activity', {category: saturdayGameJam.category.slug, activity: saturdayGameJam.slug}) }}">
-                                            <img src="{{ vich_uploader_asset(saturdayGameJam, 'imageFile') | imagine_filter('60x60') }}" class="mr-3 img-fluid rounded" alt="{{ saturdayGameJam.name }} logo">
-                                        </a>
+                                        {% if saturdayGameJam.imageName %}
+                                            <a href="{{ path('front_event_activity', {category: saturdayGameJam.category.slug, activity: saturdayGameJam.slug}) }}">
+                                                <img src="{{ vich_uploader_asset(saturdayGameJam, 'imageFile') | imagine_filter('60x60') }}" class="mr-3 img-fluid rounded" alt="{{ saturdayGameJam.name }} logo">
+                                            </a>
+                                        {% endif %}
                                         <div class="media-body">
                                             {{ saturdayGameJam.name | truncate(55) }}<br>
                                             <a href="{{ path('front_location_detail', {slug: saturdayGameJam.location.slug}) }}"><span class="badge badge-primary"><i class="fas fa-map-marker-alt"></i> {{ saturdayGameJam.location.place }}</span></a>
