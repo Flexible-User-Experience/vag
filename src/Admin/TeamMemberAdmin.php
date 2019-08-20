@@ -100,7 +100,8 @@ final class TeamMemberAdmin extends AbstractAdmin
                     ],
                 ]
             )
-            ->end();
+            ->end()
+        ;
         if ($this->formBuilderIsInEditMode()) {
             $formMapper
                 ->with('admin.with.images', ['class' => 'col-md-4'])
@@ -140,6 +141,14 @@ final class TeamMemberAdmin extends AbstractAdmin
                 UrlType::class,
                 [
                     'label' => 'admin.label.link',
+                    'required' => false,
+                ]
+            )
+            ->add(
+                'linkName',
+                TextType::class,
+                [
+                    'label' => 'admin.label.name',
                     'required' => false,
                 ]
             )

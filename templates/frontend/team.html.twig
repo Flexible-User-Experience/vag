@@ -4,7 +4,7 @@
 
 {% block body %}
     <div class="jumbotron jumbotron-fluid jumbotron-homepage" style="background-image:url('{{ asset('build/creative-wing-light.png') }}');">
-        <div class="container mt-0 pt-2 pb-1">
+        <div class="container pt-2 pb-1">
             <h1 class="display-6 text-white">{{ 'front.menu.team' | trans | title }}</h1>
         </div>
     </div>
@@ -13,7 +13,7 @@
             <div class="row">
                 {% if members | length > 0 %}
                     {% for member in members %}
-                        <div class="col-6 col-sm-4 col-md-3 mb-3">
+                        <div class="col">
                             <div class="card">
                                 {% if member.imageName %}
                                     <img src="{{ vich_uploader_asset(member, 'imageFile') | imagine_filter('480x480_BW') }}" class="card-img-top" alt="{{ member.fullname }}">
@@ -24,7 +24,7 @@
                                         <p class="card-text text-muted">{{ member.job }}</p>
                                     {% endif %}
                                     {% if member.link %}
-                                        <a href="{{ member.link }}">{{ member.link | remove_url_protocol }}</a>
+                                        <a href="{{ member.link }}">{% if member.linkName %}{{ member.linkName }}{% else %}{{ member.link | remove_url_protocol }}{% endif %}</a>
                                     {% endif %}
                                 </div>
                             </div>

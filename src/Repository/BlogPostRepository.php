@@ -90,4 +90,28 @@ class BlogPostRepository extends ServiceEntityRepository
             ->setParameter('published', $published)
         ;
     }
+
+    /**
+     * @param DateTime $published
+     * @param string $locale
+     * @param string $slug
+     *
+     * @return QueryBuilder
+     *
+     * @throws Exception
+     */
+    public function findByPublishedAndLocalizedSlug(DateTime $published, $locale, $slug)
+    {
+        return $this->createQueryBuilder('bp')
+            ->join('bp.translations', 't')
+            ->where('DATE(bp.published) <= DATE(:published)')
+            ->andWhere('t.locale = :locale')
+            ->andWhere('t.content = :content')
+            ->andWhere('t.field = :field')
+            ->setParameter('published', $published)
+            ->setParameter('locale', $locale)
+            ->setParameter('content', $slug)
+            ->setParameter('field', 'slug')
+        ;
+    }
 }

@@ -183,6 +183,14 @@ final class EventActivityAdmin extends AbstractAdmin
                 ]
             )
             ->add(
+                'ticketPrice',
+                NumberType::class,
+                [
+                    'label' => 'admin.label.ticket_price',
+                    'required' => false,
+                ]
+            )
+            ->add(
                 'eventbriteId',
                 TextType::class,
                 [

@@ -18,7 +18,7 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Translation\TranslatorInterface;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
  * @Route("/", requirements={"_locale"="%app_locales%"})
@@ -99,7 +99,9 @@ class FrontendMainController extends AbstractController
         $secondSaturdayWorkshop = $ear->find(9);
         $thirdSaturdayWorkshop = $ear->find(7);
         $fourthSaturdayWorkshop = $ear->find(8);
-        $firstSaturdayConference = null; // TODO
+        $firstSaturdayConference = $ear->find(14);
+        $secondSaturdayConference = $ear->find(13);
+        $saturdayGameJam = $ear->find(15);
         $saturdayDocumentaryFilm = $ear->find(3);
         $saturdayRoundTable = $ear->find(12);
         $saturdayShow = null; // TODO
@@ -113,6 +115,8 @@ class FrontendMainController extends AbstractController
             'thirdSaturdayWorkshop' => $thirdSaturdayWorkshop,
             'fourthSaturdayWorkshop' => $fourthSaturdayWorkshop,
             'firstSaturdayConference' => $firstSaturdayConference,
+            'secondSaturdayConference' => $secondSaturdayConference,
+            'saturdayGameJam' => $saturdayGameJam,
             'saturdayDocumentaryFilm' => $saturdayDocumentaryFilm,
             'saturdayRoundTable' => $saturdayRoundTable,
             'saturdayShow' => $saturdayShow,

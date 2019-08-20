@@ -29,6 +29,10 @@ $enable-responsive-font-sizes: true;
 
 @import '~bootstrap/scss/bootstrap';
 
+.text-decoration-none:hover {
+  text-decoration: none !important;
+}
+
 .text-black {
   color: $app-color-black;
 }

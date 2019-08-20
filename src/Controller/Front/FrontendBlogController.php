@@ -9,6 +9,7 @@ use App\Manager\BlogCategoryManager;
 use DateTime;
 use DateTimeImmutable;
 use Exception;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\Annotation\Route;
@@ -84,10 +85,11 @@ class FrontendBlogController extends AbstractController
     /**
      * @Route({"ca": "/{year}/{month}/{day}/{slug}", "es": "/{year}/{month}/{day}/{slug}", "en": "/{year}/{month}/{day}/{slug}"}, name="front_blog_post_detail", requirements={"year"="\d{4}", "month"="\d{2}", "day"="\d{2}"})
      *
-     * @param string $year
-     * @param string $month
-     * @param string $day
-     * @param string $slug
+     * @param Request $request
+     * @param string  $year
+     * @param string  $month
+     * @param string  $day
+     * @param string  $slug
      *
      * @return Response
      *
@@ -95,13 +97,13 @@ class FrontendBlogController extends AbstractController
      * @throws AccessDeniedHttpException
      * @throws Exception
      */
-    public function postDetail($year, $month, $day, $slug)
+    public function postDetail(Request $request, $year, $month, $day, $slug)
     {
         $published = new DateTime();
         $published->setDate($year, $month, $day);
         $tags = $this->getDoctrine()->getRepository(BlogCategory::class)->findAvailableSortedByName()->getQuery()->getResult();
         /** @var BlogPost $post */
-        $post = $this->getDoctrine()->getRepository(BlogPost::class)->findByPublishedAndSlug($published, $slug)->getQuery()->getOneOrNullResult();
+        $post = $this->getDoctrine()->getRepository(BlogPost::class)->findByPublishedAndLocalizedSlug($published, $request->getLocale(), $slug)->getQuery()->getOneOrNullResult();
 
         if (!$post) {
             throw $this->createNotFoundException();

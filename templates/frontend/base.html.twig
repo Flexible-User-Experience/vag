@@ -11,8 +11,10 @@
             </script>
         {% endif %}
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
         <meta name="author" content="www.flux.cat">
+{# TODO       <meta name="description" content="{% block description %}Free Web tutorials{% endblock %}">#}
+        <meta name="keywords" content="{% block keywords %}Video,Art,Game,Experience{% endblock %}">
         <title>{% block title %}VAG{% endblock %}</title>
         <link rel="icon" type="image/png" href="{{ asset('favicon.png') }}">
         {% block stylesheets %}{{ encore_entry_link_tags('app') }}{% endblock %}
@@ -23,7 +25,7 @@
             <div class="d-flex flex-grow-1">
                 <span class="w-100 d-lg-none d-block">{#<!-- hidden spacer to center brand on mobile -->#}</span>
                 <a class="navbar-brand" href="{{ path('front_homepage') }}">
-                    <img class="navbar-logo" src="{{ asset('build/vag_green.svg') }}" alt="VAG logo">
+                    <img class="navbar-logo" src="{{ asset('build/vag_green.svg') }}" alt="Video Art Game logo">
                 </a>
                 <div class="w-100 text-right">
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#top-navbar">
@@ -42,7 +44,7 @@
                     <div class="col">
                         {#<img class="footer-logo mb-2" src="{{ asset('build/vag_green.svg') }}" alt="VAG logo">#}
                         {#<h6 class="text-white">&copy; {{ 'now'| date('Y') }} VAG</h6>#}
-                        <h6 class="text-white">VAG</h6>
+                        <h6 class="text-white">Video Art Game</h6>
                         <ul class="list-unstyled text-small">
                             <li><a class="text-muted" href="{{ path('front_contact') }}">{{ 'front.footer.contact' | trans }}</a></li>
                             <li><a class="text-muted" href="{{ path('front_team') }}">{{ 'front.footer.team' | trans }}</a></li>
