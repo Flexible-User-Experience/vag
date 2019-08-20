@@ -127,7 +127,7 @@ admin:
         user_roles: 'Roles de usuario'
         plain_password: 'Contraseña'
         language:
-            speaker: 'Idioma del ponente'
+            speaker: 'Idioma del ponente o de la actividad'
             language: 'Idioma'
             ca: 'catalán'
             es: 'español'

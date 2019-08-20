@@ -127,7 +127,7 @@ admin:
         user_roles: 'Rols d''usuari'
         plain_password: 'Contrasenya'
         language:
-            speaker: 'Idioma del ponent'
+            speaker: 'Idioma del ponent o de l''activitat'
             language: 'Idioma'
             ca: 'català'
             es: 'espanyol'

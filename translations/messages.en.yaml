@@ -127,7 +127,7 @@ admin:
         user_roles: 'Roles'
         plain_password: 'Password'
         language:
-            speaker: 'Speaker language'
+            speaker: 'Speaker or event language'
             language: 'Language'
             ca: 'catalan'
             es: 'spanish'
