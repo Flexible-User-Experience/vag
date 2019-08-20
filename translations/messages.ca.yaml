@@ -1,4 +1,6 @@
 front:
+    yes: 'Sí'
+    no: 'No'
     flash:
         contact_message_send: 'El teu missatge s''ha enviat correctament, gràcies per contactar amb nosaltres. Et respondrem el més aviat possible!'
         contact_newsletter_send: 'Gràcies per registrar-te!'
@@ -106,6 +108,7 @@ admin:
         description: 'Descripció'
         target: 'Public objectiu'
         is_translated: 'Traducció'
+        is_translated_availability: 'Traducció de l''activitat disponible'
         tickets_amount: 'Quantitat d''entrades'
         tickets_sold: 'Entrades venudes'
         tickets_left: 'Entrades disponibles'
@@ -124,6 +127,7 @@ admin:
         user_roles: 'Rols d''usuari'
         plain_password: 'Contrasenya'
         language:
+            speaker: 'Idioma del ponent o de l''activitat'
             language: 'Idioma'
             ca: 'català'
             es: 'espanyol'

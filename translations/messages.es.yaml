@@ -1,4 +1,6 @@
 front:
+    yes: 'Sí'
+    no: 'No'
     flash:
         contact_message_send: 'Su mensaje ha sido enviado con éxito, gracias por contactarnos. ¡Te responderemos tan pronto como sea posible!'
         contact_newsletter_send: '¡Gracias por registrarte!'
@@ -106,6 +108,7 @@ admin:
         description: 'Descripción'
         target: 'Público objetivo'
         is_translated: 'Traducción'
+        is_translated_availability: 'Traducción de la actividad disponible'
         tickets_amount: 'Cantidad de entradas'
         tickets_sold: 'Entradas vendidas'
         tickets_left: 'Entradas disponibles'
@@ -124,6 +127,7 @@ admin:
         user_roles: 'Roles de usuario'
         plain_password: 'Contraseña'
         language:
+            speaker: 'Idioma del ponente o de la actividad'
             language: 'Idioma'
             ca: 'catalán'
             es: 'español'

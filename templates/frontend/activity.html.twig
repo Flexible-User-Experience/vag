@@ -31,12 +31,26 @@
                     {% endif %}
                     {% if activity.language %}
                         {% set lang = 'admin.label.language.' ~ activity.language %}
-                        <p class="mt-0 mb-0"><span class="badge badge-pill badge-secondary mb-2"><i class="fas fa-language"></i> {{ lang | trans }}</span></p>
-                        {% if activity.isTranslated %}
-                            <p class="mt-0 mb-0">{{ 'admin.label.is_translated' | trans | lower }} <i class="fas fa-check text-success"></i></p>
-                        {% else %}
-                            <p class="mt-0 mb-0">{{ 'admin.label.is_translated' | trans | lower }} <i class="fas fa-times text-danger"></i></p>
-                        {% endif %}
+                        <table class="table table-borderless table-sm">
+                            <tbody>
+                            <tr>
+                                <td>{{ 'admin.label.language.speaker' | trans | lower }}</td>
+                                <td>{{ 'admin.label.is_translated_availability' | trans | lower }}</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span class="badge badge-pill badge-secondary"><i class="fas fa-language"></i> {{ lang | trans }}</span>
+                                </td>
+                                <td>
+                                    {% if activity.isTranslated %}
+                                        <span class="badge badge-pill badge-secondary"><i class="fas fa-check"></i> {{ 'front.yes' | trans | lower }}</span>
+                                    {% else %}
+                                        <span class="badge badge-pill badge-secondary"><i class="fas fa-times"></i> {{ 'front.no' | trans | lower }}</span>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
                     {% endif %}
                 </div>
             </div>
@@ -49,6 +63,11 @@
                     <div class="col-12">
                         <h2 class="display-6 mt-0">{{ 'admin.with.tickets' | trans }}</h2>
                         <div id="eventbrite-widget-trigger"></div>
+                        {% if activity.id == constant('App\\Controller\\Front\\FrontendMainController::ACTIVITY_WITH_SEATS_MAP_ID') %}
+                            <a class="btn btn-warning mt-3" href="https://www.eventbrite.es/e/entradas-vag-experience-concert-musica-videojoc-gris-{{ activity.eventbriteId }}?ref=elink" target="_blank"><i class="fas fa-ticket-alt"></i> {{ 'front.homepage.buy_tickets' | trans | capitalize }} · {{ activity.ticketPrice }} €</a>
+                        {% else %}
+                            <div id="eventbrite-widget-trigger"></div>
+                        {% endif %}
                     </div>
                 </div>
             </div>
@@ -169,7 +188,7 @@
             });
         }
     </script>
-    {% if activity.eventbriteId %}
+    {% if activity.eventbriteId and activity.id != constant('App\\Controller\\Front\\FrontendMainController::ACTIVITY_WITH_SEATS_MAP_ID') %}
         <script src="https://www.eventbrite.com/static/widgets/eb_widgets.js"></script>
         <script type="text/javascript">
             window.EBWidgets.createWidget({

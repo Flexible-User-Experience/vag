@@ -244,7 +244,7 @@ App\Entity\EventActivity:
         location: '@location1'
         collaborators:
             - '@collaborator<numberBetween(1,8)>'
-    activity{2..12}:
+    activity{2..20}:
         name: '<sentence(3,false)>'
         begin: '<dateTimeBetween("+1 month","+2 month")>'
         end: '<dateTimeBetween("+3 month","+4 month")>'
@@ -263,7 +263,7 @@ App\Entity\Translation\EventActivityTranslation:
         locale: 'es'
         field: 'name'
         content: 'actividad 1'
-    activity_translation_name_es_{2..12}:
+    activity_translation_name_es_{2..20}:
         object: '@activity<current()>'
         locale: 'es'
         field: 'name'
@@ -273,17 +273,17 @@ App\Entity\Translation\EventActivityTranslation:
         locale: 'es'
         field: 'slug'
         content: 'actividad-1'
-    activity_translation_slug_es_{2..12}:
+    activity_translation_slug_es_{2..20}:
         object: '@activity<current()>'
         locale: 'es'
         field: 'slug'
         content: '<slug()>'
-    activity_translation_short_description_es_{1..12}:
+    activity_translation_short_description_es_{1..20}:
         object: '@activity<current()>'
         locale: 'es'
         field: 'shortDescription'
         content: '<sentence()>'
-    activity_translation_description_es_{1..12}:
+    activity_translation_description_es_{1..20}:
         object: '@activity<current()>'
         locale: 'es'
         field: 'description'
@@ -293,7 +293,7 @@ App\Entity\Translation\EventActivityTranslation:
         locale: 'en'
         field: 'name'
         content: 'activity 1'
-    activity_translation_name_en_{2..12}:
+    activity_translation_name_en_{2..20}:
         object: '@activity<current()>'
         locale: 'en'
         field: 'name'
@@ -303,17 +303,17 @@ App\Entity\Translation\EventActivityTranslation:
         locale: 'en'
         field: 'slug'
         content: 'activity-1'
-    activity_translation_slug_en_{2..12}:
+    activity_translation_slug_en_{2..20}:
         object: '@activity<current()>'
         locale: 'en'
         field: 'slug'
         content: '<slug()>'
-    activity_translation_short_description_en_{1..12}:
+    activity_translation_short_description_en_{1..20}:
         object: '@activity<current()>'
         locale: 'en'
         field: 'shortDescription'
         content: '<sentence()>'
-    activity_translation_description_en_{1..12}:
+    activity_translation_description_en_{1..20}:
         object: '@activity<current()>'
         locale: 'en'
         field: 'description'
