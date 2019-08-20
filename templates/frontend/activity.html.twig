@@ -63,6 +63,11 @@
                     <div class="col-12">
                         <h2 class="display-6 mt-0">{{ 'admin.with.tickets' | trans }}</h2>
                         <div id="eventbrite-widget-trigger"></div>
+                        {% if activity.id == constant('App\\Controller\\Front\\FrontendMainController::ACTIVITY_WITH_SEATS_MAP_ID') %}
+                            <a class="btn btn-warning mt-3" href="https://www.eventbrite.es/e/entradas-vag-experience-concert-musica-videojoc-gris-{{ activity.eventbriteId }}?ref=elink" target="_blank"><i class="fas fa-ticket-alt"></i> {{ 'front.homepage.buy_tickets' | trans | capitalize }} · {{ activity.ticketPrice }} €</a>
+                        {% else %}
+                            <div id="eventbrite-widget-trigger"></div>
+                        {% endif %}
                     </div>
                 </div>
             </div>
@@ -183,7 +188,7 @@
             });
         }
     </script>
-    {% if activity.eventbriteId %}
+    {% if activity.eventbriteId and activity.id != constant('App\\Controller\\Front\\FrontendMainController::ACTIVITY_WITH_SEATS_MAP_ID') %}
         <script src="https://www.eventbrite.com/static/widgets/eb_widgets.js"></script>
         <script type="text/javascript">
             window.EBWidgets.createWidget({

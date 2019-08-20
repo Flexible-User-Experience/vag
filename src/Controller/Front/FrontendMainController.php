@@ -25,6 +25,8 @@ use Symfony\Contracts\Translation\TranslatorInterface;
  */
 class FrontendMainController extends AbstractController
 {
+    const ACTIVITY_WITH_SEATS_MAP_ID = 10;
+
     /**
      * @param Request $request
      * @param TranslatorInterface $translator
@@ -94,7 +96,7 @@ class FrontendMainController extends AbstractController
     {
         $firstFridayConference = $ear->find(2);
         $secondFridayConference = $ear->find(1);
-        $fridayShow = $ear->find(10);
+        $fridayShow = $ear->find(self::ACTIVITY_WITH_SEATS_MAP_ID);
         $firstSaturdayWorkshop = $ear->find(5);
         $secondSaturdayWorkshop = $ear->find(9);
         $thirdSaturdayWorkshop = $ear->find(7);
