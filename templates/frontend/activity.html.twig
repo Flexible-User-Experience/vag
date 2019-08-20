@@ -31,12 +31,26 @@
                     {% endif %}
                     {% if activity.language %}
                         {% set lang = 'admin.label.language.' ~ activity.language %}
-                        <p class="mt-0 mb-0"><span class="badge badge-pill badge-secondary mb-2"><i class="fas fa-language"></i> {{ lang | trans }}</span></p>
-                        {% if activity.isTranslated %}
-                            <p class="mt-0 mb-0">{{ 'admin.label.is_translated' | trans | lower }} <i class="fas fa-check text-success"></i></p>
-                        {% else %}
-                            <p class="mt-0 mb-0">{{ 'admin.label.is_translated' | trans | lower }} <i class="fas fa-times text-danger"></i></p>
-                        {% endif %}
+                        <table class="table table-borderless table-sm">
+                            <tbody>
+                            <tr>
+                                <td>{{ 'admin.label.language.speaker' | trans | lower }}</td>
+                                <td>{{ 'admin.label.is_translated_availability' | trans | lower }}</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span class="badge badge-pill badge-secondary"><i class="fas fa-language"></i> {{ lang | trans }}</span>
+                                </td>
+                                <td>
+                                    {% if activity.isTranslated %}
+                                        <span class="badge badge-pill badge-secondary"><i class="fas fa-check"></i> {{ 'front.yes' | trans | lower }}</span>
+                                    {% else %}
+                                        <span class="badge badge-pill badge-secondary"><i class="fas fa-times"></i> {{ 'front.no' | trans | lower }}</span>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
                     {% endif %}
                 </div>
             </div>

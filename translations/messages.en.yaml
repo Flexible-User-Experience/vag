@@ -1,4 +1,6 @@
 front:
+    yes: 'Yes'
+    no: 'No'
     flash:
         contact_message_send: 'Your message has been sent successfully, thanks for contact us. We will answer you as soon as possible!'
         contact_newsletter_send: 'Thank you for signing up!'
@@ -106,6 +108,7 @@ admin:
         description: 'Description'
         target: 'Target audience'
         is_translated: 'Is translated'
+        is_translated_availability: 'Activity translation available'
         tickets_amount: 'Tickets amount'
         tickets_sold: 'Tickets sold'
         tickets_left: 'Tickets left'
@@ -124,6 +127,7 @@ admin:
         user_roles: 'Roles'
         plain_password: 'Password'
         language:
+            speaker: 'Speaker language'
             language: 'Language'
             ca: 'catalan'
             es: 'spanish'
