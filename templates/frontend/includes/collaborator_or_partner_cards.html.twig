@@ -22,28 +22,26 @@
         </div>
     {% endfor %}
 {% elseif mode == constant('App\\Enum\\PartnerCategoryEnum::COLLABORATOR') %}
-    <div class="col">
-        <div class="d-flex flex-wrap">
-            {% for partner in partners %}
-                <div class="card w-20">
-                    {% if partner.imageName %}
-                        {% if partner.link %}
-                            <a href="{{ partner.link }}" target="_blank">
-                                <img src="{{ vich_uploader_asset(partner, 'imageFile') | imagine_filter('480x480_BW_inset') }}" class="card-img-top" alt="{{ partner.name }}">
-                            </a>
-                        {% else %}
+    {% for partner in partners %}
+        <div class="col-3 col-sm-2 mb-3">
+            <div class="card">
+                {% if partner.imageName %}
+                    {% if partner.link %}
+                        <a href="{{ partner.link }}" target="_blank">
                             <img src="{{ vich_uploader_asset(partner, 'imageFile') | imagine_filter('480x480_BW_inset') }}" class="card-img-top" alt="{{ partner.name }}">
-                        {% endif %}
+                        </a>
+                    {% else %}
+                        <img src="{{ vich_uploader_asset(partner, 'imageFile') | imagine_filter('480x480_BW_inset') }}" class="card-img-top" alt="{{ partner.name }}">
                     {% endif %}
-                    <h5 class="card-title sr-only">{{ partner.name }}</h5>
-                </div>
-            {% else %}
-                <div class="col-12">
-                    <div class="alert alert-warning mb-0" role="alert">
-                        <i class="fa exclamation-triangle"></i> {{ 'front.events.empty_warning' | trans }}
-                    </div>
-                </div>
-            {% endfor %}
+                {% endif %}
+                <h5 class="card-title sr-only">{{ partner.name }}</h5>
+            </div>
         </div>
-    </div>
+    {% else %}
+        <div class="col-12">
+            <div class="alert alert-warning mb-0" role="alert">
+                <i class="fa exclamation-triangle"></i> {{ 'front.events.empty_warning' | trans }}
+            </div>
+        </div>
+    {% endfor %}
 {% endif %}

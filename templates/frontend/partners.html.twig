@@ -22,7 +22,7 @@
     </div>
     <div class="jumbotron jumbotron-fluid mb-0">
         <div class="container">
-            <div class="row">
+            <div class="row justify-content-center">
                 {% include "frontend/includes/collaborator_or_partner_cards.html.twig" with {partners: collaborators, mode: constant('App\\Enum\\PartnerCategoryEnum::COLLABORATOR')} %}
             </div>
         </div>
