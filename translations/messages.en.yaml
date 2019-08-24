@@ -56,6 +56,12 @@ front:
         draft: 'Draft mode. Page only visible to users who have accessed the content manager.'
     legal:
         privacy_policy_terms: 'I accept the <a href="%href%">%anchor%</a>'
+    form:
+        label:
+            name: 'name'
+            email: 'email'
+            subscribe: 'subscribe'
+            send: 'send'
     footer:
         contact: 'contact'
         team: 'who we are'

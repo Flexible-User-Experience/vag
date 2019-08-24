@@ -153,3 +153,10 @@ h5.anchor {
 .dark-footer {
   background-color: $app-color-footer;
 }
+
+.w-20 {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 20% !important;
+  flex: 0 0 20% !important;
+  max-width: 20%;
+}

@@ -55,7 +55,13 @@ front:
     blog:
         draft: 'Modo borrador. Página sólo visible para usuarios que hayan accedido al gestor de contenidos.'
     legal:
-        privacy_policy_terms: 'Acepto la <a href="%href%">%anchor%</a>'
+        privacy_policy_terms: 'acepto la <a href="%href%">%anchor%</a>'
+    form:
+        label:
+            name: 'nombre'
+            email: 'email'
+            subscribe: 'suscribe me'
+            send: 'enviar'
     footer:
         contact: 'contacto'
         team: 'quienes somos'
