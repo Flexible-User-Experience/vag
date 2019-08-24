@@ -6,6 +6,7 @@ use App\Entity\BlogCategory;
 use App\Entity\BlogPost;
 use App\Enum\UserRoleEnum;
 use App\Manager\BlogCategoryManager;
+use App\Manager\BlogPostManager;
 use DateTime;
 use DateTimeImmutable;
 use Exception;
@@ -50,15 +51,15 @@ class FrontendBlogController extends AbstractController
     /**
      * @Route({"ca": "/etiqueta/{slug}/{page}", "es": "/etiqueta/{slug}/{page}", "en": "/tag/{slug}/{page}"}, name="front_blog_tag", requirements={"page"="\d+"})
      *
+     * @param BlogCategoryManager $bcm
      * @param string $slug
      * @param int $page
-     * @param BlogCategoryManager $bcm
      *
      * @return Response
      * @throws NotFoundHttpException
      * @throws Exception
      */
-    public function tagDetail(string $slug, $page = 1, BlogCategoryManager $bcm)
+    public function tagDetail(BlogCategoryManager $bcm, string $slug, int $page = 1)
     {
         $selectedTag = $bcm->getTagByTranslatedSlug($slug);
         if (!$selectedTag) {
@@ -86,6 +87,7 @@ class FrontendBlogController extends AbstractController
      * @Route({"ca": "/{year}/{month}/{day}/{slug}", "es": "/{year}/{month}/{day}/{slug}", "en": "/{year}/{month}/{day}/{slug}"}, name="front_blog_post_detail", requirements={"year"="\d{4}", "month"="\d{2}", "day"="\d{2}"})
      *
      * @param Request $request
+     * @param BlogPostManager $bpm
      * @param string  $year
      * @param string  $month
      * @param string  $day
@@ -97,13 +99,13 @@ class FrontendBlogController extends AbstractController
      * @throws AccessDeniedHttpException
      * @throws Exception
      */
-    public function postDetail(Request $request, $year, $month, $day, $slug)
+    public function postDetail(Request $request, BlogPostManager $bpm, $year, $month, $day, $slug)
     {
         $published = new DateTime();
         $published->setDate($year, $month, $day);
         $tags = $this->getDoctrine()->getRepository(BlogCategory::class)->findAvailableSortedByName()->getQuery()->getResult();
         /** @var BlogPost $post */
-        $post = $this->getDoctrine()->getRepository(BlogPost::class)->findByPublishedAndLocalizedSlug($published, $request->getLocale(), $slug)->getQuery()->getOneOrNullResult();
+        $post = $bpm->getPostByTranslatedSlug($published, $slug);
 
         if (!$post) {
             throw $this->createNotFoundException();

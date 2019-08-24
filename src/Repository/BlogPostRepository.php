@@ -78,10 +78,8 @@ class BlogPostRepository extends ServiceEntityRepository
      * @param string $slug
      *
      * @return QueryBuilder
-     *
-     * @throws Exception
      */
-    public function findByPublishedAndSlug(DateTime $published, $slug)
+    public function findByPublishedAndSlug(DateTime $published, string $slug)
     {
         return $this->createQueryBuilder('bp')
             ->where('bp.slug = :slug')
@@ -97,10 +95,8 @@ class BlogPostRepository extends ServiceEntityRepository
      * @param string $slug
      *
      * @return QueryBuilder
-     *
-     * @throws Exception
      */
-    public function findByPublishedAndLocalizedSlug(DateTime $published, $locale, $slug)
+    public function findByPublishedAndLocalizedSlug(DateTime $published, string $locale, string $slug)
     {
         return $this->createQueryBuilder('bp')
             ->join('bp.translations', 't')

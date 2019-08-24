@@ -1963,16 +1963,16 @@
         },
         {
             "name": "gremo/zurb-ink-bundle",
-            "version": "v4.0.2",
+            "version": "v4.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/gremo/ZurbInkBundle.git",
-                "reference": "29eb3c976a1a3215038a954754e47a75a317cbed"
+                "reference": "b728ecf46a17b5e78c0f32308423b2b627ebf639"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/gremo/ZurbInkBundle/zipball/29eb3c976a1a3215038a954754e47a75a317cbed",
-                "reference": "29eb3c976a1a3215038a954754e47a75a317cbed",
+                "url": "https://api.github.com/repos/gremo/ZurbInkBundle/zipball/b728ecf46a17b5e78c0f32308423b2b627ebf639",
+                "reference": "b728ecf46a17b5e78c0f32308423b2b627ebf639",
                 "shasum": ""
             },
             "require": {
@@ -2007,7 +2007,7 @@
                 "template",
                 "zurb"
             ],
-            "time": "2018-12-06T16:01:16+00:00"
+            "time": "2019-08-22T23:07:37+00:00"
         },
         {
             "name": "imagine/imagine",
@@ -2242,16 +2242,16 @@
         },
         {
             "name": "knplabs/knp-menu",
-            "version": "2.4.1",
+            "version": "2.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/KnpLabs/KnpMenu.git",
-                "reference": "1c6e0a5e37fb82227ee9a5e458ddc554731a7bf7"
+                "reference": "f22db6a9232f5118f4ae378bf5e6cfea32e9c5f5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/KnpLabs/KnpMenu/zipball/1c6e0a5e37fb82227ee9a5e458ddc554731a7bf7",
-                "reference": "1c6e0a5e37fb82227ee9a5e458ddc554731a7bf7",
+                "url": "https://api.github.com/repos/KnpLabs/KnpMenu/zipball/f22db6a9232f5118f4ae378bf5e6cfea32e9c5f5",
+                "reference": "f22db6a9232f5118f4ae378bf5e6cfea32e9c5f5",
                 "shasum": ""
             },
             "require": {
@@ -2273,7 +2273,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.4-dev"
+                    "dev-master": "3.0-dev"
                 }
             },
             "autoload": {
@@ -2305,7 +2305,7 @@
                 "menu",
                 "tree"
             ],
-            "time": "2019-08-16T11:08:29+00:00"
+            "time": "2019-08-23T08:46:21+00:00"
         },
         {
             "name": "knplabs/knp-menu-bundle",
