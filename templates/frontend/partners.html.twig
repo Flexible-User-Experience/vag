@@ -11,7 +11,7 @@
     <div class="jumbotron jumbotron-fluid mb-0">
         <div class="container">
             <div class="row">
-                {% include "frontend/includes/collaborator_or_partner_cards.html.twig" with {partners: partners, mode: 'partners'} %}
+                {% include "frontend/includes/collaborator_or_partner_cards.html.twig" with {partners: partners, mode: constant('App\\Enum\\PartnerCategoryEnum::PARTNER')} %}
             </div>
         </div>
     </div>
@@ -23,7 +23,7 @@
     <div class="jumbotron jumbotron-fluid mb-0">
         <div class="container">
             <div class="row">
-                {% include "frontend/includes/collaborator_or_partner_cards.html.twig" with {partners: collaborators, mode: 'collaborators'} %}
+                {% include "frontend/includes/collaborator_or_partner_cards.html.twig" with {partners: collaborators, mode: constant('App\\Enum\\PartnerCategoryEnum::COLLABORATOR')} %}
             </div>
         </div>
     </div>

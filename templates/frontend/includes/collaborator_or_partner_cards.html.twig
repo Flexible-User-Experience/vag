@@ -1,18 +1,35 @@
 {% for partner in partners %}
-    <div class="{% if mode == 'partners' %}col-6 col-sm-4 mb-3{% else %}col-4 col-sm-3 mb-3{% endif %}">
-        <div class="card">
-            {% if partner.imageName %}
-                {% if partner.link %}
-                    <a href="{{ partner.link }}" target="_blank">
-                        <img src="{% if mode == 'partners' %}{{ vich_uploader_asset(partner, 'imageFile') | imagine_filter('480x480_inset') }}{% else %}{{ vich_uploader_asset(partner, 'imageFile') | imagine_filter('480x480_BW_inset') }}{% endif %}" class="card-img-top" alt="{{ partner.name }}">
-                    </a>
-                {% else %}
-                    <img src="{% if mode == 'partners' %}{{ vich_uploader_asset(partner, 'imageFile') | imagine_filter('480x480_inset') }}{% else %}{{ vich_uploader_asset(partner, 'imageFile') | imagine_filter('480x480_BW_inset') }}{% endif %}" class="card-img-top" alt="{{ partner.name }}">
+    {% if mode == constant('App\\Enum\\PartnerCategoryEnum::PARTNER') %}
+        <div class="col-4 col-sm-3 mb-3">
+            <div class="card">
+                {% if partner.imageName %}
+                    {% if partner.link %}
+                        <a href="{{ partner.link }}" target="_blank">
+                            <img src="{{ vich_uploader_asset(partner, 'imageFile') | imagine_filter('480x480_inset') }}" class="card-img-top" alt="{{ partner.name }}">
+                        </a>
+                    {% else %}
+                        <img src="{{ vich_uploader_asset(partner, 'imageFile') | imagine_filter('480x480_inset') }}" class="card-img-top" alt="{{ partner.name }}">
+                    {% endif %}
                 {% endif %}
-            {% endif %}
-            <h5 class="card-title sr-only">{{ partner.name }}</h5>
+                <h5 class="card-title sr-only">{{ partner.name }}</h5>
+            </div>
         </div>
-    </div>
+    {% else %}
+        <div class="d-flex flex-wrap">
+            <div class="card w-20">
+                {% if partner.imageName %}
+                    {% if partner.link %}
+                        <a href="{{ partner.link }}" target="_blank">
+                            <img src="{{ vich_uploader_asset(partner, 'imageFile') | imagine_filter('480x480_BW_inset') }}" class="card-img-top" alt="{{ partner.name }}">
+                        </a>
+                    {% else %}
+                        <img src="{{ vich_uploader_asset(partner, 'imageFile') | imagine_filter('480x480_BW_inset') }}" class="card-img-top" alt="{{ partner.name }}">
+                    {% endif %}
+                {% endif %}
+                <h5 class="card-title sr-only">{{ partner.name }}</h5>
+            </div>
+        </div>
+    {% endif %}
 {% else %}
     <div class="col-12">
         <div class="alert alert-warning mb-0" role="alert">
