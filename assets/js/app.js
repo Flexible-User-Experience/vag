@@ -1,8 +1,8 @@
-require('../css/app.scss');
-const $ = require('jquery');
-require('bootstrap');
-require('@fortawesome/fontawesome-free/css/all.min.css');
-require('@fortawesome/fontawesome-free/js/all.js');
+import '../css/app.scss';
+import $ from 'jquery';
+import 'bootstrap';
+import '@fortawesome/fontawesome-free/css/all.min.css';
+import '@fortawesome/fontawesome-free/js/all.js';
 
 $(document).ready(function() {
     $('[data-toggle="popover"]').popover();
