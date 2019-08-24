@@ -55,7 +55,13 @@ front:
     blog:
         draft: 'Mode esborrany. Pàgina només visible para usuaris que hagin accedit al gestor de continguts.'
     legal:
-        privacy_policy_terms: 'Accepto la <a href="%href%">%anchor%</a>'
+        privacy_policy_terms: 'accepto la <a href="%href%">%anchor%</a>'
+    form:
+        label:
+            name: 'nom'
+            email: 'email'
+            subscribe: 'subscriu-me'
+            send: 'enviar'
     footer:
         contact: 'contacte'
         team: 'qui som'
