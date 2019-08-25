@@ -45,7 +45,12 @@ class VichUploadedFilesService
      */
     public function getFileSrc($object, $fieldName): string
     {
-        return $this->vus->asset($object, $fieldName);
+        $result = '';
+        if ($object->getImageName()) {
+            $result = $this->vus->asset($object, $fieldName);
+        }
+
+        return $result;
     }
 
     /**
