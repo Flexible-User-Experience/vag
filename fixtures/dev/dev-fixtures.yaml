@@ -395,3 +395,11 @@ App\Entity\BlogPost:
         isAvailable: '<boolean(100)>'
         tags:
             - "@blog_category1"
+
+App\Entity\Media:
+    media{1..2}:
+        name: 'Media title <current()>'
+        slug: 'media-title-<current()>'
+        description: '<sentence()>'
+        isAvailable: '<boolean(100)>'
+        link: '<url()>'

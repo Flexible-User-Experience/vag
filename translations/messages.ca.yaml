@@ -173,6 +173,7 @@ admin:
         blog_category: 'Categoria'
         blog_post: 'Article'
         post: 'Article'
+        media: 'Media'
 
 'Admin Class Event Activity List': 'Activitats'
 'Admin Class Event Activity Create': 'Nou'
@@ -188,6 +189,8 @@ admin:
 'Admin Class Blog Post Create': 'Nou'
 'Admin Class User List': 'Usuaris'
 'Admin Class User Create': 'Nou'
+'Admin Class Media List': 'Media'
+'Admin Class Media Create': 'Nou'
 'Admin Class Team Partner List': 'Patrocinadors'
 'Admin Class Team Partner Create': 'Nou'
 'Admin Class Team Member List': 'Equip'

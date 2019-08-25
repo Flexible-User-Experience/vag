@@ -22,6 +22,10 @@ class EmailSendingService
     private $mailerSenderAddress;
 
     /**
+     * Methods
+     */
+
+    /**
      * EmailSendingService constructor.
      *
      * @param Swift_Mailer $mailer

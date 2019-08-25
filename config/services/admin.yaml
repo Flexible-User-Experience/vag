@@ -2,58 +2,63 @@ services:
     # event
     admin.event_category:
         class: App\Admin\EventCategoryAdmin
-        arguments: [~, App\Entity\EventCategory, ~, '@sonata.admin.entity_manager', '@vich_uploader.templating.helper.uploader_helper', '@liip_imagine.cache.manager']
+        arguments: [~, App\Entity\EventCategory, ~, '@sonata.admin.entity_manager', '@App\Service\VichUploadedFilesService']
         tags:
             - { name: sonata.admin, manager_type: orm, label: 'admin.with.category', group: 'admin.with.event' }
     admin.event_location:
         class: App\Admin\EventLocationAdmin
-        arguments: [~, App\Entity\EventLocation, ~, '@sonata.admin.entity_manager', '@vich_uploader.templating.helper.uploader_helper', '@liip_imagine.cache.manager']
+        arguments: [~, App\Entity\EventLocation, ~, '@sonata.admin.entity_manager', '@App\Service\VichUploadedFilesService']
         tags:
             - { name: sonata.admin, manager_type: orm, label: 'admin.with.location', group: 'admin.with.event' }
     admin.event_collaborator:
         class: App\Admin\EventCollaboratorAdmin
-        arguments: [~, App\Entity\EventCollaborator, ~, '@sonata.admin.entity_manager', '@vich_uploader.templating.helper.uploader_helper', '@liip_imagine.cache.manager']
+        arguments: [~, App\Entity\EventCollaborator, ~, '@sonata.admin.entity_manager', '@App\Service\VichUploadedFilesService']
         tags:
             - { name: sonata.admin, manager_type: orm, label: 'admin.with.collaborator', group: 'admin.with.event' }
     admin.event_activity:
         class: App\Admin\EventActivityAdmin
-        arguments: [~, App\Entity\EventActivity, ~, '@sonata.admin.entity_manager', '@vich_uploader.templating.helper.uploader_helper', '@liip_imagine.cache.manager']
+        arguments: [~, App\Entity\EventActivity, ~, '@sonata.admin.entity_manager', '@App\Service\VichUploadedFilesService']
         tags:
             - { name: sonata.admin, manager_type: orm, label: 'admin.with.activity', group: 'admin.with.event' }
     # team
     admin.team_partner:
         class: App\Admin\TeamPartnerAdmin
-        arguments: [~, App\Entity\TeamPartner, ~, '@sonata.admin.entity_manager', '@vich_uploader.templating.helper.uploader_helper', '@liip_imagine.cache.manager']
+        arguments: [~, App\Entity\TeamPartner, ~, '@sonata.admin.entity_manager', '@App\Service\VichUploadedFilesService']
         tags:
             - { name: sonata.admin, manager_type: orm, label: 'admin.with.team_partner', group: 'admin.with.team' }
     admin.team_member:
         class: App\Admin\TeamMemberAdmin
-        arguments: [~, App\Entity\TeamMember, ~, '@sonata.admin.entity_manager', '@vich_uploader.templating.helper.uploader_helper', '@liip_imagine.cache.manager']
+        arguments: [~, App\Entity\TeamMember, ~, '@sonata.admin.entity_manager', '@App\Service\VichUploadedFilesService']
         tags:
             - { name: sonata.admin, manager_type: orm, label: 'admin.with.team_member', group: 'admin.with.team' }
     # blog
     admin.blog_category:
         class: App\Admin\BlogCategoryAdmin
-        arguments: [~, App\Entity\BlogCategory, ~, '@sonata.admin.entity_manager', '@vich_uploader.templating.helper.uploader_helper', '@liip_imagine.cache.manager']
+        arguments: [~, App\Entity\BlogCategory, ~, '@sonata.admin.entity_manager', '@App\Service\VichUploadedFilesService']
         tags:
             - { name: sonata.admin, manager_type: orm, label: 'admin.with.blog_category', group: 'admin.with.blog' }
     admin.blog_post:
         class: App\Admin\BlogPostAdmin
-        arguments: [~, App\Entity\BlogPost, ~, '@sonata.admin.entity_manager', '@vich_uploader.templating.helper.uploader_helper', '@liip_imagine.cache.manager']
+        arguments: [~, App\Entity\BlogPost, ~, '@sonata.admin.entity_manager', '@App\Service\VichUploadedFilesService']
         tags:
             - { name: sonata.admin, manager_type: orm, label: 'admin.with.blog_post', group: 'admin.with.blog' }
     # comunication
     admin.contact_message:
         class: App\Admin\ContactMessageAdmin
-        arguments: [~, App\Entity\ContactMessage, App\Controller\Admin\ContactMessageAdminController, '@sonata.admin.entity_manager', '@vich_uploader.templating.helper.uploader_helper', '@liip_imagine.cache.manager']
+        arguments: [~, App\Entity\ContactMessage, App\Controller\Admin\ContactMessageAdminController, '@sonata.admin.entity_manager', '@App\Service\VichUploadedFilesService']
         tags:
             - { name: sonata.admin, manager_type: orm, label: 'admin.with.contact_message', group: 'admin.with.comunication' }
     admin.contact_newsletter:
         class: App\Admin\ContactNewsletterAdmin
-        arguments: [~, App\Entity\ContactNewsletter, ~, '@sonata.admin.entity_manager', '@vich_uploader.templating.helper.uploader_helper', '@liip_imagine.cache.manager']
+        arguments: [~, App\Entity\ContactNewsletter, ~, '@sonata.admin.entity_manager', '@App\Service\VichUploadedFilesService']
         tags:
             - { name: sonata.admin, manager_type: orm, label: 'admin.with.contact_newsletter', group: 'admin.with.comunication' }
     # settings
+    admin.configuration_media:
+        class: App\Admin\MediaAdmin
+        arguments: [~, App\Entity\Media, ~, '@sonata.admin.entity_manager', '@App\Service\VichUploadedFilesService']
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: 'admin.with.media', group: 'admin.with.settings' }
     admin.configuration_user:
         class: App\Admin\UserAdmin
         arguments: [~, App\Entity\User, ~, '@fos_user.user_manager.default']

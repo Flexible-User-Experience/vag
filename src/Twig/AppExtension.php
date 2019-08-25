@@ -6,6 +6,7 @@ use App\Entity\User;
 use App\Entity\EventCategory;
 use App\Enum\UserRoleEnum;
 use App\Repository\ContactMessageRepository;
+use App\Service\VichUploadedFilesService;
 use DateTimeInterface;
 use Exception;
 use Symfony\Component\HttpFoundation\RequestStack;
@@ -42,6 +43,11 @@ class AppExtension extends AbstractExtension
     private $rs;
 
     /**
+     * @var VichUploadedFilesService service
+     */
+    private $vufs;
+
+    /**
      * @var array
      */
     private $locales;
@@ -62,15 +68,17 @@ class AppExtension extends AbstractExtension
      * @param TranslatorInterface      $ts
      * @param ContactMessageRepository $cmrs
      * @param RouterInterface          $rs
+     * @param VichUploadedFilesService $vufs
      * @param string                   $locales
      * @param string                   $defaultLocale
      */
-    public function __construct(RequestStack $rss, TranslatorInterface $ts, ContactMessageRepository $cmrs, RouterInterface $rs, string $locales, string $defaultLocale)
+    public function __construct(RequestStack $rss, TranslatorInterface $ts, ContactMessageRepository $cmrs, RouterInterface $rs, VichUploadedFilesService $vufs, string $locales, string $defaultLocale)
     {
         $this->rss = $rss;
         $this->ts = $ts;
         $this->cmrs = $cmrs;
         $this->rs = $rs;
+        $this->vufs = $vufs;
         $this->locales = explode('|', $locales);
         $this->defaultLocale = $defaultLocale;
     }
@@ -110,6 +118,7 @@ class AppExtension extends AbstractExtension
             new TwigFilter('icon_colored', [$this, 'drawEventCategoryIconWithColor']),
             new TwigFilter('draw_role_span', [$this, 'drawRoleSpan']),
             new TwigFilter('draw_i18n_date_string', [$this, 'drawI18nDateString']),
+            new TwigFilter('draw_image_or_file_cell', [$this, 'drawImageOrFileCell']),
             new TwigFilter('remove_url_protocol', [$this, 'removeUrlProtocol']),
         ];
     }
@@ -170,6 +179,23 @@ class AppExtension extends AbstractExtension
         $result = $dateTime->format('d/m/Y');
         if ($this->rss->getCurrentRequest()->getLocale() == 'en') {
             $result = $dateTime->format('m/d/Y');
+        }
+
+        return $result;
+    }
+
+    /**
+     * @param array|object $object
+     *
+     * @return string
+     */
+    public function drawImageOrFileCell($object)
+    {
+        $extension = $this->vufs->getFileExtension($object, 'imageFile');
+        if ($this->vufs->isImageFileExtension($extension)) {
+            $result = '<img src="'.$this->vufs->getImageFileSrcWithLiipFilter($object, 'imageFile', '60x60').'" class="img-responsive" alt="thumbnail">';
+        } else {
+            $result = '<a href="'.$this->vufs->getFileSrc($object, 'imageFile').'" class="btn btn-primary btn-sm" title="download" download><i class="fa fa-download"></i></a>';
         }
 
         return $result;

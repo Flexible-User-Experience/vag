@@ -1,0 +1,11 @@
+{% extends "@SonataAdmin/CRUD/base_list_field.html.twig" %}
+
+{% block field %}
+    {% spaceless %}
+        {% if object.imageName %}
+            {{ object | draw_image_or_file_cell | raw }}
+        {% else %}
+            ---
+        {% endif %}
+    {% endspaceless %}
+{% endblock %}
