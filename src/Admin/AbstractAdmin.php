@@ -2,11 +2,10 @@
 
 namespace App\Admin;
 
+use App\Service\VichUploadedFilesService;
 use Doctrine\ORM\EntityManager;
 use Sonata\AdminBundle\Admin\AbstractAdmin as BaseAdmin;
 use Sonata\AdminBundle\Route\RouteCollection;
-use Liip\ImagineBundle\Imagine\Cache\CacheManager;
-use Vich\UploaderBundle\Templating\Helper\UploaderHelper;
 
 /**
  * Abstract class AbstractAdmin
@@ -19,14 +18,9 @@ abstract class AbstractAdmin extends BaseAdmin
     protected $em;
 
     /**
-     * @var UploaderHelper
+     * @var VichUploadedFilesService
      */
-    protected $vus;
-
-    /**
-     * @var CacheManager
-     */
-    protected $lis;
+    protected $vufs;
 
     /**
      * @var array
@@ -54,15 +48,13 @@ abstract class AbstractAdmin extends BaseAdmin
      * @param string         $class
      * @param string         $baseControllerName
      * @param EntityManager  $em
-     * @param UploaderHelper $vus
-     * @param CacheManager   $lis
+     * @param VichUploadedFilesService $vufs
      */
-    public function __construct($code, $class, $baseControllerName, EntityManager $em, UploaderHelper $vus, CacheManager $lis)
+    public function __construct($code, $class, $baseControllerName, EntityManager $em, VichUploadedFilesService $vufs)
     {
         parent::__construct($code, $class, $baseControllerName);
         $this->em = $em;
-        $this->vus = $vus;
-        $this->lis = $lis;
+        $this->vufs = $vufs;
     }
 
     /**
@@ -104,11 +96,15 @@ abstract class AbstractAdmin extends BaseAdmin
      */
     public function getImageHelperFormMapperWithThumbnail()
     {
-        return ($this->getSubject() ?
-            $this->getSubject()->getImageName() ?
-                '<img src="' . $this->lis->getBrowserPath($this->vus->asset($this->getSubject(), 'imageFile'), '480xY') . '" class="admin-preview img-responsive" style="margin-bottom:5px;" alt="thumbnail"/><a href="'.$this->vus->asset($this->getSubject(), 'imageFile').'" class="btn btn-primary btn-sm" title="download" download><i class="fa fa-download"></i></a>'
-                : ''
-            : '');
+        $result = '';
+        $extension = $this->vufs->getFileExtension($this->getSubject(), 'imageFile');
+        if ($this->vufs->isImageFileExtension($extension)) {
+            $result = '<img src="'.$this->vufs->getImageFileSrcWithLiipFilter($this->getSubject(), 'imageFile', '480xY').'" class="img-responsive" alt="thumbnail">';
+        }
+        $result .= '<a href="'.$this->vufs->getFileSrc($this->getSubject(), 'imageFile').'" class="btn btn-primary btn-sm" title="download" download><i class="fa fa-download"></i></a>';
+
+
+        return $result;
     }
 
     /**
