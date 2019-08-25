@@ -10,10 +10,10 @@
     </div>
     <div class="jumbotron jumbotron-fluid mb-0">
         <div class="container">
-            <div class="row">
+            <div class="row justify-content-center">
                 {% if members | length > 0 %}
                     {% for member in members %}
-                        <div class="col">
+                        <div class="col-3 col-sm-2 mb-3">
                             <div class="card">
                                 {% if member.imageName %}
                                     <img src="{{ vich_uploader_asset(member, 'imageFile') | imagine_filter('480x480_BW') }}" class="card-img-top" alt="{{ member.fullname }}">
