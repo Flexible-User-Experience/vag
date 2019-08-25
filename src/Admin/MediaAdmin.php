@@ -141,7 +141,7 @@ final class MediaAdmin extends AbstractAdmin
                 null,
                 array(
                     'label' => 'admin.label.single_image',
-                    'template' => 'backend/cells/list__cell_image_field.html.twig',
+                    'template' => 'backend/cells/list__cell_file_or_image_field.html.twig',
                 )
             )
             ->add(

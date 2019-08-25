@@ -21,6 +21,7 @@ services:
             $locales: '%app_locales%'
             $defaultLocale: '%locale%'
             $mailerSenderAddress: '%app_mailer_sender_address%'
+            $kernelRootDir: '%kernel.root_dir%'
     App\:
         resource: '../src/*'
         exclude: '../src/{DependencyInjection,Entity,Migrations,Tests,Kernel.php}'
