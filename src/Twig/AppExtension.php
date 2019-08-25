@@ -191,7 +191,14 @@ class AppExtension extends AbstractExtension
      */
     public function drawImageOrFileCell($object)
     {
-        return $this->vufs->getFileExtension($object, 'imageFile');
+        $extension = $this->vufs->getFileExtension($object, 'imageFile');
+        if ($this->vufs->isImageFileExtension($extension)) {
+            $result = '<img src="'.$this->vufs->getImageFileSrcWithLiipFilter($object, 'imageFile', '60x60').'" class="img-responsive" alt="thumbnail">';
+        } else {
+            $result = '<a href="'.$this->vufs->getFileSrc($object, 'imageFile').'" class="btn btn-primary btn-sm" title="download" download><i class="fa fa-download"></i></a>';
+        }
+
+        return $result;
     }
 
     /**

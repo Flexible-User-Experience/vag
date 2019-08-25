@@ -2,6 +2,7 @@
 
 namespace App\Service;
 
+use Liip\ImagineBundle\Imagine\Cache\CacheManager;
 use Vich\UploaderBundle\Templating\Helper\UploaderHelper;
 
 /**
@@ -20,13 +21,31 @@ class VichUploadedFilesService
     private $vus;
 
     /**
+     * @var CacheManager
+     */
+    private $lis;
+
+    /**
      * EmailSendingService constructor.
      *
      * @param UploaderHelper $vus
+     * @param CacheManager   $lis
      */
-    public function __construct(UploaderHelper $vus)
+    public function __construct(UploaderHelper $vus, CacheManager $lis)
     {
         $this->vus = $vus;
+        $this->lis = $lis;
+    }
+
+    /**
+     * @param array|object $object
+     * @param string $fieldName
+     *
+     * @return string
+     */
+    public function getFileSrc($object, $fieldName): string
+    {
+        return $this->vus->asset($object, $fieldName);
     }
 
     /**
@@ -38,7 +57,7 @@ class VichUploadedFilesService
     public function getFileExtension($object, $fieldName): string
     {
         $result = '';
-        $filePath = $this->vus->asset($object, $fieldName);
+        $filePath = $this->getFileSrc($object, $fieldName);
         if ($filePath) {
             $result = pathinfo($this->vus->asset($object, $fieldName), PATHINFO_EXTENSION);
         }
@@ -60,5 +79,17 @@ class VichUploadedFilesService
         }
 
         return $result;
+    }
+
+    /**
+     * @param array|object $object
+     * @param string $fieldName
+     * @param string $filter
+     *
+     * @return string
+     */
+    public function getImageFileSrcWithLiipFilter($object, $fieldName, $filter): string
+    {
+        return $this->lis->getBrowserPath($this->vus->asset($object, $fieldName), $filter);
     }
 }
