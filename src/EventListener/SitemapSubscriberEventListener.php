@@ -280,7 +280,7 @@ class SitemapSubscriberEventListener implements EventSubscriberInterface
             'default'
         );
 
-        $locations = $this->eventLocationRepository->findAllSortedByPlace()->getQuery()->getResult();
+        $locations = $this->eventLocationRepository->findAvailableSortedByPlace()->getQuery()->getResult();
         /** @var EventLocation $location */
         foreach ($locations as $location) {
             $urls->addUrl(

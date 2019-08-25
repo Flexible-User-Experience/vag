@@ -146,7 +146,7 @@ class FrontendMainController extends AbstractController
      */
     public function locations()
     {
-        $locations = $this->getDoctrine()->getRepository(EventLocation::class)->findAllSortedByPlace()->getQuery()->getResult();
+        $locations = $this->getDoctrine()->getRepository(EventLocation::class)->findAvailableSortedByPlace()->getQuery()->getResult();
 
         return $this->render('frontend/locations.html.twig', [
             'locations' => $locations,
