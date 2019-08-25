@@ -112,7 +112,7 @@
                                     16:00h
                                 </th>
                                 <td colspan="2"></td>
-                                <td colspan="2" rowspan="5" class="align-middle">
+                                <td colspan="2" rowspan="5">
                                     <div class="media">
                                         {% if saturdayGameJam.imageName %}
                                             <a href="{{ path('front_event_activity', {category: saturdayGameJam.category.slug, activity: saturdayGameJam.slug}) }}">
@@ -166,16 +166,6 @@
                                     20:00h
                                 </th>
                                 {% include "frontend/includes/timetable_ticket_cell.html.twig" with {item: saturdayRoundTable, show_tickets_button: false, colspan: 2} %}
-                            </tr>
-                            <tr class="bg-info">
-                                <th scope="row" class="text-center"></th>
-                                <th scope="row" colspan="4" class="text-center">{{ 'front.calendar.night' | trans }}</th>
-                            </tr>
-                            <tr>
-                                <th scope="row" class="text-center align-middle">
-                                    22:30h
-                                </th>
-                                <td class="text-center align-middle" colspan="4"><i class="far fa-question"></i></td>
                             </tr>
                             </tbody>
                         </table>

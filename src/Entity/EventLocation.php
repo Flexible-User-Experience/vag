@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Entity\Traits\DescriptionTrait;
 use App\Entity\Traits\ImageAttributesTrait;
+use App\Entity\Traits\IsAvailableTrait;
 use App\Entity\Traits\LinkTrait;
 use App\Entity\Traits\ShowInHomepageTrait;
 use App\Entity\Traits\SlugTrait;
@@ -25,7 +26,7 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
  */
 class EventLocation extends AbstractEntity
 {
-    use SlugTrait, LinkTrait, ImageAttributesTrait, DescriptionTrait, ShowInHomepageTrait;
+    use SlugTrait, LinkTrait, ImageAttributesTrait, DescriptionTrait, ShowInHomepageTrait, IsAvailableTrait;
 
     /**
      * @ORM\Column(type="float", nullable=true)
@@ -106,6 +107,13 @@ class EventLocation extends AbstractEntity
      * @var bool
      */
     private $tourismMarketResource;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true, options={"default"=1})
+     *
+     * @var bool
+     */
+    private $isAvailable;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\EventActivity", mappedBy="location")

@@ -75,7 +75,7 @@ class FrontendMainController extends AbstractController
         $categories = $ecm->getAvailableSortedByPriorityAndName();
         $featuredSpeakers = $this->getDoctrine()->getRepository(EventCollaborator::class)->findAvailableAndShowInHomepageSortedBySurnameAndName()->getQuery()->getResult();
         $featuredActivities = $eam->getAvailableForHomepageSortedByBegin();
-        $featuredLocations = $this->getDoctrine()->getRepository(EventLocation::class)->findShowInHomepageSortedByPlace()->getQuery()->getResult();
+        $featuredLocations = $this->getDoctrine()->getRepository(EventLocation::class)->findAvailableShowInHomepageSortedByPlace()->getQuery()->getResult();
 
         return $this->render('frontend/homepage.html.twig', [
             'categories' => $categories,
@@ -106,7 +106,6 @@ class FrontendMainController extends AbstractController
         $saturdayGameJam = $ear->find(15);
         $saturdayDocumentaryFilm = $ear->find(3);
         $saturdayRoundTable = $ear->find(12);
-        $saturdayShow = null; // TODO
 
         return $this->render('frontend/tickets.html.twig', [
             'firstFridayConference' => $firstFridayConference,
@@ -121,7 +120,6 @@ class FrontendMainController extends AbstractController
             'saturdayGameJam' => $saturdayGameJam,
             'saturdayDocumentaryFilm' => $saturdayDocumentaryFilm,
             'saturdayRoundTable' => $saturdayRoundTable,
-            'saturdayShow' => $saturdayShow,
         ]);
     }
 
@@ -146,7 +144,7 @@ class FrontendMainController extends AbstractController
      */
     public function locations()
     {
-        $locations = $this->getDoctrine()->getRepository(EventLocation::class)->findAllSortedByPlace()->getQuery()->getResult();
+        $locations = $this->getDoctrine()->getRepository(EventLocation::class)->findAvailableSortedByPlace()->getQuery()->getResult();
 
         return $this->render('frontend/locations.html.twig', [
             'locations' => $locations,
