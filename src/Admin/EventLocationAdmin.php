@@ -133,6 +133,14 @@ final class EventLocationAdmin extends AbstractAdmin
                     'required' => false,
                 ]
             )
+            ->add(
+                'isAvailable',
+                CheckboxType::class,
+                [
+                    'label' => 'admin.label.is_available',
+                    'required' => false,
+                ]
+            )
             ->end()
         ;
     }
@@ -176,6 +184,13 @@ final class EventLocationAdmin extends AbstractAdmin
                 null,
                 [
                     'label' => 'admin.label.show_in_homepage_short',
+                ]
+            )
+            ->add(
+                'isAvailable',
+                null,
+                [
+                    'label' => 'admin.label.is_available',
                 ]
             )
         ;
@@ -224,6 +239,14 @@ final class EventLocationAdmin extends AbstractAdmin
                 null,
                 [
                     'label' => 'admin.label.show_in_homepage_short',
+                    'editable' => true,
+                ]
+            )
+            ->add(
+                'isAvailable',
+                null,
+                [
+                    'label' => 'admin.label.is_available',
                     'editable' => true,
                 ]
             )
