@@ -28,10 +28,42 @@ class EventLocationRepository extends ServiceEntityRepository
     /**
      * @return QueryBuilder
      */
+    public function findAvailable()
+    {
+        return $this->createQueryBuilder('el')
+            ->andWhere('el.isAvailable = :available')
+            ->setParameter('available', true)
+        ;
+    }
+
+    /**
+     * @return QueryBuilder
+     */
+    public function findAvailableSortedByPlace()
+    {
+        return $this->findAvailable()
+            ->orderBy('el.place', 'ASC')
+        ;
+    }
+
+    /**
+     * @return QueryBuilder
+     */
     public function findAllSortedByPlace()
     {
         return $this->createQueryBuilder('el')
             ->orderBy('el.place', 'ASC')
+        ;
+    }
+
+    /**
+     * @return QueryBuilder
+     */
+    public function findAvailableShowInHomepageSortedByPlace()
+    {
+        return $this->findAvailableSortedByPlace()
+            ->where('el.showInHomepage = :showInHomepage')
+            ->setParameter('showInHomepage', true)
         ;
     }
 
@@ -43,7 +75,6 @@ class EventLocationRepository extends ServiceEntityRepository
         return $this->findAllSortedByPlace()
             ->where('el.showInHomepage = :showInHomepage')
             ->setParameter('showInHomepage', true)
-            ->orderBy('el.place', 'ASC')
         ;
     }
 }

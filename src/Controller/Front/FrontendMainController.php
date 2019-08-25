@@ -75,7 +75,7 @@ class FrontendMainController extends AbstractController
         $categories = $ecm->getAvailableSortedByPriorityAndName();
         $featuredSpeakers = $this->getDoctrine()->getRepository(EventCollaborator::class)->findAvailableAndShowInHomepageSortedBySurnameAndName()->getQuery()->getResult();
         $featuredActivities = $eam->getAvailableForHomepageSortedByBegin();
-        $featuredLocations = $this->getDoctrine()->getRepository(EventLocation::class)->findShowInHomepageSortedByPlace()->getQuery()->getResult();
+        $featuredLocations = $this->getDoctrine()->getRepository(EventLocation::class)->findAvailableShowInHomepageSortedByPlace()->getQuery()->getResult();
 
         return $this->render('frontend/homepage.html.twig', [
             'categories' => $categories,
