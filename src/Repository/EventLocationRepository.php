@@ -31,7 +31,7 @@ class EventLocationRepository extends ServiceEntityRepository
     public function findAvailable()
     {
         return $this->createQueryBuilder('el')
-            ->andWhere('el.isAvailable = :available')
+            ->where('el.isAvailable = :available')
             ->setParameter('available', true)
         ;
     }
@@ -62,7 +62,7 @@ class EventLocationRepository extends ServiceEntityRepository
     public function findAvailableShowInHomepageSortedByPlace()
     {
         return $this->findAvailableSortedByPlace()
-            ->where('el.showInHomepage = :showInHomepage')
+            ->andWhere('el.showInHomepage = :showInHomepage')
             ->setParameter('showInHomepage', true)
         ;
     }
@@ -73,7 +73,7 @@ class EventLocationRepository extends ServiceEntityRepository
     public function findShowInHomepageSortedByPlace()
     {
         return $this->findAllSortedByPlace()
-            ->where('el.showInHomepage = :showInHomepage')
+            ->andWhere('el.showInHomepage = :showInHomepage')
             ->setParameter('showInHomepage', true)
         ;
     }

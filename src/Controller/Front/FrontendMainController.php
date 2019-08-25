@@ -106,7 +106,6 @@ class FrontendMainController extends AbstractController
         $saturdayGameJam = $ear->find(15);
         $saturdayDocumentaryFilm = $ear->find(3);
         $saturdayRoundTable = $ear->find(12);
-        $saturdayShow = null; // TODO
 
         return $this->render('frontend/tickets.html.twig', [
             'firstFridayConference' => $firstFridayConference,
@@ -121,7 +120,6 @@ class FrontendMainController extends AbstractController
             'saturdayGameJam' => $saturdayGameJam,
             'saturdayDocumentaryFilm' => $saturdayDocumentaryFilm,
             'saturdayRoundTable' => $saturdayRoundTable,
-            'saturdayShow' => $saturdayShow,
         ]);
     }
 
