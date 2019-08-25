@@ -21,12 +21,12 @@ abstract class AbstractAdmin extends BaseAdmin
     /**
      * @var UploaderHelper
      */
-    private $vus;
+    protected $vus;
 
     /**
      * @var CacheManager
      */
-    private $lis;
+    protected $lis;
 
     /**
      * @var array

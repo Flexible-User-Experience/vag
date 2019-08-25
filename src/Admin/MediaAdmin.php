@@ -2,6 +2,7 @@
 
 namespace App\Admin;
 
+use App\Entity\Media;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
@@ -92,6 +93,7 @@ final class MediaAdmin extends AbstractAdmin
                 [
                     'label' => 'admin.label.link',
                     'required' => false,
+                    'disabled' => true,
                 ]
             )
             ->end()
@@ -155,7 +157,7 @@ final class MediaAdmin extends AbstractAdmin
                 null,
                 [
                     'label' => 'admin.label.link',
-                    'editable' => true,
+                    'editable' => false,
                 ]
             )
             ->add(
@@ -169,5 +171,15 @@ final class MediaAdmin extends AbstractAdmin
                 ]
             )
         ;
+    }
+
+    /**
+     * @param Media $object
+     */
+    public function postUpdate($object)
+    {
+        parent::postUpdate($object);
+        $object->setLink($this->vus->asset($object, 'imageFile'));
+        $this->em->flush();
     }
 }
