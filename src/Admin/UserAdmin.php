@@ -161,17 +161,6 @@ final class UserAdmin extends ParentUserAdmin
                     'label' => 'admin.label.email',
                 ]
             )
-//            ->add(
-//                'roles',
-//                ChoiceFilter::class,
-//                array(
-//                    'label' => 'admin.label.user_roles',
-//                    'field_type' => 'choice',
-//                    'field_options' => array(
-//                        'choices' => UserRoleEnum::getStaticChoices(),
-//                    ),
-//                )
-//            )
             ->add(
                 'enabled',
                 null,

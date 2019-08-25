@@ -54,6 +54,11 @@ services:
         tags:
             - { name: sonata.admin, manager_type: orm, label: 'admin.with.contact_newsletter', group: 'admin.with.comunication' }
     # settings
+    admin.configuration_media:
+        class: App\Admin\MediaAdmin
+        arguments: [~, App\Entity\Media, ~, '@sonata.admin.entity_manager', '@vich_uploader.templating.helper.uploader_helper', '@liip_imagine.cache.manager']
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: 'admin.with.media', group: 'admin.with.settings' }
     admin.configuration_user:
         class: App\Admin\UserAdmin
         arguments: [~, App\Entity\User, ~, '@fos_user.user_manager.default']
