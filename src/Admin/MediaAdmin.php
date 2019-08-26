@@ -3,6 +3,8 @@
 namespace App\Admin;
 
 use App\Entity\Media;
+use Doctrine\ORM\OptimisticLockException;
+use Doctrine\ORM\ORMException;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
@@ -175,11 +177,19 @@ final class MediaAdmin extends AbstractAdmin
 
     /**
      * @param Media $object
+     *
+     * @throws ORMException
+     * @throws OptimisticLockException
      */
     public function postUpdate($object)
     {
         parent::postUpdate($object);
-        $object->setLink($this->vus->asset($object, 'imageFile'));
+        $extension = $this->vufs->getFileExtension($object, 'imageFile');
+        if ($this->vufs->isImageFileExtension($extension)) {
+            $object->setLink($this->vufs->getImageFileSrcWithLiipFilter($object, 'imageFile', '1200xY'));
+        } else {
+            $object->setLink($this->vufs->getFileSrc($object, 'imageFile'));
+        }
         $this->em->flush();
     }
 }
