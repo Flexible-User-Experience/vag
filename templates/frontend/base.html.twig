@@ -41,9 +41,7 @@
         <div class="container-fluid dark-footer">
             <footer class="pt-4 pb-4">
                 <div class="row">
-                    <div class="col">
-                        {#<img class="footer-logo mb-2" src="{{ asset('build/vag_green.svg') }}" alt="VAG logo">#}
-                        {#<h6 class="text-white">&copy; {{ 'now'| date('Y') }} VAG</h6>#}
+                    <div class="col-6 col-sm-3 col-md-4 col-lg-4 col-xl-5">
                         <h6 class="text-white">Video Art Game</h6>
                         <ul class="list-unstyled text-small">
                             <li><a class="text-muted" href="{{ path('front_contact') }}">{{ 'front.footer.contact' | trans }}</a></li>
@@ -53,7 +51,7 @@
                             <li><a class="text-muted" href="{{ path('front_legal_warning') }}">{{ 'front.footer.terms' | trans }}</a></li>
                         </ul>
                     </div>
-                    <div class="col">
+                    <div class="col-6 col-sm-3 col-md-3 col-lg-4 col-xl-4">
                         <h6 class="text-white">{{ 'front.footer.social_networks' | trans | title }}</h6>
                         <ul class="list-unstyled text-small">
                             <li><a class="text-muted" href="https://www.instagram.com/vagexperience" target="_blank">instagram</a></li>
@@ -61,13 +59,12 @@
                             <li><a class="text-muted" href="https://twitter.com/VaGexperience" target="_blank">twitter</a></li>
                         </ul>
                     </div>
-                    <div class="col">
+                    <div class="col-6 col-sm-6 col-md-5 col-lg-4 col-xl-3">
                         <h6 class="text-white">{{ 'front.footer.contact_newsletter' | trans | title }}</h6>
                         {{ render(controller('App\\Controller\\Front\\FrontendMainController::contactNewsletterFragment', {request: app.request})) }}
                     </div>
-
                 </div>
-                <div class="row">
+                <div class="row mt-3">
                     <div class="col-9">
                         <div class="btn-group" role="group" aria-label="language selector">
                             <a href="{{ path('front_homepage', {_locale: 'ca'}) }}" class="btn btn-sm btn-secondary{% if app.request.locale == 'ca' %} active{% endif %}">català</a>
