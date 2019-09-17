@@ -2533,16 +2533,16 @@
         },
         {
             "name": "lorenzo/pinky",
-            "version": "1.0.4",
+            "version": "1.0.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/lorenzo/pinky.git",
-                "reference": "95405cb96facac27ba5a294d2219bc0db2ee53e9"
+                "reference": "2bc1a9d5696d6496df5d5682962929165a823e57"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/lorenzo/pinky/zipball/95405cb96facac27ba5a294d2219bc0db2ee53e9",
-                "reference": "95405cb96facac27ba5a294d2219bc0db2ee53e9",
+                "url": "https://api.github.com/repos/lorenzo/pinky/zipball/2bc1a9d5696d6496df5d5682962929165a823e57",
+                "reference": "2bc1a9d5696d6496df5d5682962929165a823e57",
                 "shasum": ""
             },
             "require": {
@@ -2576,7 +2576,7 @@
                 "template",
                 "zurb"
             ],
-            "time": "2019-04-03T11:09:52+00:00"
+            "time": "2019-09-16T21:23:31+00:00"
         },
         {
             "name": "monolog/monolog",
