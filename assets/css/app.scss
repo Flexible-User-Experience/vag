@@ -15,6 +15,7 @@ $app-color-purple: #895E95;
 $app-color-yellow: #E1DF56;
 $app-color-warning-light: #FDBF2F;
 $app-color-footer: #363941;
+$app-color-mid-dark-footer: #CCCCCC;
 
 // custom bootstrap variables before import (mandatory)
 $breadcrumb-bg: transparent;
@@ -152,6 +153,10 @@ h5.anchor {
 
 .dark-footer {
   background-color: $app-color-footer;
+}
+
+.mid-dark-footer {
+  background-color: lighten($app-color-footer, 20%);
 }
 
 .w-20 {
