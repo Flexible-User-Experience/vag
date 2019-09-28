@@ -3759,16 +3759,16 @@
         },
         {
             "name": "sonata-project/doctrine-extensions",
-            "version": "1.3.0",
+            "version": "1.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/sonata-doctrine-extensions.git",
-                "reference": "aab1ede164095afcb1f40253c5d97258b930a433"
+                "reference": "f93e32ffcbfbabf07f14e066d997824e8f3596b0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/sonata-doctrine-extensions/zipball/aab1ede164095afcb1f40253c5d97258b930a433",
-                "reference": "aab1ede164095afcb1f40253c5d97258b930a433",
+                "url": "https://api.github.com/repos/sonata-project/sonata-doctrine-extensions/zipball/f93e32ffcbfbabf07f14e066d997824e8f3596b0",
+                "reference": "f93e32ffcbfbabf07f14e066d997824e8f3596b0",
                 "shasum": ""
             },
             "require": {
@@ -3824,7 +3824,7 @@
                 "doctrine2",
                 "json"
             ],
-            "time": "2019-04-29T17:07:46+00:00"
+            "time": "2019-09-27T16:52:15+00:00"
         },
         {
             "name": "sonata-project/doctrine-orm-admin-bundle",
@@ -4042,16 +4042,16 @@
         },
         {
             "name": "sonata-project/user-bundle",
-            "version": "4.4.0",
+            "version": "4.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataUserBundle.git",
-                "reference": "9082b5c06ddd0fa3f1ed39582a92f53bfcbc768a"
+                "reference": "5159ebfee7c6bf09a4ca33b269d088b46090a772"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataUserBundle/zipball/9082b5c06ddd0fa3f1ed39582a92f53bfcbc768a",
-                "reference": "9082b5c06ddd0fa3f1ed39582a92f53bfcbc768a",
+                "url": "https://api.github.com/repos/sonata-project/SonataUserBundle/zipball/5159ebfee7c6bf09a4ca33b269d088b46090a772",
+                "reference": "5159ebfee7c6bf09a4ca33b269d088b46090a772",
                 "shasum": ""
             },
             "require": {
@@ -4073,11 +4073,12 @@
                 "symfony/options-resolver": "^2.8 || ^3.2 || ^4.0",
                 "symfony/security-acl": "^2.8 || ^3.0",
                 "symfony/security-core": "^2.8 || ^3.2 || ^4.0",
-                "symfony/translation": "^2.8 || ^3.2 || ^4.0"
+                "symfony/translation": "^2.8 || ^3.2 || ^4.0",
+                "twig/twig": "^2.9"
             },
             "conflict": {
                 "friendsofsymfony/rest-bundle": "<2.1 || >=3.0",
-                "jms/serializer": "<0.13 || >=3.0",
+                "jms/serializer": "<1.3 || >=4.0",
                 "nelmio/api-doc-bundle": "<2.4",
                 "sonata-project/block-bundle": "<3.11",
                 "sonata-project/doctrine-orm-admin-bundle": "<3.0",
@@ -4137,7 +4138,7 @@
                 "sonata",
                 "user"
             ],
-            "time": "2019-06-13T19:50:20+00:00"
+            "time": "2019-09-27T06:39:59+00:00"
         },
         {
             "name": "stof/doctrine-extensions-bundle",
