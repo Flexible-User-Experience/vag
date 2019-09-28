@@ -159,6 +159,10 @@ h5.anchor {
   background-color: lighten($app-color-footer, 20%);
 }
 
+.second-mid-dark-footer {
+  background-color: lighten($app-color-footer, 10%);
+}
+
 .w-20 {
   -webkit-box-flex: 0;
   -ms-flex: 0 0 20% !important;
