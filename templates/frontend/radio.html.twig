@@ -17,7 +17,6 @@
                     <script src="http://descargas.profesionalhosting.com/generador-reproductores/reproductores/movil/jquery.js"></script>
                     <script src="http://descargas.profesionalhosting.com/generador-reproductores/reproductores/movil/mediaelement-and-player.min.js"></script>
                     <link rel="stylesheet" href="http://descargas.profesionalhosting.com/generador-reproductores/reproductores/movil/mediaelementplayer.min.css" />
-                    <body onload="player.play()">
                     <audio id="player" src="http://radioserver9.profesionalhosting.com:21/;stream" type="audio/mp3" controls="controls">
                     </audio>
                     <script>
@@ -51,4 +50,13 @@
             </div>
         </div>
     </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript">
+        jQuery(document).ready(function() {
+            player.play()
+        });
+    </script>
 {% endblock %}
