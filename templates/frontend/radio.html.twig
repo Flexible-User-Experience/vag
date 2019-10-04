@@ -14,15 +14,39 @@
             <div class="row">
                 <div class="col-12">
                     <h5>RADIO</h5>
-                    <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="180" height="60" bgcolor="#FFFFFF">
-                        <param name="movie" value="http://descargas.profesionalhosting.com/generador-reproductores/reproductores/muses/muses-config.swf" />
-                        <param name="flashvars" value="url=http://radioserver9.profesionalhosting.com:21/;stream&lang=auto&codec=mp3&volume=100&introurl=&autoplay=true&tracking=true&jsevents=false&buffering=5&skin=http://descargas.profesionalhosting.com/generador-reproductores/reproductores/muses/mcclean/ffmp3-mcclean.xml&title=VAG&welcome=VAG" />
-                        <param name="wmode" value="window" />
-                        <param name="allowscriptaccess" value="always" />
-                        <param name="bgcolor" value="#FFFFFF" />
-                        <param name="scale" value="noscale" />
-                        <embed src="http://descargas.profesionalhosting.com/generador-reproductores/reproductores/muses/muses-config.swf" flashvars="url=http://radioserver9.profesionalhosting.com:21/;stream&lang=auto&codec=mp3&volume=100&introurl=&autoplay=true&tracking=true&jsevents=false&buffering=5&skin=http://descargas.profesionalhosting.com/generador-reproductores/reproductores/muses/mcclean/ffmp3-mcclean.xml&title=VAG&welcome=VAG" width="180" scale="noscale" height="60" wmode="window" bgcolor="#FFFFFF" allowscriptaccess="always" type="application/x-shockwave-flash" />
-                    </object>
+                    <script src="http://descargas.profesionalhosting.com/generador-reproductores/reproductores/movil/jquery.js"></script>
+                    <script src="http://descargas.profesionalhosting.com/generador-reproductores/reproductores/movil/mediaelement-and-player.min.js"></script>
+                    <link rel="stylesheet" href="http://descargas.profesionalhosting.com/generador-reproductores/reproductores/movil/mediaelementplayer.min.css" />
+                    <body onload="player.play()">
+                    <audio id="player" src="http://radioserver9.profesionalhosting.com:21/;stream" type="audio/mp3" controls="controls">
+                    </audio>
+                    <script>
+                        // JavaScript object for later use
+                        var player = new MediaElementPlayer('#player',{
+                            // width of audio player
+                            audioWidth: 238,
+                            // height of audio player
+                            audioHeight: 30,
+                            // initial volume when the player starts
+                            startVolume: 0.8,
+                            // enables Flash and Silverlight to resize to content size
+                            enableAutosize: true,
+                            // the order of controls you want on the control bar (and other plugins below)
+                            features: ['playpause','progress','current','volume'],
+                            // force iPad's native controls
+                            iPadUseNativeControls: false,
+                            // force iPhone's native controls
+                            iPhoneUseNativeControls: false,
+                            // force Android's native controls
+                            AndroidUseNativeControls: false,
+                            // turns keyboard support on and off for this instance
+                            enableKeyboard: true,
+                            // when this player starts, it will pause other players
+                            pauseOtherPlayers: true,
+                            // array of keyboard commands
+                            keyActions: []
+                        });
+                    </script>
                 </div>
             </div>
         </div>
