@@ -41,16 +41,6 @@ class FrontendExtraController extends AbstractController
     }
 
     /**
-     * @Route({"ca": "/radio", "es": "/radio", "en": "/radio"}, name="front_radio")
-     *
-     * @return Response
-     */
-    public function radioPolicy()
-    {
-        return $this->render('frontend/radio.html.twig', []);
-    }
-
-    /**
      * @Route({"ca": "/avis-legal", "es": "/aviso-legal", "en": "/legal-warning"}, name="front_legal_warning")
      *
      * @return Response
