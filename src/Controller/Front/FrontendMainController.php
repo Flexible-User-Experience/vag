@@ -175,6 +175,16 @@ class FrontendMainController extends AbstractController
     }
 
     /**
+     * @Route({"ca": "/xmas-19", "es": "/xmas-19", "en": "/xmas-19"}, name="front_xmas_19")
+     *
+     * @return Response
+     */
+    public function xmas19()
+    {
+        return $this->render('frontend/xmas_19.html.twig');
+    }
+
+    /**
      * @Route({"ca": "/participant/{slug}", "es": "/participante/{slug}", "en": "/participant/{slug}"}, name="front_collaborator_detail")
      * @ParamConverter("participant", class="App:EventCollaborator")
      *
