@@ -5,7 +5,7 @@ namespace App\Repository;
 use App\Entity\EventCategory;
 use App\Entity\EventTicket;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Symfony\Bridge\Doctrine\RegistryInterface;
+use Doctrine\Persistence\ManagerRegistry as RegistryInterface;
 
 /**
  * @method EventCategory|null find($id, $lockMode = null, $lockVersion = null)

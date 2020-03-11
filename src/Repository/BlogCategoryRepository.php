@@ -5,7 +5,7 @@ namespace App\Repository;
 use App\Entity\BlogCategory;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\QueryBuilder;
-use Symfony\Bridge\Doctrine\RegistryInterface;
+use Doctrine\Persistence\ManagerRegistry as RegistryInterface;
 
 /**
  * @method BlogCategory|null find($id, $lockMode = null, $lockVersion = null)

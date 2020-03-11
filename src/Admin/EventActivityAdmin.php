@@ -17,6 +17,7 @@ use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 /**
@@ -52,6 +53,7 @@ final class EventActivityAdmin extends AbstractAdmin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
+            ->tab('Activitat')
             ->with('admin.with.activity', ['class' => 'col-md-5'])
             ->add(
                 'name',
@@ -243,6 +245,138 @@ final class EventActivityAdmin extends AbstractAdmin
                     'required' => false,
                 ]
             )
+            ->end()
+            ->end()
+            ->tab('Logística')
+            ->with('Logística / necessitats', ['class' => 'col-md-5'])
+            ->add(
+                'field1',
+                TextareaType::class,
+                [
+                    'label' => 'Quin material extra necessita aportar l\'organització del VAG per a realitzar l\'activitat?',
+                    'help' => 'Aquesta informació prové de la targeta ACTIVITAT.',
+                    'mapped' => false,
+                    'required' => false,
+                    'attr' => [
+                        'rows' => '5',
+                        'style' => 'resize:vertical',
+                    ],
+                ]
+            )
+            ->add(
+                'field2',
+                TextareaType::class,
+                [
+                    'label' => 'Quin material extra necessita aportar l\'organització del VAG per a realitzar l\'activitat?',
+                    'mapped' => false,
+                    'required' => false,
+                    'attr' => [
+                        'rows' => '5',
+                        'style' => 'resize:vertical',
+                    ],
+                ]
+            )
+            ->add(
+                'field3',
+                TextareaType::class,
+                [
+                    'label' => 'S\'ha de posar catering? En cas afirmatiu, quin tipus de catering? Qui el proveeix?',
+                    'mapped' => false,
+                    'required' => false,
+                    'attr' => [
+                        'rows' => '5',
+                        'style' => 'resize:vertical',
+                    ],
+                ]
+            )
+            ->add(
+                'field4',
+                TextareaType::class,
+                [
+                    'label' => 'S\'ha de repartir algun tipus de merchandising del VAG als assistents o participants? Quin? (llapis, quaderns, samarretes, tasses... tenir en compte que si són samarretes, quines talles?)',
+                    'help' => 'Anotar aquesta resposta i adjuntar pressupost a la targeta de PRESSUPOST ACTIVITAT.',
+                    'mapped' => false,
+                    'required' => false,
+                    'attr' => [
+                        'rows' => '5',
+                        'style' => 'resize:vertical',
+                    ],
+                ]
+            )
+            ->add(
+                'field5',
+                TextareaType::class,
+                [
+                    'label' => 'Ha d\'haver certificats d\'assistència per als participants? En cas afirmatiu s\'ha de dissenyar i imprimir. Qui ho imprimeix?',
+                    'help' => 'Això s\'ha d\'anotar també a la targeta de COMUNICACIÓ i a PRESSUPOST ACTIVITAT.',
+                    'mapped' => false,
+                    'required' => false,
+                    'attr' => [
+                        'rows' => '5',
+                        'style' => 'resize:vertical',
+                    ],
+                ]
+            )
+            ->add(
+                'field6',
+                TextareaType::class,
+                [
+                    'label' => 'Imprimir text de consentiment per a la RGPD/LOPD per aconseguir dades dels assistents. Com s\'emmagatzemaran les dades el dia de l\'activitat? S\'ha de crear una base de dades en algun programa? Quin?',
+                    'help' => 'Aquestes dades s\'han de pujar a Mailchimp per a fer comunicació a posterior del VAG.',
+                    'mapped' => false,
+                    'required' => false,
+                    'attr' => [
+                        'rows' => '5',
+                        'style' => 'resize:vertical',
+                    ],
+                ]
+            )
+            ->end()
+            ->with('admin.with.controls', ['class' => 'col-md-3'])
+            ->add(
+                'field7',
+                CheckboxType::class,
+                [
+                    'label' => 'Inscripció Eventbrite',
+                    'help' => 'S\'ha preparat la inscripció a la plataforma Eventbrite.',
+                    'mapped' => false,
+                    'required' => false,
+                ]
+            )
+            ->end()
+            // Quin material ens cedeixen al lloc on es realitzarà l'activitat? Aquesta informació prové de la targeta ACTIVITAT.
+            ->end()
+            ->tab('Públic Objectiu')
+            ->with('Públic Objectiu', ['class' => 'col-md-5'])
+            ->end()
+            ->end()
+            ->tab('Comunicació')
+            ->with('Comunicació', ['class' => 'col-md-5'])
+            ->end()
+            ->end()
+            ->tab('Web')
+            ->with('Web', ['class' => 'col-md-5'])
+            ->end()
+            ->end()
+            ->tab('Objectiu')
+            ->with('Objectiu', ['class' => 'col-md-5'])
+            ->end()
+            ->end()
+            ->tab('Pressupost' )
+            ->with('Pressupost activitat', ['class' => 'col-md-5'])
+            ->end()
+            ->end()
+            ->tab('Calendari')
+            ->with('Calendari execució', ['class' => 'col-md-5'])
+            ->end()
+            ->end()
+            ->tab('Pla B')
+            ->with('Pla B', ['class' => 'col-md-5'])
+            ->end()
+            ->end()
+            ->tab('Observacions Post-Activitat')
+            ->with('Observacions Post-Activitat', ['class' => 'col-md-5'])
+            ->end()
             ->end()
         ;
     }

@@ -5,7 +5,7 @@ namespace App\Repository;
 use App\Entity\ContactMessage;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\NonUniqueResultException;
-use Symfony\Bridge\Doctrine\RegistryInterface;
+use Doctrine\Persistence\ManagerRegistry as RegistryInterface;
 
 /**
  * @method ContactMessage|null find($id, $lockMode = null, $lockVersion = null)
