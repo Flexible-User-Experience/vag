@@ -9,7 +9,7 @@ use DateTimeImmutable;
 use Exception;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\QueryBuilder;
-use Symfony\Bridge\Doctrine\RegistryInterface;
+use Doctrine\Persistence\ManagerRegistry as RegistryInterface;
 
 /**
  * @method BlogPost|null find($id, $lockMode = null, $lockVersion = null)
